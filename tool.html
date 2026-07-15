@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>目標釐清器 · Toolbook</title>
-<meta name="description" content="不幫你定目標,幫你聽見你到底要什麼。8 個安靜的問題,最後給你一張方向卡。">
+<meta name="description" content="不幫你定目標，幫你聽見你到底要什麼。8 個安靜的問題，最後給你一張方向卡。">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
   :root{--serif:"Songti SC","Noto Serif TC","Source Han Serif TC","Source Han Serif SC",serif;
@@ -97,6 +97,7 @@
   .citem:not(.done){opacity:.55;}
   .emailbox{text-align:center;margin-top:22px;}
   .emailbox p{font-size:12.5px;color:var(--muted);margin-bottom:8px;letter-spacing:.5px;}
+  .privacy{font-size:11px!important;line-height:1.6;margin-top:9px;margin-bottom:0!important;}
   .foot{flex:none;padding:8px 30px 26px;background:linear-gradient(transparent,var(--bg) 28%);}
   .gatehint{text-align:center;font-size:11px;color:var(--muted);margin-bottom:8px;height:15px;letter-spacing:.5px;}
   .btn{display:block;width:100%;background:var(--accent);color:var(--onAccent);border:none;border-radius:3px;
@@ -126,7 +127,7 @@
       <div class="welcome">
         <div class="seal">❦</div>
         <h1>聽見<br>被生活蓋住的<br>那個自己</h1>
-        <p class="hint" style="margin-top:14px">這裡沒有對錯，沒有人會看到你的答案。<br>慢慢來，我也還在路上。</p>
+        <p class="hint" style="margin-top:14px">這裡沒有對錯。答案會自動保存在這部裝置，只有你能在這個瀏覽器繼續查看。<br>慢慢來，我也還在路上。</p>
       </div>
     </section>
 
@@ -163,7 +164,7 @@
     <section class="screen">
       <div class="kicker">第二步 · 過濾</div>
       <h2>哪些事一直佔據你的心？</h2>
-      <p class="hint">點選或自己寫（最多 3 件），再用 5 年眼光篩。</p>
+      <p class="hint">點選或自己寫（最多 3 件），再用 5 年的眼光篩選。</p>
       <div class="chips" id="c2chips">
         <span class="chip">和某人的關係</span><span class="chip">錢不夠用</span>
         <span class="chip">未來方向</span><span class="chip">別人怎麼看我</span>
@@ -200,7 +201,7 @@
       <div class="costrow"><label>飲食生活</label><span class="unit">$</span><input class="cost calc" value="" placeholder="0"></div>
       <div class="costrow"><label>學習成長</label><span class="unit">$</span><input class="cost calc" value="" placeholder="0"></div>
       <div class="costrow"><label>旅行體驗</label><span class="unit">$</span><input class="cost calc" value="" placeholder="0"></div>
-      <div class="costrow"><label>緩衝/安全感</label><span class="unit">$</span><input class="cost calc" value="" placeholder="0"></div>
+      <div class="costrow"><label>緩衝／安全感</label><span class="unit">$</span><input class="cost calc" value="" placeholder="0"></div>
       <div class="total">
         <div class="cap">原來，你想要的生活，標價只是</div>
         <div class="num" id="costTotal">$0</div>
@@ -213,14 +214,14 @@
       <div class="card-out">
         <div class="seal">❦</div>
         <h3>方 向 卡</h3>
-        <div class="csub">Direction · Nº 01</div>
+        <div class="csub">Direction · No. 01</div>
         <div class="rule"></div>
         <div class="hero"><div class="k">我真正渴望的</div><div class="hv" id="oWant">—</div></div>
         <div class="field"><div class="k">我想成為的人</div><div class="v" id="oWho">—</div></div>
-        <div class="field"><div class="k">5年後仍重要的</div><div class="v" id="oKeep">—</div></div>
+        <div class="field"><div class="k">5 年後仍重要的</div><div class="v" id="oKeep">—</div></div>
         <div class="divider"></div>
-        <div class="coord">行動座標 <span class="n" id="oNum">$0/月</span> · 一個追得到的距離</div>
-        <div class="edition">Édition Nº 01 · MMXXVI</div>
+        <div class="coord">行動座標 <span class="n" id="oNum">$0／月</span> · 一個追得到的距離</div>
+        <div class="edition">Edition No. 01 · MMXXVI</div>
       </div>
       <p class="summary" id="oSum">—</p>
     </section>
@@ -228,19 +229,26 @@
     <section class="screen" data-role="outro">
       <div class="kicker" style="text-align:center">接下來</div>
       <h2 style="text-align:center">有些東西，<br>已經在路上</h2>
-      <p class="hint" style="text-align:center">你的方向卡是第 Nº 01 號。<br>隨著你成長，會收集到更多。</p>
+      <p class="hint" style="text-align:center">這是你的 No. 01 方向卡，已保存在這部裝置。<br>隨著你成長，會收集到更多。</p>
       <div class="collection">
-        <div class="citem done"><span class="no">Nº 01</span><span class="nm">目標釐清器</span><span class="st">已完成</span></div>
-        <div class="citem"><span class="no">Nº 02</span><span class="nm">興趣變現孵化器</span><span class="st">釀製中</span></div>
-        <div class="citem"><span class="no">Nº 03</span><span class="nm">微行動啟動器</span><span class="st">規劃中</span></div>
+        <div class="citem done"><span class="no">No. 01</span><span class="nm">目標釐清器</span><span class="st">已完成</span></div>
+        <div class="citem"><span class="no">No. 02</span><span class="nm">興趣變現孵化器</span><span class="st">釀製中</span></div>
+        <div class="citem"><span class="no">No. 03</span><span class="nm">微行動啟動器</span><span class="st">規劃中</span></div>
       </div>
       <div class="emailbox">
         <p>新工具完成時，第一個讓你知道</p>
         <!-- ⚠️ 把 action 換成你自己的 Formspree 網址 -->
         <form class="addbar" id="toolEmail" action="https://formspree.io/f/mlgkgveq" method="POST">
           <input type="hidden" name="subscription_type" value="目標釐清器完成頁－新工具通知">
-          <input class="txt" type="email" name="email" id="email" placeholder="你的 email" style="margin:0" required>
+          <input type="hidden" name="direction_desire" id="formWant">
+          <input type="hidden" name="direction_person" id="formWho">
+          <input type="hidden" name="direction_reason" id="formWhy">
+          <input type="hidden" name="important_in_5_years" id="formKeep">
+          <input type="hidden" name="monthly_target" id="formMonthly">
+          <input type="hidden" name="completed_at" id="formCompletedAt">
+          <input class="txt" type="email" name="email" id="email" placeholder="你的 Email" style="margin:0" required>
           <button type="submit">通知我</button></form>
+        <p class="privacy">提交後，Email 與方向卡結果會傳送到 Toolbook 的 Formspree 訂閱名單。</p>
       </div>
     </section>
 
@@ -253,10 +261,13 @@
   const screens=[...document.querySelectorAll('.screen')];
   const dots=document.getElementById('dots'), foot=document.getElementById('foot'),
         back=document.getElementById('back'), toast=document.getElementById('toast');
-  let i=0;
-  {const _p=new URLSearchParams(location.search).get('s');if(_p!==null)i=Math.max(0,Math.min(screens.length-1,parseInt(_p)||0));}
+  const params=new URLSearchParams(location.search), isDemo=params.has('demo'), forcedStep=params.has('s');
+  const storageKey='toolbook_goal_clarifier_v1';
+  const savedFieldIds=['s1field','s1when','s1body','s1want','c2input','s3who','s3why','email'];
+  let i=0, clearing=false;
+  {const _p=params.get('s');if(_p!==null)i=Math.max(0,Math.min(screens.length-1,parseInt(_p)||0));}
   screens.forEach(()=>{const d=document.createElement('div');d.className='dot';dots.appendChild(d);});
-  const gate={1:()=>val('s1field')&&val('s1when'),2:()=>val('s1want'),3:()=>concerns.length>=1,
+  const gate={1:()=>val('s1field')&&val('s1when'),2:()=>val('s1want'),3:()=>concerns.length>=1&&concerns.every(c=>c.rank!==null),
     4:()=>val('s3who')&&val('s3why'),5:()=>calc()>0};
   function render(){
     screens.forEach((s,n)=>s.classList.toggle('active',n===i));
@@ -266,21 +277,20 @@
     if(role==='intro') foot.innerHTML='<button class="btn" onclick="next()">我準備好了，開始</button>';
     else if(role==='card'){buildCard();
       foot.innerHTML='<button class="btn" onclick="share()">分享給朋友</button>'+
-        '<button class="btn ghost" onclick="next()">接下來：為你準備的 →</button>';}
+        '<button class="btn ghost" onclick="next()">接下來：為你準備的</button>';}
     else if(role==='outro') foot.innerHTML='<button class="btn" onclick="share()">分享給朋友，一起做一張</button>'+
-      '<button class="btn ghost" onclick="reset()">重新開始</button>';
+      '<button class="btn ghost" onclick="clearRecord()">清除紀錄並重新開始</button>';
     else foot.innerHTML='<div class="gatehint" id="gh"></div><button class="btn" id="nx" onclick="next()">繼續</button>';
     document.getElementById('stage').scrollTop=0;updateGate();
   }
   function updateGate(){const nx=document.getElementById('nx');if(!nx)return;const ok=gate[i]?gate[i]():true;
-    nx.disabled=!ok;document.getElementById('gh').textContent=ok?'':'填好上面就能繼續 ↑';}
-  function next(){if(i<screens.length-1){i++;render();}}
-  function prev(){if(i>0){i--;render();}}
-  function reset(){i=0;render();}
+    nx.disabled=!ok;document.getElementById('gh').textContent=ok?'':'完成上方內容後即可繼續';}
+  function next(){if(i<screens.length-1){i++;render();saveRecord();}}
+  function prev(){if(i>0){i--;render();saveRecord();}}
   function share(){if(navigator.share){navigator.share({title:'目標釐清器',text:'我做了一張方向卡，你也來試試',url:location.href}).catch(()=>{});}else msg('複製這頁網址，分享給朋友吧');}
   function msg(t){toast.textContent=t;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800);}
   {const te=document.getElementById('toolEmail');if(te)te.addEventListener('submit',async function(e){
-    e.preventDefault();var b=this.querySelector('button');
+    e.preventDefault();syncSubmissionFields();var b=this.querySelector('button');
     try{var r=await fetch(this.action,{method:'POST',headers:{Accept:'application/json'},body:new FormData(this)});
       b.textContent=r.ok?'已記下 ✓':'稍後再試';}catch(_){b.textContent='稍後再試';}});}
   function val(id){const e=document.getElementById(id);return e?e.value.trim():'';}
@@ -296,34 +306,65 @@
       if(fid){const f=document.getElementById(fid);f.setAttribute('readonly','');f.classList.add('lock');f.value=chip.classList.contains('sel')?chip.textContent:'';}
       updateGate();return;}
   });
-  document.addEventListener('input',updateGate);
+  document.addEventListener('input',()=>{updateGate();saveRecord();});
+  document.addEventListener('click',()=>setTimeout(saveRecord));
   let concerns=[];
   function addConcern(text){const inp=document.getElementById('c2input');const t=text||inp.value.trim();
     if(!t)return;if(concerns.length>=3){msg('先聚焦 3 件就好');return;}
     if(concerns.some(c=>c.text===t)){msg('已經加過了');return;}
     concerns.push({text:t,rank:null});if(!text)inp.value='';renderConcerns();updateGate();}
+  function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
   function renderConcerns(){const box=document.getElementById('c2rows');
-    box.innerHTML=concerns.map((c,n)=>`<div class="row"><div class="t"><span>${c.text}</span><span class="x" onclick="delConcern(${n})">✕</span></div>
-      <div class="seg"><span class="${c.rank===0?'on':''}" onclick="setRank(${n},0)">5年後仍重要</span>
+    box.innerHTML=concerns.map((c,n)=>`<div class="row"><div class="t"><span>${escapeHtml(c.text)}</span><span class="x" onclick="delConcern(${n})">✕</span></div>
+      <div class="seg"><span class="${c.rank===0?'on':''}" onclick="setRank(${n},0)">5 年後仍重要</span>
       <span class="${c.rank===1?'on':''}" onclick="setRank(${n},1)">沒那麼重要</span>
       <span class="${c.rank===2?'on':''}" onclick="setRank(${n},2)">不確定</span></div></div>`).join('');
     document.getElementById('c2tip').style.display=concerns.length?'block':'none';}
-  function setRank(n,r){concerns[n].rank=r;renderConcerns();}
-  function delConcern(n){concerns.splice(n,1);renderConcerns();updateGate();}
+  function setRank(n,r){concerns[n].rank=r;renderConcerns();updateGate();saveRecord();}
+  function delConcern(n){concerns.splice(n,1);renderConcerns();updateGate();saveRecord();}
   function calc(){let sum=0;document.querySelectorAll('.calc').forEach(el=>sum+=Number(el.value)||0);
     const t=document.getElementById('costTotal');if(t)t.textContent='$'+sum.toLocaleString();return sum;}
   document.querySelectorAll('.calc').forEach(el=>el.addEventListener('input',calc));
+  function importantConcerns(){return concerns.filter(c=>c.rank===0).map(c=>c.text);}
   function buildCard(){const want=val('s1want')||'（前面還沒填）';const who=val('s3who')||'（前面還沒選）';
-    const keep=concerns.length?concerns.map(c=>c.text).join('、'):'（前面還沒填）';const num=calc();
+    const important=importantConcerns();const keep=important.length?important.join('、'):'暫時沒有';const num=calc();
     document.getElementById('oWant').textContent=want;document.getElementById('oWho').textContent=who;
-    document.getElementById('oKeep').textContent=keep;document.getElementById('oNum').textContent='$'+num.toLocaleString()+'/月';
+    document.getElementById('oKeep').textContent=keep;document.getElementById('oNum').textContent='$'+num.toLocaleString()+'／月';
     document.getElementById('oSum').textContent=`「接下來 6 個月，我要朝『${want}』前進——這需要我每月達到 $${num.toLocaleString()}。」`;}
-  (function(){const _d=new URLSearchParams(location.search).get('demo');if(!_d)return;
+  function syncSubmissionFields(){
+    document.getElementById('formWant').value=val('s1want');
+    document.getElementById('formWho').value=val('s3who');
+    document.getElementById('formWhy').value=val('s3why');
+    document.getElementById('formKeep').value=importantConcerns().join('、');
+    document.getElementById('formMonthly').value=String(calc());
+    document.getElementById('formCompletedAt').value=new Date().toISOString();
+  }
+  function saveRecord(){if(isDemo||clearing)return;try{
+    const fields={};savedFieldIds.forEach(id=>{const e=document.getElementById(id);if(e)fields[id]=e.value;});
+    const chips=[...document.querySelectorAll('.chip')];
+    localStorage.setItem(storageKey,JSON.stringify({step:i,fields,costs:[...document.querySelectorAll('.calc')].map(e=>e.value),
+      concerns,selectedChipIndexes:chips.map((c,n)=>c.classList.contains('sel')?n:-1).filter(n=>n>=0),updatedAt:new Date().toISOString()}));
+  }catch(_){}}
+  function loadRecord(){if(isDemo)return false;try{
+    const raw=localStorage.getItem(storageKey);if(!raw)return false;const data=JSON.parse(raw);
+    if(data.fields)savedFieldIds.forEach(id=>{const e=document.getElementById(id);if(e&&data.fields[id]!=null)e.value=data.fields[id];});
+    if(Array.isArray(data.costs))[...document.querySelectorAll('.calc')].forEach((e,n)=>e.value=data.costs[n]||'');
+    if(Array.isArray(data.concerns))concerns=data.concerns.slice(0,3).map(c=>({text:String(c.text||''),rank:[0,1,2].includes(c.rank)?c.rank:null})).filter(c=>c.text);
+    const chips=[...document.querySelectorAll('.chip')];if(Array.isArray(data.selectedChipIndexes))data.selectedChipIndexes.forEach(n=>{if(chips[n])chips[n].classList.add('sel');});
+    document.querySelectorAll('.chip.write.sel').forEach(chip=>{const fid=chip.parentElement.getAttribute('data-fill'),f=document.getElementById(fid);if(f){f.removeAttribute('readonly');f.classList.remove('lock');}});
+    if(!forcedStep&&Number.isInteger(data.step))i=Math.max(0,Math.min(screens.length-1,data.step));
+    renderConcerns();calc();return true;
+  }catch(_){return false;}}
+  function clearRecord(){if(!confirm('確定清除這部裝置上的所有答案並重新開始？'))return;
+    clearing=true;try{localStorage.removeItem(storageKey);}catch(_){}location.href=location.pathname;}
+  const restored=loadRecord();
+  (function(){if(!isDemo)return;
     const set=(id,v)=>{const e=document.getElementById(id);if(e)e.value=v;};
     set('s1want','能掌控自己的時間，不再被追著跑');set('s3who','情緒穩定');set('s3why','把精力放在真正重要的事上');
     const c=document.querySelectorAll('.calc');[12000,5000,2000,3000,2000].forEach((v,n)=>{if(c[n])c[n].value=v;});
     concerns=[{text:'未來方向',rank:0},{text:'錢不夠用',rank:0}];renderConcerns();})();
   render();
+  if(restored)setTimeout(()=>msg('已載入上次保存的紀錄'),250);
 </script>
 </body>
 </html>
