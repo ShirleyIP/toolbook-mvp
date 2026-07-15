@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toolbook · 把好書變成工具</title>
+<meta name="description" content="一個還在路上的讀者,把每本好書的方法做成工具——先用在自己身上,也分享給你。">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  :root{--serif:"Songti SC","Noto Serif TC","Source Han Serif TC",serif;
+    --bg:#ece5d8;--card:#f5f0e6;--ink:#2c2820;--muted:#938b78;--line:#d6cdba;
+    --frame:#c9bea4;--accent:#8a6f44;--warm:#9c7c47;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang TC",sans-serif;line-height:1.8;position:relative;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .wrap{max-width:760px;margin:0 auto;padding:0 26px;position:relative;z-index:1;}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0;}
+  .brand{font-family:var(--serif);font-size:19px;letter-spacing:3px;font-weight:600;}
+  .brand .dot{color:var(--accent);}
+  .brand .sub{font-family:var(--serif);font-size:10px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;font-weight:400;margin-left:6px;}
+  nav .links a{color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:1px;margin-left:22px;}
+  nav .links a:hover{color:var(--accent);}
+  .hero{padding:60px 0 50px;}
+  .kick{color:var(--accent);font-size:11px;letter-spacing:4px;text-transform:uppercase;margin-bottom:20px;}
+  h1{font-family:var(--serif);font-size:38px;font-weight:600;line-height:1.5;letter-spacing:1px;margin-bottom:22px;}
+  .lead{color:#5d564a;font-size:16px;max-width:560px;margin-bottom:32px;}
+  .btn{display:inline-block;background:var(--accent);color:var(--bg);text-decoration:none;
+    padding:15px 30px;border-radius:3px;font-size:14px;letter-spacing:2px;transition:.2s;}
+  .btn:hover{filter:brightness(1.08);}
+  .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent);margin-left:10px;}
+  .rule{height:1px;background:var(--line);margin:54px 0;}
+  .sec-k{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:22px;}
+  .tool{border:1px solid var(--frame);border-radius:4px;background:var(--card);padding:32px;
+    box-shadow:inset 0 0 0 4px var(--bg),inset 0 0 0 5px var(--frame);}
+  .tool .no{font-family:var(--serif);color:var(--accent);font-size:12px;letter-spacing:2px;}
+  .tool h3{font-family:var(--serif);font-size:24px;font-weight:600;margin:8px 0 10px;}
+  .tool p{color:#5d564a;font-size:15px;margin-bottom:20px;}
+  .tool .src{font-size:12px;color:var(--muted);margin-bottom:22px;}
+  .coming{display:flex;flex-direction:column;gap:0;margin-top:10px;}
+  .citem{display:flex;align-items:center;gap:14px;padding:15px 2px;border-bottom:1px solid var(--line);}
+  .citem .cn{font-family:var(--serif);color:var(--accent);font-size:12px;letter-spacing:1px;width:48px;}
+  .citem .cnm{flex:1;font-size:15px;}
+  .citem .cst{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+  .citem.soon{opacity:.55;}
+  .art{display:block;text-decoration:none;color:inherit;padding:22px 0;border-bottom:1px solid var(--line);}
+  .art:first-of-type{border-top:1px solid var(--line);}
+  .art .at{font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:5px;}
+  .art .ad{color:var(--muted);font-size:13.5px;}
+  .art:hover .at{color:var(--accent);}
+  .signup{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:30px;text-align:center;margin-top:10px;}
+  .signup h3{font-family:var(--serif);font-size:20px;margin-bottom:6px;}
+  .signup p{color:var(--muted);font-size:13.5px;margin-bottom:18px;}
+  .signup form{display:flex;gap:10px;max-width:420px;margin:0 auto;}
+  .signup input{flex:1;border:1px solid var(--line);background:var(--bg);border-radius:3px;padding:13px 15px;font-size:14px;font-family:inherit;color:var(--ink);}
+  .signup input:focus{outline:none;border-color:var(--accent);}
+  .signup button{border:none;background:var(--accent);color:var(--bg);border-radius:3px;padding:0 22px;font-family:inherit;font-size:13px;letter-spacing:1px;cursor:pointer;}
+  footer{color:var(--muted);font-size:12px;text-align:center;padding:50px 0 40px;letter-spacing:.5px;}
+  footer .serif{font-family:var(--serif);}
+  @media(max-width:560px){h1{font-size:30px;}.btn.ghost{margin-left:0;margin-top:10px;}.signup form{flex-direction:column;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <div class="brand">TOOLBOOK<span class="dot">.</span><span class="sub">Editions</span></div>
+    <div class="links"><a href="article.html">文章</a><a href="tool.html">工具</a></div>
+  </nav>
+
+  <header class="hero">
+    <div class="kick">把好書 · 變成工具</div>
+    <h1>讀過的好書,<br>不該只留在書架上。</h1>
+    <p class="lead">我是一個還在路上的讀者。我把每本書裡真正有用的方法,做成可以「拿來用」的工具——先用在自己身上,再分享給你。我們一起,把書中的智慧,長成自己的系統。</p>
+    <a class="btn" href="tool.html">開始第一個工具 →</a>
+    <a class="btn ghost" href="article.html">先讀篇文章</a>
+  </header>
+
+  <div class="rule"></div>
+
+  <section>
+    <div class="sec-k">現在能用的</div>
+    <div class="tool">
+      <div class="no">工具 Nº 01</div>
+      <h3>目標釐清器</h3>
+      <p>不幫你「定目標」,幫你聽見——你到底要什麼。8 個安靜的問題,約 20 分鐘,最後給你一張「方向卡」。</p>
+      <div class="src">啟發自《認知覺醒》(周岭)× Dreamlining《一週工作4小時》(Tim Ferriss)。概念經我重新詮釋整合,非原文。</div>
+      <a class="btn" href="tool.html">開始 →</a>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <section>
+    <div class="sec-k">在路上</div>
+    <div class="coming">
+      <div class="citem"><span class="cn">Nº 01</span><span class="cnm">目標釐清器</span><span class="cst">已上線</span></div>
+      <div class="citem soon"><span class="cn">Nº 02</span><span class="cnm">興趣變現孵化器</span><span class="cst">釀製中</span></div>
+      <div class="citem soon"><span class="cn">Nº 03</span><span class="cnm">微行動啟動器</span><span class="cst">規劃中</span></div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <section>
+    <div class="sec-k">文章</div>
+    <a class="art" href="article.html">
+      <div class="at">為什麼你定了一堆目標,卻還是迷茫?</div>
+      <div class="ad">問題可能不在你的目標,而在你還沒聽見自己真正要什麼。</div>
+    </a>
+  </section>
+
+  <div class="rule"></div>
+
+  <section>
+    <div class="signup">
+      <h3>有新工具,第一個讓你知道</h3>
+      <p>偶爾一封信,只談把書變成工具這件事。</p>
+      <!-- ⚠️ 把 action 換成你自己的 Formspree 網址(formspree.io 免費註冊一個表單即可) -->
+      <form id="signupForm" action="https://formspree.io/f/mlgkgveq" method="POST">
+        <input type="email" name="email" placeholder="你的 email" required>
+        <button type="submit">通知我</button>
+      </form>
+      <script>
+        document.getElementById('signupForm').addEventListener('submit',async function(e){
+          e.preventDefault();var b=this.querySelector('button');
+          try{var r=await fetch(this.action,{method:'POST',headers:{Accept:'application/json'},body:new FormData(this)});
+            b.textContent=r.ok?'已記下 ✓':'稍後再試';}catch(_){b.textContent='稍後再試';}
+        });
+      </script>
+    </div>
+  </section>
+
+  <footer>
+    <div class="serif">TOOLBOOK<span style="color:var(--accent)">.</span> EDITIONS</div>
+    把好書變成工具 · 一個還在路上的讀者 · MMXXVI
+  </footer>
+
+</div>
+</body>
+</html>
