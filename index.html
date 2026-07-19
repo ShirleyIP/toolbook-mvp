@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CKM6MRRVBM"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('config','G-CKM6MRRVBM');
+</script>
 <title>Toolbook · 把好書變成工具</title>
 <meta name="description" content="一個還在路上的讀者，把每本好書的方法做成工具——先用在自己身上，也分享給你。">
 <style>
@@ -126,7 +134,9 @@
         document.getElementById('signupForm').addEventListener('submit',async function(e){
           e.preventDefault();var b=this.querySelector('button');
           try{var r=await fetch(this.action,{method:'POST',headers:{Accept:'application/json'},body:new FormData(this)});
-            b.textContent=r.ok?'已記下 ✓':'稍後再試';}catch(_){b.textContent='稍後再試';}
+            b.textContent=r.ok?'已記下 ✓':'稍後再試';
+            if(r.ok&&typeof gtag==='function')gtag('event','sign_up',{method:'homepage_email'});
+          }catch(_){b.textContent='稍後再試';}
         });
       </script>
     </div>
