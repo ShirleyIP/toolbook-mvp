@@ -10,89 +10,86 @@
   gtag('js',new Date());gtag('config','G-CKM6MRRVBM');
 </script>
 <title>成果鎖定卡 · Toolbook</title>
-<meta name="description" content="先鎖定成果，再分清必要工作與錦上添花，避免忙碌卻沒有進展。">
+<meta name="description" content="先鎖定成果，再分清必要工作與錦上添花。六個簡短步驟，最後生成一張成果卡。">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-  :root{--serif:"Songti SC","Noto Serif TC","Source Han Serif TC",serif;--bg:#ece5d8;--paper:#f6f1e7;--ink:#2c2820;--muted:#8e856f;--line:#d6cdba;--frame:#c9bea4;--accent:#8a6f44;--danger:#8a5744}
-  html{scroll-behavior:smooth}body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang TC",sans-serif;line-height:1.75;position:relative}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  .shell{width:min(100%,760px);margin:auto;padding:0 28px 60px;position:relative}
-  nav{display:flex;justify-content:space-between;align-items:center;padding:25px 0}.brand{font-family:var(--serif);font-size:18px;letter-spacing:3px;font-weight:600;text-decoration:none;color:var(--ink)}.brand i{font-style:normal;color:var(--accent)}.brand small{font-size:10px;letter-spacing:3px;color:var(--accent);font-weight:400;margin-left:6px}.close{color:var(--muted);text-decoration:none;font-size:17px}
-  header{padding:42px 0 30px;border-bottom:1px solid var(--line)}.kicker{font-size:10px;letter-spacing:4px;color:var(--accent);margin-bottom:15px}h1{font-family:var(--serif);font-size:36px;line-height:1.45;font-weight:600;margin-bottom:12px}.lead{color:#625a4d;max-width:560px;font-size:15px}.privacy{margin-top:12px;color:var(--muted);font-size:11px}
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line);margin-bottom:34px}.step{padding:16px 8px 14px;border-right:1px solid var(--line);font-size:10px;color:var(--muted);letter-spacing:1px}.step:last-child{border-right:0}.step b{font-family:var(--serif);font-size:13px;color:var(--accent);display:block;margin-bottom:2px}
-  .form{display:grid;grid-template-columns:1fr 1fr;gap:22px}.field{display:flex;flex-direction:column}.field.wide{grid-column:1/-1}.label{font-family:var(--serif);font-size:17px;margin-bottom:4px}.hint{font-size:11px;color:var(--muted);margin-bottom:9px}
-  input,textarea{width:100%;background:rgba(246,241,231,.7);border:1px solid var(--line);border-radius:3px;padding:13px 14px;color:var(--ink);font:14px/1.6 inherit;resize:vertical}textarea{min-height:92px}input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(138,111,68,.08)}
-  .actions{display:flex;gap:10px;margin:30px 0 10px}.btn{border:1px solid var(--accent);border-radius:3px;padding:14px 22px;background:var(--accent);color:var(--paper);font:600 13px inherit;letter-spacing:1px;cursor:pointer}.btn.ghost{background:transparent;color:var(--accent)}.btn.subtle{border-color:transparent;background:transparent;color:var(--muted);margin-left:auto}.btn:disabled{opacity:.38;cursor:not-allowed}
-  .error{color:var(--danger);font-size:12px;min-height:20px;margin-top:6px}
-  .result{display:none;margin-top:44px;animation:rise .5s ease}.result.show{display:block}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-  .result-head{display:flex;align-items:center;gap:15px;margin-bottom:16px}.result-head span{font-size:10px;letter-spacing:3px;color:var(--accent)}.result-head::after{content:"";height:1px;flex:1;background:var(--line)}
-  .card{position:relative;background:var(--paper);border:1px solid var(--frame);padding:38px 36px 30px;box-shadow:inset 0 0 0 5px var(--bg),inset 0 0 0 6px var(--frame)}.card::before{content:"II";position:absolute;right:24px;top:18px;font-family:var(--serif);color:var(--frame);font-size:11px;letter-spacing:3px}.seal{text-align:center;color:var(--accent);font-family:var(--serif);font-size:22px}.card h2{text-align:center;font-family:var(--serif);font-size:18px;letter-spacing:7px;padding-left:7px;margin:4px 0 25px}.hero{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;margin-bottom:22px}.cap{font-size:9px;color:var(--muted);letter-spacing:2px;margin-bottom:7px}.value{font-family:var(--serif);font-size:22px;line-height:1.55}.grid{display:grid;grid-template-columns:1fr 1fr;gap:0}.block{padding:0 20px 19px 0}.block:nth-child(even){padding-left:20px;padding-right:0;border-left:1px solid var(--line)}.block.full{grid-column:1/-1;padding:18px 0 0;border-top:1px solid var(--line)}.text{font-size:14px;white-space:pre-wrap}.mantra{text-align:center;font-family:var(--serif);color:var(--accent);font-size:15px;margin-top:26px;letter-spacing:2px}.stamp{text-align:center;color:var(--muted);font-size:9px;letter-spacing:2px;margin-top:10px}
-  .result-actions{display:flex;justify-content:center;gap:10px;margin-top:18px}.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:3px;font-size:12px;opacity:0;pointer-events:none;transition:.3s}.toast.show{opacity:.95;transform:translate(-50%,0)}
-  @media(max-width:600px){.shell{padding:0 20px 44px}h1{font-size:29px}.steps{grid-template-columns:1fr 1fr}.step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid var(--line)}.form{grid-template-columns:1fr}.field.wide{grid-column:auto}.actions{flex-wrap:wrap}.btn{flex:1}.btn.subtle{flex-basis:100%;margin-left:0}.card{padding:34px 24px 26px}.grid{grid-template-columns:1fr}.block,.block:nth-child(even){padding:0 0 18px;border-left:0}.block+.block{border-top:1px solid var(--line);padding-top:18px}.result-actions{flex-direction:column}.result-actions .btn{width:100%}}
+  :root{--serif:"Songti SC","Noto Serif TC","Source Han Serif TC","Source Han Serif SC",serif;--bg:#ece5d8;--card:#f5f0e6;--ink:#2c2820;--muted:#938b78;--line:#d6cdba;--frame:#c9bea4;--accent:#8a6f44;--onAccent:#f5f0e6}
+  html,body{height:100%}body{background:var(--bg);font-family:-apple-system,"PingFang TC",sans-serif;color:var(--ink);line-height:1.7;position:relative}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .app{max-width:460px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative;z-index:1}
+  @media(min-width:520px){.app{border-left:1px solid var(--line);border-right:1px solid var(--line);background:rgba(245,240,230,.35)}}
+  .topbar{flex:none;height:50px;display:flex;align-items:center;position:relative;padding:0 22px}.nav-back{font-size:22px;color:var(--muted);cursor:pointer;line-height:1;width:24px;border:0;background:transparent}.nav-back.hide{visibility:hidden}.dots{position:absolute;left:0;right:0;display:flex;gap:7px;justify-content:center;pointer-events:none}.dot{width:5px;height:5px;border-radius:50%;background:var(--line);transition:.3s}.dot.on{background:var(--accent);width:16px;border-radius:3px}.home{margin-left:auto;color:var(--muted);text-decoration:none;font-size:16px;line-height:1}
+  .stage{flex:1;overflow-y:auto;padding:14px 30px 34px}.stage::-webkit-scrollbar{display:none}.screen{display:none;animation:fade .5s ease}.screen.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .kicker{color:var(--accent);font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px}h1{font-family:var(--serif);font-size:27px;font-weight:600;line-height:1.6;margin-bottom:16px;letter-spacing:.5px}h2{font-family:var(--serif);font-size:23px;font-weight:600;line-height:1.65;margin-bottom:10px;letter-spacing:.5px}.hint{color:var(--muted);font-size:13px;margin-bottom:20px;line-height:1.75}.welcome{display:flex;flex-direction:column;justify-content:center;min-height:61vh;text-align:center}.welcome .seal{font-family:var(--serif);font-size:30px;color:var(--accent);margin-bottom:20px}.privacy{font-size:11px;color:var(--muted);margin-top:14px}
+  label{display:block;font-family:var(--serif);font-size:14px;color:#5d564a;margin:18px 0 7px}input.txt,textarea{width:100%;border:1px solid var(--line);background:var(--card);border-radius:4px;padding:14px 15px;font-size:14.5px;font-family:inherit;color:var(--ink);resize:vertical}textarea{min-height:150px;line-height:1.8}input.txt:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(138,111,68,.08)}input[type=date]{color-scheme:light}.guide{border-left:2px solid var(--frame);padding:12px 0 12px 16px;margin-top:22px;color:#655e51;font-family:var(--serif);font-size:14px;line-height:1.9}.guide b{color:var(--accent)}
+  .choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.choice div{border:1px solid var(--line);background:rgba(245,240,230,.5);border-radius:4px;padding:16px}.choice b{display:block;font-family:var(--serif);font-size:15px;margin-bottom:4px}.choice span{color:var(--muted);font-size:11px;line-height:1.6;display:block}
+  .card-out{position:relative;border:1px solid var(--frame);border-radius:3px;padding:27px 24px 21px;background:var(--card);box-shadow:inset 0 0 0 5px var(--bg),inset 0 0 0 6px var(--frame)}.card-out .seal{text-align:center;font-family:var(--serif);font-size:22px;color:var(--accent);margin-bottom:5px}.card-out h3{text-align:center;font-family:var(--serif);font-size:15px;letter-spacing:7px;padding-left:7px}.card-out .csub{text-align:center;font-size:8.5px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:5px}.card-out .rule{width:30px;height:1px;background:var(--accent);opacity:.6;margin:14px auto 21px}.hero{margin-bottom:16px}.hero .k,.field .k{font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}.hero .v{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.55}.field{margin-bottom:14px}.field .v{font-size:14px;white-space:pre-wrap;line-height:1.65}.card-out .divider{height:1px;background:var(--line);margin:17px 0}.deadline{text-align:center;font-size:11px;color:var(--muted);letter-spacing:1px}.deadline .n{font-family:var(--serif);color:var(--accent);font-size:15px;margin:0 4px}.mantra{text-align:center;font-family:var(--serif);color:var(--accent);font-size:14px;letter-spacing:2px;margin-top:16px}.edition{text-align:center;font-size:8px;letter-spacing:2px;color:var(--muted);margin-top:10px}.result-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:16px}
+  .foot{flex:none;padding:8px 30px 26px;background:linear-gradient(transparent,var(--bg) 28%)}.gatehint{text-align:center;font-size:11px;color:var(--muted);margin-bottom:8px;height:15px;letter-spacing:.5px}.btn{display:block;width:100%;background:var(--accent);color:var(--onAccent);border:1px solid var(--accent);border-radius:3px;padding:15px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:1px}.btn:disabled{opacity:.3;cursor:not-allowed}.btn.ghost{background:transparent;color:var(--accent);font-size:12px;padding:11px;font-weight:500}.btn.soft{background:transparent;border-color:var(--line);color:var(--muted);font-size:12px;padding:11px;font-weight:500}.record-link{display:inline-block;border:0;background:transparent;color:var(--accent);font-family:inherit;font-size:12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-top:18px}
+  .record-book{display:none;position:fixed;inset:0;z-index:20;background:rgba(44,40,32,.35)}.record-book.open{display:block}.record-sheet{width:min(100%,460px);height:100%;margin:0 auto;background:var(--bg);padding:22px 24px 34px;overflow-y:auto}.record-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}.record-head h2{margin:0;font-size:22px}.record-close{border:0;background:transparent;color:var(--muted);font-size:22px;cursor:pointer;padding:6px}.record-note{font-size:12px;color:var(--muted);margin-bottom:18px}.record-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px;margin-bottom:12px}.record-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:10.5px;margin-bottom:11px}.record-delete{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:10.5px;cursor:pointer}.record-label{font-size:8.5px;letter-spacing:2px;color:var(--muted);margin-top:9px}.record-value{font-family:var(--serif);font-size:14px;margin-top:2px}.record-empty{text-align:center;color:var(--muted);font-size:13px;padding:60px 10px}.record-clear{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:12px;display:block;margin:24px auto 0;cursor:pointer;text-decoration:underline}.toast{position:fixed;bottom:105px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:3px;font-size:12px;opacity:0;transition:.3s;pointer-events:none;z-index:30}.toast.show{opacity:.95}
+  @media(max-width:390px){.stage{padding-left:24px;padding-right:24px}.foot{padding-left:24px;padding-right:24px}.choice{grid-template-columns:1fr}.card-out{padding-left:21px;padding-right:21px}}
 </style>
 </head>
 <body>
-<main class="shell">
-  <nav><a class="brand" href="index.html">TOOLBOOK<i>.</i><small>EDITIONS</small></a><a class="close" href="index.html" aria-label="回首頁">✕</a></nav>
-  <header>
-    <div class="kicker">工具 No. 02 · 行動</div>
-    <h1>成果鎖定卡</h1>
-    <p class="lead">先決定這一輪要交付甚麼，再分清必要工作與錦上添花。不是做更多，而是讓現在做的事直接服務結果。</p>
-    <p class="privacy">你的內容只保存在這個瀏覽器，不會上傳或寄出。</p>
-  </header>
-
-  <div class="steps" aria-hidden="true">
-    <div class="step"><b>Ⅰ</b>鎖定成果</div><div class="step"><b>Ⅱ</b>定義完成</div><div class="step"><b>Ⅲ</b>篩選任務</div><div class="step"><b>Ⅳ</b>設定止損</div>
+<div class="app">
+  <div class="topbar"><button class="nav-back hide" id="back" type="button" aria-label="上一步">‹</button><div class="dots" id="dots"></div><a class="home" href="index.html" aria-label="回首頁">✕</a></div>
+  <div class="stage" id="stage">
+    <section class="screen active">
+      <div class="welcome"><div class="seal">❦</div><div class="kicker">工具 No. 02 · 行動</div><h1>先鎖定成果，<br>再決定做甚麼</h1><p class="hint">六個簡短步驟，分清必要工作與錦上添花，最後生成一張成果卡。</p><p class="privacy">答案只保存在這部裝置，不會上傳或寄出。</p><button class="record-link" id="openBook" type="button">查看成果卡紀錄簿</button></div>
+    </section>
+    <section class="screen">
+      <div class="kicker">第一步 · 成果</div><h2>這一輪，<br>必須交付甚麼？</h2><p class="hint">寫一個看得見、能交付的結果，不寫「繼續研究」或「改善一下」。</p><label for="outcome">本輪唯一成果</label><textarea id="outcome" maxlength="120" placeholder="例如：完成一支可以發布的影片"></textarea><div class="guide"><b>試着用動詞開頭：</b><br>完成、輸出、發布、交付、決定……</div>
+    </section>
+    <section class="screen">
+      <div class="kicker">第二步 · 完成</div><h2>看見甚麼，<br>才算真的完成？</h2><p class="hint">給成果一個可以核對的終點，避免「差不多」無限延長。</p><label for="evidence">完成證據</label><textarea id="evidence" maxlength="140" placeholder="例如：輸出最終影片檔，並完成發布前檢查"></textarea><label for="deadline">交付日期</label><input class="txt" id="deadline" type="date"><div class="guide">沒有外部期限，也替這一輪設一個。期限不是催促，是幫你看見取捨。</div>
+    </section>
+    <section class="screen">
+      <div class="kicker">第三步 · 必要</div><h2>哪些事情不完成，<br>結果就無法交付？</h2><p class="hint">每行一項，只留下直接影響結果的工作。</p><textarea id="must" maxlength="500" placeholder="例如：&#10;剪輯&#10;字幕&#10;聲畫檢查"></textarea><div class="choice"><div><b>結果必需</b><span>缺少它，這一輪便無法交付。</span></div><div><b>不是「也許有用」</b><span>有用但不影響交付，先移到下一步。</span></div></div>
+    </section>
+    <section class="screen">
+      <div class="kicker">第四步 · 延後</div><h2>哪些事情只是<br>錦上添花？</h2><p class="hint">先放下，不代表永遠不做。這一步可以留空。</p><textarea id="later" maxlength="500" placeholder="例如：&#10;重改品牌定位&#10;研究新工具&#10;優化非必要流程"></textarea><div class="guide">問自己：<b>今天不做它，核心成果仍能交付嗎？</b>如果可以，先放在這裡。</div>
+    </section>
+    <section class="screen">
+      <div class="kicker">第五步 · 止損</div><h2>甚麼情況出現，<br>你就停止研究或修改？</h2><p class="hint">替容易無限延長的行為，預先設定停止條件。</p><textarea id="stopRule" maxlength="160" placeholder="例如：研究超過 45 分鐘仍未改變必要行動，就停止"></textarea><div class="guide">止損不是草率，而是把時間重新交給真正影響結果的事情。</div>
+    </section>
+    <section class="screen">
+      <div class="kicker">第六步 · 鎖定</div><h2>你的本輪成果</h2><p class="hint">先完成必要的，再決定甚麼值得變得更好。</p>
+      <div class="card-out" id="card"><div class="seal">❦</div><h3>成 果 卡</h3><div class="csub">Result Lock · No. 02</div><div class="rule"></div><div class="hero"><div class="k">本輪唯一成果</div><div class="v" id="cardOutcome">—</div></div><div class="field"><div class="k">完成證據</div><div class="v" id="cardEvidence">—</div></div><div class="field"><div class="k">現在只做</div><div class="v" id="cardMust">—</div></div><div class="field"><div class="k">暫時不做</div><div class="v" id="cardLater">—</div></div><div class="divider"></div><div class="field"><div class="k">止損規則</div><div class="v" id="cardStop">—</div></div><div class="deadline">交付日期 <span class="n" id="cardDeadline">—</span></div><div class="mantra">先完成，再完美。</div><div class="edition">Edition No. 02 · MMXXVI</div></div>
+      <div class="result-actions"><button class="btn ghost" id="copyCard" type="button">複製文字</button><button class="btn ghost" id="shareCard" type="button">分享成果卡</button></div>
+    </section>
   </div>
+  <div class="foot"><div class="gatehint" id="gatehint"></div><button class="btn" id="next" type="button">開始</button></div>
+</div>
 
-  <form id="lockForm" novalidate>
-    <div class="form">
-      <label class="field wide"><span class="label">這一輪必須交付甚麼？</span><span class="hint">寫一個看得見的結果，不寫「繼續研究」或「改善一下」。</span><input id="outcome" maxlength="120" placeholder="例如：完成一支可以發布的影片" required></label>
-      <label class="field wide"><span class="label">怎樣才算完成？</span><span class="hint">指定可以核對的證據。</span><input id="evidence" maxlength="140" placeholder="例如：輸出最終影片檔，並完成發布前檢查" required></label>
-      <label class="field"><span class="label">現在只做</span><span class="hint">每行一項，只放結果必需的工作。</span><textarea id="must" maxlength="500" placeholder="剪輯&#10;字幕&#10;聲畫檢查" required></textarea></label>
-      <label class="field"><span class="label">暫時不做</span><span class="hint">把錦上添花的事情移到這裡。</span><textarea id="later" maxlength="500" placeholder="重改品牌定位&#10;研究新工具&#10;優化非必要流程"></textarea></label>
-      <label class="field"><span class="label">交付日期</span><span class="hint">沒有外部期限，也替這一輪設一個。</span><input id="deadline" type="date" required></label>
-      <label class="field"><span class="label">止損規則</span><span class="hint">甚麼情況出現，就停止研究或修改？</span><input id="stopRule" maxlength="160" placeholder="例如：研究超過 45 分鐘仍未改變必要行動，就停止" required></label>
-    </div>
-    <div class="error" id="error" role="alert"></div>
-    <div class="actions"><button class="btn" type="submit">生成成果卡</button><button class="btn ghost" type="button" id="loadDemo">填入示例</button><button class="btn subtle" type="button" id="clearAll">清除內容</button></div>
-  </form>
-
-  <section class="result" id="result" aria-live="polite">
-    <div class="result-head"><span>本輪焦點</span></div>
-    <article class="card" id="card">
-      <div class="seal">❦</div><h2>成果鎖定卡</h2>
-      <div class="hero"><div class="cap">本輪唯一成果</div><div class="value" id="cardOutcome"></div></div>
-      <div class="grid">
-        <div class="block"><div class="cap">完成證據</div><div class="text" id="cardEvidence"></div></div>
-        <div class="block"><div class="cap">交付日期</div><div class="text" id="cardDeadline"></div></div>
-        <div class="block"><div class="cap">現在只做</div><div class="text" id="cardMust"></div></div>
-        <div class="block"><div class="cap">暫時不做</div><div class="text" id="cardLater"></div></div>
-        <div class="block full"><div class="cap">止損規則</div><div class="text" id="cardStop"></div></div>
-      </div>
-      <div class="mantra">先完成，再完美。</div><div class="stamp">TOOLBOOK · RESULT LOCK · MMXXVI</div>
-    </article>
-    <div class="result-actions"><button class="btn ghost" type="button" id="copyCard">複製卡片文字</button><button class="btn" type="button" id="shareCard">分享成果卡</button></div>
-  </section>
-</main>
+<aside class="record-book" id="recordBook" aria-hidden="true"><div class="record-sheet"><div class="record-head"><h2>成果卡紀錄簿</h2><button class="record-close" id="closeBook" type="button" aria-label="關閉">✕</button></div><p class="record-note">最多保存 50 張，只存在這個瀏覽器。</p><div id="recordList"></div><button class="record-clear" id="clearBook" type="button">清空全部紀錄</button></div></aside>
 <div class="toast" id="toast"></div>
 <script>
-  const ids=['outcome','evidence','must','later','deadline','stopRule'],key='toolbook_result_lock_v1';
-  const $=id=>document.getElementById(id),value=id=>$(id).value.trim();
-  function save(){try{const data={};ids.forEach(id=>data[id]=$(id).value);localStorage.setItem(key,JSON.stringify(data));}catch(_){}}
-  function restore(){try{const data=JSON.parse(localStorage.getItem(key)||'null');if(!data)return;ids.forEach(id=>{if(data[id]!=null)$(id).value=data[id]});}catch(_){}}
-  ids.forEach(id=>$(id).addEventListener('input',save));
-  function formatDate(raw){if(!raw)return '尚未設定';const [y,m,d]=raw.split('-');return `${y} 年 ${Number(m)} 月 ${Number(d)} 日`;}
-  function textCard(){return `成果鎖定卡\n\n本輪結果：${value('outcome')}\n完成證據：${value('evidence')}\n交付日期：${formatDate(value('deadline'))}\n\n現在只做：\n${value('must')}\n\n暫時不做：\n${value('later')||'沒有'}\n\n止損規則：${value('stopRule')}\n\n先完成，再完美。`}
-  function showToast(text){$('toast').textContent=text;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}
-  $('lockForm').addEventListener('submit',e=>{e.preventDefault();const missing=['outcome','evidence','must','deadline','stopRule'].filter(id=>!value(id));if(missing.length){$('error').textContent='請先完成所有必要欄位。';$(missing[0]).focus();return}
-    $('error').textContent='';$('cardOutcome').textContent=value('outcome');$('cardEvidence').textContent=value('evidence');$('cardDeadline').textContent=formatDate(value('deadline'));$('cardMust').textContent=value('must');$('cardLater').textContent=value('later')||'本輪沒有';$('cardStop').textContent=value('stopRule');$('result').classList.add('show');save();$('result').scrollIntoView({behavior:'smooth',block:'start'});if(typeof gtag==='function')gtag('event','tool_complete',{tool_name:'result_lock_card'});
-  });
-  $('loadDemo').addEventListener('click',()=>{const d=new Date(Date.now()+7*86400000);const date=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;Object.entries({outcome:'完成一支可以發布的影片',evidence:'輸出最終影片檔，並完成發布前檢查',must:'剪輯\n字幕\n聲畫檢查',later:'重改品牌定位\n研究新工具\n優化非必要流程',deadline:date,stopRule:'研究超過 45 分鐘仍未改變必要行動，就停止'}).forEach(([id,v])=>$(id).value=v);save();showToast('已填入示例')});
-  $('clearAll').addEventListener('click',()=>{if(!confirm('清除這張成果鎖定卡的內容？'))return;ids.forEach(id=>$(id).value='');$('result').classList.remove('show');try{localStorage.removeItem(key)}catch(_){}showToast('已清除')});
-  $('copyCard').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(textCard());showToast('已複製卡片文字')}catch(_){showToast('瀏覽器未允許複製')}});
-  $('shareCard').addEventListener('click',async()=>{const text=textCard();try{if(navigator.share)await navigator.share({title:'我的成果鎖定卡',text});else{await navigator.clipboard.writeText(text);showToast('已複製，可貼到其他地方')}if(typeof gtag==='function')gtag('event','share',{method:navigator.share?'web_share':'copy',content_type:'result_lock_card'});}catch(_){}});
-  restore();if(typeof gtag==='function')gtag('event','tool_start',{tool_name:'result_lock_card'});
+  const screens=[...document.querySelectorAll('.screen')],fieldIds=['outcome','evidence','deadline','must','later','stopRule'];
+  const draftKey='toolbook_result_lock_v1',historyKey='toolbook_result_lock_history_v1',isDemo=new URLSearchParams(location.search).get('demo')==='1';
+  let i=0,draftId='',cards=loadCards(),clearing=false;
+  const $=id=>document.getElementById(id),val=id=>($(id)?.value||'').trim();
+  function track(name,data={}){if(typeof gtag==='function')gtag('event',name,{tool_name:'result_lock_card',...data})}
+  function valid(n){if(n===1)return !!val('outcome');if(n===2)return !!val('evidence')&&!!val('deadline');if(n===3)return !!val('must');if(n===5)return !!val('stopRule');return true}
+  function render(){screens.forEach((s,n)=>s.classList.toggle('active',n===i));$('back').classList.toggle('hide',i===0);$('dots').innerHTML=i===0?'':Array.from({length:6},(_,n)=>`<span class="dot ${n===Math.min(i-1,5)?'on':''}"></span>`).join('');$('next').textContent=i===0?'開始':i===5?'生成成果卡':i===6?'再做一張':'下一步';updateGate();$('stage').scrollTop=0;if(i>0)track('step_view',{step_name:['','outcome','evidence','must_do','later','stop_rule','result'][i]})}
+  function updateGate(){const ok=valid(i);$('next').disabled=!ok;$('gatehint').textContent=ok?'':i===2?'請填寫完成證據及日期':i===4?'':'完成這一題，才能繼續'}
+  function next(){if(!valid(i))return;if(i===0){track('tool_start');i=1}else if(i===5){archiveCard();buildCard();i=6;track('tool_complete')}else if(i===6){startNew();return}else i++;saveDraft();render()}
+  function prev(){if(i>0){i--;saveDraft();render()}}
+  function formatDate(raw){if(!raw)return '—';const [y,m,d]=raw.split('-');return `${y}.${String(m).padStart(2,'0')}.${String(d).padStart(2,'0')}`}
+  function buildCard(){ $('cardOutcome').textContent=val('outcome')||'—';$('cardEvidence').textContent=val('evidence')||'—';$('cardMust').textContent=val('must')||'—';$('cardLater').textContent=val('later')||'本輪沒有';$('cardStop').textContent=val('stopRule')||'—';$('cardDeadline').textContent=formatDate(val('deadline'))}
+  function cardText(){return `成果鎖定卡\n\n本輪結果：${val('outcome')}\n完成證據：${val('evidence')}\n交付日期：${formatDate(val('deadline'))}\n\n現在只做：\n${val('must')}\n\n暫時不做：\n${val('later')||'本輪沒有'}\n\n止損規則：${val('stopRule')}\n\n先完成，再完美。`}
+  function saveDraft(){if(isDemo||clearing)return;try{const fields={};fieldIds.forEach(id=>fields[id]=$(id).value);localStorage.setItem(draftKey,JSON.stringify({step:i,draftId,fields,...fields,updatedAt:new Date().toISOString()}))}catch(_){}}
+  function loadDraft(){if(isDemo)return false;try{const data=JSON.parse(localStorage.getItem(draftKey)||'null');if(!data)return false;const source=data.fields||data;fieldIds.forEach(id=>{if(source[id]!=null)$(id).value=source[id]});draftId=data.draftId||'';i=Number.isInteger(data.step)?Math.max(0,Math.min(6,data.step)):0;if(i===6)buildCard();return fieldIds.some(id=>val(id))}catch(_){return false}}
+  function loadCards(){try{const data=JSON.parse(localStorage.getItem(historyKey)||'[]');return Array.isArray(data)?data.slice(0,50):[]}catch(_){return []}}
+  function saveCards(){try{localStorage.setItem(historyKey,JSON.stringify(cards.slice(0,50)))}catch(_){}}
+  function archiveCard(){const now=new Date().toISOString();if(!draftId)draftId='result_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,6);const old=cards.find(c=>c.id===draftId);const card={id:draftId,createdAt:old?.createdAt||now,updatedAt:now,outcome:val('outcome'),evidence:val('evidence'),deadline:val('deadline'),must:val('must'),later:val('later'),stopRule:val('stopRule')};cards=[card,...cards.filter(c=>c.id!==draftId)].slice(0,50);saveCards();renderBook()}
+  function escapeHtml(v){return String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+  function renderBook(){const list=$('recordList');$('clearBook').style.display=cards.length?'block':'none';list.innerHTML=cards.length?cards.map((c,n)=>`<article class="record-card"><div class="record-meta"><span>第 ${cards.length-n} 張 · ${formatDate(c.deadline)}</span><button class="record-delete" type="button" data-delete="${escapeHtml(c.id)}">刪除</button></div><div class="record-label">本輪唯一成果</div><div class="record-value">${escapeHtml(c.outcome)}</div><div class="record-label">現在只做</div><div class="record-value">${escapeHtml(c.must).replace(/\n/g,'<br>')}</div></article>`).join(''):'<div class="record-empty">還沒有成果卡。<br>完成第一張後，會保存在這裡。</div>';list.querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',()=>deleteCard(b.dataset.delete)))}
+  function startNew(){if(!confirm('開始一張新的成果卡？舊成果卡會保留在紀錄簿。'))return;clearing=true;try{localStorage.removeItem(draftKey)}catch(_){}fieldIds.forEach(id=>$(id).value='');draftId='';i=1;clearing=false;saveDraft();render()}
+  function deleteCard(id){if(!confirm('確定刪除這張成果卡？'))return;cards=cards.filter(c=>c.id!==id);saveCards();renderBook()}
+  function toast(text){$('toast').textContent=text;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1700)}
+  $('next').addEventListener('click',next);$('back').addEventListener('click',prev);fieldIds.forEach(id=>$(id).addEventListener('input',()=>{updateGate();saveDraft()}));$('openBook').addEventListener('click',()=>{$('recordBook').classList.add('open');$('recordBook').setAttribute('aria-hidden','false');renderBook()});$('closeBook').addEventListener('click',()=>{$('recordBook').classList.remove('open');$('recordBook').setAttribute('aria-hidden','true')});$('clearBook').addEventListener('click',()=>{if(!confirm('確定清空全部成果卡？'))return;cards=[];saveCards();renderBook()});
+  $('copyCard').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(cardText());toast('已複製成果卡文字')}catch(_){toast('瀏覽器未允許複製')}});$('shareCard').addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:'我的成果鎖定卡',text:cardText()});else{await navigator.clipboard.writeText(cardText());toast('已複製，可貼到其他地方')}track('share',{method:navigator.share?'web_share':'copy'})}catch(_){}});
+  if(isDemo){const d=new Date(Date.now()+7*86400000);const demo={outcome:'完成一支可以發布的影片',evidence:'輸出最終影片檔，並完成發布前檢查',deadline:`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`,must:'剪輯\n字幕\n聲畫檢查',later:'重改品牌定位\n研究新工具\n優化非必要流程',stopRule:'研究超過 45 分鐘仍未改變必要行動，就停止'};Object.entries(demo).forEach(([id,v])=>$(id).value=v);i=6;buildCard()}else loadDraft();
+  renderBook();render();
 </script>
 </body>
 </html>
