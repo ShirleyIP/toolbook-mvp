@@ -39,12 +39,14 @@
   .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent);margin-left:10px;}
   .rule{height:1px;background:var(--line);margin:54px 0;}
   .sec-k{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:22px;}
-  .tool{border:1px solid var(--frame);border-radius:4px;background:var(--card);padding:32px;
+  .toolgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch;}
+  .tool{border:1px solid var(--frame);border-radius:4px;background:var(--card);padding:30px;display:flex;flex-direction:column;
     box-shadow:inset 0 0 0 4px var(--bg),inset 0 0 0 5px var(--frame);}
   .tool .no{font-family:var(--serif);color:var(--accent);font-size:12px;letter-spacing:2px;}
   .tool h3{font-family:var(--serif);font-size:24px;font-weight:600;margin:8px 0 10px;}
   .tool p{color:#5d564a;font-size:15px;margin-bottom:20px;}
   .tool .src{font-size:12px;color:var(--muted);margin-bottom:22px;}
+  .tool .btn{margin-top:auto;align-self:flex-start;}
   .coming{display:flex;flex-direction:column;gap:0;margin-top:10px;}
   .citem{display:flex;align-items:center;gap:14px;padding:15px 2px;border-bottom:1px solid var(--line);}
   .citem .cn{font-family:var(--serif);color:var(--accent);font-size:12px;letter-spacing:1px;width:48px;}
@@ -65,7 +67,7 @@
   .signup button{border:none;background:var(--accent);color:var(--bg);border-radius:3px;padding:0 22px;font-family:inherit;font-size:13px;letter-spacing:1px;cursor:pointer;}
   footer{color:var(--muted);font-size:12px;text-align:center;padding:50px 0 40px;letter-spacing:.5px;}
   footer .serif{font-family:var(--serif);}
-  @media(max-width:560px){h1{font-size:30px;}.btn.ghost{margin-left:0;margin-top:10px;}.signup form{flex-direction:column;}}
+  @media(max-width:620px){h1{font-size:30px;}.btn.ghost{margin-left:0;margin-top:10px;}.signup form{flex-direction:column;}.toolgrid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -73,7 +75,7 @@
 
   <nav>
     <div class="brand">TOOLBOOK<span class="dot">.</span><span class="sub">Editions</span></div>
-    <div class="links"><a href="article.html">文章</a><a href="tool.html">工具</a></div>
+    <div class="links"><a href="#articles">文章</a><a href="#tools">工具</a></div>
   </nav>
 
   <header class="hero">
@@ -86,14 +88,23 @@
 
   <div class="rule"></div>
 
-  <section>
+  <section id="tools">
     <div class="sec-k">現在能用的</div>
-    <div class="tool">
-      <div class="no">工具 No. 01</div>
-      <h3>目標釐清器</h3>
-      <p>不幫你「定目標」，幫你聽見——你到底要什麼。8 個安靜的問題，約 20 分鐘，最後給你一張「方向卡」。</p>
-      <div class="src">啟發自《認知覺醒》（周嶺）× Dreamlining《一週工作 4 小時》（Tim Ferriss）。概念經我重新詮釋整合，非原文。</div>
-      <a class="btn" href="tool.html">開始 →</a>
+    <div class="toolgrid">
+      <div class="tool">
+        <div class="no">工具 No. 01</div>
+        <h3>目標釐清器</h3>
+        <p>不幫你「定目標」，幫你聽見——你到底要什麼。8 個安靜的問題，最後給你一張方向卡。</p>
+        <div class="src">啟發自《認知覺醒》× Dreamlining《一週工作 4 小時》。</div>
+        <a class="btn" href="tool.html">開始 →</a>
+      </div>
+      <div class="tool">
+        <div class="no">工具 No. 02</div>
+        <h3>成果鎖定卡</h3>
+        <p>鎖定這一輪的唯一成果，分清必要工作與錦上添花，替研究和修改設定止損點。</p>
+        <div class="src">啟發自《人生效率手冊》目標建立篇，經實際問題重新整理。</div>
+        <a class="btn" href="tool-result-lock.html">開始 →</a>
+      </div>
     </div>
   </section>
 
@@ -103,18 +114,23 @@
     <div class="sec-k">在路上</div>
     <div class="coming">
       <div class="citem"><span class="cn">No. 01</span><span class="cnm">目標釐清器</span><span class="cst">已上線</span></div>
-      <div class="citem soon"><span class="cn">No. 02</span><span class="cnm">興趣變現孵化器</span><span class="cst">釀製中</span></div>
-      <div class="citem soon"><span class="cn">No. 03</span><span class="cnm">微行動啟動器</span><span class="cst">規劃中</span></div>
+      <div class="citem"><span class="cn">No. 02</span><span class="cnm">成果鎖定卡</span><span class="cst">已完成</span></div>
+      <div class="citem soon"><span class="cn">No. 03</span><span class="cnm">興趣變現孵化器</span><span class="cst">釀製中</span></div>
+      <div class="citem soon"><span class="cn">No. 04</span><span class="cnm">微行動啟動器</span><span class="cst">規劃中</span></div>
     </div>
   </section>
 
   <div class="rule"></div>
 
-  <section>
+  <section id="articles">
     <div class="sec-k">文章</div>
     <a class="art" href="article.html">
       <div class="at">為什麼你定了一堆目標，卻還是迷茫？</div>
       <div class="ad">問題可能不在你的目標，而在你還沒聽見自己真正要什麼。</div>
+    </a>
+    <a class="art" href="article-busy.html">
+      <div class="at">為甚麼每天很忙，仍然沒有進展？</div>
+      <div class="ad">問題可能不是做得不夠多，而是做的事沒有直接服務結果。</div>
     </a>
   </section>
 
