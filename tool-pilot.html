@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CKM6MRRVBM"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());gtag('config','G-CKM6MRRVBM');
+</script>
+<title>小規模試驗卡 · Toolbook</title>
+<meta name="description" content="做大決定之前，先設計一次成本極低的試驗：試多久、看到什麼算數、什麼時候定案。">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  :root{--serif:"Songti SC","Noto Serif TC","Source Han Serif TC","Source Han Serif SC",serif;--bg:#ece5d8;--card:#f5f0e6;--ink:#2c2820;--muted:#938b78;--line:#d6cdba;--frame:#c9bea4;--accent:#8a6f44;--onAccent:#f5f0e6;--warn:#9c6b52}
+  html,body{height:100%}body{background:var(--bg);font-family:-apple-system,"PingFang TC",sans-serif;color:var(--ink);line-height:1.7;position:relative}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .app{max-width:460px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative;z-index:1}
+  @media(min-width:520px){.app{border-left:1px solid var(--line);border-right:1px solid var(--line);background:rgba(245,240,230,.35)}}
+  .topbar{flex:none;height:50px;display:flex;align-items:center;position:relative;padding:0 22px}.nav-back{font-size:22px;color:var(--muted);cursor:pointer;line-height:1;width:24px;border:0;background:transparent}.nav-back.hide{visibility:hidden}.dots{position:absolute;left:0;right:0;display:flex;gap:7px;justify-content:center;pointer-events:none}.dot{width:5px;height:5px;border-radius:50%;background:var(--line);transition:.3s}.dot.on{background:var(--accent);width:16px;border-radius:3px}.home{margin-left:auto;color:var(--muted);text-decoration:none;font-size:16px;line-height:1}
+  .stage{flex:1;overflow-y:auto;padding:14px 30px 34px}.stage::-webkit-scrollbar{display:none}.screen{display:none;animation:fade .5s ease}.screen.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .kicker{color:var(--accent);font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px}h1{font-family:var(--serif);font-size:27px;font-weight:600;line-height:1.6;margin-bottom:16px;letter-spacing:.5px}h2{font-family:var(--serif);font-size:23px;font-weight:600;line-height:1.65;margin-bottom:10px;letter-spacing:.5px}.hint{color:var(--muted);font-size:13px;margin-bottom:20px;line-height:1.75}.welcome{display:flex;flex-direction:column;justify-content:center;min-height:56vh;text-align:center}.welcome .seal{font-family:var(--serif);font-size:30px;color:var(--accent);margin-bottom:20px}.privacy{font-size:11px;color:var(--muted);margin-top:14px;line-height:1.75}
+  label{display:block;font-family:var(--serif);font-size:14px;color:#5d564a;margin:18px 0 7px}input.txt,textarea{width:100%;border:1px solid var(--line);background:var(--card);border-radius:4px;padding:14px 15px;font-size:14.5px;font-family:inherit;color:var(--ink);resize:vertical}textarea{min-height:110px;line-height:1.8}input.txt:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(138,111,68,.08)}
+  .optional{font-size:11px;color:var(--muted);letter-spacing:1px;border:1px solid var(--line);border-radius:2px;padding:1px 7px;margin-left:8px;font-family:-apple-system,sans-serif}
+  .guide{border-left:2px solid var(--frame);padding:12px 0 12px 16px;margin-top:22px;color:#655e51;font-family:var(--serif);font-size:14px;line-height:1.9}.guide b{color:var(--accent)}
+  .whybox{border-left:2px solid var(--frame);padding:12px 0 12px 16px;margin-top:22px;color:#655e51;font-size:12.5px;line-height:1.85}.whybox b{font-family:var(--serif);color:var(--accent);display:block;margin-bottom:3px;font-size:13px}
+  .meter{border:1px solid var(--line);background:rgba(245,240,230,.5);border-radius:4px;padding:15px 16px;margin-top:18px}
+  .mt{font-family:var(--serif);font-size:14.5px;margin-bottom:3px}.ms{font-size:11.5px;color:var(--muted);margin-bottom:11px;line-height:1.7}
+  .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+  .seg button{border:1px solid var(--line);background:var(--card);border-radius:3px;padding:11px 6px;font-family:inherit;font-size:13px;color:#5d564a;cursor:pointer;line-height:1.4}
+  .seg button.on{border-color:var(--accent);color:var(--accent);background:rgba(138,111,68,.07);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+  .chip{border:1px solid var(--line);background:var(--card);border-radius:3px;padding:9px 12px;font-family:inherit;font-size:13px;color:#5d564a;cursor:pointer}
+  .chip:hover{border-color:var(--accent);color:var(--accent)}
+  .alert{border:1px solid var(--warn);background:rgba(156,107,82,.07);border-radius:4px;padding:15px 17px;margin-top:18px;font-size:13.5px;line-height:1.85;color:#7a4f3c;display:none}
+  .alert.show{display:block}.alert b{font-family:var(--serif);display:block;margin-bottom:4px;font-size:14.5px;color:var(--warn)}
+  .card-out{position:relative;border:1px solid var(--frame);border-radius:3px;padding:27px 24px 21px;background:var(--card);box-shadow:inset 0 0 0 5px var(--bg),inset 0 0 0 6px var(--frame)}.card-out .seal{text-align:center;font-family:var(--serif);font-size:22px;color:var(--accent);margin-bottom:5px}.card-out h3{text-align:center;font-family:var(--serif);font-size:15px;letter-spacing:7px;padding-left:7px}.card-out .csub{text-align:center;font-size:8.5px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:5px}.card-out .rule{width:30px;height:1px;background:var(--accent);opacity:.6;margin:14px auto 21px}
+  .hero{margin-bottom:16px}.hero .k,.field .k{font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}.hero .v{font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.55}
+  .field{margin-bottom:14px}.field .v{font-size:14px;white-space:pre-wrap;line-height:1.65}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:3px;margin-bottom:14px}
+  .twocol>div{padding:13px 14px}.twocol>div+div{border-left:1px solid var(--line)}
+  .twocol .k{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .twocol .v{font-size:13.5px;line-height:1.6;white-space:pre-wrap}
+  .card-out .divider{height:1px;background:var(--line);margin:17px 0}
+  .deadline{text-align:center;border:1px solid var(--frame);border-radius:2px;padding:13px 12px;margin-top:4px}.deadline .k{font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}.deadline .v{font-family:var(--serif);font-size:16px;color:var(--accent);line-height:1.6}
+  .mantra{text-align:center;font-family:var(--serif);color:var(--accent);font-size:14px;letter-spacing:2px;margin-top:16px}.edition{text-align:center;font-size:8px;letter-spacing:2px;color:var(--muted);margin-top:10px}
+  .result-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:16px}.result-record{display:block;margin:13px auto 0}
+  .foot{flex:none;padding:8px 30px 26px;background:linear-gradient(transparent,var(--bg) 28%)}.gatehint{text-align:center;font-size:11px;color:var(--muted);margin-bottom:8px;height:15px;letter-spacing:.5px}.btn{display:block;width:100%;background:var(--accent);color:var(--onAccent);border:1px solid var(--accent);border-radius:3px;padding:15px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:1px}.btn:disabled{opacity:.3;cursor:not-allowed}.btn.ghost{background:transparent;color:var(--accent);font-size:12px;padding:11px;font-weight:500}.record-link{display:inline-block;border:0;background:transparent;color:var(--accent);font-family:inherit;font-size:12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-top:18px}
+  .record-book{display:none;position:fixed;inset:0;z-index:20;background:rgba(44,40,32,.35)}.record-book.open{display:block}.record-sheet{width:min(100%,460px);height:100%;margin:0 auto;background:var(--bg);padding:22px 24px 34px;overflow-y:auto}.record-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}.record-head h2{margin:0;font-size:22px}.record-close{border:0;background:transparent;color:var(--muted);font-size:22px;cursor:pointer;padding:6px}.record-note{font-size:12px;color:var(--muted);margin-bottom:18px}.record-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px;margin-bottom:12px}.record-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:10.5px;margin-bottom:11px}.record-delete{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:10.5px;cursor:pointer}.record-label{font-size:8.5px;letter-spacing:2px;color:var(--muted);margin-top:9px}.record-value{font-family:var(--serif);font-size:14px;margin-top:2px;white-space:pre-wrap}.record-actions{display:flex;justify-content:flex-end;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.record-open{border:1px solid var(--accent);border-radius:3px;background:transparent;color:var(--accent);font-family:inherit;font-size:11px;padding:7px 11px;cursor:pointer}.record-empty{text-align:center;color:var(--muted);font-size:13px;padding:60px 10px}.record-clear{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:12px;display:block;margin:24px auto 0;cursor:pointer;text-decoration:underline}.toast{position:fixed;bottom:105px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:3px;font-size:12px;opacity:0;transition:.3s;pointer-events:none;z-index:30}.toast.show{opacity:.95}
+  @media(max-width:390px){.stage{padding-left:24px;padding-right:24px}.foot{padding-left:24px;padding-right:24px}.card-out{padding-left:21px;padding-right:21px}.result-actions{grid-template-columns:1fr 1fr}.result-actions .save-image{grid-column:1/-1}.twocol{grid-template-columns:1fr}.twocol>div+div{border-left:0;border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar"><button class="nav-back hide" id="back" type="button" aria-label="上一步">‹</button><div class="dots" id="dots"></div><a class="home" href="index.html" aria-label="回首頁">✕</a></div>
+  <div class="stage" id="stage">
+
+    <section class="screen active">
+      <div class="welcome">
+        <div class="seal">❦</div>
+        <div class="kicker">工具 No. 05 · 決定</div>
+        <h1>先試一次小的，<br>再決定大的</h1>
+        <p class="hint">六個問題，把一個還不敢做的決定，變成一次成本很低、跑得完的試驗。</p>
+        <p class="privacy">啟發自《一週工作 4 小時》——這是全書反覆用到、但作者從沒替它取名字的做法。可逆性判斷與「什麼時候定案」是書上沒有、查證後我加的。</p>
+        <p class="privacy" style="margin-top:6px">答案預設只保存在這部裝置。</p>
+        <button class="record-link" id="openBook" type="button">查看試驗卡紀錄簿</button>
+      </div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第一步 · 這個決定</div>
+      <h2>你在猶豫的<br>是哪一件事？</h2>
+      <p class="hint">寫那個你想了很久、但一直沒動的決定。</p>
+      <label for="decision">我在猶豫的決定</label>
+      <textarea id="decision" maxlength="200" placeholder="例如：要不要轉去做設計"></textarea>
+      <div class="meter">
+        <div class="mt">如果做了之後想回頭，回得去嗎？</div>
+        <div class="ms">先誠實回答這一格，它決定這張卡適不適合你。</div>
+        <div class="seg" data-seg="rev"><button type="button" data-v="easy">回得去</button><button type="button" data-v="hard">要花點力氣</button><button type="button" data-v="none">回不去</button></div>
+      </div>
+      <div class="alert" id="revAlert">
+        <b>這張卡不適合這個決定</b>
+        有些事情一旦做了就沒有回頭路——移民身分、生育、動用一輩子的積蓄、放棄年資或執照。這類決定沒辦法用「先試小的」來預演，因為根本沒有小的版本。<br><br>你還是可以繼續往下填，但請把它當成整理思緒，不要當成「試過了所以安全」。這種決定需要的是把不可逆的部分弄清楚，而不是試一次。
+      </div>
+      <div class="whybox"><b>為甚麼先問這一題</b>這個做法在書裡出現過六次，每一次都是可以回頭的事——先試航一個月、先在家工作兩天、先花一筆小錢測市場。書沒有說的是：它挑的全是可逆的例子。不可逆的決定，這套方法本來就不適用。</div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第二步 · 縮小</div>
+      <h2>有沒有一個<br>很小的版本，<br>可以先做做看？</h2>
+      <p class="hint">不是「準備」，是真的做一次小的。目標是用最低的代價，換到一手的實感。</p>
+      <div class="chips" id="shrinkChips">
+        <button class="chip" type="button">縮短時間：只做兩天</button>
+        <button class="chip" type="button">縮小規模：只做一個</button>
+        <button class="chip" type="button">縮小範圍：只做其中一段</button>
+        <button class="chip" type="button">先借不買</button>
+        <button class="chip" type="button">先接一個小案子</button>
+        <button class="chip" type="button">先跟一個人聊</button>
+      </div>
+      <p class="hint" style="margin:9px 0 0;font-size:11.5px">點一個當開頭，再改成你的版本。</p>
+      <label for="pilot">我要先試的那件小事</label>
+      <textarea id="pilot" maxlength="200" placeholder="例如：接一個小的設計案，晚上做，不辭職"></textarea>
+      <div class="guide">好的試驗有一個特徵：<b>做完之後，你會知道一些現在不知道的事。</b>如果做完只是「感覺比較踏實」，那還是準備，不是試驗。</div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第三步 · 期限與判準</div>
+      <h2>試多久？<br>看到什麼算數？</h2>
+      <p class="hint">先把判準寫下來，是為了不讓事後的心情替你解釋結果。</p>
+      <label for="span">試多久</label>
+      <input class="txt" id="span" maxlength="40" placeholder="例如：四週，或做完三個案子">
+      <label for="goSign">看到什麼，代表可以往下走</label>
+      <textarea id="goSign" maxlength="200" placeholder="例如：三個案子都交得出去，而且我還想接第四個"></textarea>
+      <label for="stopSign">看到什麼，代表該停</label>
+      <textarea id="stopSign" maxlength="200" placeholder="例如：每次都做到凌晨，白天工作開始出錯"></textarea>
+      <div class="guide">兩個判準都要先寫。<b>只寫「怎樣算成功」的人，最後幾乎都會覺得自己成功了。</b></div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第四步 · 上限</div>
+      <h2>這次試驗，<br>你最多願意賠多少？</h2>
+      <p class="hint">先講好上限，就不會在中途才發現自己已經賠不起。</p>
+      <label for="costTime">時間上限</label>
+      <input class="txt" id="costTime" maxlength="40" placeholder="例如：每週最多八小時">
+      <label for="costMoney">金錢上限<span class="optional">可留空</span></label>
+      <input class="txt" id="costMoney" maxlength="40" placeholder="例如：兩萬元以內">
+      <label for="costOther">其他不能賠掉的<span class="optional">可留空</span></label>
+      <textarea id="costOther" maxlength="160" placeholder="例如：不能影響現在的工作評價、週末要留給家人"></textarea>
+      <div class="whybox"><b>為甚麼先講上限</b>試驗一旦投進去時間、錢、還有跟別人講過的話，人就很難喊停——會想著「都做到這裡了」。上限先寫下來，是替那個時候的自己留一個煞車。</div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第五步 · 誠實</div>
+      <h2>這次試驗<br>回答不了什麼？</h2>
+      <p class="hint">這一步不是潑冷水，是先標出試驗照不到的地方。</p>
+      <label for="unknown">試完之後，還是不會知道的事<span class="optional">可留空</span></label>
+      <textarea id="unknown" maxlength="200" placeholder="例如：做三個案子很新鮮，但做三年會不會膩，我還是不知道"></textarea>
+      <div class="whybox"><b>試驗告訴你的是甚麼</b>研究上有兩件事很清楚：小規模試的結果放大之後常常會縮水；而人預測「一個月後的心情」相當準，預測「三年後快不快樂」就很不準。<br><br>所以一次試驗能回答的是<b style="display:inline">「我做不做得下去、我喜不喜歡做這件事本身」</b>，不是「這個選擇會不會讓我長期滿意」。前者已經很有用了，後者本來就沒有人能先知道。</div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第六步 · 定案</div>
+      <h2>試完之後，<br>你打算什麼時候<br>把門關上？</h2>
+      <p class="hint">給自己一個做決定的日子，不然試驗會無限延長成一種拖延。</p>
+      <label for="decideBy">我會在這個時候做決定</label>
+      <input class="txt" id="decideBy" type="date">
+      <label for="commit">決定之後，我會怎麼收尾<span class="optional">可留空</span></label>
+      <textarea id="commit" maxlength="160" placeholder="例如：如果要做，就在月底前談好離職時間；如果不做，就把這件事從清單上劃掉"></textarea>
+      <div class="whybox"><b>為甚麼要關門</b>有研究讓人在「可以換」與「不能換」之間選擇，結果<b style="display:inline">不能換的那組後來滿意度反而更高</b>——人只有在沒得反悔的時候，才會真正去適應自己的選擇。而事前被問的時候，多數人都想留退路。<br><br>所以：試驗階段留餘地，決定之後就別再留。這是書上沒寫的那半句。</div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">完成 · 你的試驗設計</div>
+      <h2>拿去做吧</h2>
+      <p class="hint">試完之後回來，對照一下當初寫的判準。</p>
+      <div class="card-out" id="card">
+        <div class="seal">❦</div><h3>試 驗 卡</h3><div class="csub">Pilot · No. 05</div><div class="rule"></div>
+        <div class="hero"><div class="k">我在猶豫的決定</div><div class="v" id="cDecision">—</div><div class="k" id="cRev" style="margin-top:7px;letter-spacing:1px">—</div></div>
+        <div class="field"><div class="k">先試的那件小事</div><div class="v" id="cPilot">—</div></div>
+        <div class="field"><div class="k">試多久</div><div class="v" id="cSpan">—</div></div>
+        <div class="twocol">
+          <div><div class="k">可以往下走</div><div class="v" id="cGo">—</div></div>
+          <div><div class="k">該停</div><div class="v" id="cStop">—</div></div>
+        </div>
+        <div class="field"><div class="k">最多賠這麼多</div><div class="v" id="cCost">—</div></div>
+        <div class="field"><div class="k">試完還是不會知道</div><div class="v" id="cUnknown">—</div></div>
+        <div class="divider"></div>
+        <div class="deadline"><div class="k">關門的日子</div><div class="v" id="cDecide">—</div></div>
+        <div class="field" style="margin:14px 0 0"><div class="k">決定之後怎麼收尾</div><div class="v" id="cCommit">—</div></div>
+        <div class="mantra">試小的，決定要大方。</div>
+        <div class="edition">Edition No. 05 · MMXXVI</div>
+      </div>
+      <div class="result-actions"><button class="btn ghost save-image" id="saveImage" type="button">儲存為圖片</button><button class="btn ghost" id="copyCard" type="button">複製文字</button><button class="btn ghost" id="shareCard" type="button">分享</button></div>
+      <button class="record-link result-record" id="openBookResult" type="button">查看試驗卡紀錄簿（<span id="resultRecordCount">0</span>）</button>
+      <div class="whybox" style="margin-top:26px"><b>下一步</b>把「先試的那件小事」帶進<a href="tool-result-lock.html" style="color:var(--accent)">成果鎖定卡</a>，給它一個交付日期；試完之後用<a href="tool-review.html" style="color:var(--accent)">復盤卡</a>對一次當初寫的判準。</div>
+    </section>
+  </div>
+  <div class="foot"><div class="gatehint" id="gatehint"></div><button class="btn" id="next" type="button">開始</button></div>
+</div>
+
+<aside class="record-book" id="recordBook" aria-hidden="true"><div class="record-sheet"><div class="record-head"><h2>試驗卡紀錄簿</h2><button class="record-close" id="closeBook" type="button" aria-label="關閉">✕</button></div><p class="record-note">最多保存 50 張，只存在這個瀏覽器。</p><div id="recordList"></div><button class="record-clear" id="clearBook" type="button">清空全部紀錄</button></div></aside>
+<div class="toast" id="toast"></div>
+<script>
+  const screens=[...document.querySelectorAll('.screen')],LAST=screens.length-1;
+  const fieldIds=['decision','pilot','span','goSign','stopSign','costTime','costMoney','costOther','unknown','decideBy','commit'];
+  const draftKey='toolbook_pilot_v1',historyKey='toolbook_pilot_history_v1';
+  const REV_TEXT={easy:'這個決定回得去',hard:'要花點力氣才回得去',none:'這個決定回不去'};
+  const isDemo=new URLSearchParams(location.search).get('demo')==='1';
+  let i=0,draftId='',cards=loadCards(),clearing=false,seg={rev:null};
+  const $=id=>document.getElementById(id),val=id=>($(id)?.value||'').trim();
+  function track(name,data={}){if(typeof gtag==='function')gtag('event',name,{tool_name:'pilot_card',...data})}
+  function valid(n){if(n===1)return !!val('decision')&&!!seg.rev;if(n===2)return !!val('pilot');if(n===3)return !!val('span')&&!!val('goSign')&&!!val('stopSign');if(n===4)return !!val('costTime');if(n===6)return !!val('decideBy');return true}
+  function render(){screens.forEach((s,n)=>s.classList.toggle('active',n===i));$('back').classList.toggle('hide',i===0);$('dots').innerHTML=i===0?'':Array.from({length:6},(_,n)=>`<span class="dot ${n===Math.min(i-1,5)?'on':''}"></span>`).join('');$('next').textContent=i===0?'開始':i===6?'生成試驗卡':i===LAST?'再做一張':'下一步';$('resultRecordCount').textContent=cards.length;updateGate();$('stage').scrollTop=0;if(i>0)track('step_view',{step_name:['','decision','shrink','criteria','limit','honest','commit','result'][i]})}
+  function updateGate(){const ok=valid(i);$('next').disabled=!ok;$('gatehint').textContent=ok?'':i===1?'寫下決定，並選一個回頭的難度':i===3?'三格都要填，包括「該停」':i===6?'選一個做決定的日子':'完成這一題，才能繼續'}
+  function next(){if(!valid(i))return;if(i===0){track('tool_start');i=1}else if(i===6){archiveCard();buildCard();i=LAST;track('tool_complete',{reversibility:seg.rev});}else if(i===LAST){startNew();return}else i++;saveDraft();render()}
+  function prev(){if(i>0){i--;saveDraft();render()}}
+  function pickSeg(name,v){seg[name]=v;document.querySelectorAll(`[data-seg="${name}"] button`).forEach(b=>b.classList.toggle('on',b.dataset.v===v));if(name==='rev')$('revAlert').classList.toggle('show',v==='none');updateGate();saveDraft()}
+  function formatDate(raw){if(!raw)return '—';const [y,m,d]=String(raw).split('-');return `${y}.${String(m).padStart(2,'0')}.${String(d).padStart(2,'0')}`}
+  function costText(){const p=[];if(val('costTime'))p.push('時間：'+val('costTime'));if(val('costMoney'))p.push('金錢：'+val('costMoney'));if(val('costOther'))p.push('不能賠掉：'+val('costOther'));return p.join('\n')||'—'}
+  function buildCard(){$('cDecision').textContent=val('decision')||'—';$('cRev').textContent=seg.rev?REV_TEXT[seg.rev]:'—';$('cPilot').textContent=val('pilot')||'—';$('cSpan').textContent=val('span')||'—';$('cGo').textContent=val('goSign')||'—';$('cStop').textContent=val('stopSign')||'—';$('cCost').textContent=costText();$('cUnknown').textContent=val('unknown')||'（沒有特別標出）';$('cDecide').textContent=formatDate(val('decideBy'));$('cCommit').textContent=val('commit')||'—'}
+  function cardText(){return `試驗卡\n\n我在猶豫的決定：${val('decision')}\n（${seg.rev?REV_TEXT[seg.rev]:'—'}）\n\n先試的那件小事：${val('pilot')}\n試多久：${val('span')}\n\n可以往下走：${val('goSign')}\n該停：${val('stopSign')}\n\n最多賠這麼多：\n${costText()}\n\n試完還是不會知道：${val('unknown')||'（沒有特別標出）'}\n\n關門的日子：${formatDate(val('decideBy'))}\n決定之後怎麼收尾：${val('commit')||'—'}\n\n試小的，決定要大方。`}
+  function canvasLines(ctx,text,maxWidth){const out=[];String(text||'—').split('\n').forEach(part=>{let line='';for(const ch of Array.from(part||' ')){const nx=line+ch;if(line&&ctx.measureText(nx).width>maxWidth){out.push(line);line=ch}else line=nx}out.push(line||' ')});return out}
+  function saveCardImage(){const width=1080,pad=110,maxWidth=width-pad*2,blocks=[['我在猶豫的決定',val('decision'),'600 42px serif',60],['先試的那件小事',val('pilot'),'36px sans-serif',54],['試多久',val('span'),'36px sans-serif',54],['可以往下走',val('goSign'),'36px sans-serif',54],['該停',val('stopSign'),'36px sans-serif',54],['最多賠這麼多',costText(),'36px sans-serif',54],['試完還是不會知道',val('unknown')||'（沒有特別標出）','36px sans-serif',54],['關門的日子',formatDate(val('decideBy')),'600 40px serif',58]];const probe=document.createElement('canvas').getContext('2d');const prepared=blocks.map(b=>{probe.font=b[2];return [...b,canvasLines(probe,b[1],maxWidth)]});const height=Math.max(1350,430+prepared.reduce((s,b)=>s+68+b[4].length*b[3]+40,0)+200);const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');ctx.fillStyle='#f5f0e6';ctx.fillRect(0,0,width,height);ctx.strokeStyle='#c9bea4';ctx.lineWidth=3;ctx.strokeRect(42,42,width-84,height-84);ctx.lineWidth=1;ctx.strokeRect(58,58,width-116,height-116);ctx.textAlign='center';ctx.fillStyle='#8a6f44';ctx.font='42px serif';ctx.fillText('❦',width/2,145);ctx.fillStyle='#2c2820';ctx.font='600 42px serif';ctx.fillText('試 驗 卡',width/2,215);ctx.fillStyle='#938b78';ctx.font='18px sans-serif';ctx.fillText('P I L O T  ·  N O.  0 5',width/2,260);ctx.strokeStyle='#8a6f44';ctx.beginPath();ctx.moveTo(width/2-34,300);ctx.lineTo(width/2+34,300);ctx.stroke();let y=380;ctx.textAlign='left';prepared.forEach((b,idx)=>{if(idx===7){ctx.strokeStyle='#d6cdba';ctx.beginPath();ctx.moveTo(pad,y-20);ctx.lineTo(width-pad,y-20);ctx.stroke()}ctx.fillStyle='#938b78';ctx.font='20px sans-serif';ctx.fillText(b[0],pad,y);y+=52;ctx.fillStyle=idx===7?'#8a6f44':'#2c2820';ctx.font=b[2];b[4].forEach(l=>{ctx.fillText(l,pad,y);y+=b[3]});y+=40});ctx.textAlign='center';ctx.fillStyle='#8a6f44';ctx.font='30px serif';ctx.fillText('試小的，決定要大方。',width/2,y+40);ctx.fillStyle='#938b78';ctx.font='16px sans-serif';ctx.fillText('Edition No. 05 · MMXXVI',width/2,height-90);canvas.toBlob(b=>{if(!b){toast('圖片生成失敗，請稍後再試');return}const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='試驗卡-Toolbook.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('試驗卡圖片已儲存');track('save_image')},'image/png')}
+  function saveDraft(){if(isDemo||clearing)return;try{const f={};fieldIds.forEach(id=>f[id]=$(id).value);localStorage.setItem(draftKey,JSON.stringify({step:i,draftId,fields:f,seg,updatedAt:new Date().toISOString()}))}catch(_){}}
+  function loadDraft(){if(isDemo)return false;try{const d=JSON.parse(localStorage.getItem(draftKey)||'null');if(!d)return false;const s=d.fields||{};fieldIds.forEach(id=>{if(s[id]!=null)$(id).value=s[id]});draftId=d.draftId||'';if(d.seg?.rev)pickSeg('rev',d.seg.rev);i=Number.isInteger(d.step)?Math.max(0,Math.min(LAST,d.step)):0;if(i===LAST)buildCard();return true}catch(_){return false}}
+  function loadCards(){try{const d=JSON.parse(localStorage.getItem(historyKey)||'[]');return Array.isArray(d)?d.slice(0,50):[]}catch(_){return []}}
+  function saveCards(){try{localStorage.setItem(historyKey,JSON.stringify(cards.slice(0,50)))}catch(_){}}
+  function archiveCard(){const now=new Date().toISOString();if(!draftId)draftId='pilot_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,6);const old=cards.find(c=>c.id===draftId);const card={id:draftId,createdAt:old?.createdAt||now,updatedAt:now,rev:seg.rev};fieldIds.forEach(k=>card[k]=val(k));cards=[card,...cards.filter(c=>c.id!==draftId)].slice(0,50);saveCards();renderBook()}
+  function escapeHtml(v){return String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+  function formatCreated(v){const d=new Date(v);return Number.isNaN(d.getTime())?'日期不明':d.toLocaleDateString('zh-HK',{year:'numeric',month:'2-digit',day:'2-digit'})}
+  function renderBook(){const list=$('recordList');$('clearBook').style.display=cards.length?'block':'none';list.innerHTML=cards.length?cards.map((c,n)=>`<article class="record-card"><div class="record-meta"><span>第 ${cards.length-n} 張 · ${formatCreated(c.createdAt)}</span><button class="record-delete" type="button" data-delete="${escapeHtml(c.id)}">刪除</button></div><div class="record-label">猶豫的決定</div><div class="record-value">${escapeHtml(c.decision)||'—'}${c.rev?'（'+REV_TEXT[c.rev]+'）':''}</div><div class="record-label">先試的小事</div><div class="record-value">${escapeHtml(c.pilot)||'—'}</div><div class="record-label">試多久</div><div class="record-value">${escapeHtml(c.span)||'—'}</div><div class="record-label">可以往下走</div><div class="record-value">${escapeHtml(c.goSign)||'—'}</div><div class="record-label">該停</div><div class="record-value">${escapeHtml(c.stopSign)||'—'}</div><div class="record-label">關門的日子</div><div class="record-value">${formatDate(c.decideBy)}</div><div class="record-actions"><button class="record-open" type="button" data-open="${escapeHtml(c.id)}">開啟／匯出這張卡</button></div></article>`).join(''):'<div class="record-empty">還沒有試驗卡。<br>完成第一張後，會保存在這裡。</div>';list.querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',()=>deleteCard(b.dataset.delete)));list.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>loadCard(b.dataset.open)))}
+  function openBook(){$('recordBook').classList.add('open');$('recordBook').setAttribute('aria-hidden','false');renderBook()}
+  function closeBook(){$('recordBook').classList.remove('open');$('recordBook').setAttribute('aria-hidden','true')}
+  function loadCard(id){const c=cards.find(x=>x.id===id);if(!c)return;fieldIds.forEach(k=>$(k).value=c[k]||'');if(c.rev)pickSeg('rev',c.rev);draftId=c.id;i=LAST;buildCard();saveDraft();closeBook();render();toast('已開啟，可再次儲存或分享')}
+  function startNew(){if(!confirm('開始一張新的試驗卡？舊的會保留在紀錄簿。'))return;clearing=true;try{localStorage.removeItem(draftKey)}catch(_){}fieldIds.forEach(id=>$(id).value='');seg={rev:null};document.querySelectorAll('[data-seg] button').forEach(b=>b.classList.remove('on'));$('revAlert').classList.remove('show');draftId='';i=1;clearing=false;saveDraft();render()}
+  function deleteCard(id){if(!confirm('確定刪除這張試驗卡？'))return;cards=cards.filter(c=>c.id!==id);saveCards();renderBook();render()}
+  function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1700)}
+  $('next').addEventListener('click',next);$('back').addEventListener('click',prev);
+  fieldIds.forEach(id=>$(id).addEventListener('input',()=>{updateGate();saveDraft()}));
+  document.querySelectorAll('[data-seg]').forEach(g=>g.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>pickSeg(g.dataset.seg,b.dataset.v))));
+  document.querySelectorAll('#shrinkChips .chip').forEach(c=>c.addEventListener('click',()=>{const el=$('pilot');el.value=el.value?el.value:c.textContent.split('：').pop();el.dispatchEvent(new Event('input',{bubbles:true}));el.focus()}));
+  $('openBook').addEventListener('click',openBook);$('openBookResult').addEventListener('click',openBook);$('closeBook').addEventListener('click',closeBook);
+  $('clearBook').addEventListener('click',()=>{if(!confirm('確定清空全部試驗卡？'))return;cards=[];saveCards();renderBook();render()});
+  $('saveImage').addEventListener('click',saveCardImage);
+  $('copyCard').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(cardText());toast('已複製試驗卡文字')}catch(_){toast('瀏覽器未允許複製')}});
+  $('shareCard').addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:'我的試驗卡',text:cardText()});else{await navigator.clipboard.writeText(cardText());toast('已複製，可貼到其他地方')}track('share',{method:navigator.share?'web_share':'copy'})}catch(_){}});
+  if(isDemo){const d=new Date(Date.now()+30*86400000);const demo={decision:'要不要轉去做設計',pilot:'接一個小的設計案，晚上做，不辭職',span:'四週，或做完三個案子',goSign:'三個案子都交得出去，而且我還想接第四個',stopSign:'每次都做到凌晨，白天工作開始出錯',costTime:'每週最多八小時',costMoney:'兩萬元以內',costOther:'不能影響現在的工作評價',unknown:'做三個案子很新鮮，但做三年會不會膩，我還是不知道',decideBy:`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`,commit:'如果要做，就在月底前談好離職時間；如果不做，就把這件事從清單上劃掉'};Object.entries(demo).forEach(([k,v])=>$(k).value=v);pickSeg('rev','easy');i=LAST;buildCard()}else loadDraft();
+  renderBook();render();
+</script>
+</body>
+</html>

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CKM6MRRVBM"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());gtag('config','G-CKM6MRRVBM');
+</script>
+<title>恐懼拆解卡 · Toolbook</title>
+<meta name="description" content="擋住你的不是風險，是沒被寫下來的那件事。八個問題，把「不敢動」拆成可以逐條處理的清單，最後給你一張恐懼拆解卡。">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  :root{--serif:"Songti SC","Noto Serif TC","Source Han Serif TC","Source Han Serif SC",serif;--bg:#ece5d8;--card:#f5f0e6;--ink:#2c2820;--muted:#938b78;--line:#d6cdba;--frame:#c9bea4;--accent:#8a6f44;--onAccent:#f5f0e6;--bad:#9c5f4a;--good:#6b7a5e}
+  html,body{height:100%}
+  body{background:var(--bg);font-family:-apple-system,"PingFang TC",sans-serif;color:var(--ink);line-height:1.7;position:relative}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .app{max-width:460px;margin:0 auto;height:100vh;height:100dvh;display:flex;flex-direction:column;position:relative;z-index:1}
+  @media(min-width:520px){.app{border-left:1px solid var(--line);border-right:1px solid var(--line);background:rgba(245,240,230,.35)}}
+  .topbar{flex:none;height:50px;display:flex;align-items:center;position:relative;padding:0 22px}
+  .nav-back{font-size:22px;color:var(--muted);cursor:pointer;line-height:1;width:24px;border:0;background:transparent}
+  .nav-back.hide{visibility:hidden}
+  .dots{position:absolute;left:0;right:0;display:flex;gap:6px;justify-content:center;pointer-events:none}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--line);transition:.3s}
+  .dot.on{background:var(--accent);width:15px;border-radius:3px}
+  .dot.done{background:var(--frame)}
+  .home{margin-left:auto;color:var(--muted);text-decoration:none;font-size:16px;line-height:1}
+  .stage{flex:1;min-height:0;overflow-y:auto;padding:14px 30px 34px}
+  .stage::-webkit-scrollbar{display:none}
+  .screen{display:none;animation:fade .5s ease}
+  .screen.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .kicker{color:var(--accent);font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px}
+  h1{font-family:var(--serif);font-size:26px;font-weight:600;line-height:1.6;margin-bottom:16px;letter-spacing:.5px}
+  h2{font-family:var(--serif);font-size:23px;font-weight:600;line-height:1.65;margin-bottom:10px;letter-spacing:.5px}
+  .hint{color:var(--muted);font-size:13px;margin-bottom:18px;line-height:1.75}
+  .welcome{display:flex;flex-direction:column;justify-content:center;min-height:56vh;text-align:center}
+  .welcome .seal{font-family:var(--serif);font-size:30px;color:var(--accent);margin-bottom:20px}
+  .rules{border:1px solid var(--line);border-radius:4px;background:rgba(245,240,230,.5);padding:16px 18px;margin-top:6px;text-align:left}
+  .rules div{font-size:12.5px;color:#655e51;line-height:1.9;display:flex;gap:9px}
+  .rules div span{color:var(--accent);font-family:var(--serif)}
+  .privacy{font-size:11px;color:var(--muted);margin-top:16px}
+  label{display:block;font-family:var(--serif);font-size:14px;color:#5d564a;margin:18px 0 7px}
+  .optional{font-size:11px;color:var(--muted);letter-spacing:1px;border:1px solid var(--line);border-radius:2px;padding:1px 7px;margin-left:8px;font-family:-apple-system,sans-serif}
+  input.txt,textarea{width:100%;border:1px solid var(--line);background:var(--card);border-radius:4px;padding:13px 15px;font-size:14.5px;font-family:inherit;color:var(--ink);resize:vertical;line-height:1.8}
+  textarea{min-height:112px}
+  input.txt:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(138,111,68,.08)}
+  input.txt:disabled,textarea:disabled{background:rgba(245,240,230,.45);color:#5d564a;opacity:1;border-style:dashed;-webkit-text-fill-color:#5d564a}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+  .chip{background:transparent;border:1px solid var(--line);padding:8px 14px;border-radius:3px;font-size:13px;color:var(--ink);cursor:pointer;font-family:inherit;letter-spacing:.5px}
+  .chip:hover{border-color:var(--accent)}
+  .chip:disabled{opacity:.35;cursor:not-allowed}
+  .guide{border-left:2px solid var(--frame);padding:11px 0 11px 16px;margin-top:20px;color:#655e51;font-family:var(--serif);font-size:13.5px;line-height:1.9}
+  .guide b{color:var(--accent)}
+  .whybox{border-left:2px solid var(--frame);padding:12px 0 12px 16px;margin-top:22px;color:#655e51;font-size:12.5px;line-height:1.85}
+  .whybox b{font-family:var(--serif);color:var(--accent);display:block;margin-bottom:3px;font-size:13px}
+  .meter{border:1px solid var(--line);border-radius:4px;background:rgba(245,240,230,.5);padding:15px 17px;margin-top:20px}
+  .meter .mt{font-family:var(--serif);font-size:14px;color:#5d564a;margin-bottom:3px}
+  .meter .ms{font-size:11.5px;color:var(--muted);margin-bottom:10px;line-height:1.7}
+  .meter+.meter{margin-top:10px}
+  .rangerow{display:flex;align-items:center;gap:12px}
+  .rangerow input[type=range]{flex:1;accent-color:var(--accent);background:transparent}
+  .rangerow .num{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--accent);width:34px;text-align:right}
+  .seg{display:flex;gap:6px}
+  .seg button{flex:1;text-align:center;font-size:11.5px;padding:9px 3px;border-radius:3px;background:transparent;color:var(--muted);cursor:pointer;border:1px solid var(--line);font-family:inherit;letter-spacing:.5px}
+  .seg button.on{background:var(--accent);color:var(--onAccent);border-color:var(--accent)}
+  .seg button:disabled{cursor:not-allowed;opacity:.55}
+  .seg button.on:disabled{opacity:.8}
+  .sealed-tag{display:flex;align-items:center;gap:10px;border:1px dashed var(--frame);border-radius:3px;padding:9px 13px;margin-top:16px;font-size:11.5px;color:var(--muted);letter-spacing:.5px}
+  .sealed-tag button{margin-left:auto;border:0;background:transparent;color:var(--accent);font-family:inherit;font-size:11.5px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  .plot{border:1px solid var(--line);border-radius:4px;background:var(--card);padding:14px 12px 8px;margin-bottom:16px}
+  .plot svg{display:block;width:100%;height:auto}
+  .legend{display:flex;gap:16px;justify-content:center;font-size:11px;color:var(--muted);padding:6px 0 2px;letter-spacing:.5px}
+  .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle}
+  .verdict{border:1px solid var(--frame);border-radius:4px;padding:16px 18px;background:rgba(245,240,230,.6)}
+  .verdict.stop{border-color:var(--bad);border-width:2px}
+  .verdict h4{font-family:var(--serif);font-size:16px;margin-bottom:7px}
+  .verdict.stop h4{color:var(--bad)}
+  .verdict p{font-size:13px;color:#5d564a;line-height:1.85}
+  .verdict p b{color:var(--bad)}
+  .caveat{font-size:11.5px;color:var(--muted);line-height:1.8;margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+  .card-out{position:relative;border:1px solid var(--frame);border-radius:3px;padding:27px 24px 21px;background:var(--card);box-shadow:inset 0 0 0 5px var(--bg),inset 0 0 0 6px var(--frame)}
+  .card-out .seal{text-align:center;font-family:var(--serif);font-size:22px;color:var(--accent);margin-bottom:5px}
+  .card-out h3{text-align:center;font-family:var(--serif);font-size:15px;letter-spacing:7px;padding-left:7px}
+  .card-out .csub{text-align:center;font-size:8.5px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:5px}
+  .card-out .rule{width:30px;height:1px;background:var(--accent);opacity:.6;margin:14px auto 20px}
+  .cardplot{border:1px solid var(--line);border-radius:3px;padding:10px 8px 4px;margin-bottom:14px}
+  .cardplot svg{display:block;width:100%;height:auto}
+  .cardverdict{font-family:var(--serif);font-size:13.5px;color:var(--accent);text-align:center;line-height:1.75;margin-bottom:18px}
+  .cardverdict.stop{color:var(--bad)}
+  .compare{border:1px solid var(--line);border-radius:3px;margin-bottom:15px}
+  .compare>div{padding:13px 15px}
+  .compare>div+div{border-top:1px solid var(--line)}
+  .compare .k{font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .compare .v{font-family:var(--serif);font-size:15px;line-height:1.6;white-space:pre-wrap}
+  .compare .m{font-size:10.5px;color:var(--muted);margin-top:6px;letter-spacing:.5px}
+  .field{margin-bottom:14px}
+  .field .k{font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .field .v{font-size:13.5px;white-space:pre-wrap;line-height:1.7}
+  .card-out .divider{height:1px;background:var(--line);margin:17px 0}
+  .onething{text-align:center;border:1px solid var(--frame);border-radius:2px;padding:14px 12px;margin:4px 0 16px}
+  .onething .k{font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .onething .v{font-family:var(--serif);font-size:16px;color:var(--accent);line-height:1.6}
+  .onething .s{font-size:10.5px;color:var(--muted);margin-top:7px}
+  .mantra{text-align:center;font-family:var(--serif);color:var(--accent);font-size:14px;letter-spacing:2px;margin-top:16px}
+  .edition{text-align:center;font-size:8px;letter-spacing:2px;color:var(--muted);margin-top:10px}
+  .result-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:16px}
+  .record-link{display:inline-block;border:0;background:transparent;color:var(--accent);font-family:inherit;font-size:12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-top:18px}
+  .result-record{display:block;margin:13px auto 0}
+  .foot{flex:none;padding:8px 30px 26px;background:linear-gradient(transparent,var(--bg) 28%)}
+  .slowhint{text-align:center;font-size:11.5px;color:var(--muted);margin-bottom:7px;min-height:0;font-family:var(--serif);line-height:1.6}
+  .gatehint{text-align:center;font-size:11px;color:var(--muted);margin-bottom:8px;height:15px;letter-spacing:.5px}
+  .btn{display:block;width:100%;background:var(--accent);color:var(--onAccent);border:1px solid var(--accent);border-radius:3px;padding:15px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:1px}
+  .btn:disabled{opacity:.3;cursor:not-allowed}
+  .btn.ghost{background:transparent;color:var(--accent);font-size:12px;padding:11px;font-weight:500}
+  .record-book{display:none;position:fixed;inset:0;z-index:20;background:rgba(44,40,32,.35)}
+  .record-book.open{display:block}
+  .record-sheet{width:min(100%,460px);height:100%;margin:0 auto;background:var(--bg);padding:22px 24px 34px;overflow-y:auto}
+  .record-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .record-head h2{margin:0;font-size:22px}
+  .record-close{border:0;background:transparent;color:var(--muted);font-size:22px;cursor:pointer;padding:6px}
+  .record-note{font-size:12px;color:var(--muted);margin-bottom:18px}
+  .record-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px;margin-bottom:12px}
+  .record-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:10.5px;margin-bottom:11px}
+  .record-delete{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:10.5px;cursor:pointer}
+  .record-label{font-size:8.5px;letter-spacing:2px;color:var(--muted);margin-top:9px}
+  .record-value{font-family:var(--serif);font-size:14px;margin-top:2px;white-space:pre-wrap}
+  .record-actions{display:flex;justify-content:flex-end;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+  .record-open{border:1px solid var(--accent);border-radius:3px;background:transparent;color:var(--accent);font-family:inherit;font-size:11px;padding:7px 11px;cursor:pointer}
+  .record-empty{text-align:center;color:var(--muted);font-size:13px;padding:60px 10px}
+  .record-clear{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:12px;display:block;margin:24px auto 0;cursor:pointer;text-decoration:underline}
+  .toast{position:fixed;bottom:105px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:3px;font-size:12px;opacity:0;transition:.3s;pointer-events:none;z-index:30}
+  .toast.show{opacity:.95}
+  @media(max-width:390px){.stage{padding-left:24px;padding-right:24px}.foot{padding-left:24px;padding-right:24px}.card-out{padding-left:20px;padding-right:20px}.result-actions{grid-template-columns:1fr 1fr}.result-actions .save-image{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <button class="nav-back hide" id="back" type="button" aria-label="上一步">‹</button>
+    <div class="dots" id="dots"></div>
+    <a class="home" href="index.html" aria-label="回首頁">✕</a>
+  </div>
+  <div class="stage" id="stage">
+
+    <!-- 0 · 開場 -->
+    <section class="screen active">
+      <div class="welcome">
+        <div class="seal">❦</div>
+        <div class="kicker">工具 No. 04 · 恐懼</div>
+        <h1>擋住你的不是風險，<br>是沒被寫下來的<br>那件事</h1>
+        <p class="hint">八個問題，把「不敢動」拆成可以逐條處理的清單。最後生成一張恐懼拆解卡。</p>
+        <div class="rules">
+          <div><span>一</span>寫第一個浮上來的念頭，不用想漂亮。</div>
+          <div><span>二</span>寫完就封存，不回頭改。想改也可以，但要自己按一下。</div>
+          <div><span>三</span>每題花幾分鐘就夠，沒有人在計時。</div>
+        </div>
+        <p class="privacy">啟發自《一週工作 4 小時》第 3 章的恐懼設定練習，內容經重新整理；第八問「你的退路是甚麼」是書上沒有、我自己加的。</p>
+        <p class="privacy" style="margin-top:6px">答案預設只保存在這部裝置。</p>
+        <p class="privacy" style="margin-top:10px;line-height:1.75">這是一張幫你把想法寫下來的卡，不是心理治療。如果這件事已經讓你長期睡不著、無法工作，或你發現自己一遍又一遍地填同樣的答案來求安心，那需要的是專業協助，不是這張卡。</p>
+        <button class="record-link" id="openBook" type="button">查看恐懼拆解卡紀錄簿</button>
+      </div>
+    </section>
+
+    <!-- 1 · 第一問 -->
+    <section class="screen" data-q="1">
+      <div class="kicker">第一問 · 最壞的情況</div>
+      <h2>如果你現在就去做，<br>最壞會壞到甚麼程度？</h2>
+      <p class="hint">不要寫「會失敗」，寫失敗之後會發生甚麼事。越具體越好。</p>
+      <div class="chips" data-target="worstText">
+        <button class="chip" type="button">收入斷掉</button>
+        <button class="chip" type="button">存款用完</button>
+        <button class="chip" type="button">家人反對</button>
+        <button class="chip" type="button">被人看不起</button>
+        <button class="chip" type="button">回不去原本的位置</button>
+        <button class="chip" type="button">白忙一場</button>
+      </div>
+      <p class="hint" style="margin:8px 0 0;font-size:11.5px">點一個當開頭，再用自己的話寫完。沒有一個像的話，直接寫。<b style="color:var(--accent)">只寫一個</b>——最擋住你的那一個。</p>
+      <textarea id="worstText" maxlength="300" placeholder="例如：收入斷掉，存款大概撐八個月，然後要跟家人開口借錢"></textarea>
+      <div class="meter">
+        <div class="mt">這件事真的發生了，對你的人生有多大影響？</div>
+        <div class="ms">1 是過幾天就沒事，10 是這輩子都不一樣。</div>
+        <div class="rangerow"><input type="range" id="worstScore" min="1" max="10" value="5" data-lock="1"><span class="num" id="worstScoreNum">5</span></div>
+      </div>
+      <div class="meter">
+        <div class="mt">這個影響是暫時的，還是永久的？</div>
+        <div class="ms">會不會過去？過得去，就是暫時的。</div>
+        <div class="seg" data-seg="worstPerm"><button type="button" data-v="0">暫時的</button><button type="button" data-v="0.5">說不準</button><button type="button" data-v="1">永久的</button></div>
+      </div>
+      <div class="meter">
+        <div class="mt">你覺得它真的會發生嗎？</div>
+        <div class="ms">憑感覺就好，這裡沒有正確答案。</div>
+        <div class="seg" data-seg="worstOdds"><button type="button" data-v="high">很可能</button><button type="button" data-v="mid">說不準</button><button type="button" data-v="low">不太可能</button></div>
+      </div>
+      <div class="guide">害怕之所以擋得住人，是因為它一直沒有形狀。<b>寫成一句可以唸出來的話，它就變成一件事，而事情是可以處理的。</b><br><br>為甚麼只寫一個：針對焦慮的研究發現，反覆把<b>同一個</b>最壞情境寫透，焦慮會下降；而一次掃過好幾個不同的擔憂，幾乎沒有效果。想寫的還有很多，就下次再開一張。</div>
+    </section>
+
+    <!-- 2 · 第二問 -->
+    <section class="screen" data-q="2">
+      <div class="kicker">第二問 · 怎麼接住</div>
+      <h2>如果真的發生了，<br>你會怎麼把它接住？</h2>
+      <p class="hint">不用完美的解法。只要能讓生活暫時回到過得下去的樣子就行。</p>
+      <label for="fixText">我會這樣接住它</label>
+      <textarea id="fixText" maxlength="300" placeholder="例如：先接兼職把現金補回來，退掉訂閱和健身房，搬回家住半年"></textarea>
+      <div class="guide">從最具體的地方想：先做甚麼賺回現金、可以少花哪一筆、可以先住哪裡、可以先找誰。</div>
+    </section>
+
+    <!-- 3 · 第三問 -->
+    <section class="screen" data-q="3">
+      <div class="kicker">第三問 · 好的那一面</div>
+      <h2>如果順利，<br>你會得到甚麼？</h2>
+      <p class="hint">寫最可能發生的那個好結果就好，不用寫最誇張的。</p>
+      <label for="bestText">順利的話，我會得到</label>
+      <textarea id="bestText" maxlength="300" placeholder="例如：時間變成自己的，而且知道自己有本事養活自己"></textarea>
+      <div class="meter">
+        <div class="mt">這個好處對你的人生有多大影響？</div>
+        <div class="ms">同一把尺：1 是過幾天就沒感覺，10 是這輩子都不一樣。</div>
+        <div class="rangerow"><input type="range" id="bestScore" min="1" max="10" value="5" data-lock="3"><span class="num" id="bestScoreNum">5</span></div>
+      </div>
+      <div class="meter">
+        <div class="mt">這個好處是暫時的，還是永久的？</div>
+        <div class="ms">學到的本事、建立的關係，通常會留下來。</div>
+        <div class="seg" data-seg="bestPerm"><button type="button" data-v="0">暫時的</button><button type="button" data-v="0.5">說不準</button><button type="button" data-v="1">永久的</button></div>
+      </div>
+      <label for="precedent">有沒有條件比你差的人，已經做成這件事？<span class="optional">可留空</span></label>
+      <input class="txt" id="precedent" maxlength="120" placeholder="例如：有，我前同事三十八歲轉行，沒有存款">
+      <div class="guide">這一格不是要你比較，是要你確認：<b>這條路上有沒有腳印。</b></div>
+    </section>
+
+    <!-- 4 · 對照圖 -->
+    <section class="screen" data-plot="1">
+      <div class="kicker">對照 · 兩邊放一起看</div>
+      <h2>把兩邊<br>放在同一張圖上</h2>
+      <p class="hint">上下是影響大小，左右是會不會過去。</p>
+      <div class="plot">
+        <svg viewBox="0 0 320 232" role="img" aria-label="恐懼對照圖">
+          <rect x="52" y="16" width="252" height="172" fill="none" stroke="#d6cdba" stroke-width="1"></rect>
+          <line x1="178" y1="16" x2="178" y2="188" stroke="#d6cdba" stroke-width="1" stroke-dasharray="3 4"></line>
+          <line x1="52" y1="102" x2="304" y2="102" stroke="#d6cdba" stroke-width="1" stroke-dasharray="3 4"></line>
+          <circle id="refBad" cx="0" cy="0" r="4.5" fill="none" stroke="#c9bea4" stroke-width="1" stroke-dasharray="2 2"></circle>
+          <circle id="refGood" cx="0" cy="0" r="4.5" fill="none" stroke="#c9bea4" stroke-width="1" stroke-dasharray="2 2"></circle>
+          <text id="refBadT" x="0" y="0" font-size="8" fill="#938b78" text-anchor="start">書中的壞</text>
+          <text id="refGoodT" x="0" y="0" font-size="8" fill="#938b78" text-anchor="end">書中的好</text>
+          <circle id="dotBad" cx="0" cy="0" r="9" fill="#9c5f4a" fill-opacity=".85" stroke="#f5f0e6" stroke-width="1.5"></circle>
+          <circle id="dotGood" cx="0" cy="0" r="9" fill="#6b7a5e" fill-opacity=".85" stroke="#f5f0e6" stroke-width="1.5"></circle>
+          <text id="dotBadT" x="0" y="0" font-size="9" fill="#9c5f4a" text-anchor="middle" font-weight="600">你的壞</text>
+          <text id="dotGoodT" x="0" y="0" font-size="9" fill="#6b7a5e" text-anchor="middle" font-weight="600">你的好</text>
+          <text x="46" y="22" font-size="9" fill="#938b78" text-anchor="end">10</text>
+          <text x="46" y="106" font-size="9" fill="#938b78" text-anchor="end">5</text>
+          <text x="46" y="191" font-size="9" fill="#938b78" text-anchor="end">1</text>
+          <text x="20" y="105" font-size="9" fill="#938b78" text-anchor="middle" transform="rotate(-90 20 105)">影響大小</text>
+          <text x="80" y="206" font-size="9.5" fill="#938b78" text-anchor="middle">暫時的</text>
+          <text x="276" y="206" font-size="9.5" fill="#938b78" text-anchor="middle">永久的</text>
+          <text x="178" y="224" font-size="9" fill="#938b78" text-anchor="middle">左右：這個影響會不會過去</text>
+        </svg>
+        <div class="legend"><span><i style="background:#9c5f4a"></i>你寫的最壞情況</span><span><i style="background:#6b7a5e"></i>你寫的最好情況</span></div>
+      </div>
+      <div class="verdict" id="verdict"><h4>—</h4><p>—</p></div>
+      <p class="caveat">這兩個分數都是你自己給的，沒有客觀標準。它的用處是把說不清楚的害怕變成看得見的東西，不是幫你算出正確答案。</p>
+      <div class="whybox"><b>那兩個空心圈是甚麼</b>那是書裡那組對照：作者算出來的壞處是「暫時的、三四分」，好處是「永久的、九十分」，所以他說值得。你的兩個點跟它像不像，決定了那本書的結論適不適合搬到你身上。</div>
+    </section>
+
+    <!-- 5 · 第四問 -->
+    <section class="screen" data-q="4">
+      <div class="kicker">第四問 · 演習</div>
+      <h2>如果今天收入就沒了，<br>你靠甚麼撐下去？</h2>
+      <p class="hint">這一題不是嚇自己，是把答案先找出來，之後就不用再怕它。</p>
+      <label for="survive">我會這樣撐過去</label>
+      <textarea id="survive" maxlength="300" placeholder="例如：先靠存款兩個月，同時接以前那種案子，一個月大概能補回一半"></textarea>
+      <div class="guide">寫得出來，這件事就從「不敢想」變成「已經想過」。<b>差別只在這裡。</b></div>
+    </section>
+
+    <!-- 6 · 第五問 -->
+    <section class="screen" data-q="5">
+      <div class="kicker">第五問 · 一直在推的那件事</div>
+      <h2>有沒有一件事，<br>你因為害怕<br>一直往後推？</h2>
+      <p class="hint">通常一想到就會胃緊的那件。</p>
+      <label for="delayed">我一直在推的是</label>
+      <textarea id="delayed" maxlength="200" placeholder="例如：跟主管說我想調整工作範圍"></textarea>
+      <label for="ministep">這星期可以先做的一小步</label>
+      <input class="txt" id="ministep" maxlength="120" placeholder="例如：先把要說的三句話寫下來">
+      <div class="guide">挑小到今天就能做完的那種。<b>這一格的目的不是解決它，是讓它動一下。</b></div>
+    </section>
+
+    <!-- 7 · 第六問 -->
+    <section class="screen" data-q="6">
+      <div class="kicker">第六問 · 不動的代價</div>
+      <h2>如果甚麼都不改，<br>一年後會是甚麼樣子？</h2>
+      <p class="hint">三個地方分開想。至少寫一個。</p>
+      <label for="costMoney">錢<span class="optional">可留空</span></label>
+      <input class="txt" id="costMoney" maxlength="120" placeholder="例如：薪水一樣，但物價不會一樣">
+      <label for="costMood">心情<span class="optional">可留空</span></label>
+      <input class="txt" id="costMood" maxlength="120" placeholder="例如：每個星期天晚上都不想睡">
+      <label for="costBody">身體<span class="optional">可留空</span></label>
+      <input class="txt" id="costBody" maxlength="120" placeholder="例如：胃痛已經一年了，還沒去看">
+      <div class="whybox"><b>為甚麼要問這一題</b>大部分人只算「動了會失去甚麼」，不算「不動會失去甚麼」。不動的代價一直在付，只是它不會寄帳單來。這一題就是把帳單自己開出來。</div>
+    </section>
+
+    <!-- 8 · 第七問 -->
+    <section class="screen" data-q="7">
+      <div class="kicker">第七問 · 你在等甚麼</div>
+      <h2>那，你在等甚麼？</h2>
+      <p class="hint">先寫你在等的東西，再寫你怎麼知道它到了。</p>
+      <div class="chips" data-target="waitFor">
+        <button class="chip" type="button">存夠錢</button>
+        <button class="chip" type="button">孩子大一點</button>
+        <button class="chip" type="button">工作穩定下來</button>
+        <button class="chip" type="button">準備好</button>
+        <button class="chip" type="button">別人同意</button>
+        <button class="chip" type="button">一個好時機</button>
+      </div>
+      <label for="waitFor">我在等</label>
+      <input class="txt" id="waitFor" maxlength="120" placeholder="例如：存夠一年的生活費">
+      <label for="waitSignal">我會知道它到了，因為<span class="optional">可留空</span></label>
+      <input class="txt" id="waitSignal" maxlength="120" placeholder="例如：戶頭到三十萬，而且連續三個月沒動用">
+      <div class="guide">如果第二格寫得出來，那是一個計劃，去執行它就好。<b>如果寫不出來，那大概不是時機的問題。</b></div>
+    </section>
+
+    <!-- 9 · 第八問 -->
+    <section class="screen" data-q="8">
+      <div class="kicker">第八問 · 書上沒有的</div>
+      <h2>你的退路<br>是甚麼？</h2>
+      <p class="hint">這一題不在書裡，是我加的。理由寫在下面。</p>
+      <div class="meter">
+        <div class="mt">如果三個月後你想回頭，回得去嗎？</div>
+        <div class="ms">先誠實回答這一格，其他都好說。</div>
+        <div class="seg" data-seg="backRev"><button type="button" data-v="easy">回得去</button><button type="button" data-v="hard">要花點力氣</button><button type="button" data-v="none">回不去</button></div>
+      </div>
+      <label for="backText">我的退路具體是甚麼<span class="optional">可留空</span></label>
+      <textarea id="backText" maxlength="200" placeholder="例如：證照還在，前公司主管說過隨時可以回去談"></textarea>
+      <label for="backMonths">沒有收入的話，你能撐幾個月？<span class="optional">可留空</span></label>
+      <input class="txt" id="backMonths" type="number" min="0" max="600" inputmode="numeric" placeholder="例如：8">
+      <div class="whybox"><b>為甚麼加這一題</b>書裡每個敢跳的人，其實都有退路——執照還在、原本的生意還在轉。書把退路寫進了故事，卻沒有寫進方法。少了這一欄，這套練習就是把有安全網的人的算法，賣給沒有安全網的人。<br><br>沒有退路不代表不能做。它代表這一步要走得小一點、留得住回頭的餘地。</div>
+      <div class="whybox" style="margin-top:14px"><b>有些擋路的東西，寫下來也不會消失</b>如果你的最壞情況來自簽證或居留身分、要照顧的家人、沒有任何存款緩衝、或是還不完的債——那不是心理練習能解決的，把它寫得再清楚也一樣。<br><br>那些需要的是真正的資源：法律或移民諮詢、社福與照護支援、債務協商、一筆先存起來的緊急金。這張卡能幫你看清楚它們是甚麼，但看清楚之後，下一步是去找資源，不是再寫一次。</div>
+    </section>
+
+    <!-- 10 · 卡片 -->
+    <section class="screen" data-result="1">
+      <div class="kicker">完成 · 你的恐懼拆解卡</div>
+      <h2>害怕沒有變小，<br>只是變成了清單</h2>
+      <p class="hint">下面每一格，都是原本擠在腦裡的那一團。</p>
+      <div class="card-out" id="card">
+        <div class="seal">❦</div><h3>恐 懼 拆 解 卡</h3><div class="csub">Fear · No. 04</div><div class="rule"></div>
+        <div class="cardplot">
+          <svg viewBox="0 0 300 150" role="img" aria-label="恐懼對照圖">
+            <rect x="30" y="10" width="256" height="112" fill="none" stroke="#d6cdba" stroke-width="1"></rect>
+            <line x1="158" y1="10" x2="158" y2="122" stroke="#d6cdba" stroke-width="1" stroke-dasharray="3 4"></line>
+            <line x1="30" y1="66" x2="286" y2="66" stroke="#d6cdba" stroke-width="1" stroke-dasharray="3 4"></line>
+            <circle id="cDotBad" cx="0" cy="0" r="7" fill="#9c5f4a" fill-opacity=".85" stroke="#f5f0e6" stroke-width="1.2"></circle>
+            <circle id="cDotGood" cx="0" cy="0" r="7" fill="#6b7a5e" fill-opacity=".85" stroke="#f5f0e6" stroke-width="1.2"></circle>
+            <text x="24" y="15" font-size="8" fill="#938b78" text-anchor="end">10</text>
+            <text x="24" y="125" font-size="8" fill="#938b78" text-anchor="end">1</text>
+            <text x="62" y="137" font-size="8" fill="#938b78" text-anchor="middle">暫時的</text>
+            <text x="254" y="137" font-size="8" fill="#938b78" text-anchor="middle">永久的</text>
+            <text x="158" y="148" font-size="7.5" text-anchor="middle"><tspan fill="#9c5f4a">● 最壞</tspan><tspan fill="#938b78">　</tspan><tspan fill="#6b7a5e">● 最好</tspan><tspan fill="#938b78">　上下＝影響 1–10</tspan></text>
+          </svg>
+        </div>
+        <div class="cardverdict" id="cardVerdict">—</div>
+        <div class="compare">
+          <div><div class="k">最壞的情況</div><div class="v" id="cWorst">—</div><div class="m" id="cWorstMeta">—</div></div>
+          <div><div class="k">我會怎麼接住它</div><div class="v" id="cFix">—</div></div>
+          <div><div class="k">順利的話會得到</div><div class="v" id="cBest">—</div><div class="m" id="cBestMeta">—</div></div>
+        </div>
+        <div class="field"><div class="k">收入沒了，我靠這個撐</div><div class="v" id="cSurvive">—</div></div>
+        <div class="divider"></div>
+        <div class="onething"><div class="k">這星期先做這一小步</div><div class="v" id="cStep">—</div><div class="s" id="cDelayed">—</div></div>
+        <div class="field"><div class="k">甚麼都不改，一年後</div><div class="v" id="cCost">—</div></div>
+        <div class="field"><div class="k">我在等的</div><div class="v" id="cWait">—</div></div>
+        <div class="field" style="margin-bottom:0"><div class="k">我的退路</div><div class="v" id="cBack">—</div></div>
+        <div class="mantra">寫下來的害怕，才拆得動。</div>
+        <div class="edition">Edition No. 04 · MMXXVI</div>
+      </div>
+      <div class="result-actions">
+        <button class="btn ghost save-image" id="saveImage" type="button">儲存為圖片</button>
+        <button class="btn ghost" id="copyCard" type="button">複製文字</button>
+        <button class="btn ghost" id="shareCard" type="button">分享</button>
+      </div>
+      <button class="record-link result-record" id="openBookResult" type="button">查看恐懼拆解卡紀錄簿（<span id="resultRecordCount">0</span>）</button>
+      <div class="whybox" style="margin-top:26px"><b>下一步</b>把「這星期先做這一小步」帶進<a href="tool-result-lock.html" style="color:var(--accent)">成果鎖定卡</a>，給它一個交付日期。害怕最怕的就是被排進行事曆。</div>
+    </section>
+
+  </div>
+  <div class="foot">
+    <div class="slowhint" id="slowhint"></div>
+    <div class="gatehint" id="gatehint"></div>
+    <button class="btn" id="next" type="button">開始</button>
+  </div>
+</div>
+
+<aside class="record-book" id="recordBook" aria-hidden="true">
+  <div class="record-sheet">
+    <div class="record-head"><h2>恐懼拆解卡紀錄簿</h2><button class="record-close" id="closeBook" type="button" aria-label="關閉">✕</button></div>
+    <p class="record-note">最多保存 50 張，只存在這個瀏覽器。</p>
+    <div id="recordList"></div>
+    <button class="record-clear" id="clearBook" type="button">清空全部紀錄</button>
+  </div>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const screens=[...document.querySelectorAll('.screen')];
+const LAST=screens.length-1, PLOT=4;
+const textIds=['worstText','fixText','bestText','precedent','survive','delayed','ministep','costMoney','costMood','costBody','waitFor','waitSignal','backText','backMonths'];
+const rangeIds=['worstScore','bestScore'];
+const segKeys=['worstPerm','worstOdds','bestPerm','backRev'];
+const draftKey='toolbook_fear_v1', historyKey='toolbook_fear_history_v1';
+const params=new URLSearchParams(location.search);
+const isDemo=params.get('demo')==='1', forcedStep=params.has('s');
+let i=0, draftId='', cards=loadCards(), seg={worstPerm:null,worstOdds:null,bestPerm:null,backRev:null}, locked={}, clearing=false;
+let qStart=Date.now(), slowShown={}, lastTracked=-1;
+
+const val=id=>($(id)?.value||'').trim().replace(/[，、]+$/,'');
+const STEP_NAMES=['welcome','worst_case','how_to_catch','upside','comparison','dismissal_drill','delayed_thing','cost_of_inaction','what_waiting_for','fallback','fear_card'];
+function track(name,data={}){if(!isDemo&&typeof gtag==='function')gtag('event',name,{tool_name:'fear_card',...data})}
+const num=id=>Number($(id)?.value||0);
+const escapeHtml=v=>String(v==null?'':v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+const PERM_TEXT={'0':'暫時的','0.5':'暫時還是永久說不準','1':'永久的'};
+const ODDS_TEXT={high:'很可能發生',mid:'說不準會不會發生',low:'不太可能發生'};
+const BACK_TEXT={easy:'回得去',hard:'要花點力氣才回得去',none:'回不去'};
+
+/* ---------- 關卡 ---------- */
+function qOf(n){return screens[n]?.dataset.q?Number(screens[n].dataset.q):0}
+function valid(n){
+  switch(n){
+    case 1: return !!val('worstText') && seg.worstPerm!==null && seg.worstOdds!==null;
+    case 2: return !!val('fixText');
+    case 3: return !!val('bestText') && seg.bestPerm!==null;
+    case 5: return !!val('survive');
+    case 6: return !!val('delayed') && !!val('ministep');
+    case 7: return !!(val('costMoney')||val('costMood')||val('costBody'));
+    case 8: return !!val('waitFor');
+    case 9: return seg.backRev!==null;
+    default: return true;
+  }
+}
+function gateText(n){
+  if(valid(n))return '';
+  if(n===1)return '寫下最壞的情況，並選好下面兩格';
+  if(n===3)return '寫下好的那一面，並選好是暫時還是永久';
+  if(n===6)return '兩格都要寫：那件事，和這星期的一小步';
+  if(n===7)return '三個地方，至少寫一個';
+  if(n===9)return '先回答「回不回得去」';
+  return '完成這一題，才能繼續';
+}
+
+/* ---------- 封存 ---------- */
+function isLocked(n){return !!locked[qOf(n)]}
+function applyLockUI(){
+  const q=qOf(i), on=isLocked(i), sc=screens[i];
+  if(!q)return;
+  sc.querySelectorAll('textarea,input.txt,input[type=range],.chip,.seg button').forEach(el=>{el.disabled=on;if(el.tagName==='TEXTAREA'||el.classList.contains('txt'))el.disabled=on;});
+  let tag=sc.querySelector('.sealed-tag');
+  if(on&&!tag){
+    tag=document.createElement('div');tag.className='sealed-tag';
+    tag.innerHTML='<span>這一題已封存</span><button type="button">我要重寫</button>';
+    tag.querySelector('button').addEventListener('click',unseal);
+    sc.appendChild(tag);
+  }
+  if(tag)tag.style.display=on?'flex':'none';
+}
+function unseal(){
+  if(!confirm('重寫這一題？第一個念頭通常最接近真的，改過之後就找不回來了。'))return;
+  delete locked[qOf(i)];applyLockUI();updateGate();saveDraft();
+  $('next').textContent=i===LAST-1?'生成恐懼拆解卡':'封存這一題';
+  qStart=Date.now();delete slowShown[i];$('slowhint').textContent='';
+}
+
+/* ---------- 畫面 ---------- */
+function render(){
+  screens.forEach((s,n)=>s.classList.toggle('active',n===i));
+  $('back').classList.toggle('hide',i===0);
+  $('dots').innerHTML = i===0?'':Array.from({length:LAST-1},(_,n)=>{
+    const step=n+1;return `<span class="dot ${step===i?'on':step<i?'done':''}"></span>`;}).join('');
+  $('next').textContent = i===0?'開始'
+    : i===LAST?'再做一張'
+    : i===LAST-1?'生成恐懼拆解卡'
+    : i===PLOT?'繼續'
+    : isLocked(i)?'下一題':'封存這一題';
+  $('resultRecordCount').textContent=cards.length;
+  if(i===PLOT)drawPlot();
+  applyLockUI();updateGate();
+  qStart=Date.now();$('slowhint').textContent='';
+  $('stage').scrollTop=0;
+  if(i>0&&lastTracked!==i){lastTracked=i;track('step_view',{step_number:i,step_name:STEP_NAMES[i]||'step_'+i})}
+}
+function updateGate(){
+  const ok=valid(i)||isLocked(i);
+  $('next').disabled=!ok;$('gatehint').textContent=ok?'':gateText(i);
+}
+function next(){
+  if(i===0){track('tool_start');i=1;saveDraft();render();return}
+  if(i===LAST){startNew();return}
+  if(i===LAST-1){if(!valid(i)&&!isLocked(i))return;locked[qOf(i)]=1;archiveCard();buildCard();i=LAST;saveDraft();render();
+    track('tool_complete',{verdict_type:verdictLine().stop?'book_not_applicable':'book_applicable',
+      worst_score:num('worstScore'),best_score:num('bestScore'),fallback:seg.backRev||'none'});return}
+  if(!valid(i)&&!isLocked(i))return;
+  const q=qOf(i);if(q)locked[q]=1;
+  i++;saveDraft();render();
+}
+function prev(){if(i>0){i--;saveDraft();render()}}
+
+/* ---------- 慢一點的提醒（不催、不倒數） ---------- */
+setInterval(()=>{
+  if(!qOf(i)||isLocked(i)||slowShown[i])return;
+  if(Date.now()-qStart>150000){slowShown[i]=1;$('slowhint').textContent='想了一會兒了。第一個浮上來的念頭，通常就是那個答案。';}
+},5000);
+
+/* ---------- 對照圖 ---------- */
+function px(perm,x0,w){return x0+(perm===null?0.5:Number(perm))*w}
+function py(score,y0,h){return y0+h-((score-1)/9)*h}
+function drawPlot(){
+  let bx=px(seg.worstPerm,64,208), by=py(num('worstScore'),22,160);
+  let gx=px(seg.bestPerm,64,208), gy=py(num('bestScore'),22,160);
+  if(Math.abs(bx-gx)<16&&Math.abs(by-gy)<16){bx-=10;gx+=10}
+  place('dotBad',bx,by);place('dotGood',gx,gy);
+  placeT('dotBadT',bx,by-14);placeT('dotGoodT',gx,gy+20);
+  const rbx=px(0,64,208), rby=py(3.5,22,160), rgx=px(1,64,208), rgy=py(9.5,22,160);
+  place('refBad',rbx,rby);place('refGood',rgx,rgy);
+  placeT('refBadT',rbx+11,rby+3);placeT('refGoodT',rgx-11,rgy+3);
+  const v=verdict(), box=$('verdict');
+  box.className='verdict'+(v.stop?' stop':'');
+  box.querySelector('h4').textContent=v.title;
+  box.querySelector('p').innerHTML=v.body;
+}
+function place(id,x,y){const e=$(id);if(e){e.setAttribute('cx',x.toFixed(1));e.setAttribute('cy',y.toFixed(1))}}
+function placeT(id,x,y){const e=$(id);if(e){e.setAttribute('x',x.toFixed(1));e.setAttribute('y',y.toFixed(1))}}
+function verdict(){
+  const bs=num('worstScore'), gs=num('bestScore'), bp=Number(seg.worstPerm||0), gp=Number(seg.bestPerm||0);
+  let v;
+  if(bp===1&&bs>=8){
+    v={stop:true,title:'這一段要停下來看',
+      body:`你寫的最壞情況是<b>永久的，而且有 ${bs} 分</b>。這本書之所以敢說「去做吧」，是因為它假設壞的那一邊會過去、而且不大。你的情況不是這樣。<br><br><b>所以這本書的結論，不適用於你。</b><br><br>後面幾題還是值得做——但請把它們當成把事情看清楚，不要當成一句「所以動手吧」。特別是最後一題：退路。`};
+  }else if(gs-bs>=2&&bp<=0.5){
+    v={stop:false,title:'兩邊差得很開',
+      body:`壞的一邊 ${bs} 分、${PERM_TEXT[String(bp)]}；好的一邊 ${gs} 分、${PERM_TEXT[String(gp)]}。差距就在這裡。<br><br>接下來幾題會告訴你，這個差距要用甚麼代價換。`};
+  }else{
+    v={stop:false,title:'兩邊差不多',
+      body:`壞的一邊 ${bs} 分，好的一邊 ${gs} 分，這張圖上看不出誰重誰輕。<br><br>這通常不是壞事。它代表值不值得還要看後面幾題，特別是「甚麼都不改，一年後會是甚麼樣子」那一題。`};
+  }
+  if(seg.worstOdds==='low')v.body+='<br><br>另外，你自己也覺得最壞的情況不太可能發生。';
+  if(seg.worstOdds==='high')v.body+='<br><br>另外，你覺得它很可能發生——那第二題「怎麼接住它」，就是這整張卡最重要的一格。';
+  return v;
+}
+function verdictLine(){
+  const bs=num('worstScore'), gs=num('bestScore'), bp=Number(seg.worstPerm||0);
+  if(bp===1&&bs>=8)return{stop:true,text:'最壞的一邊是永久的，而且很重。<br>這本書的算法不適用於你。'};
+  if(gs-bs>=2&&bp<=0.5)return{stop:false,text:`壞的 ${bs} 分、${PERM_TEXT[String(bp)]}；好的 ${gs} 分。<br>差距在這裡。`};
+  return{stop:false,text:`壞的 ${bs} 分，好的 ${gs} 分。<br>誰重誰輕，還要看下面幾格。`};
+}
+
+/* ---------- 卡片 ---------- */
+function costText(){
+  const parts=[];
+  if(val('costMoney'))parts.push('錢：'+val('costMoney'));
+  if(val('costMood'))parts.push('心情：'+val('costMood'));
+  if(val('costBody'))parts.push('身體：'+val('costBody'));
+  return parts.join('\n')||'—';
+}
+function waitText(){
+  const a=val('waitFor');if(!a)return '—';
+  return val('waitSignal')?a+'\n我會知道它到了，因為：'+val('waitSignal'):a+'\n（還說不出怎麼知道它到了）';
+}
+function backLine(){
+  const parts=[];
+  if(seg.backRev)parts.push(BACK_TEXT[seg.backRev]);
+  if(val('backText'))parts.push(val('backText'));
+  if(val('backMonths'))parts.push('沒有收入能撐 '+val('backMonths')+' 個月');
+  return parts.join('\n')||'—';
+}
+function buildCard(){
+  let bx=px(seg.worstPerm,44,228), by=py(num('worstScore'),16,100);
+  let gx=px(seg.bestPerm,44,228), gy=py(num('bestScore'),16,100);
+  if(Math.abs(bx-gx)<13&&Math.abs(by-gy)<13){bx-=8;gx+=8}
+  place('cDotBad',bx,by);place('cDotGood',gx,gy);
+  const v=verdictLine();
+  $('cardVerdict').className='cardverdict'+(v.stop?' stop':'');
+  $('cardVerdict').innerHTML=v.text;
+  $('cWorst').textContent=val('worstText')||'—';
+  $('cWorstMeta').textContent=`影響 ${num('worstScore')} 分 · ${PERM_TEXT[String(seg.worstPerm||0)]} · ${ODDS_TEXT[seg.worstOdds]||'—'}`;
+  $('cFix').textContent=val('fixText')||'—';
+  $('cBest').textContent=val('bestText')||'—';
+  $('cBestMeta').textContent=`影響 ${num('bestScore')} 分 · ${PERM_TEXT[String(seg.bestPerm||0)]}`+(val('precedent')?' · 已經有人走過：'+val('precedent'):'');
+  $('cSurvive').textContent=val('survive')||'—';
+  $('cStep').textContent=val('ministep')||'—';
+  $('cDelayed').textContent=val('delayed')?'為了：'+val('delayed'):'—';
+  $('cCost').textContent=costText();
+  $('cWait').textContent=waitText();
+  $('cBack').textContent=backLine();
+}
+function cardText(){
+  return `恐懼拆解卡\n\n最壞的情況：${val('worstText')}\n（影響 ${num('worstScore')} 分 · ${PERM_TEXT[String(seg.worstPerm||0)]} · ${ODDS_TEXT[seg.worstOdds]||'—'}）\n\n我會怎麼接住它：${val('fixText')}\n\n順利的話會得到：${val('bestText')}\n（影響 ${num('bestScore')} 分 · ${PERM_TEXT[String(seg.bestPerm||0)]}）\n\n收入沒了，我靠這個撐：${val('survive')}\n\n這星期先做這一小步：${val('ministep')}\n為了：${val('delayed')}\n\n甚麼都不改，一年後：\n${costText()}\n\n我在等的：${waitText().replace(/\n/g,'　')}\n\n我的退路：${backLine().replace(/\n/g,'　')}\n\n寫下來的害怕，才拆得動。`;
+}
+
+/* ---------- 匯出圖片 ---------- */
+function canvasLines(ctx,text,maxWidth){
+  const out=[];
+  String(text==null||text===''?'—':text).split('\n').forEach(part=>{
+    let line='';
+    for(const ch of Array.from(part||' ')){const nx=line+ch;if(line&&ctx.measureText(nx).width>maxWidth){out.push(line);line=ch}else line=nx}
+    out.push(line||' ');
+  });
+  return out;
+}
+function saveCardImage(){
+  const width=1080,pad=110,maxWidth=width-pad*2;
+  const blocks=[
+    ['最壞的情況',val('worstText'),'600 40px serif',58],
+    ['',`影響 ${num('worstScore')} 分 · ${PERM_TEXT[String(seg.worstPerm||0)]} · ${ODDS_TEXT[seg.worstOdds]||'—'}`,'26px sans-serif',42],
+    ['我會怎麼接住它',val('fixText'),'34px sans-serif',52],
+    ['順利的話會得到',val('bestText'),'600 40px serif',58],
+    ['',`影響 ${num('bestScore')} 分 · ${PERM_TEXT[String(seg.bestPerm||0)]}`,'26px sans-serif',42],
+    ['收入沒了，我靠這個撐',val('survive'),'34px sans-serif',52],
+    ['這星期先做這一小步',val('ministep'),'600 38px serif',56],
+    ['',val('delayed')?'為了：'+val('delayed'):'','26px sans-serif',42],
+    ['甚麼都不改，一年後',costText(),'34px sans-serif',52],
+    ['我在等的',waitText(),'34px sans-serif',52],
+    ['我的退路',backLine(),'34px sans-serif',52]
+  ].filter(b=>b[0]||b[1]);
+  const probe=document.createElement('canvas').getContext('2d');
+  const prepared=blocks.map(b=>{probe.font=b[2];return [...b,canvasLines(probe,b[1],maxWidth)]});
+  const gx0=pad,gy0=345,gw=width-pad*2,gh=300;
+  const vlines=verdictLine().text.split('<br>');
+  const startY=gy0+gh+120+vlines.length*44+46;
+  const height=Math.max(1500,startY+prepared.reduce((s,b)=>s+(b[0]?60:6)+b[4].length*b[3]+30,0)+220);
+  const c=document.createElement('canvas');c.width=width;c.height=height;
+  const ctx=c.getContext('2d');
+  ctx.fillStyle='#f5f0e6';ctx.fillRect(0,0,width,height);
+  ctx.strokeStyle='#c9bea4';ctx.lineWidth=3;ctx.strokeRect(42,42,width-84,height-84);
+  ctx.lineWidth=1;ctx.strokeRect(58,58,width-116,height-116);
+  ctx.textAlign='center';ctx.fillStyle='#8a6f44';ctx.font='42px serif';ctx.fillText('❦',width/2,145);
+  ctx.fillStyle='#2c2820';ctx.font='600 42px serif';ctx.fillText('恐 懼 拆 解 卡',width/2,215);
+  ctx.fillStyle='#938b78';ctx.font='18px sans-serif';ctx.fillText('F E A R  ·  N O.  0 4',width/2,260);
+  ctx.strokeStyle='#8a6f44';ctx.beginPath();ctx.moveTo(width/2-34,300);ctx.lineTo(width/2+34,300);ctx.stroke();
+  // 對照圖
+  ctx.strokeStyle='#d6cdba';ctx.lineWidth=2;ctx.strokeRect(gx0,gy0,gw,gh);
+  ctx.setLineDash([6,8]);
+  ctx.beginPath();ctx.moveTo(gx0+gw/2,gy0);ctx.lineTo(gx0+gw/2,gy0+gh);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(gx0,gy0+gh/2);ctx.lineTo(gx0+gw,gy0+gh/2);ctx.stroke();
+  ctx.setLineDash([]);
+  const pxc=p=>gx0+30+(p===null?0.5:Number(p))*(gw-60);
+  const pyc=s=>gy0+gh-30-((s-1)/9)*(gh-60);
+  let cbx=pxc(seg.worstPerm),cby=pyc(num('worstScore')),cgx=pxc(seg.bestPerm),cgy=pyc(num('bestScore'));
+  if(Math.abs(cbx-cgx)<34&&Math.abs(cby-cgy)<34){cbx-=20;cgx+=20}
+  ctx.globalAlpha=.85;
+  ctx.fillStyle='#9c5f4a';ctx.beginPath();ctx.arc(cbx,cby,17,0,7);ctx.fill();
+  ctx.fillStyle='#6b7a5e';ctx.beginPath();ctx.arc(cgx,cgy,17,0,7);ctx.fill();
+  ctx.globalAlpha=1;
+  ctx.fillStyle='#938b78';ctx.font='20px sans-serif';ctx.textAlign='left';
+  ctx.fillText('暫時的',gx0+14,gy0+gh+34);ctx.textAlign='right';ctx.fillText('永久的',gx0+gw-14,gy0+gh+34);
+  ctx.textAlign='center';
+  const ly=gy0+gh+72;
+  ctx.fillStyle='#9c5f4a';ctx.beginPath();ctx.arc(gx0+gw/2-190,ly-7,9,0,7);ctx.fill();
+  ctx.textAlign='left';ctx.fillStyle='#938b78';ctx.fillText('最壞',gx0+gw/2-172,ly);
+  ctx.fillStyle='#6b7a5e';ctx.beginPath();ctx.arc(gx0+gw/2-80,ly-7,9,0,7);ctx.fill();
+  ctx.fillStyle='#938b78';ctx.fillText('最好',gx0+gw/2-62,ly);
+  ctx.fillText('（上下＝影響大小）',gx0+gw/2+20,ly);
+  ctx.textAlign='right';ctx.fillText('10',gx0-14,gy0+34);ctx.fillText('1',gx0-14,gy0+gh);
+  ctx.textAlign='center';
+  const vl=verdictLine();
+  ctx.fillStyle=vl.stop?'#9c5f4a':'#8a6f44';ctx.font='600 30px serif';
+  let vy=gy0+gh+140;
+  vlines.forEach(t=>{ctx.fillText(t,width/2,vy);vy+=44});
+  let y=startY;
+  ctx.textAlign='left';
+  prepared.forEach(b=>{
+    if(b[0]){ctx.fillStyle='#938b78';ctx.font='20px sans-serif';ctx.fillText(b[0],pad,y);y+=52}
+    ctx.fillStyle=b[0]==='這星期先做這一小步'?'#8a6f44':(b[0]?'#2c2820':'#938b78');
+    ctx.font=b[2];b[4].forEach(line=>{ctx.fillText(line,pad,y);y+=b[3]});
+    y+=30;
+  });
+  ctx.textAlign='center';ctx.fillStyle='#8a6f44';ctx.font='30px serif';
+  ctx.fillText('寫下來的害怕，才拆得動。',width/2,y+40);
+  ctx.fillStyle='#938b78';ctx.font='16px sans-serif';ctx.fillText('Edition No. 04 · MMXXVI',width/2,height-90);
+  c.toBlob(blob=>{
+    if(!blob){toast('圖片生成失敗，請稍後再試');return}
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='恐懼拆解卡-Toolbook.png';a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('恐懼拆解卡圖片已儲存');track('save_image');
+  },'image/png');
+}
+
+/* ---------- 保存 ---------- */
+function saveDraft(){
+  if(isDemo||clearing)return;
+  try{
+    const fields={};textIds.forEach(id=>fields[id]=$(id).value);rangeIds.forEach(id=>fields[id]=$(id).value);
+    localStorage.setItem(draftKey,JSON.stringify({step:i,draftId,fields,seg,locked,updatedAt:new Date().toISOString()}));
+  }catch(_){}
+}
+function loadDraft(){
+  if(isDemo)return false;
+  try{
+    const d=JSON.parse(localStorage.getItem(draftKey)||'null');if(!d)return false;
+    const f=d.fields||{};
+    textIds.concat(rangeIds).forEach(id=>{if(f[id]!=null)$(id).value=f[id]});
+    if(d.seg)segKeys.forEach(k=>{if(d.seg[k]!==undefined)seg[k]=d.seg[k]});
+    locked=d.locked&&typeof d.locked==='object'?d.locked:{};
+    draftId=d.draftId||'';
+    i=Number.isInteger(d.step)?Math.max(0,Math.min(LAST,d.step)):0;
+    syncSegUI();syncRangeUI();
+    if(i===LAST)buildCard();
+    return textIds.some(id=>val(id));
+  }catch(_){return false}
+}
+function syncSegUI(){
+  document.querySelectorAll('[data-seg]').forEach(box=>{
+    const k=box.dataset.seg;
+    box.querySelectorAll('button').forEach(b=>b.classList.toggle('on',seg[k]!==null&&String(seg[k])===b.dataset.v));
+  });
+}
+function syncRangeUI(){rangeIds.forEach(id=>{$(id+'Num').textContent=$(id).value})}
+
+/* ---------- 紀錄簿 ---------- */
+function loadCards(){try{const d=JSON.parse(localStorage.getItem(historyKey)||'[]');return Array.isArray(d)?d.slice(0,50):[]}catch(_){return []}}
+function saveCards(){try{localStorage.setItem(historyKey,JSON.stringify(cards.slice(0,50)))}catch(_){}}
+function archiveCard(){
+  const now=new Date().toISOString();
+  if(!draftId)draftId='fear_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,6);
+  const old=cards.find(c=>c.id===draftId);
+  const card={id:draftId,createdAt:old?old.createdAt:now,updatedAt:now,seg:{...seg}};
+  textIds.concat(rangeIds).forEach(id=>card[id]=$(id).value);
+  cards=[card,...cards.filter(c=>c.id!==draftId)].slice(0,50);
+  saveCards();renderBook();
+}
+function formatCreated(v){const d=new Date(v);return Number.isNaN(d.getTime())?'日期不明':d.toLocaleDateString('zh-HK',{year:'numeric',month:'2-digit',day:'2-digit'})}
+function renderBook(){
+  const list=$('recordList');$('clearBook').style.display=cards.length?'block':'none';
+  list.innerHTML=cards.length?cards.map((c,n)=>`<article class="record-card">
+    <div class="record-meta"><span>第 ${cards.length-n} 張 · ${formatCreated(c.createdAt)}</span><button class="record-delete" type="button" data-delete="${escapeHtml(c.id)}">刪除</button></div>
+    <div class="record-label">最壞的情況</div><div class="record-value">${escapeHtml(c.worstText)||'—'}</div>
+    <div class="record-label">我會怎麼接住它</div><div class="record-value">${escapeHtml(c.fixText)||'—'}</div>
+    <div class="record-label">順利的話會得到</div><div class="record-value">${escapeHtml(c.bestText)||'—'}</div>
+    <div class="record-label">這星期先做這一小步</div><div class="record-value">${escapeHtml(c.ministep)||'—'}</div>
+    <div class="record-label">我的退路</div><div class="record-value">${escapeHtml(BACK_TEXT[c.seg?.backRev]||'—')}</div>
+    <div class="record-actions"><button class="record-open" type="button" data-open="${escapeHtml(c.id)}">開啟／匯出這張卡</button></div>
+  </article>`).join(''):'<div class="record-empty">還沒有恐懼拆解卡。<br>完成第一張後，會保存在這裡。</div>';
+  list.querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',()=>deleteCard(b.dataset.delete)));
+  list.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openCard(b.dataset.open)));
+}
+function openBook(){$('recordBook').classList.add('open');$('recordBook').setAttribute('aria-hidden','false');renderBook()}
+function closeBook(){$('recordBook').classList.remove('open');$('recordBook').setAttribute('aria-hidden','true')}
+function openCard(id){
+  const c=cards.find(x=>x.id===id);if(!c)return;
+  textIds.concat(rangeIds).forEach(k=>$(k).value=c[k]||'');
+  segKeys.forEach(k=>seg[k]=c.seg?.[k]??null);
+  if(!$('worstScore').value)$('worstScore').value=5;
+  if(!$('bestScore').value)$('bestScore').value=5;
+  draftId=c.id;locked={1:1,2:1,3:1,4:1,5:1,6:1,7:1,8:1};i=LAST;
+  syncSegUI();syncRangeUI();buildCard();saveDraft();closeBook();render();
+  toast('已開啟，可再次儲存或分享');
+}
+function deleteCard(id){if(!confirm('確定刪除這張恐懼拆解卡？'))return;cards=cards.filter(c=>c.id!==id);saveCards();renderBook()}
+function startNew(){
+  if(!confirm('開始一張新的恐懼拆解卡？舊的會保留在紀錄簿。'))return;
+  clearing=true;try{localStorage.removeItem(draftKey)}catch(_){}
+  textIds.forEach(id=>$(id).value='');rangeIds.forEach(id=>$(id).value=5);
+  segKeys.forEach(k=>seg[k]=null);locked={};draftId='';slowShown={};i=1;clearing=false;
+  syncSegUI();syncRangeUI();saveDraft();render();
+}
+function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1700)}
+
+/* ---------- 綁定 ---------- */
+$('next').addEventListener('click',next);
+$('back').addEventListener('click',prev);
+textIds.forEach(id=>$(id).addEventListener('input',()=>{updateGate();saveDraft()}));
+rangeIds.forEach(id=>$(id).addEventListener('input',()=>{$(id+'Num').textContent=$(id).value;saveDraft()}));
+document.querySelectorAll('[data-seg]').forEach(box=>{
+  const k=box.dataset.seg;
+  box.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    seg[k]=b.dataset.v==='0'||b.dataset.v==='0.5'||b.dataset.v==='1'?Number(b.dataset.v):b.dataset.v;
+    syncSegUI();updateGate();saveDraft();
+  }));
+});
+document.querySelectorAll('.chips[data-target]').forEach(box=>{
+  const t=box.dataset.target;
+  box.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>{
+    const el=$(t), cur=el.value.trim().replace(/[，、]+$/,'');
+    el.value=(cur?cur+'、':'')+b.textContent+'，';
+    el.focus();try{el.setSelectionRange(el.value.length,el.value.length)}catch(_){}
+    updateGate();saveDraft();
+  }));
+});
+$('openBook').addEventListener('click',openBook);
+$('openBookResult').addEventListener('click',openBook);
+$('closeBook').addEventListener('click',closeBook);
+$('clearBook').addEventListener('click',()=>{if(!confirm('確定清空全部恐懼拆解卡？'))return;cards=[];saveCards();renderBook()});
+$('saveImage').addEventListener('click',saveCardImage);
+$('copyCard').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(cardText());toast('已複製恐懼拆解卡文字')}catch(_){toast('瀏覽器未允許複製')}});
+$('shareCard').addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:'我的恐懼拆解卡',text:cardText()});else{await navigator.clipboard.writeText(cardText());toast('已複製，可貼到其他地方')}track('share',{method:navigator.share?'web_share':'copy'})}catch(_){}});
+
+/* ---------- 起動 ---------- */
+if(isDemo){
+  const demo={worstText:'收入斷掉，存款大概撐八個月，然後要跟家人開口借錢',fixText:'先接以前那種案子把現金補回來，退掉訂閱和健身房，必要時搬回家住半年',
+    bestText:'時間變成自己的，而且知道自己有本事養活自己',precedent:'有，我前同事三十八歲轉行，當時也沒有存款',
+    survive:'先靠存款兩個月，同時接舊客戶的案子，一個月大概能補回一半',delayed:'跟主管說我想調整工作範圍',ministep:'先把要說的三句話寫下來',
+    costMoney:'薪水一樣，但物價不會一樣',costMood:'每個星期天晚上都不想睡',costBody:'胃痛已經一年了，還沒去看',
+    waitFor:'存夠一年的生活費',waitSignal:'戶頭到三十萬，而且連續三個月沒動用',backText:'證照還在，前主管說過隨時可以回去談',backMonths:'8'};
+  Object.entries(demo).forEach(([k,v])=>{if($(k))$(k).value=v});
+  $('worstScore').value=4;$('bestScore').value=9;
+  seg={worstPerm:0,worstOdds:'low',bestPerm:1,backRev:'hard'};
+  locked={1:1,2:1,3:1,4:1,5:1,6:1,7:1,8:1};
+  syncSegUI();syncRangeUI();i=LAST;buildCard();
+}else{
+  loadDraft();
+}
+if(forcedStep)i=Math.max(0,Math.min(LAST,parseInt(params.get('s'),10)||0));
+renderBook();render();
+</script>
+</body>
+</html>

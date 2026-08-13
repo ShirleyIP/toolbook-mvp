@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CKM6MRRVBM"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());gtag('config','G-CKM6MRRVBM');
+</script>
+<title>空下來之後 · Toolbook</title>
+<meta name="description" content="時間空出來了，然後呢？這張卡不教你把它填滿，只幫你安排一件在乎的事，並且留住該留的空白。">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  :root{--serif:"Songti SC","Noto Serif TC","Source Han Serif TC","Source Han Serif SC",serif;--bg:#ece5d8;--card:#f5f0e6;--ink:#2c2820;--muted:#938b78;--line:#d6cdba;--frame:#c9bea4;--accent:#8a6f44;--onAccent:#f5f0e6;--warn:#9c6b52}
+  html,body{height:100%}body{background:var(--bg);font-family:-apple-system,"PingFang TC",sans-serif;color:var(--ink);line-height:1.7;position:relative}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .app{max-width:460px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative;z-index:1}
+  @media(min-width:520px){.app{border-left:1px solid var(--line);border-right:1px solid var(--line);background:rgba(245,240,230,.35)}}
+  .topbar{flex:none;height:50px;display:flex;align-items:center;position:relative;padding:0 22px}.nav-back{font-size:22px;color:var(--muted);cursor:pointer;line-height:1;width:24px;border:0;background:transparent}.nav-back.hide{visibility:hidden}.dots{position:absolute;left:0;right:0;display:flex;gap:7px;justify-content:center;pointer-events:none}.dot{width:5px;height:5px;border-radius:50%;background:var(--line);transition:.3s}.dot.on{background:var(--accent);width:16px;border-radius:3px}.home{margin-left:auto;color:var(--muted);text-decoration:none;font-size:16px;line-height:1}
+  .stage{flex:1;overflow-y:auto;padding:14px 30px 34px}.stage::-webkit-scrollbar{display:none}.screen{display:none;animation:fade .5s ease}.screen.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .kicker{color:var(--accent);font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px}h1{font-family:var(--serif);font-size:27px;font-weight:600;line-height:1.6;margin-bottom:16px;letter-spacing:.5px}h2{font-family:var(--serif);font-size:23px;font-weight:600;line-height:1.65;margin-bottom:10px;letter-spacing:.5px}.hint{color:var(--muted);font-size:13px;margin-bottom:20px;line-height:1.75}.welcome{display:flex;flex-direction:column;justify-content:center;min-height:54vh;text-align:center}.welcome .seal{font-family:var(--serif);font-size:30px;color:var(--accent);margin-bottom:20px}.privacy{font-size:11px;color:var(--muted);margin-top:14px;line-height:1.75}
+  label{display:block;font-family:var(--serif);font-size:14px;color:#5d564a;margin:18px 0 7px}input.txt,textarea{width:100%;border:1px solid var(--line);background:var(--card);border-radius:4px;padding:14px 15px;font-size:14.5px;font-family:inherit;color:var(--ink);resize:vertical}textarea{min-height:110px;line-height:1.8}input.txt:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(138,111,68,.08)}
+  .optional{font-size:11px;color:var(--muted);letter-spacing:1px;border:1px solid var(--line);border-radius:2px;padding:1px 7px;margin-left:8px;font-family:-apple-system,sans-serif}
+  .guide{border-left:2px solid var(--frame);padding:12px 0 12px 16px;margin-top:22px;color:#655e51;font-family:var(--serif);font-size:14px;line-height:1.9}.guide b{color:var(--accent)}
+  .whybox{border-left:2px solid var(--frame);padding:12px 0 12px 16px;margin-top:22px;color:#655e51;font-size:12.5px;line-height:1.85}.whybox b{font-family:var(--serif);color:var(--accent);display:block;margin-bottom:3px;font-size:13px}
+  .meter{border:1px solid var(--line);background:rgba(245,240,230,.5);border-radius:4px;padding:15px 16px;margin-top:18px}
+  .mt{font-family:var(--serif);font-size:14.5px;margin-bottom:3px}.ms{font-size:11.5px;color:var(--muted);margin-bottom:11px;line-height:1.7}
+  .seg{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+  .seg.three{grid-template-columns:repeat(3,1fr)}
+  .seg button{border:1px solid var(--line);background:var(--card);border-radius:3px;padding:11px 6px;font-family:inherit;font-size:13px;color:#5d564a;cursor:pointer;line-height:1.4}
+  .seg button.on{border-color:var(--accent);color:var(--accent);background:rgba(138,111,68,.07);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+  .chip{border:1px solid var(--line);background:var(--card);border-radius:3px;padding:9px 12px;font-family:inherit;font-size:13px;color:#5d564a;cursor:pointer}
+  .chip:hover{border-color:var(--accent);color:var(--accent)}
+  .alert{border:1px solid var(--warn);background:rgba(156,107,82,.07);border-radius:4px;padding:15px 17px;margin-top:18px;font-size:13.5px;line-height:1.85;color:#7a4f3c;display:none}
+  .alert.show{display:block}.alert b{font-family:var(--serif);display:block;margin-bottom:4px;font-size:14.5px;color:var(--warn)}
+  .card-out{position:relative;border:1px solid var(--frame);border-radius:3px;padding:27px 24px 21px;background:var(--card);box-shadow:inset 0 0 0 5px var(--bg),inset 0 0 0 6px var(--frame)}.card-out .seal{text-align:center;font-family:var(--serif);font-size:22px;color:var(--accent);margin-bottom:5px}.card-out h3{text-align:center;font-family:var(--serif);font-size:15px;letter-spacing:7px;padding-left:7px}.card-out .csub{text-align:center;font-size:8.5px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:5px}.card-out .rule{width:30px;height:1px;background:var(--accent);opacity:.6;margin:14px auto 21px}
+  .hero{margin-bottom:16px}.hero .k,.field .k{font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}.hero .v{font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.55}
+  .field{margin-bottom:14px}.field .v{font-size:14px;white-space:pre-wrap;line-height:1.65}
+  .card-out .divider{height:1px;background:var(--line);margin:17px 0}
+  .blank{text-align:center;border:1px dashed var(--frame);border-radius:2px;padding:14px 12px;margin-top:4px}.blank .k{font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}.blank .v{font-family:var(--serif);font-size:16px;color:var(--accent);line-height:1.6}
+  .mantra{text-align:center;font-family:var(--serif);color:var(--accent);font-size:14px;letter-spacing:2px;margin-top:16px}.edition{text-align:center;font-size:8px;letter-spacing:2px;color:var(--muted);margin-top:10px}
+  .result-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:16px}.result-record{display:block;margin:13px auto 0}
+  .foot{flex:none;padding:8px 30px 26px;background:linear-gradient(transparent,var(--bg) 28%)}.gatehint{text-align:center;font-size:11px;color:var(--muted);margin-bottom:8px;height:15px;letter-spacing:.5px}.btn{display:block;width:100%;background:var(--accent);color:var(--onAccent);border:1px solid var(--accent);border-radius:3px;padding:15px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:1px}.btn:disabled{opacity:.3;cursor:not-allowed}.btn.ghost{background:transparent;color:var(--accent);font-size:12px;padding:11px;font-weight:500}.record-link{display:inline-block;border:0;background:transparent;color:var(--accent);font-family:inherit;font-size:12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-top:18px}
+  .record-book{display:none;position:fixed;inset:0;z-index:20;background:rgba(44,40,32,.35)}.record-book.open{display:block}.record-sheet{width:min(100%,460px);height:100%;margin:0 auto;background:var(--bg);padding:22px 24px 34px;overflow-y:auto}.record-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}.record-head h2{margin:0;font-size:22px}.record-close{border:0;background:transparent;color:var(--muted);font-size:22px;cursor:pointer;padding:6px}.record-note{font-size:12px;color:var(--muted);margin-bottom:18px}.record-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px;margin-bottom:12px}.record-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:10.5px;margin-bottom:11px}.record-delete{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:10.5px;cursor:pointer}.record-label{font-size:8.5px;letter-spacing:2px;color:var(--muted);margin-top:9px}.record-value{font-family:var(--serif);font-size:14px;margin-top:2px;white-space:pre-wrap}.record-actions{display:flex;justify-content:flex-end;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.record-open{border:1px solid var(--accent);border-radius:3px;background:transparent;color:var(--accent);font-family:inherit;font-size:11px;padding:7px 11px;cursor:pointer}.record-empty{text-align:center;color:var(--muted);font-size:13px;padding:60px 10px}.record-clear{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:12px;display:block;margin:24px auto 0;cursor:pointer;text-decoration:underline}.toast{position:fixed;bottom:105px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:3px;font-size:12px;opacity:0;transition:.3s;pointer-events:none;z-index:30}.toast.show{opacity:.95}
+  @media(max-width:390px){.stage{padding-left:24px;padding-right:24px}.foot{padding-left:24px;padding-right:24px}.card-out{padding-left:21px;padding-right:21px}.result-actions{grid-template-columns:1fr 1fr}.result-actions .save-image{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar"><button class="nav-back hide" id="back" type="button" aria-label="上一步">‹</button><div class="dots" id="dots"></div><a class="home" href="index.html" aria-label="回首頁">✕</a></div>
+  <div class="stage" id="stage">
+
+    <section class="screen active">
+      <div class="welcome">
+        <div class="seal">❦</div>
+        <div class="kicker">工具 No. 06 · 空白</div>
+        <h1>時間空出來了，<br>然後呢？</h1>
+        <p class="hint">這張卡不會叫你把空閒填滿。它只幫你安排一件真正在乎的事，然後把該留的空白留住。</p>
+        <p class="privacy">啟發自《一週工作 4 小時》最後一章——那一章推翻了整本書的書名，也是全書唯一有大量研究支持的一段。市面上談這本書的人幾乎不提它。</p>
+        <p class="privacy" style="margin-top:6px">答案預設只保存在這部裝置。</p>
+        <button class="record-link" id="openBook" type="button">查看紀錄簿</button>
+      </div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第一步 · 這段空白</div>
+      <h2>先問一句：<br>這段空下來的時間，<br>是你自己選的嗎？</h2>
+      <p class="hint">兩種空閒完全不一樣，這張卡只幫得上其中一種。</p>
+      <div class="meter">
+        <div class="mt">這段時間空出來，是因為</div>
+        <div class="ms">沒有標準答案，選最接近的那個。</div>
+        <div class="seg three" data-seg="source"><button type="button" data-v="chosen">我自己安排的</button><button type="button" data-v="mixed">一半一半</button><button type="button" data-v="forced">不是我能決定的</button></div>
+      </div>
+      <div class="alert" id="srcAlert">
+        <b>那這張卡幫不上真正的忙</b>
+        失業、被裁、生病、被迫提早退休——這些帶來的難受，來源多半不是「時間太多」，而是收入不穩、跟人斷了聯繫、或是突然不知道自己是誰。研究上這幾件事是分得很開的。<br><br>把時間安排滿，解決不了那幾件事。真正有用的通常是：先處理收入與現實安排，保住一兩個固定會見到面的人，需要的話找專業的人談談。<br><br>你還是可以繼續填，它或許能幫你整理一點頭緒。但請不要把「安排得不夠好」當成自己的問題。
+      </div>
+      <label for="span">這段空白大概有多長</label>
+      <input class="txt" id="span" maxlength="40" placeholder="例如：接下來三週，或每天下班後三小時">
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第二步 · 現況</div>
+      <h2>這幾天，<br>它實際上都怎麼過？</h2>
+      <p class="hint">不用美化，也不用檢討。寫實際發生的樣子就好。</p>
+      <label for="actual">實際上都在做</label>
+      <textarea id="actual" maxlength="200" placeholder="例如：滑手機、追劇、想著應該做點什麼但沒動"></textarea>
+      <div class="whybox"><b>先講清楚一件事</b>空閒本身不是問題。有研究追蹤過三萬多人，發現可支配的時間太少會不快樂，但太多之後，快樂也會往下掉——<b style="display:inline">關鍵不在時間多少，而在那段時間裡有沒有一件你在乎的事</b>。<br><br>所以這張卡要找的不是「怎麼把時間用好」，是那件你在乎的事。</div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第三步 · 那件事</div>
+      <h2>有沒有一件事，<br>你一直說<br>「等有空再做」？</h2>
+      <p class="hint">不必有用、不必有產出、不必變成副業。你在乎就夠了。</p>
+      <div class="chips" id="thingChips">
+        <button class="chip" type="button">學一個沒有用處的東西</button>
+        <button class="chip" type="button">見一個很久沒見的人</button>
+        <button class="chip" type="button">把一直想去的地方走一趟</button>
+        <button class="chip" type="button">做一件手工</button>
+        <button class="chip" type="button">重讀一本喜歡的書</button>
+        <button class="chip" type="button">好好把飯煮起來</button>
+      </div>
+      <p class="hint" style="margin:9px 0 0;font-size:11.5px">點一個當開頭，再換成你自己的。</p>
+      <label for="thing">我一直想做的那件事</label>
+      <textarea id="thing" maxlength="200" placeholder="例如：把爸爸留下來的舊照片整理成一本相簿"></textarea>
+      <div class="guide">如果腦裡冒出來的第一個念頭是「應該去進修」「應該做點對職涯有幫助的事」——先放一邊。<b>那通常是別人的聲音。</b>再想一次：哪件事你想起來會有一點期待？</div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第四步 · 第一下</div>
+      <h2>它的第一個小動作<br>是什麼？</h2>
+      <p class="hint">小到今天、這個下午就能做完的那種。</p>
+      <label for="firstStep">第一個小動作</label>
+      <textarea id="firstStep" maxlength="160" placeholder="例如：把裝照片的那個箱子從櫃子上拿下來"></textarea>
+      <label for="when">什麼時候做</label>
+      <input class="txt" id="when" maxlength="40" placeholder="例如：今天晚上、這個週六早上">
+      <div class="guide">先做一個小到不會失敗的動作，比先想清楚整件事要怎麼做更容易開始。<b>整理不出頭緒的時候，通常是還沒開始，不是還沒想好。</b></div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第五步 · 留白</div>
+      <h2>這段時間裡，<br>你要留多少<br>不安排？</h2>
+      <p class="hint">這一格跟前面相反：它是要你保護一段不做任何事的時間。</p>
+      <label for="blank">我要留下不安排的時間</label>
+      <input class="txt" id="blank" maxlength="60" placeholder="例如：每個週日整天，誰也不約">
+      <div class="whybox"><b>為甚麼要特地留</b>空閒不需要被填滿。有實驗發現，先做一段無聊的事，之後在需要想點子的任務上反而表現更好——放空是有用處的，只是那個用處不會馬上出現。<br><br>而且這張卡最怕變成一件事：把休息也變成待辦清單。<b style="display:inline">留白不是還沒安排，它本身就是安排。</b></div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第六步 · 怎麼算好</div>
+      <h2>過完這段時間，<br>你希望回頭是<br>什麼感覺？</h2>
+      <p class="hint">不是「完成了幾件事」，是你希望自己回頭看的時候，覺得這段時間怎麼樣。</p>
+      <label for="feel">我希望回頭的時候</label>
+      <textarea id="feel" maxlength="160" placeholder="例如：覺得自己有好好休息，而且做了一件真的想做的事"></textarea>
+      <div class="guide">寫下來是為了之後對得上。<b>不要寫「有效率」——那是工作的判準，不是生活的。</b></div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">完成 · 你的安排</div>
+      <h2>就這樣就好</h2>
+      <p class="hint">一件在乎的事，一段留白。剩下的隨它去。</p>
+      <div class="card-out" id="card">
+        <div class="seal">❦</div><h3>空 白 卡</h3><div class="csub">After the Rush · No. 06</div><div class="rule"></div>
+        <div class="hero"><div class="k">這段空白</div><div class="v" id="cSpan">—</div><div class="k" id="cSource" style="margin-top:7px;letter-spacing:1px">—</div></div>
+        <div class="field"><div class="k">我一直想做的那件事</div><div class="v" id="cThing">—</div></div>
+        <div class="field"><div class="k">第一個小動作</div><div class="v" id="cStep">—</div></div>
+        <div class="divider"></div>
+        <div class="blank"><div class="k">留給自己、不安排</div><div class="v" id="cBlank">—</div></div>
+        <div class="field" style="margin:14px 0 0"><div class="k">我希望回頭的時候</div><div class="v" id="cFeel">—</div></div>
+        <div class="mantra">空白不是還沒安排。</div>
+        <div class="edition">Edition No. 06 · MMXXVI</div>
+      </div>
+      <div class="result-actions"><button class="btn ghost save-image" id="saveImage" type="button">儲存為圖片</button><button class="btn ghost" id="copyCard" type="button">複製文字</button><button class="btn ghost" id="shareCard" type="button">分享</button></div>
+      <button class="record-link result-record" id="openBookResult" type="button">查看紀錄簿（<span id="resultRecordCount">0</span>）</button>
+      <div class="whybox" style="margin-top:26px"><b>這張卡不打算做的事</b>它不會提醒你、不會統計你完成了幾項、也不會告訴你這段時間過得好不好。那些都是工作用的工具，搬到這裡只會把休息變成另一份工作。<br><br>時間到了，你自己回來看一眼就好。</div>
+    </section>
+  </div>
+  <div class="foot"><div class="gatehint" id="gatehint"></div><button class="btn" id="next" type="button">開始</button></div>
+</div>
+
+<aside class="record-book" id="recordBook" aria-hidden="true"><div class="record-sheet"><div class="record-head"><h2>空白卡紀錄簿</h2><button class="record-close" id="closeBook" type="button" aria-label="關閉">✕</button></div><p class="record-note">最多保存 50 張，只存在這個瀏覽器。</p><div id="recordList"></div><button class="record-clear" id="clearBook" type="button">清空全部紀錄</button></div></aside>
+<div class="toast" id="toast"></div>
+<script>
+  const screens=[...document.querySelectorAll('.screen')],LAST=screens.length-1;
+  const fieldIds=['span','actual','thing','firstStep','when','blank','feel'];
+  const draftKey='toolbook_leisure_v1',historyKey='toolbook_leisure_history_v1';
+  const SRC_TEXT={chosen:'這段時間是我自己安排的',mixed:'一半是我安排的',forced:'這段時間不是我能決定的'};
+  const isDemo=new URLSearchParams(location.search).get('demo')==='1';
+  let i=0,draftId='',cards=loadCards(),clearing=false,seg={source:null};
+  const $=id=>document.getElementById(id),val=id=>($(id)?.value||'').trim();
+  function track(name,data={}){if(typeof gtag==='function')gtag('event',name,{tool_name:'leisure_card',...data})}
+  function valid(n){if(n===1)return !!seg.source&&!!val('span');if(n===3)return !!val('thing');if(n===4)return !!val('firstStep')&&!!val('when');if(n===5)return !!val('blank');return true}
+  function render(){screens.forEach((s,n)=>s.classList.toggle('active',n===i));$('back').classList.toggle('hide',i===0);$('dots').innerHTML=i===0?'':Array.from({length:6},(_,n)=>`<span class="dot ${n===Math.min(i-1,5)?'on':''}"></span>`).join('');$('next').textContent=i===0?'開始':i===6?'完成':i===LAST?'再做一張':'下一步';$('resultRecordCount').textContent=cards.length;updateGate();$('stage').scrollTop=0;if(i>0)track('step_view',{step_name:['','source','actual','thing','step','blank','feel','result'][i]})}
+  function updateGate(){const ok=valid(i);$('next').disabled=!ok;$('gatehint').textContent=ok?'':i===1?'選一個，並寫下大概多長':i===4?'寫下第一個動作和時間':i===5?'留一段時間給自己':'完成這一題，才能繼續'}
+  function next(){if(!valid(i))return;if(i===0){track('tool_start');i=1}else if(i===6){archiveCard();buildCard();i=LAST;track('tool_complete',{source:seg.source})}else if(i===LAST){startNew();return}else i++;saveDraft();render()}
+  function prev(){if(i>0){i--;saveDraft();render()}}
+  function pickSeg(name,v){seg[name]=v;document.querySelectorAll(`[data-seg="${name}"] button`).forEach(b=>b.classList.toggle('on',b.dataset.v===v));if(name==='source')$('srcAlert').classList.toggle('show',v==='forced');updateGate();saveDraft()}
+  function buildCard(){$('cSpan').textContent=val('span')||'—';$('cSource').textContent=seg.source?SRC_TEXT[seg.source]:'—';$('cThing').textContent=val('thing')||'—';$('cStep').textContent=(val('firstStep')||'—')+(val('when')?'\n'+val('when'):'');$('cBlank').textContent=val('blank')||'—';$('cFeel').textContent=val('feel')||'—'}
+  function cardText(){return `空白卡\n\n這段空白：${val('span')}\n（${seg.source?SRC_TEXT[seg.source]:'—'}）\n\n我一直想做的那件事：${val('thing')}\n第一個小動作：${val('firstStep')}${val('when')?'（'+val('when')+'）':''}\n\n留給自己、不安排：${val('blank')}\n\n我希望回頭的時候：${val('feel')||'—'}\n\n空白不是還沒安排。`}
+  function canvasLines(ctx,text,maxWidth){const out=[];String(text||'—').split('\n').forEach(part=>{let line='';for(const ch of Array.from(part||' ')){const nx=line+ch;if(line&&ctx.measureText(nx).width>maxWidth){out.push(line);line=ch}else line=nx}out.push(line||' ')});return out}
+  function saveCardImage(){const width=1080,pad=110,maxWidth=width-pad*2,blocks=[['這段空白',val('span'),'600 42px serif',60],['我一直想做的那件事',val('thing'),'36px sans-serif',54],['第一個小動作',(val('firstStep')||'—')+(val('when')?'\n'+val('when'):''),'36px sans-serif',54],['留給自己、不安排',val('blank'),'600 40px serif',58],['我希望回頭的時候',val('feel')||'—','36px sans-serif',54]];const probe=document.createElement('canvas').getContext('2d');const prepared=blocks.map(b=>{probe.font=b[2];return [...b,canvasLines(probe,b[1],maxWidth)]});const height=Math.max(1200,430+prepared.reduce((s,b)=>s+68+b[4].length*b[3]+42,0)+200);const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');ctx.fillStyle='#f5f0e6';ctx.fillRect(0,0,width,height);ctx.strokeStyle='#c9bea4';ctx.lineWidth=3;ctx.strokeRect(42,42,width-84,height-84);ctx.lineWidth=1;ctx.strokeRect(58,58,width-116,height-116);ctx.textAlign='center';ctx.fillStyle='#8a6f44';ctx.font='42px serif';ctx.fillText('❦',width/2,145);ctx.fillStyle='#2c2820';ctx.font='600 42px serif';ctx.fillText('空 白 卡',width/2,215);ctx.fillStyle='#938b78';ctx.font='18px sans-serif';ctx.fillText('A F T E R   T H E   R U S H  ·  N O.  0 6',width/2,260);ctx.strokeStyle='#8a6f44';ctx.beginPath();ctx.moveTo(width/2-34,300);ctx.lineTo(width/2+34,300);ctx.stroke();let y=380;ctx.textAlign='left';prepared.forEach((b,idx)=>{if(idx===3){ctx.strokeStyle='#d6cdba';ctx.beginPath();ctx.moveTo(pad,y-20);ctx.lineTo(width-pad,y-20);ctx.stroke()}ctx.fillStyle='#938b78';ctx.font='20px sans-serif';ctx.fillText(b[0],pad,y);y+=52;ctx.fillStyle=idx===3?'#8a6f44':'#2c2820';ctx.font=b[2];b[4].forEach(l=>{ctx.fillText(l,pad,y);y+=b[3]});y+=42});ctx.textAlign='center';ctx.fillStyle='#8a6f44';ctx.font='30px serif';ctx.fillText('空白不是還沒安排。',width/2,y+40);ctx.fillStyle='#938b78';ctx.font='16px sans-serif';ctx.fillText('Edition No. 06 · MMXXVI',width/2,height-90);canvas.toBlob(b=>{if(!b){toast('圖片生成失敗，請稍後再試');return}const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='空白卡-Toolbook.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('空白卡圖片已儲存');track('save_image')},'image/png')}
+  function saveDraft(){if(isDemo||clearing)return;try{const f={};fieldIds.forEach(id=>f[id]=$(id).value);localStorage.setItem(draftKey,JSON.stringify({step:i,draftId,fields:f,seg,updatedAt:new Date().toISOString()}))}catch(_){}}
+  function loadDraft(){if(isDemo)return false;try{const d=JSON.parse(localStorage.getItem(draftKey)||'null');if(!d)return false;const s=d.fields||{};fieldIds.forEach(id=>{if(s[id]!=null)$(id).value=s[id]});draftId=d.draftId||'';if(d.seg?.source)pickSeg('source',d.seg.source);i=Number.isInteger(d.step)?Math.max(0,Math.min(LAST,d.step)):0;if(i===LAST)buildCard();return true}catch(_){return false}}
+  function loadCards(){try{const d=JSON.parse(localStorage.getItem(historyKey)||'[]');return Array.isArray(d)?d.slice(0,50):[]}catch(_){return []}}
+  function saveCards(){try{localStorage.setItem(historyKey,JSON.stringify(cards.slice(0,50)))}catch(_){}}
+  function archiveCard(){const now=new Date().toISOString();if(!draftId)draftId='leisure_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,6);const old=cards.find(c=>c.id===draftId);const card={id:draftId,createdAt:old?.createdAt||now,updatedAt:now,source:seg.source};fieldIds.forEach(k=>card[k]=val(k));cards=[card,...cards.filter(c=>c.id!==draftId)].slice(0,50);saveCards();renderBook()}
+  function escapeHtml(v){return String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+  function formatCreated(v){const d=new Date(v);return Number.isNaN(d.getTime())?'日期不明':d.toLocaleDateString('zh-HK',{year:'numeric',month:'2-digit',day:'2-digit'})}
+  function renderBook(){const list=$('recordList');$('clearBook').style.display=cards.length?'block':'none';list.innerHTML=cards.length?cards.map((c,n)=>`<article class="record-card"><div class="record-meta"><span>第 ${cards.length-n} 張 · ${formatCreated(c.createdAt)}</span><button class="record-delete" type="button" data-delete="${escapeHtml(c.id)}">刪除</button></div><div class="record-label">這段空白</div><div class="record-value">${escapeHtml(c.span)||'—'}</div><div class="record-label">想做的那件事</div><div class="record-value">${escapeHtml(c.thing)||'—'}</div><div class="record-label">第一個小動作</div><div class="record-value">${escapeHtml(c.firstStep)||'—'}</div><div class="record-label">留給自己</div><div class="record-value">${escapeHtml(c.blank)||'—'}</div><div class="record-actions"><button class="record-open" type="button" data-open="${escapeHtml(c.id)}">開啟／匯出這張卡</button></div></article>`).join(''):'<div class="record-empty">還沒有空白卡。<br>完成第一張後，會保存在這裡。</div>';list.querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',()=>deleteCard(b.dataset.delete)));list.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>loadCard(b.dataset.open)))}
+  function openBook(){$('recordBook').classList.add('open');$('recordBook').setAttribute('aria-hidden','false');renderBook()}
+  function closeBook(){$('recordBook').classList.remove('open');$('recordBook').setAttribute('aria-hidden','true')}
+  function loadCard(id){const c=cards.find(x=>x.id===id);if(!c)return;fieldIds.forEach(k=>$(k).value=c[k]||'');if(c.source)pickSeg('source',c.source);draftId=c.id;i=LAST;buildCard();saveDraft();closeBook();render();toast('已開啟，可再次儲存或分享')}
+  function startNew(){if(!confirm('開始一張新的空白卡？舊的會保留在紀錄簿。'))return;clearing=true;try{localStorage.removeItem(draftKey)}catch(_){}fieldIds.forEach(id=>$(id).value='');seg={source:null};document.querySelectorAll('[data-seg] button').forEach(b=>b.classList.remove('on'));$('srcAlert').classList.remove('show');draftId='';i=1;clearing=false;saveDraft();render()}
+  function deleteCard(id){if(!confirm('確定刪除這張空白卡？'))return;cards=cards.filter(c=>c.id!==id);saveCards();renderBook();render()}
+  function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1700)}
+  $('next').addEventListener('click',next);$('back').addEventListener('click',prev);
+  fieldIds.forEach(id=>$(id).addEventListener('input',()=>{updateGate();saveDraft()}));
+  document.querySelectorAll('[data-seg]').forEach(g=>g.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>pickSeg(g.dataset.seg,b.dataset.v))));
+  document.querySelectorAll('#thingChips .chip').forEach(c=>c.addEventListener('click',()=>{const el=$('thing');if(!el.value)el.value=c.textContent;el.dispatchEvent(new Event('input',{bubbles:true}));el.focus()}));
+  $('openBook').addEventListener('click',openBook);$('openBookResult').addEventListener('click',openBook);$('closeBook').addEventListener('click',closeBook);
+  $('clearBook').addEventListener('click',()=>{if(!confirm('確定清空全部空白卡？'))return;cards=[];saveCards();renderBook();render()});
+  $('saveImage').addEventListener('click',saveCardImage);
+  $('copyCard').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(cardText());toast('已複製文字')}catch(_){toast('瀏覽器未允許複製')}});
+  $('shareCard').addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:'我的空白卡',text:cardText()});else{await navigator.clipboard.writeText(cardText());toast('已複製，可貼到其他地方')}track('share',{method:navigator.share?'web_share':'copy'})}catch(_){}});
+  if(isDemo){const demo={span:'接下來三週',actual:'滑手機、追劇、想著應該做點什麼但沒動',thing:'把爸爸留下來的舊照片整理成一本相簿',firstStep:'把裝照片的那個箱子從櫃子上拿下來',when:'今天晚上',blank:'每個週日整天，誰也不約',feel:'覺得自己有好好休息，而且做了一件真的想做的事'};Object.entries(demo).forEach(([k,v])=>$(k).value=v);pickSeg('source','chosen');i=LAST;buildCard()}else loadDraft();
+  renderBook();render();
+</script>
+</body>
+</html>
