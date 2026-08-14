@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CKM6MRRVBM"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());gtag('config','G-CKM6MRRVBM');
+</script>
+<title>減法掃描卡 · Toolbook</title>
+<meta name="description" content="手上的事太多，該減什麼？先看清楚你有多少決定權，再挑一項動它——而且動之前先確認它沒有撐著別的東西。">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  :root{--serif:"Songti SC","Noto Serif TC","Source Han Serif TC","Source Han Serif SC",serif;--bg:#ece5d8;--card:#f5f0e6;--ink:#2c2820;--muted:#938b78;--line:#d6cdba;--frame:#c9bea4;--accent:#8a6f44;--onAccent:#f5f0e6;--warn:#9c6b52}
+  html,body{height:100%}body{background:var(--bg);font-family:-apple-system,"PingFang TC",sans-serif;color:var(--ink);line-height:1.7;position:relative}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .app{max-width:460px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative;z-index:1}
+  @media(min-width:520px){.app{border-left:1px solid var(--line);border-right:1px solid var(--line);background:rgba(245,240,230,.35)}}
+  .topbar{flex:none;height:50px;display:flex;align-items:center;position:relative;padding:0 22px}.nav-back{font-size:22px;color:var(--muted);cursor:pointer;line-height:1;width:24px;border:0;background:transparent}.nav-back.hide{visibility:hidden}.dots{position:absolute;left:0;right:0;display:flex;gap:7px;justify-content:center;pointer-events:none}.dot{width:5px;height:5px;border-radius:50%;background:var(--line);transition:.3s}.dot.on{background:var(--accent);width:16px;border-radius:3px}.home{margin-left:auto;color:var(--muted);text-decoration:none;font-size:16px;line-height:1}
+  .stage{flex:1;overflow-y:auto;padding:14px 30px 34px}.stage::-webkit-scrollbar{display:none}.screen{display:none;animation:fade .5s ease}.screen.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .kicker{color:var(--accent);font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px}h1{font-family:var(--serif);font-size:27px;font-weight:600;line-height:1.6;margin-bottom:16px;letter-spacing:.5px}h2{font-family:var(--serif);font-size:23px;font-weight:600;line-height:1.65;margin-bottom:10px;letter-spacing:.5px}.hint{color:var(--muted);font-size:13px;margin-bottom:20px;line-height:1.75}.welcome{display:flex;flex-direction:column;justify-content:center;min-height:56vh;text-align:center}.welcome .seal{font-family:var(--serif);font-size:30px;color:var(--accent);margin-bottom:20px}.privacy{font-size:11px;color:var(--muted);margin-top:14px;line-height:1.75}
+  label{display:block;font-family:var(--serif);font-size:14px;color:#5d564a;margin:18px 0 7px}input.txt,textarea{width:100%;border:1px solid var(--line);background:var(--card);border-radius:4px;padding:14px 15px;font-size:14.5px;font-family:inherit;color:var(--ink);resize:vertical}textarea{min-height:130px;line-height:1.9}input.txt:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(138,111,68,.08)}
+  .optional{font-size:11px;color:var(--muted);letter-spacing:1px;border:1px solid var(--line);border-radius:2px;padding:1px 7px;margin-left:8px;font-family:-apple-system,sans-serif}
+  .guide{border-left:2px solid var(--frame);padding:12px 0 12px 16px;margin-top:22px;color:#655e51;font-family:var(--serif);font-size:14px;line-height:1.9}.guide b{color:var(--accent)}
+  .whybox{border-left:2px solid var(--frame);padding:12px 0 12px 16px;margin-top:22px;color:#655e51;font-size:12.5px;line-height:1.85}.whybox b{font-family:var(--serif);color:var(--accent);display:block;margin-bottom:3px;font-size:13px}
+  .meter{border:1px solid var(--line);background:rgba(245,240,230,.5);border-radius:4px;padding:15px 16px;margin-top:18px}
+  .mt{font-family:var(--serif);font-size:14.5px;margin-bottom:3px}.ms{font-size:11.5px;color:var(--muted);margin-bottom:11px;line-height:1.7}
+  .seg{display:grid;grid-template-columns:1fr;gap:7px}
+  .seg button{border:1px solid var(--line);background:var(--card);border-radius:3px;padding:12px 13px;font-family:inherit;font-size:13.5px;color:#5d564a;cursor:pointer;line-height:1.5;text-align:left}
+  .seg button.on{border-color:var(--accent);color:var(--accent);background:rgba(138,111,68,.07);font-weight:600}
+  .alert{border:1px solid var(--warn);background:rgba(156,107,82,.07);border-radius:4px;padding:15px 17px;margin-top:18px;font-size:13.5px;line-height:1.85;color:#7a4f3c;display:none}
+  .alert.show{display:block}.alert b{font-family:var(--serif);display:block;margin-bottom:4px;font-size:14.5px;color:var(--warn)}
+  .scope{border:1px dashed var(--frame);border-radius:4px;padding:13px 15px;margin-top:16px;font-size:12.5px;color:#6b6353;line-height:1.8}
+  .scope b{font-family:var(--serif);color:var(--accent)}
+  .listmirror{border-left:2px solid var(--accent);background:rgba(236,229,216,.5);padding:12px 15px;margin-bottom:4px;border-radius:0 3px 3px 0}
+  .listmirror .k{font-size:9px;letter-spacing:2.2px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .listmirror .v{font-family:var(--serif);font-size:14px;line-height:1.75;white-space:pre-wrap}
+  .card-out{position:relative;border:1px solid var(--frame);border-radius:3px;padding:27px 24px 21px;background:var(--card);box-shadow:inset 0 0 0 5px var(--bg),inset 0 0 0 6px var(--frame)}.card-out .seal{text-align:center;font-family:var(--serif);font-size:22px;color:var(--accent);margin-bottom:5px}.card-out h3{text-align:center;font-family:var(--serif);font-size:15px;letter-spacing:7px;padding-left:7px}.card-out .csub{text-align:center;font-size:8.5px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:5px}.card-out .rule{width:30px;height:1px;background:var(--accent);opacity:.6;margin:14px auto 21px}
+  .twocol{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:3px;margin-bottom:14px}
+  .twocol>div{padding:13px 14px}.twocol>div+div{border-left:1px solid var(--line)}
+  .twocol .k{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .twocol .v{font-size:13.5px;line-height:1.7;white-space:pre-wrap}
+  .field{margin-bottom:14px}.field .k{font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}.field .v{font-size:14px;white-space:pre-wrap;line-height:1.65}
+  .card-out .divider{height:1px;background:var(--line);margin:17px 0}
+  .onething{text-align:center;border:1px solid var(--frame);border-radius:2px;padding:14px 12px;margin-top:4px}.onething .k{font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}.onething .v{font-family:var(--serif);font-size:16px;color:var(--accent);line-height:1.6}
+  .mantra{text-align:center;font-family:var(--serif);color:var(--accent);font-size:14px;letter-spacing:2px;margin-top:16px}.edition{text-align:center;font-size:8px;letter-spacing:2px;color:var(--muted);margin-top:10px}
+  .result-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:16px}.result-record{display:block;margin:13px auto 0}
+  .foot{flex:none;padding:8px 30px 26px;background:linear-gradient(transparent,var(--bg) 28%)}.gatehint{text-align:center;font-size:11px;color:var(--muted);margin-bottom:8px;height:15px;letter-spacing:.5px}.btn{display:block;width:100%;background:var(--accent);color:var(--onAccent);border:1px solid var(--accent);border-radius:3px;padding:15px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:1px}.btn:disabled{opacity:.3;cursor:not-allowed}.btn.ghost{background:transparent;color:var(--accent);font-size:12px;padding:11px;font-weight:500}.record-link{display:inline-block;border:0;background:transparent;color:var(--accent);font-family:inherit;font-size:12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-top:18px}
+  .record-book{display:none;position:fixed;inset:0;z-index:20;background:rgba(44,40,32,.35)}.record-book.open{display:block}.record-sheet{width:min(100%,460px);height:100%;margin:0 auto;background:var(--bg);padding:22px 24px 34px;overflow-y:auto}.record-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}.record-head h2{margin:0;font-size:22px}.record-close{border:0;background:transparent;color:var(--muted);font-size:22px;cursor:pointer;padding:6px}.record-note{font-size:12px;color:var(--muted);margin-bottom:18px}.record-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px;margin-bottom:12px}.record-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:10.5px;margin-bottom:11px}.record-delete{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:10.5px;cursor:pointer}.record-label{font-size:8.5px;letter-spacing:2px;color:var(--muted);margin-top:9px}.record-value{font-family:var(--serif);font-size:14px;margin-top:2px;white-space:pre-wrap}.record-actions{display:flex;justify-content:flex-end;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.record-open{border:1px solid var(--accent);border-radius:3px;background:transparent;color:var(--accent);font-family:inherit;font-size:11px;padding:7px 11px;cursor:pointer}.record-empty{text-align:center;color:var(--muted);font-size:13px;padding:60px 10px}.record-clear{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:12px;display:block;margin:24px auto 0;cursor:pointer;text-decoration:underline}.toast{position:fixed;bottom:105px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:3px;font-size:12px;opacity:0;transition:.3s;pointer-events:none;z-index:30}.toast.show{opacity:.95}
+  @media(max-width:390px){.stage{padding-left:24px;padding-right:24px}.foot{padding-left:24px;padding-right:24px}.card-out{padding-left:21px;padding-right:21px}.result-actions{grid-template-columns:1fr 1fr}.result-actions .save-image{grid-column:1/-1}.twocol{grid-template-columns:1fr}.twocol>div+div{border-left:0;border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar"><button class="nav-back hide" id="back" type="button" aria-label="上一步">‹</button><div class="dots" id="dots"></div><a class="home" href="index.html" aria-label="回首頁">✕</a></div>
+  <div class="stage" id="stage">
+
+    <section class="screen active">
+      <div class="welcome">
+        <div class="seal">❦</div>
+        <div class="kicker">工具 No. 07 · 取捨</div>
+        <h1>手上的事太多，<br>該減什麼？</h1>
+        <p class="hint">六個問題，先看清楚你有多少決定權，再挑一項真的動它——而且動之前，先確認它沒有撐著別的東西。</p>
+        <p class="privacy">啟發自《一週工作 4 小時》的 80／20 掃描。書中示範的是砍客戶、砍會議，那是老闆的權限；這張卡先問你的權限，再決定能做什麼。</p>
+        <p class="privacy" style="margin-top:6px">答案預設只保存在這部裝置。</p>
+        <button class="record-link" id="openBook" type="button">查看紀錄簿</button>
+      </div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第一步 · 你的權限</div>
+      <h2>這些事，<br>你說了算嗎？</h2>
+      <p class="hint">這一題決定這張卡最後能給你什麼建議。</p>
+      <div class="meter">
+        <div class="mt">手上的工作，哪些要做、哪些不做</div>
+        <div class="ms">選最接近的那個。</div>
+        <div class="seg" data-seg="power">
+          <button type="button" data-v="own">大部分我可以自己決定</button>
+          <button type="button" data-v="some">一部分可以，一部分要跟人談</button>
+          <button type="button" data-v="none">大部分不是我能決定的</button>
+        </div>
+      </div>
+      <div class="alert" id="powerAlert">
+        <b>那就先不要用「砍」這個字</b>
+        書裡示範的是砍客戶、砍會議、每天只做兩件事——那些是老闆或自僱者的權限。受雇的人照著做去推掉主管交辦的事，代價可能是考核不利，甚至丟工作。<br><br>這張卡接下來會把「砍掉」換成<b style="display:inline">「哪一項值得提出來談」</b>。減法一樣做得到，但路徑不同：先讓對方看見取捨，而不是自己單方面停掉。
+      </div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第二步 · 攤開來</div>
+      <h2>這陣子，<br>你的時間都花在<br>哪些事上？</h2>
+      <p class="hint">一行一項，八到十項就夠。先不要判斷好壞，先寫出來。</p>
+      <textarea id="items" maxlength="600" placeholder="例如：&#10;每週例會&#10;回客戶訊息&#10;做月報&#10;帶新人&#10;主要專案&#10;臨時插件"></textarea>
+      <div class="scope"><b>這張卡只掃工作與專案。</b>不要把家人、朋友、伴侶放進來——把關係拿去算投入產出比，是這個方法最容易出事的地方，而且沒有任何研究支持那樣做有好處。</div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第三步 · 最耗的</div>
+      <h2>哪幾項<br>最消耗你？</h2>
+      <p class="hint">從上一頁挑出兩三項。消耗不只是花時間，也包括做完之後整個人空掉的那種。</p>
+      <div class="listmirror"><div class="k">你剛才寫的</div><div class="v" id="mirrorItems">—</div></div>
+      <label for="drain">最消耗的兩三項</label>
+      <textarea id="drain" maxlength="300" placeholder="例如：&#10;每週例會&#10;臨時插件"></textarea>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第四步 · 最值的</div>
+      <h2>哪幾項<br>帶來最多成果？</h2>
+      <p class="hint">同一份清單，這次挑真正推動事情前進的那幾項。</p>
+      <div class="listmirror"><div class="k">你剛才寫的</div><div class="v" id="mirrorItems2">—</div></div>
+      <label for="gain">最有成果的兩三項</label>
+      <textarea id="gain" maxlength="300" placeholder="例如：&#10;主要專案&#10;帶新人"></textarea>
+      <div class="whybox"><b>為甚麼要分開問</b>少數事情帶來多數成果，這個現象在很多領域都量得到。但「剛好八成」是後來被講順口的說法，不是規律——真正的比例每個人、每份工作都不一樣。所以這裡不算百分比，只挑出你自己那幾項。</div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第五步 · 先別急</div>
+      <h2>你想減掉的那些，<br>有沒有哪一項<br>其實撐著別的？</h2>
+      <p class="hint">這一步是煞車。減法最常見的失敗，是砍掉了看起來沒產出、但別的事靠它撐著的那一項。</p>
+      <div class="twocol" style="margin-bottom:18px">
+        <div><div class="k">最消耗</div><div class="v" id="mirrorDrain">—</div></div>
+        <div><div class="k">最有成果</div><div class="v" id="mirrorGain">—</div></div>
+      </div>
+      <label for="support">有沒有哪一項是別的事的基礎<span class="optional">可留空</span></label>
+      <textarea id="support" maxlength="240" placeholder="例如：例會很煩，但我大部分的資訊都是在那裡拿到的；停掉之後我會變成最後一個知道的人"></textarea>
+      <div class="whybox"><b>為甚麼要問</b>有研究看科學論文的產出分布，發現那些被引用最多的頂尖成果，是靠大量看起來平庸的研究墊起來的——把「產出低的多數」砍掉，頂尖的那些也就不會出現。<br><br>所以判準不是「這件事本身有沒有產出」，是<b style="display:inline">「少了它，別的事還轉得動嗎」</b>。</div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">第六步 · 只動一項</div>
+      <h2 id="actHead">這一週，<br>你要動哪一項？</h2>
+      <p class="hint" id="actHint">只挑一項。同時動三項，你會分不出是哪一項讓情況變好。</p>
+      <label for="action" id="actLabel">我要動的那一項，以及怎麼動</label>
+      <textarea id="action" maxlength="240" placeholder="例如：每週例會改成兩週一次，我先問問看主管的想法"></textarea>
+      <label for="freed">省下來的時間要給誰<span class="optional">可留空</span></label>
+      <input class="txt" id="freed" maxlength="60" placeholder="例如：給主要專案，不要又被填滿">
+      <div class="guide">省下來的時間如果沒有先講好去處，它通常會自己被填滿——而且填進去的多半是最吵的那件事，不是最重要的。</div>
+    </section>
+
+    <section class="screen">
+      <div class="kicker">完成 · 你的取捨</div>
+      <h2>先動這一項</h2>
+      <p class="hint">一週後回頭看，再決定要不要動下一項。</p>
+      <div class="card-out" id="card">
+        <div class="seal">❦</div><h3>減 法 卡</h3><div class="csub">Subtract · No. 07</div><div class="rule"></div>
+        <div class="twocol">
+          <div><div class="k">最消耗</div><div class="v" id="cDrain">—</div></div>
+          <div><div class="k">最有成果</div><div class="v" id="cGain">—</div></div>
+        </div>
+        <div class="field"><div class="k">但這一項撐著別的</div><div class="v" id="cSupport">—</div></div>
+        <div class="divider"></div>
+        <div class="onething"><div class="k" id="cActK">這週要動的那一項</div><div class="v" id="cAction">—</div></div>
+        <div class="field" style="margin:14px 0 0"><div class="k">省下的時間給</div><div class="v" id="cFreed">—</div></div>
+        <div class="mantra">減一項，看清楚，再減下一項。</div>
+        <div class="edition">Edition No. 07 · MMXXVI</div>
+      </div>
+      <div class="result-actions"><button class="btn ghost save-image" id="saveImage" type="button">儲存為圖片</button><button class="btn ghost" id="copyCard" type="button">複製文字</button><button class="btn ghost" id="shareCard" type="button">分享</button></div>
+      <button class="record-link result-record" id="openBookResult" type="button">查看紀錄簿（<span id="resultRecordCount">0</span>）</button>
+      <div class="whybox" style="margin-top:26px"><b>下一步</b>一週之後，用<a href="tool-review.html" style="color:var(--accent)">復盤卡</a>對一次：真的動了嗎？省下來的時間去了哪裡？情況有沒有變好？</div>
+    </section>
+  </div>
+  <div class="foot"><div class="gatehint" id="gatehint"></div><button class="btn" id="next" type="button">開始</button></div>
+</div>
+
+<aside class="record-book" id="recordBook" aria-hidden="true"><div class="record-sheet"><div class="record-head"><h2>減法卡紀錄簿</h2><button class="record-close" id="closeBook" type="button" aria-label="關閉">✕</button></div><p class="record-note">最多保存 50 張，只存在這個瀏覽器。</p><div id="recordList"></div><button class="record-clear" id="clearBook" type="button">清空全部紀錄</button></div></aside>
+<div class="toast" id="toast"></div>
+<script>
+  const screens=[...document.querySelectorAll('.screen')],LAST=screens.length-1;
+  const fieldIds=['items','drain','gain','support','action','freed'];
+  const draftKey='toolbook_subtract_v1',historyKey='toolbook_subtract_history_v1';
+  const POWER_TEXT={own:'這些事大部分我可以自己決定',some:'一部分可以決定，一部分要談',none:'大部分不是我能決定的'};
+  const isDemo=new URLSearchParams(location.search).get('demo')==='1';
+  let i=0,draftId='',cards=loadCards(),clearing=false,seg={power:null};
+  const $=id=>document.getElementById(id),val=id=>($(id)?.value||'').trim();
+  function track(name,data={}){if(typeof gtag==='function')gtag('event',name,{tool_name:'subtract_card',...data})}
+  function valid(n){if(n===1)return !!seg.power;if(n===2)return !!val('items');if(n===3)return !!val('drain');if(n===4)return !!val('gain');if(n===6)return !!val('action');return true}
+  function applyPowerWording(){const none=seg.power==='none';$('actHead').innerHTML=none?'這一週，<br>你要把哪一項<br>提出來談？':'這一週，<br>你要動哪一項？';$('actHint').textContent=none?'只挑一項。你要的不是自己停掉它，是讓決定的人看見取捨。':'只挑一項。同時動三項，你會分不出是哪一項讓情況變好。';$('actLabel').textContent=none?'我要提出來談的那一項，以及怎麼開口':'我要動的那一項，以及怎麼動';$('action').placeholder=none?'例如：跟主管說每週例會佔掉我三小時，問可不可以改兩週一次，或只參加前半段':'例如：每週例會改成兩週一次，我先問問看主管的想法';$('cActK').textContent=none?'這週要提出來談的':'這週要動的那一項'}
+  function render(){screens.forEach((s,n)=>s.classList.toggle('active',n===i));$('back').classList.toggle('hide',i===0);$('dots').innerHTML=i===0?'':Array.from({length:6},(_,n)=>`<span class="dot ${n===Math.min(i-1,5)?'on':''}"></span>`).join('');$('next').textContent=i===0?'開始':i===6?'完成':i===LAST?'再做一張':'下一步';$('resultRecordCount').textContent=cards.length;$('mirrorItems').textContent=val('items')||'—';$('mirrorItems2').textContent=val('items')||'—';$('mirrorDrain').textContent=val('drain')||'—';$('mirrorGain').textContent=val('gain')||'—';updateGate();$('stage').scrollTop=0;if(i>0)track('step_view',{step_name:['','power','items','drain','gain','support','action','result'][i]})}
+  function updateGate(){const ok=valid(i);$('next').disabled=!ok;$('gatehint').textContent=ok?'':i===1?'先選一個':i===2?'至少寫幾項出來':i===6?'挑一項就好':'完成這一題，才能繼續'}
+  function next(){if(!valid(i))return;if(i===0){track('tool_start');i=1}else if(i===6){archiveCard();buildCard();i=LAST;track('tool_complete',{power:seg.power})}else if(i===LAST){startNew();return}else i++;saveDraft();render()}
+  function prev(){if(i>0){i--;saveDraft();render()}}
+  function pickSeg(name,v){seg[name]=v;document.querySelectorAll(`[data-seg="${name}"] button`).forEach(b=>b.classList.toggle('on',b.dataset.v===v));if(name==='power'){$('powerAlert').classList.toggle('show',v==='none');applyPowerWording()}updateGate();saveDraft()}
+  function buildCard(){$('cDrain').textContent=val('drain')||'—';$('cGain').textContent=val('gain')||'—';$('cSupport').textContent=val('support')||'（沒有特別標出）';$('cAction').textContent=val('action')||'—';$('cFreed').textContent=val('freed')||'—'}
+  function cardText(){const none=seg.power==='none';return `減法卡\n\n（${seg.power?POWER_TEXT[seg.power]:'—'}）\n\n最消耗：\n${val('drain')}\n\n最有成果：\n${val('gain')}\n\n但這一項撐著別的：${val('support')||'（沒有特別標出）'}\n\n${none?'這週要提出來談的':'這週要動的那一項'}：${val('action')}\n省下的時間給：${val('freed')||'—'}\n\n減一項，看清楚，再減下一項。`}
+  function canvasLines(ctx,text,maxWidth){const out=[];String(text||'—').split('\n').forEach(part=>{let line='';for(const ch of Array.from(part||' ')){const nx=line+ch;if(line&&ctx.measureText(nx).width>maxWidth){out.push(line);line=ch}else line=nx}out.push(line||' ')});return out}
+  function saveCardImage(){const none=seg.power==='none';const width=1080,pad=110,maxWidth=width-pad*2,blocks=[['最消耗',val('drain'),'36px sans-serif',54],['最有成果',val('gain'),'36px sans-serif',54],['但這一項撐著別的',val('support')||'（沒有特別標出）','36px sans-serif',54],[none?'這週要提出來談的':'這週要動的那一項',val('action'),'600 40px serif',58],['省下的時間給',val('freed')||'—','36px sans-serif',54]];const probe=document.createElement('canvas').getContext('2d');const prepared=blocks.map(b=>{probe.font=b[2];return [...b,canvasLines(probe,b[1],maxWidth)]});const height=Math.max(1200,430+prepared.reduce((s,b)=>s+68+b[4].length*b[3]+42,0)+200);const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');ctx.fillStyle='#f5f0e6';ctx.fillRect(0,0,width,height);ctx.strokeStyle='#c9bea4';ctx.lineWidth=3;ctx.strokeRect(42,42,width-84,height-84);ctx.lineWidth=1;ctx.strokeRect(58,58,width-116,height-116);ctx.textAlign='center';ctx.fillStyle='#8a6f44';ctx.font='42px serif';ctx.fillText('❦',width/2,145);ctx.fillStyle='#2c2820';ctx.font='600 42px serif';ctx.fillText('減 法 卡',width/2,215);ctx.fillStyle='#938b78';ctx.font='18px sans-serif';ctx.fillText('S U B T R A C T  ·  N O.  0 7',width/2,260);ctx.strokeStyle='#8a6f44';ctx.beginPath();ctx.moveTo(width/2-34,300);ctx.lineTo(width/2+34,300);ctx.stroke();let y=380;ctx.textAlign='left';prepared.forEach((b,idx)=>{if(idx===3){ctx.strokeStyle='#d6cdba';ctx.beginPath();ctx.moveTo(pad,y-20);ctx.lineTo(width-pad,y-20);ctx.stroke()}ctx.fillStyle='#938b78';ctx.font='20px sans-serif';ctx.fillText(b[0],pad,y);y+=52;ctx.fillStyle=idx===3?'#8a6f44':'#2c2820';ctx.font=b[2];b[4].forEach(l=>{ctx.fillText(l,pad,y);y+=b[3]});y+=42});ctx.textAlign='center';ctx.fillStyle='#8a6f44';ctx.font='30px serif';ctx.fillText('減一項，看清楚，再減下一項。',width/2,y+40);ctx.fillStyle='#938b78';ctx.font='16px sans-serif';ctx.fillText('Edition No. 07 · MMXXVI',width/2,height-90);canvas.toBlob(b=>{if(!b){toast('圖片生成失敗，請稍後再試');return}const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='減法卡-Toolbook.png';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('減法卡圖片已儲存');track('save_image')},'image/png')}
+  function saveDraft(){if(isDemo||clearing)return;try{const f={};fieldIds.forEach(id=>f[id]=$(id).value);localStorage.setItem(draftKey,JSON.stringify({step:i,draftId,fields:f,seg,updatedAt:new Date().toISOString()}))}catch(_){}}
+  function loadDraft(){if(isDemo)return false;try{const d=JSON.parse(localStorage.getItem(draftKey)||'null');if(!d)return false;const s=d.fields||{};fieldIds.forEach(id=>{if(s[id]!=null)$(id).value=s[id]});draftId=d.draftId||'';if(d.seg?.power)pickSeg('power',d.seg.power);i=Number.isInteger(d.step)?Math.max(0,Math.min(LAST,d.step)):0;if(i===LAST)buildCard();return true}catch(_){return false}}
+  function loadCards(){try{const d=JSON.parse(localStorage.getItem(historyKey)||'[]');return Array.isArray(d)?d.slice(0,50):[]}catch(_){return []}}
+  function saveCards(){try{localStorage.setItem(historyKey,JSON.stringify(cards.slice(0,50)))}catch(_){}}
+  function archiveCard(){const now=new Date().toISOString();if(!draftId)draftId='sub_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,6);const old=cards.find(c=>c.id===draftId);const card={id:draftId,createdAt:old?.createdAt||now,updatedAt:now,power:seg.power};fieldIds.forEach(k=>card[k]=val(k));cards=[card,...cards.filter(c=>c.id!==draftId)].slice(0,50);saveCards();renderBook()}
+  function escapeHtml(v){return String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+  function formatCreated(v){const d=new Date(v);return Number.isNaN(d.getTime())?'日期不明':d.toLocaleDateString('zh-HK',{year:'numeric',month:'2-digit',day:'2-digit'})}
+  function renderBook(){const list=$('recordList');$('clearBook').style.display=cards.length?'block':'none';list.innerHTML=cards.length?cards.map((c,n)=>`<article class="record-card"><div class="record-meta"><span>第 ${cards.length-n} 張 · ${formatCreated(c.createdAt)}</span><button class="record-delete" type="button" data-delete="${escapeHtml(c.id)}">刪除</button></div><div class="record-label">最消耗</div><div class="record-value">${escapeHtml(c.drain)||'—'}</div><div class="record-label">最有成果</div><div class="record-value">${escapeHtml(c.gain)||'—'}</div><div class="record-label">撐著別的</div><div class="record-value">${escapeHtml(c.support)||'（沒有特別標出）'}</div><div class="record-label">${c.power==='none'?'提出來談的':'動的那一項'}</div><div class="record-value">${escapeHtml(c.action)||'—'}</div><div class="record-actions"><button class="record-open" type="button" data-open="${escapeHtml(c.id)}">開啟／匯出這張卡</button></div></article>`).join(''):'<div class="record-empty">還沒有減法卡。<br>完成第一張後，會保存在這裡。</div>';list.querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',()=>deleteCard(b.dataset.delete)));list.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>loadCard(b.dataset.open)))}
+  function openBook(){$('recordBook').classList.add('open');$('recordBook').setAttribute('aria-hidden','false');renderBook()}
+  function closeBook(){$('recordBook').classList.remove('open');$('recordBook').setAttribute('aria-hidden','true')}
+  function loadCard(id){const c=cards.find(x=>x.id===id);if(!c)return;fieldIds.forEach(k=>$(k).value=c[k]||'');if(c.power)pickSeg('power',c.power);draftId=c.id;i=LAST;buildCard();saveDraft();closeBook();render();toast('已開啟，可再次儲存或分享')}
+  function startNew(){if(!confirm('開始一張新的減法卡？舊的會保留在紀錄簿。'))return;clearing=true;try{localStorage.removeItem(draftKey)}catch(_){}fieldIds.forEach(id=>$(id).value='');seg={power:null};document.querySelectorAll('[data-seg] button').forEach(b=>b.classList.remove('on'));$('powerAlert').classList.remove('show');applyPowerWording();draftId='';i=1;clearing=false;saveDraft();render()}
+  function deleteCard(id){if(!confirm('確定刪除這張減法卡？'))return;cards=cards.filter(c=>c.id!==id);saveCards();renderBook();render()}
+  function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1700)}
+  $('next').addEventListener('click',next);$('back').addEventListener('click',prev);
+  fieldIds.forEach(id=>$(id).addEventListener('input',()=>{updateGate();saveDraft()}));
+  document.querySelectorAll('[data-seg]').forEach(g=>g.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>pickSeg(g.dataset.seg,b.dataset.v))));
+  $('openBook').addEventListener('click',openBook);$('openBookResult').addEventListener('click',openBook);$('closeBook').addEventListener('click',closeBook);
+  $('clearBook').addEventListener('click',()=>{if(!confirm('確定清空全部減法卡？'))return;cards=[];saveCards();renderBook();render()});
+  $('saveImage').addEventListener('click',saveCardImage);
+  $('copyCard').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(cardText());toast('已複製文字')}catch(_){toast('瀏覽器未允許複製')}});
+  $('shareCard').addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:'我的減法卡',text:cardText()});else{await navigator.clipboard.writeText(cardText());toast('已複製，可貼到其他地方')}track('share',{method:navigator.share?'web_share':'copy'})}catch(_){}});
+  if(isDemo){const demo={items:'每週例會\n回客戶訊息\n做月報\n帶新人\n主要專案\n臨時插件',drain:'每週例會\n臨時插件',gain:'主要專案\n帶新人',support:'例會很煩，但我大部分的資訊都是在那裡拿到的',action:'每週例會改成兩週一次，我先問問看主管的想法',freed:'給主要專案，不要又被填滿'};Object.entries(demo).forEach(([k,v])=>$(k).value=v);pickSeg('power','some');i=LAST;buildCard()}else loadDraft();
+  applyPowerWording();renderBook();render();
+</script>
+</body>
+</html>
