@@ -411,7 +411,7 @@ const draftKey='toolbook_fear_v1', historyKey='toolbook_fear_history_v1';
 const params=new URLSearchParams(location.search);
 const isDemo=params.get('demo')==='1', forcedStep=params.has('s');
 let i=0, draftId='', cards=loadCards(), seg={worstPerm:null,worstOdds:null,bestPerm:null,backRev:null}, locked={}, clearing=false;
-let qStart=Date.now(), slowShown={}, lastTracked=-1;
+let qStart=Date.now(), slowShown={}, lastTracked=-1, stepStartedAt=Date.now();
 
 const val=id=>($(id)?.value||'').trim().replace(/[，、]+$/,'');
 const STEP_NAMES=['welcome','worst_case','how_to_catch','upside','comparison','dismissal_drill','delayed_thing','cost_of_inaction','what_waiting_for','fallback','fear_card'];
@@ -485,23 +485,25 @@ function render(){
   applyLockUI();updateGate();
   qStart=Date.now();$('slowhint').textContent='';
   $('stage').scrollTop=0;
-  if(i>0&&lastTracked!==i){lastTracked=i;track('step_view',{step_number:i,step_name:STEP_NAMES[i]||'step_'+i})}
+  if(i>0&&lastTracked!==i){lastTracked=i;stepStartedAt=Date.now();track('tool_step_view',{step_number:i,step_name:STEP_NAMES[i]||'step_'+i})}
 }
 function updateGate(){
   const ok=valid(i)||isLocked(i);
   $('next').disabled=!ok;$('gatehint').textContent=ok?'':gateText(i);
 }
+function trackStepExit(reason){if(lastTracked<1)return;track('tool_step_exit',{step_number:lastTracked,step_name:STEP_NAMES[lastTracked]||'step_'+lastTracked,step_time_seconds:Math.max(1,Math.round((Date.now()-stepStartedAt)/1000)),exit_reason:reason});lastTracked=0}
+window.addEventListener('pagehide',()=>trackStepExit('page_exit'));
 function next(){
   if(i===0){track('tool_start');i=1;saveDraft();render();return}
-  if(i===LAST){startNew();return}
-  if(i===LAST-1){if(!valid(i)&&!isLocked(i))return;locked[qOf(i)]=1;archiveCard();buildCard();i=LAST;saveDraft();render();
+  if(i===LAST){trackStepExit('next');startNew();return}
+  if(i===LAST-1){if(!valid(i)&&!isLocked(i))return;locked[qOf(i)]=1;trackStepExit('next');archiveCard();buildCard();i=LAST;saveDraft();render();
     track('tool_complete',{verdict_type:verdictLine().stop?'book_not_applicable':'book_applicable',
       worst_score:num('worstScore'),best_score:num('bestScore'),fallback:seg.backRev||'none'});return}
   if(!valid(i)&&!isLocked(i))return;
   const q=qOf(i);if(q)locked[q]=1;
-  i++;saveDraft();render();
+  trackStepExit('next');i++;saveDraft();render();
 }
-function prev(){if(i>0){i--;saveDraft();render()}}
+function prev(){if(i>0){trackStepExit('back');i--;saveDraft();render()}}
 
 /* ---------- 慢一點的提醒（不催、不倒數） ---------- */
 setInterval(()=>{

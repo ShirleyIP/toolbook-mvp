@@ -173,10 +173,15 @@
   const $=id=>document.getElementById(id),val=id=>($(id)?.value||'').trim();
   function track(name,data={}){if(typeof gtag==='function')gtag('event',name,{tool_name:'leisure_card',...data})}
   function valid(n){if(n===1)return !!seg.source&&!!val('span');if(n===3)return !!val('thing');if(n===4)return !!val('firstStep')&&!!val('when');if(n===5)return !!val('blank');return true}
-  function render(){screens.forEach((s,n)=>s.classList.toggle('active',n===i));$('back').classList.toggle('hide',i===0);$('dots').innerHTML=i===0?'':Array.from({length:6},(_,n)=>`<span class="dot ${n===Math.min(i-1,5)?'on':''}"></span>`).join('');$('next').textContent=i===0?'開始':i===6?'完成':i===LAST?'再做一張':'下一步';$('resultRecordCount').textContent=cards.length;updateGate();$('stage').scrollTop=0;if(i>0)track('step_view',{step_name:['','source','actual','thing','step','blank','feel','result'][i]})}
+  function render(){screens.forEach((s,n)=>s.classList.toggle('active',n===i));$('back').classList.toggle('hide',i===0);$('dots').innerHTML=i===0?'':Array.from({length:6},(_,n)=>`<span class="dot ${n===Math.min(i-1,5)?'on':''}"></span>`).join('');$('next').textContent=i===0?'開始':i===6?'完成':i===LAST?'再做一張':'下一步';$('resultRecordCount').textContent=cards.length;updateGate();$('stage').scrollTop=0;if(i>0)trackStepView()}
   function updateGate(){const ok=valid(i);$('next').disabled=!ok;$('gatehint').textContent=ok?'':i===1?'選一個，並寫下大概多長':i===4?'寫下第一個動作和時間':i===5?'留一段時間給自己':'完成這一題，才能繼續'}
-  function next(){if(!valid(i))return;if(i===0){track('tool_start');i=1}else if(i===6){archiveCard();buildCard();i=LAST;track('tool_complete',{source:seg.source})}else if(i===LAST){startNew();return}else i++;saveDraft();render()}
-  function prev(){if(i>0){i--;saveDraft();render()}}
+  const STEP_NAMES=['','source','actual','thing','step','blank','feel','result'];
+  let lastTracked=0,stepStartedAt=Date.now();
+  function trackStepView(){if(lastTracked===i)return;lastTracked=i;stepStartedAt=Date.now();track('tool_step_view',{step_number:i,step_name:STEP_NAMES[i]||'step_'+i})}
+  function trackStepExit(reason){if(!lastTracked)return;track('tool_step_exit',{step_number:lastTracked,step_name:STEP_NAMES[lastTracked]||'step_'+lastTracked,step_time_seconds:Math.max(1,Math.round((Date.now()-stepStartedAt)/1000)),exit_reason:reason});lastTracked=0}
+  window.addEventListener('pagehide',()=>trackStepExit('page_exit'));
+  function next(){if(!valid(i))return;trackStepExit('next');if(i===0){track('tool_start');i=1}else if(i===6){archiveCard();buildCard();i=LAST;track('tool_complete',{source:seg.source})}else if(i===LAST){startNew();return}else i++;saveDraft();render()}
+  function prev(){if(i>0){trackStepExit('back');i--;saveDraft();render()}}
   function pickSeg(name,v){seg[name]=v;document.querySelectorAll(`[data-seg="${name}"] button`).forEach(b=>b.classList.toggle('on',b.dataset.v===v));if(name==='source')$('srcAlert').classList.toggle('show',v==='forced');updateGate();saveDraft()}
   function buildCard(){$('cSpan').textContent=val('span')||'—';$('cSource').textContent=seg.source?SRC_TEXT[seg.source]:'—';$('cThing').textContent=val('thing')||'—';$('cStep').textContent=(val('firstStep')||'—')+(val('when')?'\n'+val('when'):'');$('cBlank').textContent=val('blank')||'—';$('cFeel').textContent=val('feel')||'—'}
   function cardText(){return `空白卡\n\n這段空白：${val('span')}\n（${seg.source?SRC_TEXT[seg.source]:'—'}）\n\n我一直想做的那件事：${val('thing')}\n第一個小動作：${val('firstStep')}${val('when')?'（'+val('when')+'）':''}\n\n留給自己、不安排：${val('blank')}\n\n我希望回頭的時候：${val('feel')||'—'}\n\n空白不是還沒安排。`}

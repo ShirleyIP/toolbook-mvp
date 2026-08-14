@@ -71,10 +71,15 @@
   const $=id=>document.getElementById(id),val=id=>($(id)?.value||'').trim();
   function track(name,data={}){if(typeof gtag==='function')gtag('event',name,{tool_name:'result_lock_card',...data})}
   function valid(n){if(n===1)return !!val('outcome');if(n===2)return !!val('evidence')&&!!val('deadline');if(n===3)return !!val('must');if(n===5)return !!val('stopRule');return true}
-  function render(){screens.forEach((s,n)=>s.classList.toggle('active',n===i));$('back').classList.toggle('hide',i===0);$('dots').innerHTML=i===0?'':Array.from({length:6},(_,n)=>`<span class="dot ${n===Math.min(i-1,5)?'on':''}"></span>`).join('');$('next').textContent=i===0?'開始':i===5?'生成成果卡':i===6?'再做一張':'下一步';$('resultRecordCount').textContent=cards.length;updateGate();$('stage').scrollTop=0;if(i>0)track('step_view',{step_name:['','outcome','evidence','must_do','later','stop_rule','result'][i]})}
+  function render(){screens.forEach((s,n)=>s.classList.toggle('active',n===i));$('back').classList.toggle('hide',i===0);$('dots').innerHTML=i===0?'':Array.from({length:6},(_,n)=>`<span class="dot ${n===Math.min(i-1,5)?'on':''}"></span>`).join('');$('next').textContent=i===0?'開始':i===5?'生成成果卡':i===6?'再做一張':'下一步';$('resultRecordCount').textContent=cards.length;updateGate();$('stage').scrollTop=0;if(i>0)trackStepView()}
   function updateGate(){const ok=valid(i);$('next').disabled=!ok;$('gatehint').textContent=ok?'':i===2?'請填寫完成證據及日期':i===4?'':'完成這一題，才能繼續'}
-  function next(){if(!valid(i))return;if(i===0){track('tool_start');i=1}else if(i===5){archiveCard();buildCard();i=6;track('tool_complete')}else if(i===6){startNew();return}else i++;saveDraft();render()}
-  function prev(){if(i>0){i--;saveDraft();render()}}
+  const STEP_NAMES=['','outcome','evidence','must_do','later','stop_rule','result'];
+  let lastTracked=0,stepStartedAt=Date.now();
+  function trackStepView(){if(lastTracked===i)return;lastTracked=i;stepStartedAt=Date.now();track('tool_step_view',{step_number:i,step_name:STEP_NAMES[i]||'step_'+i})}
+  function trackStepExit(reason){if(!lastTracked)return;track('tool_step_exit',{step_number:lastTracked,step_name:STEP_NAMES[lastTracked]||'step_'+lastTracked,step_time_seconds:Math.max(1,Math.round((Date.now()-stepStartedAt)/1000)),exit_reason:reason});lastTracked=0}
+  window.addEventListener('pagehide',()=>trackStepExit('page_exit'));
+  function next(){if(!valid(i))return;trackStepExit('next');if(i===0){track('tool_start');i=1}else if(i===5){archiveCard();buildCard();i=6;track('tool_complete')}else if(i===6){startNew();return}else i++;saveDraft();render()}
+  function prev(){if(i>0){trackStepExit('back');i--;saveDraft();render()}}
   function formatDate(raw){if(!raw)return '—';const [y,m,d]=raw.split('-');return `${y}.${String(m).padStart(2,'0')}.${String(d).padStart(2,'0')}`}
   function buildCard(){ $('cardOutcome').textContent=val('outcome')||'—';$('cardEvidence').textContent=val('evidence')||'—';$('cardMust').textContent=val('must')||'—';$('cardLater').textContent=val('later')||'本輪沒有';$('cardStop').textContent=val('stopRule')||'—';$('cardDeadline').textContent=formatDate(val('deadline'))}
   function cardText(){return `成果鎖定卡\n\n本輪結果：${val('outcome')}\n完成證據：${val('evidence')}\n交付日期：${formatDate(val('deadline'))}\n\n現在只做：\n${val('must')}\n\n暫時不做：\n${val('later')||'本輪沒有'}\n\n止損規則：${val('stopRule')}\n\n先完成，再完美。`}

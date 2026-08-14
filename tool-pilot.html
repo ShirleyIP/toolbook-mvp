@@ -191,10 +191,15 @@
   const $=id=>document.getElementById(id),val=id=>($(id)?.value||'').trim();
   function track(name,data={}){if(typeof gtag==='function')gtag('event',name,{tool_name:'pilot_card',...data})}
   function valid(n){if(n===1)return !!val('decision')&&!!seg.rev;if(n===2)return !!val('pilot');if(n===3)return !!val('span')&&!!val('goSign')&&!!val('stopSign');if(n===4)return !!val('costTime');if(n===6)return !!val('decideBy');return true}
-  function render(){screens.forEach((s,n)=>s.classList.toggle('active',n===i));$('back').classList.toggle('hide',i===0);$('dots').innerHTML=i===0?'':Array.from({length:6},(_,n)=>`<span class="dot ${n===Math.min(i-1,5)?'on':''}"></span>`).join('');$('next').textContent=i===0?'開始':i===6?'生成試驗卡':i===LAST?'再做一張':'下一步';$('resultRecordCount').textContent=cards.length;updateGate();$('stage').scrollTop=0;if(i>0)track('step_view',{step_name:['','decision','shrink','criteria','limit','honest','commit','result'][i]})}
+  function render(){screens.forEach((s,n)=>s.classList.toggle('active',n===i));$('back').classList.toggle('hide',i===0);$('dots').innerHTML=i===0?'':Array.from({length:6},(_,n)=>`<span class="dot ${n===Math.min(i-1,5)?'on':''}"></span>`).join('');$('next').textContent=i===0?'開始':i===6?'生成試驗卡':i===LAST?'再做一張':'下一步';$('resultRecordCount').textContent=cards.length;updateGate();$('stage').scrollTop=0;if(i>0)trackStepView()}
   function updateGate(){const ok=valid(i);$('next').disabled=!ok;$('gatehint').textContent=ok?'':i===1?'寫下決定，並選一個回頭的難度':i===3?'三格都要填，包括「該停」':i===6?'選一個做決定的日子':'完成這一題，才能繼續'}
-  function next(){if(!valid(i))return;if(i===0){track('tool_start');i=1}else if(i===6){archiveCard();buildCard();i=LAST;track('tool_complete',{reversibility:seg.rev});}else if(i===LAST){startNew();return}else i++;saveDraft();render()}
-  function prev(){if(i>0){i--;saveDraft();render()}}
+  const STEP_NAMES=['','decision','shrink','criteria','limit','honest','commit','result'];
+  let lastTracked=0,stepStartedAt=Date.now();
+  function trackStepView(){if(lastTracked===i)return;lastTracked=i;stepStartedAt=Date.now();track('tool_step_view',{step_number:i,step_name:STEP_NAMES[i]||'step_'+i})}
+  function trackStepExit(reason){if(!lastTracked)return;track('tool_step_exit',{step_number:lastTracked,step_name:STEP_NAMES[lastTracked]||'step_'+lastTracked,step_time_seconds:Math.max(1,Math.round((Date.now()-stepStartedAt)/1000)),exit_reason:reason});lastTracked=0}
+  window.addEventListener('pagehide',()=>trackStepExit('page_exit'));
+  function next(){if(!valid(i))return;trackStepExit('next');if(i===0){track('tool_start');i=1}else if(i===6){archiveCard();buildCard();i=LAST;track('tool_complete',{reversibility:seg.rev});}else if(i===LAST){startNew();return}else i++;saveDraft();render()}
+  function prev(){if(i>0){trackStepExit('back');i--;saveDraft();render()}}
   function pickSeg(name,v){seg[name]=v;document.querySelectorAll(`[data-seg="${name}"] button`).forEach(b=>b.classList.toggle('on',b.dataset.v===v));if(name==='rev')$('revAlert').classList.toggle('show',v==='none');updateGate();saveDraft()}
   function formatDate(raw){if(!raw)return '—';const [y,m,d]=String(raw).split('-');return `${y}.${String(m).padStart(2,'0')}.${String(d).padStart(2,'0')}`}
   function costText(){const p=[];if(val('costTime'))p.push('時間：'+val('costTime'));if(val('costMoney'))p.push('金錢：'+val('costMoney'));if(val('costOther'))p.push('不能賠掉：'+val('costOther'));return p.join('\n')||'—'}

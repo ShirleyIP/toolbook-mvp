@@ -324,11 +324,11 @@
   }
   function updateGate(){const nx=document.getElementById('nx');if(!nx)return;const ok=gate[i]?gate[i]():true;
     nx.disabled=!ok;document.getElementById('gh').textContent=ok?'':'完成上方內容後即可繼續';}
-  function trackEvent(name,details={}){if(!isDemo&&typeof gtag==='function')gtag('event',name,details);}
+  function trackEvent(name,details={}){if(!isDemo&&typeof gtag==='function')gtag('event',name,{tool_name:'goal_clarifier',...details});}
   function trackStepView(){if(lastTrackedStep===i)return;lastTrackedStep=i;stepStartedAt=Date.now();
     trackEvent('tool_step_view',{step_number:i+1,step_name:stepNames[i]});}
   function trackStepExit(reason){if(lastTrackedStep<0)return;trackEvent('tool_step_exit',{step_number:lastTrackedStep+1,
-    step_name:stepNames[lastTrackedStep],step_time_seconds:Math.max(1,Math.round((Date.now()-stepStartedAt)/1000)),exit_reason:reason});}
+    step_name:stepNames[lastTrackedStep],step_time_seconds:Math.max(1,Math.round((Date.now()-stepStartedAt)/1000)),exit_reason:reason});lastTrackedStep=-1;}
   function trackCompletion(){try{if(sessionStorage.getItem('toolbook_complete_tracked'))return;sessionStorage.setItem('toolbook_complete_tracked','1');}catch(_){}
     trackEvent('tool_complete',{tool_name:'goal_clarifier'});}
   function next(){if(i<screens.length-1){if(i===0)trackEvent('tool_start',{tool_name:'goal_clarifier'});trackStepExit('next');i++;render();saveRecord();}}
