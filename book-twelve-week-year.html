@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CKM6MRRVBM"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());gtag('config','G-CKM6MRRVBM');
+</script>
+<title>《12週做完一年工作》工具地圖 · 骨架留下，數字換掉 · Toolbook</title>
+<meta name="description" content="這本書是一條環環相扣的執行鏈。八個環節逐一標出：哪些留下、哪些要換掉、哪些不做——每一環都附上理由。">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--serif:"Songti SC","Noto Serif TC","Source Han Serif TC",serif;--bg:#ece5d8;--paper:#f6f1e7;--ink:#2c2820;--body:#403a31;--muted:#8e856f;--line:#d6cdba;--frame:#c9bea4;--accent:#8a6f44;--green:#6f7f5c;--grey:#9a927e;--red:#9c6b52}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang TC",sans-serif;line-height:1.9;position:relative}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .wrap{max-width:760px;margin:auto;padding:0 28px;position:relative}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0}
+  .brand{font-family:var(--serif);font-size:18px;letter-spacing:3px;font-weight:600;text-decoration:none;color:var(--ink)}
+  .brand i{font-style:normal;color:var(--accent)}.brand small{font-size:10px;letter-spacing:3px;color:var(--accent);font-weight:400;margin-left:6px}
+  nav a:not(.brand){color:var(--muted);text-decoration:none;font-size:13px;margin-left:20px}
+  header{padding:44px 0 30px;border-bottom:1px solid var(--line);margin-bottom:36px}
+  .kick{color:var(--accent);font-size:10px;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px}
+  h1{font-family:var(--serif);font-size:34px;line-height:1.5;font-weight:600;margin-bottom:16px}
+  .dek{font-family:var(--serif);font-size:18px;color:#625a4d;margin-bottom:20px}
+  p{font-size:15.5px;color:var(--body);margin-bottom:18px}
+  h2{font-family:var(--serif);font-size:23px;font-weight:600;margin:56px 0 8px}
+  .lead{font-size:14.5px;color:var(--muted);margin-bottom:26px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+
+  /* ── 執行鏈：本頁的骨架，不與其他地圖頁共用 ── */
+  .chain{position:relative;margin:0 0 8px;padding-left:34px}
+  .chain::before{content:"";position:absolute;left:9px;top:10px;bottom:34px;width:1px;background:var(--frame)}
+  .link{position:relative;padding-bottom:34px}
+  .link::before{content:"";position:absolute;left:-30px;top:9px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:1px solid var(--frame)}
+  .link.keep::before{background:var(--green);border-color:var(--green)}
+  .link.swap::before{background:var(--accent);border-color:var(--accent)}
+  .link.trim::before{background:var(--bg);border-color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+  .lhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+  .lhead h3{font-family:var(--serif);font-size:19px;font-weight:600}
+  .lhead .step{font-size:11px;letter-spacing:2px;color:var(--muted)}
+  .v{font-size:10px;letter-spacing:2px;padding:2px 8px;border:1px solid var(--frame);color:var(--muted);white-space:nowrap}
+  .v.keep{border-color:var(--green);color:var(--green)}
+  .v.swap{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+  .v.trim{border-color:var(--accent);color:var(--accent)}
+  .pair{border-left:2px solid var(--line);padding-left:14px;margin:10px 0 0}
+  .pair div{font-size:14px;line-height:1.8;color:#4d463b;padding:3px 0}
+  .pair b{font-family:var(--serif);font-size:11px;letter-spacing:2px;color:var(--muted);margin-right:8px}
+  .pair .n b{color:var(--accent)}
+  .why{font-size:13.5px;color:var(--muted);line-height:1.8;margin:10px 0 0}
+  .link a{color:var(--accent);font-size:14px;text-decoration:none;border-bottom:1px solid var(--frame)}
+
+  .card{border:1px solid var(--line);background:var(--paper);padding:22px 24px;margin-bottom:14px}
+  .card .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+  .card h3{font-family:var(--serif);font-size:19px;font-weight:600}
+  .tag{font-size:10px;letter-spacing:2px;padding:3px 9px;border:1px solid var(--frame);color:var(--muted);white-space:nowrap}
+  .card p{font-size:14.5px;margin-bottom:10px;color:#4d463b}
+  .card p:last-child{margin-bottom:0}
+  .card .src{font-size:12px;color:var(--muted);margin-bottom:10px}
+  .changed{background:rgba(236,229,216,.6);border-left:2px solid var(--accent);padding:11px 15px;margin-top:12px;font-size:13.5px;line-height:1.8;color:#5a5344}
+  .changed b{font-family:var(--serif);color:var(--accent);display:block;margin-bottom:4px;font-size:12px;letter-spacing:1px}
+  .tpl{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .tpl div{border:1px solid var(--line);background:var(--paper);padding:18px 20px}
+  .tpl b{font-family:var(--serif);font-size:16px;display:block;margin-bottom:5px}
+  .tpl span{font-size:13px;color:var(--muted);line-height:1.75}
+  .no{border-top:1px solid var(--line);padding:18px 0}
+  .no:last-of-type{border-bottom:1px solid var(--line)}
+  .no b{font-family:var(--serif);font-size:16.5px;display:block;margin-bottom:5px;color:#6b6353}
+  .no b i{font-style:normal;font-size:10px;letter-spacing:2px;color:var(--red);border:1px solid var(--red);padding:2px 7px;margin-left:8px;vertical-align:2px}
+  .no b i.fit{color:var(--grey);border-color:var(--grey)}
+  .no span{font-size:14px;color:var(--body);line-height:1.8;display:block}
+  .cta{position:relative;background:var(--paper);border:1px solid var(--frame);padding:34px 30px;margin:52px 0 14px;text-align:center;box-shadow:inset 0 0 0 4px var(--bg),inset 0 0 0 5px var(--frame)}
+  .cta::before{content:"❦";position:absolute;top:-18px;left:50%;transform:translateX(-50%);background:var(--bg);padding:0 12px;color:var(--accent);font-family:var(--serif);font-size:20px}
+  .cta h3{font-family:var(--serif);font-size:21px;margin-bottom:8px}.cta p{font-size:14px;color:var(--muted);margin-bottom:20px}
+  .btn{display:inline-block;background:var(--accent);color:var(--paper);text-decoration:none;padding:14px 26px;border-radius:3px;font-size:13px;letter-spacing:2px}
+  .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent);margin-left:8px}
+  .note{font-size:12.5px;color:var(--muted);line-height:1.8;border-top:1px solid var(--line);padding-top:20px;margin-top:38px}
+  footer{text-align:center;color:var(--muted);font-size:11px;letter-spacing:1px;padding:44px 0}
+  @media(max-width:600px){
+    h1{font-size:27px}.tpl{grid-template-columns:1fr}.btn.ghost{margin-left:0;margin-top:10px}
+    .chain{padding-left:26px}.chain::before{left:5px}.link::before{left:-26px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="index.html">TOOLBOOK<i>.</i><small>EDITIONS</small></a>
+    <div><a href="index.html#articles">文章</a><a href="index.html#tools">工具</a></div>
+  </nav>
+
+  <header>
+    <div class="kick">工具地圖 · 第三本</div>
+    <h1>《12週做完一年工作》<br>骨架留下，數字換掉</h1>
+    <div class="dek">這本書的骨架，比它的證據體面。所以要換的是理由，不是做法。</div>
+    <p>全書二十一章我逐字讀完，凡是出現數字、出現「研究顯示」的地方，都回去追了出處。結論很集中：<b>這本書最有名的三個數字都站不住，但它的兩根主柱撐得住。</b></p>
+    <p>還有一件該先知道的事：<b>這本書大約有一半是寫給主管的</b>，教你怎麼檢查下屬的計畫、分數和會議出席。下面只取個人用得上的那一半——被我切掉的部分同樣列出來，附上原因。</p>
+  </header>
+
+  <h2>這本書其實只有一條線</h2>
+  <div class="lead">它不是一袋各自獨立的方法，而是一條環環相扣的鏈子：從你要去哪裡開始，一路接到每天做什麼、每週怎麼結算、一輪結束後怎麼辦。所以這一頁不分類，就照這條線走一遍——每一環告訴你我留下什麼、換掉什麼，以及為什麼。</div>
+
+  <div class="chain">
+
+    <div class="link swap">
+      <div class="lhead"><span class="step">01</span><h3>你要去哪裡</h3><span class="v swap">換掉</span></div>
+      <div class="pair">
+        <div class="w"><b>書裡</b>想像一個令人信服的願景，跟它建立情感連結</div>
+        <div class="n"><b>我們</b>問你想要什麼，也問擋在中間的是什麼</div>
+      </div>
+      <p class="why">書裡說想像願景時激發的神經元跟實際行動時相同，所以光靠思考就能訓練大腦——這句話沒有出處，而且證據方向相反：越常正面幻想渴望的未來，投入的努力反而越少。有效的做法是想願望的同時刻意想障礙。<b>而這本書後面談承諾的那一章，本來就是這樣教的。</b></p>
+    </div>
+
+    <div class="link keep">
+      <div class="lhead"><span class="step">02</span><h3>一輪多長</h3><span class="v keep">留下</span></div>
+      <div class="pair">
+        <div class="w"><b>書裡</b>固定十二週，並叫你扔掉年度計畫</div>
+        <div class="n"><b>我們</b>預設十二週，長度你自己改；另外保留一個長期方向欄</div>
+      </div>
+      <p class="why">把長期目標切成看得見盡頭的小段，這件事有紮實的實驗支持。但沒有任何研究說十二週比八週或十六週好——十二是經驗值。而且文獻的說法是遠處的目標給方向、近處的期限給動力，兩個一起用可能比只留一個好。<b>有趣的是作者自己說過，12 月 31 日只是一個任意挑的日子——這個論證同樣支持週期長度可以自己訂。</b></p>
+    </div>
+
+    <div class="link swap">
+      <div class="lhead"><span class="step">03</span><h3>這一輪要做什麼</h3><span class="v swap">換格式</span></div>
+      <div class="pair">
+        <div class="w"><b>書裡</b>行動要動詞開頭、標明第幾週完成；一輪可放兩到三個</div>
+        <div class="n"><b>我們</b>寫成「遇到什麼情況、我就做什麼」；預設只填一個</div>
+      </div>
+      <p class="why">書裡搬出「執行意圖」這個學術概念來替書面計畫背書，但它教的格式指定了做什麼、哪一週，唯獨沒指定觸發的那一刻——而觸發正是這個做法真正有效的部分。<br>至於數量：多個目標一起規劃，反而會讓人降低承諾；有份研究從另一個方向收斂到同一點——跟表現有關的是計畫的品質，不是數量。真要放多個，該由工具負責讓它看起來做得完，而不是直接擋下來。</p>
+    </div>
+
+    <div class="link keep">
+      <div class="lhead"><span class="step">04</span><h3>這一週要做什麼</h3><span class="v keep">留下</span></div>
+      <div class="pair">
+        <div class="w"><b>書裡</b>週計畫是十二週計畫的當週切片，不是另開一張待辦清單</div>
+        <div class="n"><b>我們</b>照做</div>
+      </div>
+      <p class="why">這一環書裡是對的，也是最容易被讀者做錯的地方：多數人會另外開一張待辦清單，於是週計畫跟這一輪的目標脫節。切片這個設計本身就防住了它。</p>
+    </div>
+
+    <div class="link keep">
+      <div class="lhead"><span class="step">05</span><h3>每天</h3><span class="v keep">向另一本書借</span></div>
+      <div class="pair">
+        <div class="w"><b>書裡</b>幾乎沒講。這本書的顆粒度停在「週」</div>
+        <div class="n"><b>我們</b>接上《人生效率手冊》的每日復盤：記下實際做了什麼、跟計畫對一次</div>
+      </div>
+      <p class="why">這是兩本書合起來用的理由。那本書的日層復盤是它全書證據最強的一項，而這本書剛好缺這一層；反過來，那本書被我拆掉五層拆解之後空出來的中層，正是這本書補的。<br><a href="tool-review.html" onclick="if(typeof gtag==='function')gtag('event','select_content',{content_type:'tool',item_id:'review_card'})">復盤卡已經可以用了 →</a></p>
+    </div>
+
+    <div class="link swap">
+      <div class="lhead"><span class="step">06</span><h3>一週結束時</h3><span class="v swap">換掉</span></div>
+      <div class="pair">
+        <div class="w"><b>書裡</b>算執行力分數（完成數 ÷ 計畫數），維持在 85% 以上</div>
+        <div class="n"><b>我們</b>只顯示「這週排了幾項、做完幾項」加上走勢。不轉百分比、不設門檻、不上顏色</div>
+      </div>
+      <p class="why">把分數限定在行動，這件事書裡做對了——成果會落後，行動不會，用成果打分數只會打到上個月的自己。而且書並沒有叫你不看成果：它要你另外開一欄記成果，還要替每個目標各配一個「先動的指標」和「後到的指標」。這一點很重要，因為證據顯示你量哪一端就只會改變那一端，兩者不能互相代理（<a href="article-measure.html" style="color:var(--accent)">那一篇專講這件事</a>）。要拆掉的只有那條線：85% 追不到任何公開研究，來源始終是作者自家顧問公司對客戶的觀察；而且分數的分母由你自己填，少排幾項就能達標。<br><b>更值得一提的是，作者在正文裡其實寬容得多；把它寫成「不能低於」的，是書末那封提醒信。</b></p>
+    </div>
+
+    <div class="link trim">
+      <div class="lhead"><span class="step">07</span><h3>要讓誰知道</h3><span class="v trim">縮小</span></div>
+      <div class="pair">
+        <div class="w"><b>書裡</b>把願景分享出去；每週開小組會議互相回報進度</div>
+        <div class="n"><b>我們</b>只做一件事：要不要讓某一個人知道</div>
+      </div>
+      <p class="why">書裡把四種「告訴別人」混成同一條建議，其中一種有反向證據：跟身分認同有關的計畫一旦被別人看見，當事人反而執行得比較不積極，而且對目標最認真的人最明顯。<br>但「找個朋友一起做」「告訴一個信任的人」不在那個研究的射程內，方向站得住。所以留後者，不做公開宣告、不做社群牆、不做排行。</p>
+    </div>
+
+    <div class="link keep">
+      <div class="lhead"><span class="step">08</span><h3>一輪結束之後</h3><span class="v keep">留下並放大</span></div>
+      <div class="pair">
+        <div class="w"><b>書裡</b>第十三週：檢討、慶祝、決定要不要再來一輪</div>
+        <div class="n"><b>我們</b>照做；這一輪的檢討用下面那張第十三週檢討卡</div>
+      </div>
+      <p class="why">這是全書結構裡最少被轉述的一環，卻最不容易讓人繃斷——兩輪之間本來就該有一個不記分的空檔。多數同類工具是一輪接一輪不停，這本書想到了留白。</p>
+    </div>
+
+  </div>
+
+  <h2>這條線以外，書裡還有的</h2>
+  <div class="lead">下面兩張卡不在主線上，但各自站得住，值得單獨做。</div>
+
+  <div class="card">
+    <div class="top"><h3>承諾成本卡</h3><span class="tag">準備中</span></div>
+    <div class="src">來自書中談承諾的那一章</div>
+    <p>想清楚四件事：你要什麼、你願意付出什麼代價、擋在前面的是什麼、知道了這些之後還要不要做。</p>
+    <div class="changed"><b>這一章作者做對了</b>這一步其實就是心理學上說的「心理對比」，正是第 01 環那組證據給出的解方。一本書裡，前面叫你想像願景，後面叫你寫下代價——有證據的是後面這章。作者做對了，只是從來沒把兩處連起來。</div>
+  </div>
+
+  <div class="card">
+    <div class="top"><h3>人生七面向自評</h3><span class="tag">準備中</span></div>
+    <div class="src">來自書中談「有意失衡」的那一章</div>
+    <p>把生活分成七個面向各自打分，看看這一段人生你把重心放在哪。這一章的立場出乎意料地好：平衡不等於每個面向平均分配時間，而是不同階段有意識地選擇側重點。<b>而且作者明講，判準用你自己的定義</b>——他舉的例子是，單身而滿意的人可以在感情那一欄打十分。</p>
+    <div class="changed"><b>我改掉了什麼</b>同一章舉的健康示例給了具體數值（每天攝取多少熱量、喝幾杯水），書裡沒有附上任何提醒。那是有實質風險的數字，我們不放。自評就只是自評，不附任何建議值。</div>
+    <div class="changed"><b>一個我自己的錯誤</b>我一開始憑章名猜這一章在鼓勵「犧牲生活去衝刺」，判定不採用。逐字讀完後推翻了自己。這一章反而是全書跟我們理念最接近的一章。</div>
+  </div>
+
+  <h2>三張表格</h2>
+  <div class="lead">不宣稱效果，就是表格。你照書做的時候會需要它們——但第三張有前提，看清楚再用。三張都還在做，這一頁先講清楚各自是什麼。</div>
+
+  <div class="tpl">
+    <div><b>十二週計畫表</b><span>一輪的目標、行動、各排在第幾週。行動欄照第 03 環用「遇到什麼情況、我就做什麼」來寫。</span></div>
+    <div><b>第十三週檢討卡</b><span>兩輪之間的空檔用。不記分、不評價，只幫你把這一輪發生的事整理一次。</span></div>
+    <div style="grid-column:1/-1"><b>三種時間塊排程模板</b><span>⚠️ 這一套預設你能整段不被打擾。如果你是排班、需要即時回應、或有照顧責任，書裡沒有給你替代版本。另外，書中用來支撐它的那份干擾成本報告，查證後不可引用——那是一家顧問公司的問卷調查，受訪者自己估出來的。</span></div>
+  </div>
+
+  <h2>這些我不做</h2>
+  <div class="lead">六項書裡都有，我都不做——但原因分兩種：前四項是查證之後站不住，後兩項站得住、只是跟這裡的定位不合。</div>
+
+  <div class="no"><b>85% 執行力門檻<i>站不住</i></b><span>追不到任何公開研究，而且分數的分母由你自己填。細節見第 06 環，以及<a href="article-two-standards.html" style="color:var(--accent)">那篇文章</a>——它專門講這個數字在同一本書裡有兩個版本。</span></div>
+  <div class="no"><b>把願景公開分享出去<i>站不住</i></b><span>證據方向是反的。細節見第 07 環。要補一句：這不代表「找人一起」沒用，那是另一回事，而且有正面證據。書裡把兩者混在一起了。</span></div>
+  <div class="no"><b>想像願景可以訓練大腦行動<i>站不住</i></b><span>書裡說想像時激發的神經元跟行動時相同，因此光靠思考就能訓練大腦。這句沒有出處，方向也相反。<br>但要說清楚：作者並沒有主張光想不做，全書其餘部分都在要你寫計畫、排週次、每天執行。站不住的是那一句話和它的依據，不是整套方法。</span></div>
+  <div class="no"><b>情緒變化五階段<i>站不住</i></b><span>書裡說改變必經五個情緒階段，第三階段是「絕望的低谷」，多數人在那裡放棄。這個模型出自 1979 年一本給培訓帶領者用的活動年鑑，不是同儕審查研究，查不到樣本與方法。<br>原始模型的第三階段其實叫「充滿希望的現實主義」，是書裡把它改寫得更負面。「中途會有一段不好受」當提醒可以，但不做成階段判定的功能。</span></div>
+  <div class="no"><b>每週小組責任會議<i class="fit">定位不合</i></b><span>這一項不是被推翻。我們不做群組功能，也不做互相檢查進度。個人版已經放進第 07 環。</span></div>
+  <div class="no"><b>團隊應用那一半<i class="fit">定位不合</i></b><span>教主管檢查下屬計畫、分數和會議出席的那些章節，個人讀者要自己切開。同一類的還有「完成之前不要回家」這種指令——它預設你對自己的時間有很高的支配權，而書裡沒有給其他人替代版本。</span></div>
+
+  <div class="cta">
+    <h3>那個 85%，怎麼會有兩個版本</h3>
+    <p>三個數字裡最有意思的一個：正文寬容，提醒信嚴厲，而你帶走的是後者。</p>
+    <a class="btn" href="article-two-standards.html">讀那篇查證 →</a>
+    <a class="btn ghost" href="book-efficiency-handbook.html">看另一本的地圖</a>
+  </div>
+
+  <div class="note">這一頁是我讀完《12週做完一年工作》全書後自行整理的判斷與取捨，不代表原書立場，也未引用書中原文或轉述書中案例。查證用到的文獻列在<a href="article-two-standards.html" style="color:var(--accent)">那篇文章</a>末尾，其中數項至今仍有學術爭議，我已標明。書中方法是否適合你，請自行判斷。<br><br>需要說明的是：這本書的作者在正文裡其實比多數轉述者節制，好幾處都自己留了餘地。詳細情形寫在那篇文章裡。書中另有一段以真實人物的身體處境作為勵志對照，我認為不宜轉述，因此在文章與這一頁都完全略過。</div>
+
+  <footer>TOOLBOOK<span style="color:var(--accent)">.</span> EDITIONS · 把好書變成工具</footer>
+</div>
+</body>
+</html>
