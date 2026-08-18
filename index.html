@@ -52,6 +52,10 @@
   .tool .used .u-k{font-size:9px;letter-spacing:2.2px;text-transform:uppercase;margin-top:7px;}
   .tool .used .u-v{font-family:var(--serif);font-size:14px;color:var(--ink);line-height:1.6;margin-top:1px;}
   .tool .btn{margin-top:auto;align-self:flex-start;}
+  .grp{grid-column:1/-1;margin:26px 0 -4px;}
+  .grp:first-child{margin-top:0;}
+  .grp b{display:block;font-family:var(--serif);font-size:17px;font-weight:600;letter-spacing:.5px;}
+  .grp span{display:block;font-size:12.5px;color:var(--muted);margin-top:3px;}
   .coming{display:flex;flex-direction:column;gap:0;margin-top:10px;}
   .citem{display:flex;align-items:center;gap:14px;padding:15px 2px;border-bottom:1px solid var(--line);}
   .citem .cn{font-family:var(--serif);color:var(--accent);font-size:12px;letter-spacing:1px;width:48px;}
@@ -96,6 +100,7 @@
   <section id="tools">
     <div class="sec-k">現在能用的</div>
     <div class="toolgrid">
+      <div class="grp"><b>不知道自己要什麼</b><span>先聽見，再決定。</span></div>
       <div class="tool">
         <div class="no">工具 No. 01</div>
         <h3>目標釐清器</h3>
@@ -103,6 +108,7 @@
         <div class="src">啟發自《認知覺醒》× Dreamlining《一週工作 4 小時》。</div>
         <a class="btn" href="tool.html">開始 →</a>
       </div>
+      <div class="grp"><b>知道要什麼，但推不動</b><span>定成果 → 每天落地 → 回頭對一次。這三張是一條線。</span></div>
       <div class="tool">
         <div class="no">工具 No. 02</div>
         <h3>成果鎖定卡</h3>
@@ -111,12 +117,20 @@
         <a class="btn" href="tool-result-lock.html">開始 →</a>
       </div>
       <div class="tool">
+        <div class="no">工具 No. 08</div>
+        <h3>今天兩格</h3>
+        <p>一天只有兩個格子，寫滿就鎖。用位置不夠來逼出取捨，不必靠意志力。</p>
+        <div class="src">啟發自《一週工作 4 小時》第 5 章；書中掛在帕金森定律上的說法，查證後沒有沿用。</div>
+        <a class="btn" href="tool-two.html">開始 →</a>
+      </div>
+      <div class="tool">
         <div class="no">工具 No. 03</div>
         <h3>復盤卡</h3>
         <p>一輪做完之後，拿當初寫下的目標對一次實際結果，然後只挑一件事改。</p>
         <div class="src">啟發自《人生效率手冊》工具篇；這是全書查證後證據最紮實的一項。</div>
         <a class="btn" href="tool-review.html">開始 →</a>
       </div>
+      <div class="grp"><b>卡在一個決定</b><span>不敢動，多半是因為最壞的情況沒被寫下來。</span></div>
       <div class="tool">
         <div class="no">工具 No. 04</div>
         <h3>恐懼拆解卡</h3>
@@ -131,13 +145,7 @@
         <div class="src">啟發自《一週工作 4 小時》——全書反覆用到、但作者從沒取名字的那個做法。</div>
         <a class="btn" href="tool-pilot.html">開始 →</a>
       </div>
-      <div class="tool">
-        <div class="no">工具 No. 06</div>
-        <h3>空下來之後</h3>
-        <p>時間空出來了，然後呢？這張卡不叫你把它填滿，只幫你安排一件在乎的事，並留住該留的空白。</p>
-        <div class="src">啟發自《一週工作 4 小時》最後一章——那一章推翻了整本書的書名，也是全書唯一有大量研究支持的一段。</div>
-        <a class="btn" href="tool-leisure.html">開始 →</a>
-      </div>
+      <div class="grp"><b>事情太多</b><span>先看清楚你有多少決定權，再決定減什麼。</span></div>
       <div class="tool">
         <div class="no">工具 No. 07</div>
         <h3>減法掃描卡</h3>
@@ -146,12 +154,13 @@
         <a class="btn" href="tool-subtract.html">開始 →</a>
       </div>
       <div class="tool">
-        <div class="no">工具 No. 08</div>
-        <h3>今天兩格</h3>
-        <p>一天只有兩個格子，寫滿就鎖。用位置不夠來逼出取捨，不必靠意志力。</p>
-        <div class="src">啟發自《一週工作 4 小時》第 5 章；書中掛在帕金森定律上的說法，查證後沒有沿用。</div>
-        <a class="btn" href="tool-two.html">開始 →</a>
+        <div class="no">工具 No. 06</div>
+        <h3>空下來之後</h3>
+        <p>時間空出來了，然後呢？這張卡不叫你把它填滿，只幫你安排一件在乎的事，並留住該留的空白。</p>
+        <div class="src">啟發自《一週工作 4 小時》最後一章——那一章推翻了整本書的書名，也是全書唯一有大量研究支持的一段。</div>
+        <a class="btn" href="tool-leisure.html">開始 →</a>
       </div>
+      <div class="grp"><b>要跑一段長的</b><span>一輪十二週，只帶一個關鍵行動。</span></div>
       <div class="tool">
         <div class="no">工具 No. 09</div>
         <h3>週期執行器</h3>
