@@ -233,5 +233,15 @@
   if(isDemo){const d=new Date(Date.now()+30*86400000);const demo={decision:'要不要轉去做設計',pilot:'接一個小的設計案，晚上做，不辭職',span:'四週，或做完三個案子',goSign:'三個案子都交得出去，而且我還想接第四個',stopSign:'每次都做到凌晨，白天工作開始出錯',costTime:'每週最多八小時',costMoney:'兩萬元以內',costOther:'不能影響現在的工作評價',unknown:'做三個案子很新鮮，但做三年會不會膩，我還是不知道',decideBy:`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`,commit:'如果要做，就在月底前談好離職時間；如果不做，就把這件事從清單上劃掉'};Object.entries(demo).forEach(([k,v])=>$(k).value=v);pickSeg('rev','easy');i=LAST;buildCard()}else loadDraft();
   renderBook();render();
 </script>
+<script src="toolbook.js" defer></script>
+<script>
+  /* 共用層：目錄選單會自動掛上；完成畫面補一段意見小調查。
+     inline script 的 defer 無效，所以要等 DOMContentLoaded——
+     那時候 toolbook.js 這種 defer 的外部檔已經跑完了。 */
+  window.addEventListener('DOMContentLoaded',function(){
+    if(typeof Toolbook==='undefined')return;
+    Toolbook.mountFeedback({toolId:'pilot_card',toolName:'小規模試驗卡',into:'.screen'});
+  });
+</script>
 </body>
 </html>

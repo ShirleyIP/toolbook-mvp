@@ -216,5 +216,15 @@
   if(isDemo){const demo={items:'每週例會\n回客戶訊息\n做月報\n帶新人\n主要專案\n臨時插件',drain:'每週例會\n臨時插件',gain:'主要專案\n帶新人',support:'例會很煩，但我大部分的資訊都是在那裡拿到的',action:'每週例會改成兩週一次，我先問問看主管的想法',freed:'給主要專案，不要又被填滿'};Object.entries(demo).forEach(([k,v])=>$(k).value=v);pickSeg('power','some');i=LAST;buildCard()}else loadDraft();
   applyPowerWording();renderBook();render();
 </script>
+<script src="toolbook.js" defer></script>
+<script>
+  /* 共用層：目錄選單會自動掛上；完成畫面補一段意見小調查。
+     inline script 的 defer 無效，所以要等 DOMContentLoaded——
+     那時候 toolbook.js 這種 defer 的外部檔已經跑完了。 */
+  window.addEventListener('DOMContentLoaded',function(){
+    if(typeof Toolbook==='undefined')return;
+    Toolbook.mountFeedback({toolId:'subtract_card',toolName:'減法掃描卡',into:'.screen'});
+  });
+</script>
 </body>
 </html>

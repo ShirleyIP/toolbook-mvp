@@ -811,5 +811,15 @@ if(isDemo){
 if(forcedStep)i=Math.max(0,Math.min(LAST,parseInt(params.get('s'),10)||0));
 renderBook();render();
 </script>
+<script src="toolbook.js" defer></script>
+<script>
+  /* 共用層：目錄選單會自動掛上；完成畫面補一段意見小調查。
+     inline script 的 defer 無效，所以要等 DOMContentLoaded——
+     那時候 toolbook.js 這種 defer 的外部檔已經跑完了。 */
+  window.addEventListener('DOMContentLoaded',function(){
+    if(typeof Toolbook==='undefined')return;
+    Toolbook.mountFeedback({toolId:'fear_card',toolName:'恐懼拆解卡',into:'.screen'});
+  });
+</script>
 </body>
 </html>

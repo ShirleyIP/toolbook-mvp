@@ -260,5 +260,15 @@
   if(isDemo){const demo={want:'靠自己的作品養活自己',blocker:'白天的工作佔掉最清醒的四小時',deliver:'一個能收費的線上課程，錄完並上架',donedef:'八支影片上架，付款連結測試過',iff:'每天早上倒完咖啡坐下之後',thenn:'錄一段十分鐘的課程草稿',weeks:'12',teller:'阿哲'};Object.entries(demo).forEach(([id,v])=>$(id).value=v);startedAt=new Date().toISOString();logs=[{w:1,plan:4,done:3,note:'錄了兩支'},{w:2,plan:4,done:2,note:''}];i=7}else loadDraft();
   renderBook();render();
 </script>
+<script src="toolbook.js" defer></script>
+<script>
+  /* 共用層：目錄選單會自動掛上；完成畫面補一段意見小調查。
+     inline script 的 defer 無效，所以要等 DOMContentLoaded——
+     那時候 toolbook.js 這種 defer 的外部檔已經跑完了。 */
+  window.addEventListener('DOMContentLoaded',function(){
+    if(typeof Toolbook==='undefined')return;
+    Toolbook.mountFeedback({toolId:'cycle_executor',toolName:'週期執行器',into:'.screen'});
+  });
+</script>
 </body>
 </html>

@@ -94,6 +94,14 @@
     <button class="clear" id="clearAll" type="button">清空全部紀錄</button>
   </div>
 
+  <div class="why">
+    <b>下一步</b>
+    如果兩格天天都塞不下，問題不在這張卡——是上游的事太多了。用<a href="tool-subtract.html" style="color:var(--accent)">減法掃描卡</a>先看清楚你有多少決定權，再挑一項動它。<br><br>
+    如果你想跑一段長一點的，<a href="tool-cycle.html" style="color:var(--accent)">週期執行器</a>開一輪十二週、只帶一個關鍵行動，每週回來記兩個數字。
+  </div>
+
+  <div id="tbAskHost"></div>
+
   <footer>TOOLBOOK<span style="color:var(--accent)">.</span> EDITIONS · 把好書變成工具</footer>
 </div>
 <div class="toast" id="toast"></div>
@@ -133,6 +141,16 @@
   $('clearAll').addEventListener('click',()=>{if(!confirm('清空全部紀錄？包括今天的兩格。'))return;store={};save(store);paint();toast('已清空')});
   setInterval(()=>{const k=todayKey();if(k!==key){key=k;paint()}},60000);
   paint();track('tool_start');
+</script>
+<script src="toolbook.js" defer></script>
+<script>
+  /* 共用層：目錄選單會自動掛上；完成畫面補一段意見小調查。
+     inline script 的 defer 無效，所以要等 DOMContentLoaded——
+     那時候 toolbook.js 這種 defer 的外部檔已經跑完了。 */
+  window.addEventListener('DOMContentLoaded',function(){
+    if(typeof Toolbook==='undefined')return;
+    Toolbook.mountFeedback({toolId:'two_slots',toolName:'今天兩格',into:'#tbAskHost'});
+  });
 </script>
 </body>
 </html>

@@ -46,6 +46,11 @@
   .tool h3{font-family:var(--serif);font-size:24px;font-weight:600;margin:8px 0 10px;}
   .tool p{color:#5d564a;font-size:15px;margin-bottom:20px;}
   .tool .src{font-size:12px;color:var(--muted);margin-bottom:22px;}
+  .tool .used{display:none;border-top:1px dashed var(--frame);padding-top:12px;margin:-8px 0 20px;font-size:11px;letter-spacing:.5px;color:var(--muted);}
+  .tool .used.on{display:block;}
+  .tool .used .u-when{color:var(--accent);}
+  .tool .used .u-k{font-size:9px;letter-spacing:2.2px;text-transform:uppercase;margin-top:7px;}
+  .tool .used .u-v{font-family:var(--serif);font-size:14px;color:var(--ink);line-height:1.6;margin-top:1px;}
   .tool .btn{margin-top:auto;align-self:flex-start;}
   .coming{display:flex;flex-direction:column;gap:0;margin-top:10px;}
   .citem{display:flex;align-items:center;gap:14px;padding:15px 2px;border-bottom:1px solid var(--line);}
@@ -255,5 +260,39 @@
   </footer>
 
 </div>
+
+<script src="toolbook.js" defer></script>
+<script defer>
+  /* 每張工具卡補一行「你用過、上次寫下什麼」。
+     不用在九張卡上逐一加標記——用「開始 →」按鈕的 href 對出是哪個工具就夠了。
+     忘記的其實不是「用過」，是上次的結論，所以顯示的是結論那一行。 */
+  window.addEventListener('DOMContentLoaded',function(){
+    if(typeof Toolbook==='undefined')return;
+    const esc=Toolbook.esc;
+    let anyUsed=false;
+
+    Toolbook.allUsage().forEach(function(r){
+      if(!r.count)return;
+      anyUsed=true;
+      const btn=document.querySelector('.tool .btn[href="'+r.tool.file+'"]');
+      if(!btn)return;
+      const box=document.createElement('div');
+      box.className='used on';
+      const when=r.lastAt?Toolbook.fmtDate(r.lastAt):'之前';
+      const times=r.count>1?('，共 '+r.count+' '+r.unit):'';
+      box.innerHTML='<span class="u-when">你 '+esc(when)+' 用過</span>'+esc(times)+
+        (r.extra?' · '+esc(r.extra):'')+
+        (r.summary?'<div class="u-k">'+esc(r.summaryLabel)+'</div><div class="u-v">'+esc(r.summary)+'</div>':'');
+      btn.parentNode.insertBefore(box,btn);
+      btn.textContent='再做一次 →';
+    });
+
+    if(anyUsed){
+      const sec=document.getElementById('tools');
+      const k=sec&&sec.querySelector('.sec-k');
+      if(k)k.innerHTML='現在能用的 · <a href="records.html" style="color:var(--accent);text-decoration:none;letter-spacing:2px">看我的全部紀錄 →</a>';
+    }
+  });
+</script>
 </body>
 </html>

@@ -156,6 +156,7 @@
       <div class="result-actions"><button class="btn ghost save-image" id="saveImage" type="button">儲存為圖片</button><button class="btn ghost" id="copyCard" type="button">複製文字</button><button class="btn ghost" id="shareCard" type="button">分享</button></div>
       <button class="record-link result-record" id="openBookResult" type="button">查看紀錄簿（<span id="resultRecordCount">0</span>）</button>
       <div class="whybox" style="margin-top:26px"><b>這張卡不打算做的事</b>它不會提醒你、不會統計你完成了幾項、也不會告訴你這段時間過得好不好。那些都是工作用的工具，搬到這裡只會把休息變成另一份工作。<br><br>時間到了，你自己回來看一眼就好。</div>
+      <div class="whybox" style="margin-top:18px"><b>下一步</b>如果那件在乎的事一直排不進日子裡，用<a href="tool-two.html" style="color:var(--accent)">今天兩格</a>把它放進其中一格——一天只有兩格，它就不必跟十件事搶位置。<br><br>如果它是一個還沒把握的決定，先用<a href="tool-pilot.html" style="color:var(--accent)">小規模試驗卡</a>設計一次成本很低的試驗，不必一次賭上整段空白。</div>
     </section>
   </div>
   <div class="foot"><div class="gatehint" id="gatehint"></div><button class="btn" id="next" type="button">開始</button></div>
@@ -212,6 +213,16 @@
   $('shareCard').addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:'我的空白卡',text:cardText()});else{await navigator.clipboard.writeText(cardText());toast('已複製，可貼到其他地方')}track('share',{method:navigator.share?'web_share':'copy'})}catch(_){}});
   if(isDemo){const demo={span:'接下來三週',actual:'滑手機、追劇、想著應該做點什麼但沒動',thing:'把爸爸留下來的舊照片整理成一本相簿',firstStep:'把裝照片的那個箱子從櫃子上拿下來',when:'今天晚上',blank:'每個週日整天，誰也不約',feel:'覺得自己有好好休息，而且做了一件真的想做的事'};Object.entries(demo).forEach(([k,v])=>$(k).value=v);pickSeg('source','chosen');i=LAST;buildCard()}else loadDraft();
   renderBook();render();
+</script>
+<script src="toolbook.js" defer></script>
+<script>
+  /* 共用層：目錄選單會自動掛上；完成畫面補一段意見小調查。
+     inline script 的 defer 無效，所以要等 DOMContentLoaded——
+     那時候 toolbook.js 這種 defer 的外部檔已經跑完了。 */
+  window.addEventListener('DOMContentLoaded',function(){
+    if(typeof Toolbook==='undefined')return;
+    Toolbook.mountFeedback({toolId:'leisure_card',toolName:'空下來之後',into:'.screen'});
+  });
 </script>
 </body>
 </html>

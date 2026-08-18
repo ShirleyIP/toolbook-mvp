@@ -189,5 +189,15 @@
   if(isDemo){const demo={planned:'完成一支可以發布的影片',actual:'影片剪好了，字幕沒做完，還沒發布',missed:'字幕\n發布前檢查',extra:'順手整理了素材庫\n幫同事看了一版稿',reason:'字幕比想像中花時間，而且中途插了兩個急件',onething:'字幕先做一半再開始剪，不要留到最後',lesson:'我一直低估收尾要花的時間'};Object.entries(demo).forEach(([id,v])=>$(id).value=v);i=7;buildCard()}else loadDraft();
   renderBook();render();
 </script>
+<script src="toolbook.js" defer></script>
+<script>
+  /* 共用層：目錄選單會自動掛上；完成畫面補一段意見小調查。
+     inline script 的 defer 無效，所以要等 DOMContentLoaded——
+     那時候 toolbook.js 這種 defer 的外部檔已經跑完了。 */
+  window.addEventListener('DOMContentLoaded',function(){
+    if(typeof Toolbook==='undefined')return;
+    Toolbook.mountFeedback({toolId:'review_card',toolName:'復盤卡',into:'.screen'});
+  });
+</script>
 </body>
 </html>
