@@ -58,20 +58,35 @@
       sum: ['answer'], sumLabel: '上次留下的那一題' }
   ];
 
+  // tools：這一頁上實際列出／指向的工具。
+  // 只在這裡宣告一次，工具那一邊的「這張卡出自哪裡」用反向對應算出來（見 sourcesFor）。
+  // 不列第二份清單——人腦列兩份一定有一份會漏，GA 參數就是這樣漏掉五個的。
   var MAPS = [
-    { name: '《人生效率手冊》', file: 'book-efficiency-handbook.html' },
-    { name: '《一週工作 4 小時》', file: 'book-four-hour-workweek.html' },
-    { name: '《12週做完一年工作》', file: 'book-twelve-week-year.html' },
-    { name: '《非暴力溝通》', file: 'book-nonviolent-communication.html' }
+    { name: '《人生效率手冊》', file: 'book-efficiency-handbook.html',
+      tools: ['result_lock_card', 'review_card'] },
+    { name: '《一週工作 4 小時》', file: 'book-four-hour-workweek.html',
+      tools: ['fear_card', 'pilot_card', 'leisure_card', 'subtract_card', 'two_slots'] },
+    { name: '《12週做完一年工作》', file: 'book-twelve-week-year.html',
+      tools: ['review_card', 'cycle_executor'] },
+    { name: '《非暴力溝通》', file: 'book-nonviolent-communication.html',
+      tools: ['after_talk'] }
   ];
 
   var ARTICLES = [
-    { name: '為什麼你定了一堆目標，卻還是迷茫？', file: 'article.html' },
-    { name: '為甚麼每天很忙，仍然沒有進展？', file: 'article-busy.html' },
-    { name: '這本效率書最有名的三個數字，沒有一個站得住', file: 'article-three-numbers.html' },
-    { name: '那個 85%，其實有兩個版本', file: 'article-two-standards.html' },
-    { name: '你量什麼，就只會改變什麼', file: 'article-measure.html' },
-    { name: '這套溝通方法，不承諾你學得會', file: 'article-no-promise.html' }
+    { name: '為什麼你定了一堆目標，卻還是迷茫？', file: 'article.html',
+      tools: ['goal_clarifier'] },
+    { name: '為甚麼每天很忙，仍然沒有進展？', file: 'article-busy.html',
+      tools: ['result_lock_card'] },
+    { name: '這本效率書最有名的三個數字，沒有一個站得住', file: 'article-three-numbers.html',
+      tools: ['result_lock_card'] },
+    // 這篇拆的是《12週做完一年工作》，所以那本書的工具也算相關，
+    // 即使文章正文的按鈕只指向復盤卡。
+    { name: '那個 85%，其實有兩個版本', file: 'article-two-standards.html',
+      tools: ['review_card', 'cycle_executor'] },
+    { name: '你量什麼，就只會改變什麼', file: 'article-measure.html',
+      tools: ['review_card'] },
+    { name: '這套溝通方法，不承諾你學得會', file: 'article-no-promise.html',
+      tools: ['goal_clarifier', 'review_card', 'after_talk'] }
   ];
 
   /* ---------- 2. 讀出使用狀況 ---------- */
@@ -321,11 +336,17 @@
     '.tb-dir-a .tb-u{font-size:10.5px;color:var(--accent,#8a6f44);flex:none;letter-spacing:.5px}',
     '.tb-dir-a[aria-current="page"] .tb-t{color:var(--accent,#8a6f44);font-weight:600}',
     '.tb-dir-a:hover .tb-t{color:var(--accent,#8a6f44)}',
-    /* 導覽列本來就是滿的：品牌 217px ＋ 連結 121px = 338px，剛好等於 390 螢幕的可用寬。
-       再加一個 ☰ 就換行，品牌名會被頂到第二行。
-       「EDITIONS」是裝飾性的副標，窄螢幕收起來換得的空間夠多，也不影響辨識。 */
-    '@media(max-width:430px){nav .brand .sub,nav .brand small{display:none}}',
-    '.tb-dir-link{margin-left:14px !important}'
+    /* 導覽列本來就是滿的，所以窄螢幕要把「EDITIONS」這個裝飾性副標收起來，
+       否則品牌名會被頂到第二行。
+
+       斷點原本是 430px。加上「目錄」兩個字之後重量一次，發現真正擠的不是小螢幕，
+       是 431–470 那一段——副標在那裡會回來，品牌從 139px 變 217px，首頁的導覽列
+       剛好被塞滿、餘裕為 0；而 375px 反而有 56px 餘裕。所以斷點提到 470，讓副標
+       晚一點回來，換「目錄」兩個字在每一個寬度都看得到。
+       副標是裝飾，那兩個字是入口——只有一個 ☰ 的話，沒有人會知道點下去有自己的紀錄。 */
+    '@media(max-width:470px){nav .brand .sub,nav .brand small{display:none}}',
+    '.tb-dir-link{margin-left:14px !important}',
+    '.tb-dir-word{font-size:12.5px;letter-spacing:2px;margin-left:6px;vertical-align:1px}'
   ].join('');
 
   function dirLink(file, label, no, usedNote) {
@@ -337,9 +358,11 @@
   }
 
   function buildDirectory() {
-    var used = {};
+    var used = {}, usedTools = 0;
     allUsage().forEach(function (u) {
-      used[u.tool.id] = u.count ? ('用過 ' + u.count + ' 次') : '';
+      // unit 用登記表宣告的那個：「今天兩格」數的是天，寫「1 次」對不上它自己的頁面。
+      used[u.tool.id] = u.count ? ('用過 ' + u.count + ' ' + (u.unit === '天' ? '天' : '次')) : '';
+      if (u.count) usedTools++;
     });
 
     var html = '<div class="tb-dir-inner" role="dialog" aria-label="目錄">' +
@@ -347,7 +370,8 @@
       '<button class="tb-dir-x" type="button" data-tb-close aria-label="關閉">✕</button></div>' +
       '<div class="tb-dir-note">全站一頁一工具，答案存在你這部裝置。</div>' +
       dirLink('index.html', '首頁', '', '') +
-      dirLink('records.html', '我的紀錄', '', '') +
+      dirLink('records.html', '我的紀錄', '',
+        usedTools ? ('用過 ' + usedTools + ' 個工具') : '還沒有紀錄') +
       '<div class="tb-dir-k">工具</div>' +
       TOOLS.map(function (t) { return dirLink(t.file, t.name, t.no, used[t.id]); }).join('') +
       '<div class="tb-dir-k">工具地圖</div>' +
@@ -395,7 +419,7 @@
       b.className = 'tb-dir-btn';
       b.setAttribute('aria-label', '目錄');
       b.style.cssText = 'font-size:17px;margin-left:auto;margin-right:16px';
-      b.textContent = '☰';
+      b.innerHTML = '☰<span class="tb-dir-word">目錄</span>';
       var home = bar.querySelector('.home');
       if (home) { home.style.marginLeft = '0'; bar.insertBefore(b, home); }
       else bar.appendChild(b);
@@ -411,7 +435,7 @@
       a.className = 'tb-dir-link';
       a.setAttribute('aria-label', '目錄');
       a.title = '目錄';
-      a.textContent = '☰';
+      a.innerHTML = '☰<span class="tb-dir-word">目錄</span>';
       a.style.cssText = 'font-size:16px;line-height:1;letter-spacing:0';
       a.addEventListener('click', function (e) { e.preventDefault(); openDirectory(); });
       links.appendChild(a);
@@ -505,6 +529,10 @@
 
     host.appendChild(box);
 
+    // 出口放在調查下面，不放上面。放上面等於在問問題之前先給一條離開的路，
+    // 而這個站最缺的東西是回饋，不是流量。
+    mountExits(host, toolId);
+
     var picked = {};
     box.querySelectorAll('.tb-q[data-q]').forEach(function (q) {
       q.querySelectorAll('button').forEach(function (b) {
@@ -567,6 +595,79 @@
     });
   }
 
+  /* ---------- 4c. 完成畫面的出口 ---------- */
+
+  /* 為什麼要有這一段：十個工具的完成畫面只連得到別的工具，一條回文章或工具地圖的
+     路都沒有。使用者的原話是「用完很久以後忘記了工具的作用，但是再看文章會有時間
+     成本」——回去的路本來就不存在，不是他沒找到。
+
+     對應關係只宣告在 MAPS／ARTICLES 的 tools 欄，這裡算反向對應。 */
+
+  function sourcesFor(toolId) {
+    function has(x) { return (x.tools || []).indexOf(toolId) > -1; }
+    return { maps: MAPS.filter(has), articles: ARTICLES.filter(has) };
+  }
+
+  var EXIT_CSS = [
+    /* 刻意不給邊框與底色：調查框已經是一個框，再來一個框會變成兩塊互相搶的東西。
+       這一塊是收尾，用一條分隔線就夠。 */
+    '.tb-exit{border-top:1px solid var(--line,#d6cdba);margin-top:26px;padding-top:20px;font-family:-apple-system,"PingFang TC",sans-serif}',
+    '.tb-exit h4{font-family:var(--serif,serif);font-size:16.5px;font-weight:600;margin:0 0 5px;color:var(--ink,#2c2820)}',
+    '.tb-exit-sub{font-size:12.5px;color:var(--muted,#938b78);line-height:1.8;margin-bottom:10px}',
+    '.tb-exit-k{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted,#938b78);margin:16px 0 2px}',
+    '.tb-exit-a{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--ink,#2c2820);padding:11px 2px;border-bottom:1px solid var(--line,#d6cdba);font-size:14.5px;line-height:1.6}',
+    '.tb-exit-a .tb-exit-t{flex:1}',
+    '.tb-exit-a .tb-exit-m{font-size:10.5px;color:var(--accent,#8a6f44);flex:none;letter-spacing:.5px}',
+    '.tb-exit-a:hover .tb-exit-t{color:var(--accent,#8a6f44)}'
+  ].join('');
+
+  function exitLink(file, label, meta, type) {
+    return '<a class="tb-exit-a" href="' + esc(file) + '"' +
+      ' data-tb-exit="' + esc(type) + '" data-tb-file="' + esc(file) + '">' +
+      '<span class="tb-exit-t">' + esc(label) + '</span>' +
+      '<span class="tb-exit-m">' + esc(meta) + '</span></a>';
+  }
+
+  function mountExits(host, toolId) {
+    if (!host || document.getElementById('tbExit')) return;
+    var src = sourcesFor(toolId);
+    if (!src.maps.length && !src.articles.length) return;
+
+    injectStyle('tb-exit-css', EXIT_CSS);
+
+    var rows = '';
+    if (src.maps.length) {
+      rows += '<div class="tb-exit-k">出自</div>' + src.maps.map(function (m) {
+        return exitLink(m.file, m.name, '工具地圖', 'book_map');
+      }).join('');
+    }
+    if (src.articles.length) {
+      rows += '<div class="tb-exit-k">寫過的</div>' + src.articles.map(function (a) {
+        return exitLink(a.file, a.name, '文章', 'article');
+      }).join('');
+    }
+
+    var box = document.createElement('div');
+    box.className = 'tb-exit';
+    box.id = 'tbExit';
+    box.innerHTML = '<h4>這張卡是從哪裡來的</h4>' +
+      '<div class="tb-exit-sub">隔一段時間回來、忘了它要解決什麼的時候，' +
+      '從這裡看比把整篇重讀一遍快。</div>' + rows;
+    host.appendChild(box);
+
+    // 事件沿用站上既有的 select_content ＋ content_type／item_id 慣例，
+    // 沒有新參數，所以不需要再去 GA4 後台開維度。
+    box.addEventListener('click', function (e) {
+      var a = e.target.closest('[data-tb-exit]');
+      if (!a) return;
+      track('select_content', {
+        content_type: a.getAttribute('data-tb-exit'),
+        item_id: a.getAttribute('data-tb-file'),
+        tool_name: toolId
+      });
+    });
+  }
+
   /* ---------- 對外 ---------- */
 
   global.Toolbook = {
@@ -578,11 +679,13 @@
     fmtDate: fmtDate,
     oneLine: oneLine,
     esc: esc,
+    sourcesFor: sourcesFor,
     exportAll: exportAll,
     importAll: importAll,
     readFile: readFile,
     mountDirectory: mountDirectory,
     mountFeedback: mountFeedback,
+    mountExits: mountExits,
     openDirectory: openDirectory
   };
 
