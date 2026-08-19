@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CKM6MRRVBM"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());gtag('config','G-CKM6MRRVBM');
+</script>
+<title>講完話之後 · Toolbook</title>
+<meta name="description" content="講完話覺得不對勁的時候用。挑一句最接近你狀況的，給你對應的那一題——一次只一題，只問你剛才做了什麼。">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  :root{--serif:"Songti SC","Noto Serif TC","Source Han Serif TC","Source Han Serif SC",serif;--bg:#ece5d8;--card:#f5f0e6;--ink:#2c2820;--muted:#938b78;--line:#d6cdba;--frame:#c9bea4;--accent:#8a6f44;--onAccent:#f5f0e6}
+  html,body{height:100%}body{background:var(--bg);font-family:-apple-system,"PingFang TC",sans-serif;color:var(--ink);line-height:1.7;position:relative}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .app{max-width:460px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative;z-index:1;padding:0 30px 40px}
+  @media(min-width:520px){.app{border-left:1px solid var(--line);border-right:1px solid var(--line);background:rgba(245,240,230,.35)}}
+  .topbar{height:50px;display:flex;align-items:center;justify-content:space-between}
+  .topbar .brand{font-family:var(--serif);font-size:13px;letter-spacing:2px;color:var(--muted);text-decoration:none}
+  .home{color:var(--muted);text-decoration:none;font-size:16px}
+  header{padding:18px 0 4px}
+  .kicker{color:var(--accent);font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px}
+  h1{font-family:var(--serif);font-size:25px;font-weight:600;line-height:1.55;margin-bottom:8px}
+  .sub{font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.8}
+
+  .picks{display:block}
+  .pick{width:100%;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:4px;padding:14px 16px;margin-bottom:9px;font-family:inherit;font-size:15px;color:var(--ink);cursor:pointer;line-height:1.6;display:flex;gap:12px;align-items:baseline}
+  .pick:hover{border-color:var(--frame)}
+  .pick .qn{font-family:var(--serif);font-size:11px;letter-spacing:2px;color:var(--accent);flex:0 0 22px}
+  .pick .qt{flex:1 1 auto}
+
+  .qbox{display:none;border:1px solid var(--frame);background:var(--card);border-radius:4px;padding:18px 18px 16px;box-shadow:inset 0 0 0 3px var(--bg),inset 0 0 0 4px var(--frame)}
+  .qbox.on{display:block}
+  .qbox .qnum{font-family:var(--serif);font-size:11px;letter-spacing:3px;color:var(--accent);margin-bottom:7px}
+  .qbox h2{font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.5;margin-bottom:8px}
+  .qbox .hint{font-size:13px;color:#655e51;line-height:1.85;margin-bottom:14px}
+  .field{margin-bottom:12px}
+  .field label{display:block;font-family:var(--serif);font-size:12.5px;letter-spacing:1px;color:var(--accent);margin-bottom:5px}
+  .field textarea{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:3px;font-family:var(--serif);font-size:16.5px;line-height:1.7;color:var(--ink);resize:none;min-height:76px;padding:10px 12px}
+  .field textarea:focus{outline:none;border-color:var(--frame)}
+  .field textarea::placeholder{color:var(--muted);opacity:.7;font-size:14.5px}
+  .field .must{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.75}
+  .row{display:flex;gap:9px;margin-top:4px}
+  .btn{flex:1;background:var(--accent);color:var(--onAccent);border:1px solid var(--accent);border-radius:3px;padding:13px;font-size:13.5px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:1px}
+  .btn:disabled{opacity:.3;cursor:not-allowed}
+  .btn.soft{background:transparent;border-color:var(--line);color:var(--muted);font-weight:500;flex:0 0 auto;padding-left:18px;padding-right:18px}
+  .state{text-align:center;font-size:11.5px;color:var(--muted);min-height:17px;margin-top:11px;letter-spacing:.5px}
+
+  .why{border-left:2px solid var(--frame);padding:12px 0 12px 16px;margin-top:30px;color:#655e51;font-size:12.5px;line-height:1.85}
+  .why b{font-family:var(--serif);color:var(--accent);display:block;margin-bottom:3px;font-size:13px}
+  .why a{color:var(--accent)}
+  .past{margin-top:30px;border-top:1px solid var(--line);padding-top:18px}
+  .past h2{font-family:var(--serif);font-size:15px;font-weight:600;margin-bottom:4px}
+  .past .psub{font-size:11.5px;color:var(--muted);margin-bottom:14px}
+  .rec{border-bottom:1px solid var(--line);padding:12px 0}
+  .rec:last-of-type{border-bottom:0}
+  .rec .d{font-size:10.5px;color:var(--muted);letter-spacing:1px;margin-bottom:4px}
+  .rec .rq{font-family:var(--serif);font-size:13.5px;color:var(--accent);margin-bottom:4px}
+  .rec .t{font-family:var(--serif);font-size:14.5px;line-height:1.7;color:#4d463b}
+  .rec .ask{font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.75}
+  .empty{color:var(--muted);font-size:12.5px;padding:10px 0}
+  .clear{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:11.5px;display:block;margin:18px auto 0;cursor:pointer;text-decoration:underline}
+  .toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:3px;font-size:12px;opacity:0;transition:.3s;pointer-events:none;z-index:30}.toast.show{opacity:.95}
+  footer{text-align:center;color:var(--muted);font-size:10.5px;letter-spacing:1px;padding:34px 0 0}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar"><a class="brand" href="index.html">TOOLBOOK<span style="color:var(--accent)">.</span></a><a class="home" href="index.html" aria-label="回首頁">✕</a></div>
+
+  <header>
+    <div class="kicker">工具 No. 10 · 一次一題</div>
+    <h1>講完話之後</h1>
+    <div class="sub">哪一句最接近你現在的狀況？挑一句，我給你對應的那一題。<br>一次只有一題，答完就好。</div>
+  </header>
+
+  <div class="picks" id="picks"></div>
+
+  <div class="qbox" id="qbox">
+    <div class="qnum" id="qnum">題 一</div>
+    <h2 id="qtitle">—</h2>
+    <div class="hint" id="qhint"></div>
+
+    <div class="field">
+      <label id="alabel">寫在這裡</label>
+      <textarea id="answer" maxlength="600" placeholder=""></textarea>
+    </div>
+
+    <div class="field" id="askField" style="display:none">
+      <label>你打算怎麼跟他核對？</label>
+      <textarea id="ask" maxlength="300" placeholder="寫一句你真的講得出口的話"></textarea>
+      <div class="must">上面那一格是你的猜測，不是判定他真的那樣想。所以這一格不能空著——猜測的用處是讓你有話可問。</div>
+    </div>
+
+    <div class="row">
+      <button class="btn" id="save" type="button">留下這一題</button>
+      <button class="btn soft" id="back" type="button">換一題</button>
+    </div>
+    <div class="state" id="state"></div>
+  </div>
+
+  <div class="why">
+    <b>為甚麼一次只給一題</b>
+    這七題出自《非暴力溝通》。書裡有一整節在警告：四個要素說得再標準，也可能只是照著格子填，人根本沒意識到自己在做什麼。<br><br>
+    <b style="display:inline">所以這張卡故意一次只給一題。</b>填滿七格不會讓你更清楚，只會讓你以為填完就完成了。
+  </div>
+
+  <div class="why">
+    <b>這張卡不做什麼</b>
+    它不問對方做錯了什麼，也不替他開脫。他做的事仍然是他做的——這裡只處理你能動的那一半。<br><br>
+    它不判你對錯、不算完成率、不記你用了幾天。第六題那格猜測也不會告訴你猜對了沒有，因為只有對方能認定。
+  </div>
+
+  <div class="past">
+    <h2>你留下的</h2>
+    <div class="psub">只留最近 14 筆，存在這個瀏覽器，沒有上傳。</div>
+    <div id="pastList"></div>
+    <button class="clear" id="clearAll" type="button">清空全部紀錄</button>
+  </div>
+
+  <div class="why">
+    <b>下一步</b>
+    想把整件事從頭理一次，用<a href="tool-review.html">復盤卡</a>：先寫你實際做了什麼，再跟你原本想要的對一次。<br><br>
+    想知道這七題怎麼挑出來的、書裡哪些我沒有用，看<a href="book-nonviolent-communication.html">這本書的工具地圖</a>。<br><br>
+    最後一件事：<b style="display:inline">如果這件事已經讓你睡不好、影響到日常，找專業的人談會比填卡有用。</b>這張卡處理的是一次對話，不處理那個。
+  </div>
+
+  <div id="tbAskHost"></div>
+
+  <footer>TOOLBOOK<span style="color:var(--accent)">.</span> EDITIONS · 把好書變成工具</footer>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+  const HKEY='toolbook_after_talk_history_v1', DKEY='toolbook_after_talk_v1';
+  const NUM=['題 一','題 二','題 三','題 四','題 五','題 六','題 七'];
+  const QS=[
+    { pick:'我講清楚了，他還是沒做',
+      title:'你要的那件事，攝影機拍得到嗎？',
+      hint:'把它寫成一個畫面：鏡頭對著他，會拍到什麼動作？如果寫不出畫面，對方也做不出來。',
+      label:'鏡頭會拍到什麼',
+      ph:'例如：不是「多在意這個家一點」，是「回家先把碗放進洗碗機」' },
+    { pick:'我不知道自己到底想要什麼',
+      title:'這是一個動作，還是一種狀態？',
+      hint:'先寫下你想要的。然後看一眼：句子裡有沒有「某個人去做某件事」？有，那是辦法。把辦法拿掉，剩下的才是你要的。',
+      label:'先寫你想要的，再寫拿掉辦法之後剩下什麼',
+      ph:'例如：想要他每天打電話（辦法）→ 拿掉之後剩下的是：我想知道他還記得我' },
+    { pick:'他說不，我就火了',
+      title:'對方說不之後，我做了什麼？',
+      hint:'只寫接下來那半分鐘你做的事。說服、加壓、擺臉色、轉身就走，都算。這一格不寫他做了什麼——請求和要求的差別就在這半分鐘。',
+      label:'那半分鐘我做了什麼',
+      ph:'照實寫，不用修飾' },
+    { pick:'我在想怎麼讓他配合',
+      title:'他會因為什麼原因照我的話做？',
+      hint:'問完「我希望他做什麼」，還要再問這一題。如果你猜到的原因是怕、是內疚、是不想吵，那你提的不是請求。',
+      label:'我猜他照做的原因是',
+      ph:'寫下來看看，這一題騙不了自己' },
+    { pick:'我一直在罵自己',
+      title:'我這樣罵自己，是因為什麼需要沒被滿足？',
+      hint:'先照原話寫下你罵自己那一句，再寫你缺的是什麼。這一格不要求你原諒自己，只要求換一個問法。',
+      label:'我罵自己那句話，和我缺的東西',
+      ph:'例如：我怎麼這麼沒用 → 我需要的是：知道自己還做得到' },
+    { pick:'他拒絕了我，我想不通',
+      title:'是什麼使他沒辦法答應？',
+      hint:'用這一題換掉「他為什麼要拒絕我」。但先講清楚：下面寫的是猜測，不是他的想法。',
+      label:'我猜，是什麼使他沒辦法答應',
+      ph:'寫你想到的可能，不用寫得篤定',
+      needAsk:true },
+    { pick:'我只講得出我不要什麼',
+      title:'我不要什麼，那我要什麼？',
+      hint:'上面寫你不要的，下面把它翻成你要的——而且要是一個對方做得到的動作。',
+      label:'我不要的，和我要的',
+      ph:'例如：不要你一直打斷我 → 我要的是：我講完一段你再回應' }
+  ];
+  const $=id=>document.getElementById(id), val=id=>($(id).value||'').trim();
+  function track(n,d={}){if(typeof gtag==='function')gtag('event',n,{tool_name:'after_talk',...d})}
+  function readJSON(k,f){try{const v=JSON.parse(localStorage.getItem(k));return v==null?f:v}catch(_){return f}}
+  function writeJSON(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}}
+  function esc(v){return String(v==null?'':v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+  function fmt(iso){const d=new Date(iso);if(isNaN(d.getTime()))return '';
+    return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`}
+
+  let history=readJSON(HKEY,[]); if(!Array.isArray(history))history=[];
+  let cur=null;   // 現在攤開的題號，null = 還在挑
+
+  function renderPicks(){
+    $('picks').innerHTML=QS.map((q,i)=>
+      `<button class="pick" type="button" data-i="${i}"><span class="qn">${String(i+1).padStart(2,'0')}</span><span class="qt">${esc(q.pick)}</span></button>`).join('');
+    $('picks').querySelectorAll('.pick').forEach(b=>
+      b.addEventListener('click',()=>open(Number(b.dataset.i))));
+  }
+
+  function open(i){
+    cur=i; const q=QS[i];
+    $('picks').style.display='none';
+    $('qbox').classList.add('on');
+    $('qnum').textContent=NUM[i];
+    $('qtitle').textContent=q.title;
+    $('qhint').textContent=q.hint;
+    $('alabel').textContent=q.label;
+    $('answer').placeholder=q.ph;
+    $('askField').style.display=q.needAsk?'block':'none';
+    const d=readJSON(DKEY,null);
+    $('answer').value=(d&&d.q===i&&d.answer)?d.answer:'';
+    $('ask').value=(d&&d.q===i&&d.ask)?d.ask:'';
+    $('state').textContent='';
+    checkSave();
+    $('answer').focus();
+    track('pick_question',{question_no:i+1});
+  }
+
+  function backToPicks(){
+    cur=null;
+    $('qbox').classList.remove('on');
+    $('picks').style.display='block';
+  }
+
+  function checkSave(){
+    if(cur==null)return;
+    const ok=!!val('answer') && (!QS[cur].needAsk || !!val('ask'));
+    $('save').disabled=!ok;
+  }
+
+  function draft(){
+    if(cur==null)return;
+    writeJSON(DKEY,{q:cur,answer:val('answer'),ask:val('ask')});
+    checkSave();
+  }
+
+  function save(){
+    if(cur==null)return;
+    const q=QS[cur];
+    if(!val('answer'))return;
+    if(q.needAsk&&!val('ask')){$('state').textContent='第二格還沒寫——那一格不能跳過。';return}
+    const now=new Date().toISOString();
+    history.unshift({id:'c'+Date.now(),createdAt:now,updatedAt:now,
+      q:cur+1,qTitle:q.title,answer:val('answer'),ask:q.needAsk?val('ask'):''});
+    history=history.slice(0,14);
+    writeJSON(HKEY,history);
+    try{localStorage.removeItem(DKEY)}catch(_){}
+    renderPast(); backToPicks(); toast('留下了');
+    track('save_card',{question_no:cur+1});
+  }
+
+  function renderPast(){
+    $('clearAll').style.display=history.length?'block':'none';
+    $('pastList').innerHTML=history.length?history.map(c=>
+      `<div class="rec"><div class="d">${fmt(c.createdAt)} · 題 ${esc(c.q)}</div>`+
+      `<div class="rq">${esc(c.qTitle)}</div>`+
+      `<div class="t">${esc(c.answer).replace(/\n/g,'<br>')}</div>`+
+      (c.ask?`<div class="ask">要問他的：${esc(c.ask).replace(/\n/g,'<br>')}</div>`:'')+
+      `</div>`).join(''):'<div class="empty">還沒有紀錄。挑一題開始。</div>'}
+
+  function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1600)}
+
+  $('answer').addEventListener('input',draft);
+  $('ask').addEventListener('input',draft);
+  $('save').addEventListener('click',save);
+  $('back').addEventListener('click',()=>{draft();backToPicks()});
+  $('clearAll').addEventListener('click',()=>{
+    if(!confirm('清空全部紀錄？留下的每一題都會消失。'))return;
+    history=[];writeJSON(HKEY,history);renderPast();toast('已清空')});
+
+  renderPicks(); renderPast();
+  (function resume(){const d=readJSON(DKEY,null);
+    if(d&&typeof d.q==='number'&&QS[d.q]&&((d.answer||'').trim()||(d.ask||'').trim()))open(d.q)})();
+  track('tool_start');
+</script>
+<script src="toolbook.js" defer></script>
+<script>
+  /* 共用層：目錄選單會自動掛上；完成畫面補一段意見小調查。
+     inline script 的 defer 無效，所以要等 DOMContentLoaded。 */
+  window.addEventListener('DOMContentLoaded',function(){
+    if(typeof Toolbook==='undefined')return;
+    Toolbook.mountFeedback({toolId:'after_talk',toolName:'講完話之後',into:'#tbAskHost'});
+  });
+</script>
+</body>
+</html>

@@ -52,13 +52,17 @@
       sum: ['one'], sumLabel: '最近一天寫的' },
     { id: 'cycle_executor', no: '09', name: '週期執行器', file: 'tool-cycle.html',
       key: 'toolbook_cycle_history_v1', draft: 'toolbook_cycle_v1',
-      sum: ['deliver', 'want'], sumLabel: '這一輪要交出的' }
+      sum: ['deliver', 'want'], sumLabel: '這一輪要交出的' },
+    { id: 'after_talk', no: '10', name: '講完話之後', file: 'tool-after-talk.html',
+      key: 'toolbook_after_talk_history_v1', draft: 'toolbook_after_talk_v1',
+      sum: ['answer'], sumLabel: '上次留下的那一題' }
   ];
 
   var MAPS = [
     { name: '《人生效率手冊》', file: 'book-efficiency-handbook.html' },
     { name: '《一週工作 4 小時》', file: 'book-four-hour-workweek.html' },
-    { name: '《12週做完一年工作》', file: 'book-twelve-week-year.html' }
+    { name: '《12週做完一年工作》', file: 'book-twelve-week-year.html' },
+    { name: '《非暴力溝通》', file: 'book-nonviolent-communication.html' }
   ];
 
   var ARTICLES = [
