@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Google tag (gtag.js) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CKM6MRRVBM"></script>
 <script>
   window.dataLayer=window.dataLayer||[];
@@ -15,7 +18,7 @@
 <meta name="description" content="不幫你定目標，幫你聽見你到底要什麼。8 個安靜的問題，最後給你一張方向卡。">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-  :root{--serif:"Songti SC","Noto Serif TC","Source Han Serif TC","Source Han Serif SC",serif;
+  :root{--serif:"Noto Serif TC","Songti SC","Source Han Serif TC","Source Han Serif SC",serif;
     --bg:#ece5d8;--card:#f5f0e6;--ink:#2c2820;--muted:#938b78;--line:#d6cdba;
     --frame:#c9bea4;--accent:#8a6f44;--onAccent:#f5f0e6;--warm:#9c7c47;}
   html,body{height:100%;}
@@ -114,7 +117,7 @@
   .btn:disabled{opacity:.3;cursor:not-allowed;filter:none;}
   .btn.ghost{background:transparent;color:var(--muted);font-size:13px;padding:11px;font-weight:500;}
   .btn.warm{background:transparent;color:var(--accent);border:1px solid var(--accent);}
-  .welcome{display:flex;flex-direction:column;justify-content:center;min-height:60vh;text-align:center;}
+  .welcome{display:flex;flex-direction:column;justify-content:center;min-height:72vh;text-align:center;}
   .welcome .seal{font-family:var(--serif);font-size:30px;color:var(--accent);margin-bottom:22px;}
   .record-book{display:none;position:fixed;inset:0;z-index:20;background:rgba(44,40,32,.35);}
   .record-book.open{display:block;}
@@ -165,7 +168,7 @@
       </div>
       <div class="stem">
         一想到 <input class="fill lock" id="s1field" placeholder="它" readonly>，我就不舒服，<br>
-        特別是當 <input class="fill" id="s1when" placeholder="（你自己寫）"> 的時候。
+        特別是當 <input class="fill" id="s1when" placeholder="例如：開會、被否定"> 的時候。
       </div>
     </section>
 
@@ -243,7 +246,7 @@
         <div class="field"><div class="k">我想成為的人</div><div class="v" id="oWho">—</div></div>
         <div class="field"><div class="k">5 年後仍重要的</div><div class="v" id="oKeep">—</div></div>
         <div class="divider"></div>
-        <div class="coord">行動座標 <span class="n" id="oNum">$0／月</span> · 一個追得到的距離</div>
+        <div class="coord">行動座標 <span class="n" id="oNum">$0／月</span> · <span style="white-space:nowrap">一個追得到的距離</span></div>
         <div class="edition">Edition No. 01 · MMXXVI</div>
       </div>
       <p class="summary" id="oSum">—</p>
