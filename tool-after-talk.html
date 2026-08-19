@@ -242,6 +242,10 @@
     try{localStorage.removeItem(DKEY)}catch(_){}
     renderPast(); backToPicks(); toast('留下了');
     track('save_card',{question_no:cur+1});
+    // 這一支沒有多步驟精靈，「完成」就是挑一題、答完、存下來這一刻。
+    // 不送 tool_complete 的話，它在 GA 漏斗裡永遠只有 tool_start、讀起來像 100% 流失。
+    // question_no 沿用既有參數，不新增（後台仍需替它建自訂指標，否則顯示 not set）。
+    track('tool_complete',{question_no:cur+1});
   }
 
   function renderPast(){
