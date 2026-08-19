@@ -29,7 +29,7 @@
   nav .links a:hover{color:var(--accent);}
   header{padding:34px 0 26px;}
   .kick{color:var(--accent);font-size:12px;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
-  h1{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.5;letter-spacing:.5px;margin-bottom:14px;}
+  h1{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.35;letter-spacing:.5px;margin-bottom:14px;}
   .lead{color:#5d564a;font-size:15px;}
   .rule{height:1px;background:var(--line);margin:30px 0;}
   .sec-k{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
@@ -72,7 +72,7 @@
 
   <nav>
     <a class="brand" href="index.html">TOOLBOOK<span class="dot">.</span><span class="sub">Editions</span></a>
-    <div class="links"><a href="index.html#tools">工具</a><a href="index.html#articles">文章</a></div>
+    <div class="links"><a href="index.html#articles">文章</a><a href="index.html#tools">工具</a></div>
   </nav>
 
   <header>
@@ -88,7 +88,7 @@
   </div>
 
   <section>
-    <div class="sec-k">九個工具</div>
+    <div class="sec-k">全部工具</div>
     <div id="list"></div>
   </section>
 
@@ -129,7 +129,7 @@
       const cards=rows.reduce((s,r)=>s+r.count,0);
       const dates=used.map(r=>r.lastAt).filter(Boolean).sort((a,b)=>b-a);
 
-      $('tUsed').textContent=used.length+' / 9';
+      $('tUsed').textContent=used.length+' / '+Toolbook.TOOLS.length;
       $('tCards').textContent=cards;
       // 只顯示月.日；zh-HK 給的是 DD/MM/YYYY，不能靠切字串取月日
       $('tLast').textContent=dates.length

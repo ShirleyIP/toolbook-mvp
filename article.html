@@ -18,7 +18,7 @@
   :root{--serif:"Songti SC","Noto Serif TC","Source Han Serif TC",serif;
     --bg:#ece5d8;--card:#f5f0e6;--ink:#2c2820;--muted:#938b78;--line:#d6cdba;
     --frame:#c9bea4;--accent:#8a6f44;--warm:#9c7c47;}
-  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang TC",sans-serif;line-height:1.95;position:relative;}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang TC",sans-serif;line-height:1.9;position:relative;}
   body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
   .wrap{max-width:660px;margin:0 auto;padding:0 26px;position:relative;z-index:1;}
@@ -30,11 +30,11 @@
   nav .links a:hover{color:var(--accent);}
   article{padding:36px 0 20px;}
   .kick{color:var(--accent);font-size:12px;letter-spacing:4px;text-transform:uppercase;margin-bottom:18px;}
-  h1{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.55;letter-spacing:.5px;margin-bottom:16px;}
-  .dek{font-family:var(--serif);color:#5d564a;font-size:18px;font-style:italic;margin-bottom:14px;}
+  h1{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.35;letter-spacing:.5px;margin-bottom:16px;}
+  .dek{font-family:var(--serif);font-size:18px;color:#625a4d;margin-bottom:18px;}
   .meta{color:var(--muted);font-size:13px;letter-spacing:1px;border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:30px;}
   article p{font-size:17px;color:#3c372f;margin-bottom:24px;}
-  article h2{font-family:var(--serif);font-size:22px;font-weight:600;margin:38px 0 14px;}
+  article h2{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.4;margin:38px 0 14px;}
   .pull{font-family:var(--serif);font-size:20px;color:var(--accent);border-left:2px solid var(--frame);padding-left:20px;margin:30px 0;line-height:1.7;}
   .eg{border-left:2px solid var(--frame);background:rgba(245,240,230,.5);padding:15px 18px;margin:6px 0 24px;}
   .eg b{display:block;font-family:var(--serif);font-size:13px;letter-spacing:2px;color:var(--accent);margin-bottom:7px;}
