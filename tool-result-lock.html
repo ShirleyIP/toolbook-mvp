@@ -1,124 +1,319 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-@font-face{font-family:"Noto Serif TC";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/NotoSerifTC-Regular.subset.woff2") format("woff2")}
-@font-face{font-family:"Noto Serif TC";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/NotoSerifTC-SemiBold.subset.woff2") format("woff2")}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CKM6MRRVBM"></script>
-<script>
-  window.dataLayer=window.dataLayer||[];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js',new Date());gtag('config','G-CKM6MRRVBM');
-</script>
-<title>成果鎖定卡 · Toolbook</title>
-<meta name="description" content="先鎖定成果，再分清必要工作與錦上添花。六個簡短步驟，最後生成一張成果卡。">
-<style>
-  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-  :root{--serif:"Noto Serif TC","Songti SC","Source Han Serif TC","Source Han Serif SC",serif;--bg:#ece5d8;--card:#f5f0e6;--ink:#2c2820;--muted:#938b78;--line:#d6cdba;--frame:#c9bea4;--accent:#8a6f44;--onAccent:#f5f0e6}
-  html,body{height:100%}body{background:var(--bg);font-family:-apple-system,"PingFang TC",sans-serif;color:var(--ink);line-height:1.7;position:relative}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  .app{max-width:460px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative;z-index:1}
-  @media(min-width:520px){.app{border-left:1px solid var(--line);border-right:1px solid var(--line);background:rgba(245,240,230,.35)}}
-  .topbar{flex:none;height:50px;display:flex;align-items:center;position:relative;padding:0 22px}.nav-back{font-size:22px;color:var(--muted);cursor:pointer;line-height:1;width:24px;border:0;background:transparent}.nav-back.hide{visibility:hidden}.dots{position:absolute;left:0;right:0;display:flex;gap:7px;justify-content:center;pointer-events:none}.dot{width:5px;height:5px;border-radius:50%;background:var(--line);transition:.3s}.dot.on{background:var(--accent);width:16px;border-radius:3px}.home{margin-left:auto;color:var(--muted);text-decoration:none;font-size:16px;line-height:1}
-  .stage{flex:1;overflow-y:auto;padding:14px 30px 34px}.stage::-webkit-scrollbar{display:none}.screen{display:none;animation:fade .5s ease}.screen.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  .kicker{color:var(--accent);font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px}h1{font-family:var(--serif);font-size:27px;font-weight:600;line-height:1.6;margin-bottom:16px;letter-spacing:.5px}h2{font-family:var(--serif);font-size:23px;font-weight:600;line-height:1.65;margin-bottom:10px;letter-spacing:.5px}.hint{color:var(--muted);font-size:13px;margin-bottom:20px;line-height:1.75}.welcome{display:flex;flex-direction:column;justify-content:center;min-height:72vh;text-align:center}.welcome .seal{font-family:var(--serif);font-size:30px;color:var(--accent);margin-bottom:20px}.privacy{font-size:11px;color:var(--muted);margin-top:14px}
-  label{display:block;font-family:var(--serif);font-size:14px;color:#5d564a;margin:18px 0 7px}input.txt,textarea{width:100%;border:1px solid var(--line);background:var(--card);border-radius:4px;padding:14px 15px;font-size:14.5px;font-family:inherit;color:var(--ink);resize:vertical}textarea{min-height:150px;line-height:1.8}input.txt:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px rgba(138,111,68,.08)}input[type=date]{color-scheme:light}.guide{border-left:2px solid var(--frame);padding:12px 0 12px 16px;margin-top:22px;color:#655e51;font-family:var(--serif);font-size:14px;line-height:1.9}.guide b{color:var(--accent)}
-  .choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.choice div{border:1px solid var(--line);background:rgba(245,240,230,.5);border-radius:4px;padding:16px}.choice b{display:block;font-family:var(--serif);font-size:15px;margin-bottom:4px}.choice span{color:var(--muted);font-size:11px;line-height:1.6;display:block}
-  .card-out{position:relative;border:1px solid var(--frame);border-radius:3px;padding:27px 24px 21px;background:var(--card);box-shadow:inset 0 0 0 5px var(--bg),inset 0 0 0 6px var(--frame)}.card-out .seal{text-align:center;font-family:var(--serif);font-size:22px;color:var(--accent);margin-bottom:5px}.card-out h3{text-align:center;font-family:var(--serif);font-size:15px;letter-spacing:7px;padding-left:7px}.card-out .csub{text-align:center;font-size:8.5px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:5px}.card-out .rule{width:30px;height:1px;background:var(--accent);opacity:.6;margin:14px auto 21px}.hero{margin-bottom:16px}.hero .k,.field .k{font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}.hero .v{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.55}.field{margin-bottom:14px}.field .v{font-size:14px;white-space:pre-wrap;line-height:1.65}.card-out .divider{height:1px;background:var(--line);margin:17px 0}.deadline{text-align:center;font-size:11px;color:var(--muted);letter-spacing:1px}.deadline .n{font-family:var(--serif);color:var(--accent);font-size:15px;margin:0 4px}.mantra{text-align:center;font-family:var(--serif);color:var(--accent);font-size:14px;letter-spacing:2px;margin-top:16px}.edition{text-align:center;font-size:8px;letter-spacing:2px;color:var(--muted);margin-top:10px}.result-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:16px}.result-record{display:block;margin:13px auto 0}.submit-box{margin-top:26px;padding-top:23px;border-top:1px solid var(--line)}.submit-box h3{font-family:var(--serif);font-size:18px;margin-bottom:5px}.submit-box>.hint{margin-bottom:13px}.submit-box textarea{min-height:96px}.submit-box .send-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:8px}.submit-box .send-row .txt{margin:0}.submit-box .send-row button{width:auto;padding:0 16px}.checkline{display:flex;align-items:flex-start;gap:9px;font-family:inherit;font-size:12px;line-height:1.6;color:#655e51;margin:13px 0 0}.checkline input{width:17px;height:17px;margin-top:1px;accent-color:var(--accent);flex:none}.submit-status{min-height:20px;text-align:center;color:var(--accent);font-size:11px;margin-top:8px}.submit-box .privacy{line-height:1.65;text-align:center;margin-top:3px}
-  .foot{flex:none;padding:8px 30px 26px;background:linear-gradient(transparent,var(--bg) 28%)}.gatehint{text-align:center;font-size:11px;color:var(--muted);margin-bottom:8px;height:15px;letter-spacing:.5px}.btn{display:block;width:100%;background:var(--accent);color:var(--onAccent);border:1px solid var(--accent);border-radius:3px;padding:15px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;letter-spacing:1px}.btn:disabled{opacity:.3;cursor:not-allowed}.btn.ghost{background:transparent;color:var(--accent);font-size:12px;padding:11px;font-weight:500}.btn.soft{background:transparent;border-color:var(--line);color:var(--muted);font-size:12px;padding:11px;font-weight:500}.record-link{display:inline-block;border:0;background:transparent;color:var(--accent);font-family:inherit;font-size:12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;margin-top:18px}
-  .record-book{display:none;position:fixed;inset:0;z-index:20;background:rgba(44,40,32,.35)}.record-book.open{display:block}.record-sheet{width:min(100%,460px);height:100%;margin:0 auto;background:var(--bg);padding:22px 24px 34px;overflow-y:auto}.record-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}.record-head h2{margin:0;font-size:22px}.record-close{border:0;background:transparent;color:var(--muted);font-size:22px;cursor:pointer;padding:6px}.record-note{font-size:12px;color:var(--muted);margin-bottom:18px}.record-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px;margin-bottom:12px}.record-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:10.5px;margin-bottom:11px}.record-delete{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:10.5px;cursor:pointer}.record-label{font-size:8.5px;letter-spacing:2px;color:var(--muted);margin-top:9px}.record-value{font-family:var(--serif);font-size:14px;margin-top:2px;white-space:pre-wrap}.record-actions{display:flex;justify-content:flex-end;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.record-open{border:1px solid var(--accent);border-radius:3px;background:transparent;color:var(--accent);font-family:inherit;font-size:11px;padding:7px 11px;cursor:pointer}.record-empty{text-align:center;color:var(--muted);font-size:13px;padding:60px 10px}.record-clear{border:0;background:transparent;color:var(--muted);font-family:inherit;font-size:12px;display:block;margin:24px auto 0;cursor:pointer;text-decoration:underline}.toast{position:fixed;bottom:105px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:3px;font-size:12px;opacity:0;transition:.3s;pointer-events:none;z-index:30}.toast.show{opacity:.95}
-  @media(max-width:390px){.stage{padding-left:24px;padding-right:24px}.foot{padding-left:24px;padding-right:24px}.choice{grid-template-columns:1fr}.card-out{padding-left:21px;padding-right:21px}.result-actions{grid-template-columns:1fr 1fr}.result-actions .save-image{grid-column:1/-1}.submit-box .send-row{grid-template-columns:1fr}.submit-box .send-row button{width:100%;padding:13px}}
-</style>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CKM6MRRVBM');</script>
+<script src="./support.js"></script>
 </head>
 <body>
-<div class="app">
-  <div class="topbar"><button class="nav-back hide" id="back" type="button" aria-label="上一步">‹</button><div class="dots" id="dots"></div><a class="home" href="index.html" aria-label="回首頁">✕</a></div>
-  <div class="stage" id="stage">
-    <section class="screen active">
-      <div class="welcome"><div class="seal">❦</div><div class="kicker">工具 No. 02 · 行動</div><h1>先鎖定成果，<br>再決定做什麼</h1><p class="hint">六個簡短步驟，分清必要工作與錦上添花，最後生成一張成果卡。</p><p class="privacy">答案預設只保存在這部裝置；只有你主動送出時，才會傳給 Toolbook 創作者。</p><button class="record-link" id="openBook" type="button">查看成果卡紀錄簿</button></div>
-    </section>
-    <section class="screen">
-      <div class="kicker">第一步 · 成果</div><h2>這一輪，<br>必須交付什麼？</h2><p class="hint">寫一個看得見、能交付的結果，不寫「繼續研究」或「改善一下」。</p><label for="outcome">本輪唯一成果</label><textarea id="outcome" maxlength="120" placeholder="例如：完成一支可以發布的影片"></textarea><div class="guide"><b>試著用動詞開頭：</b><br>完成、輸出、發布、交付、決定……</div>
-    </section>
-    <section class="screen">
-      <div class="kicker">第二步 · 完成</div><h2>看見什麼，<br>才算真的完成？</h2><p class="hint">給成果一個可以核對的終點，避免「差不多」無限延長。</p><label for="evidence">完成證據</label><textarea id="evidence" maxlength="140" placeholder="例如：輸出最終影片檔，並完成發布前檢查"></textarea><label for="deadline">交付日期</label><input class="txt" id="deadline" type="date"><div class="guide">沒有外部期限，也替這一輪設一個。期限不是催促，是幫你看見取捨。</div>
-    </section>
-    <section class="screen">
-      <div class="kicker">第三步 · 必要</div><h2>哪些事情不完成，<br>結果就無法交付？</h2><p class="hint">每行一項，只留下直接影響結果的工作。</p><textarea id="must" maxlength="500" placeholder="例如：&#10;剪輯&#10;字幕&#10;聲畫檢查"></textarea><div class="choice"><div><b>結果必需</b><span>缺少它，這一輪便無法交付。</span></div><div><b>不是「也許有用」</b><span>有用但不影響交付，先移到下一步。</span></div></div>
-    </section>
-    <section class="screen">
-      <div class="kicker">第四步 · 延後</div><h2>哪些事情只是<br>錦上添花？</h2><p class="hint">先放下，不代表永遠不做。這一步可以留空。</p><textarea id="later" maxlength="500" placeholder="例如：&#10;重改品牌定位&#10;研究新工具&#10;優化非必要流程"></textarea><div class="guide">問自己：<b>今天不做它，核心成果仍能交付嗎？</b>如果可以，先放在這裡。</div>
-    </section>
-    <section class="screen">
-      <div class="kicker">第五步 · 止損</div><h2>什麼情況出現，<br>你就停止研究或修改？</h2><p class="hint">替容易無限延長的行為，預先設定停止條件。</p><textarea id="stopRule" maxlength="160" placeholder="例如：研究超過 45 分鐘仍未改變必要行動，就停止"></textarea><div class="guide">止損不是草率，而是把時間重新交給真正影響結果的事情。</div>
-    </section>
-    <section class="screen">
-      <div class="kicker">第六步 · 鎖定</div><h2>你的本輪成果</h2><p class="hint">先完成必要的，再決定什麼值得變得更好。</p>
-      <div class="card-out" id="card"><div class="seal">❦</div><h3>成 果 卡</h3><div class="csub">Result Lock · No. 02</div><div class="rule"></div><div class="hero"><div class="k">本輪唯一成果</div><div class="v" id="cardOutcome">—</div></div><div class="field"><div class="k">完成證據</div><div class="v" id="cardEvidence">—</div></div><div class="field"><div class="k">現在只做</div><div class="v" id="cardMust">—</div></div><div class="field"><div class="k">暫時不做</div><div class="v" id="cardLater">—</div></div><div class="divider"></div><div class="field"><div class="k">止損規則</div><div class="v" id="cardStop">—</div></div><div class="deadline">交付日期 <span class="n" id="cardDeadline">—</span></div><div class="mantra">先完成，再完美。</div><div class="edition">Edition No. 02 · MMXXVI</div></div>
-      <div class="result-actions"><button class="btn ghost save-image" id="saveImage" type="button">儲存為圖片</button><button class="btn ghost" id="copyCard" type="button">複製文字</button><button class="btn ghost" id="shareCard" type="button">分享成果卡</button></div>
-      <button class="record-link result-record" id="openBookResult" type="button">查看成果卡紀錄簿（<span id="resultRecordCount">0</span>）</button>
-      <div class="whybox" style="margin-top:26px"><b>下一步</b>這一輪結束之後，用<a href="tool-review.html" style="color:var(--accent)">復盤卡</a>對一次——它會自動把這張成果卡的原定目標拉出來，你不必憑印象回想當初寫了什麼。<br><br>接下來每一天要落地，可以用<a href="tool-two.html" style="color:var(--accent)">今天兩格</a>：一天只排兩件，其中一件留給這個成果。</div>
-      <div class="submit-box"><h3>把這次成果留給 Toolbook</h3><p class="hint">也可以告訴我，你希望下一個工具幫你解決什麼。</p><form id="creatorForm" action="https://formspree.io/f/mlgkgveq" method="POST"><input type="hidden" name="_subject" value="Toolbook 成果鎖定卡新紀錄"><input type="hidden" name="submission_type" value="成果鎖定卡完成紀錄"><input type="hidden" name="result_card_id" id="formCardId"><input type="hidden" name="completed_at" id="formCompletedAt"><input type="hidden" name="submitted_at" id="formSubmittedAt"><input type="hidden" name="result_outcome" id="formOutcome"><input type="hidden" name="result_evidence" id="formEvidence"><input type="hidden" name="result_deadline" id="formDeadline"><input type="hidden" name="result_must_do" id="formMust"><input type="hidden" name="result_deferred" id="formLater"><input type="hidden" name="result_stop_rule" id="formStop"><label for="toolRequest">你希望下一個工具處理什麼？（可留空）</label><textarea id="toolRequest" name="requested_tool" maxlength="500" placeholder="例如：幫我把一個模糊想法拆成今天能開始的第一步"></textarea><label for="email">你的 Email</label><div class="send-row"><input class="txt" type="email" name="email" id="email" required placeholder="name@example.com"><button class="btn" type="submit">傳給創作者</button></div><label class="checkline" for="notifyNewTools"><input type="checkbox" id="notifyNewTools" name="new_tool_notification" value="yes">有新工具時，也用這個 Email 通知我</label><div class="submit-status" id="submitStatus" role="status"></div><p class="privacy">按下送出後，Email、工具需求及成果卡內容會經 Formspree 傳給 Shirley；只有勾選上方選項，才會加入新工具通知。</p></form></div>
-    </section>
-  </div>
-  <div class="foot"><div class="gatehint" id="gatehint"></div><button class="btn" id="next" type="button">開始</button></div>
-</div>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#e9e3d6;color:#241f18;font-family:-apple-system,"PingFang TC","PingFang SC",sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;}
+  a{color:#35456a;text-decoration:none;transition:.18s;}
+  a:hover{color:#26324f;}
+  input,textarea,button{font-family:inherit;}
+  input::placeholder,textarea::placeholder{color:#b9b09a;}
+  textarea:focus,input:focus{outline:none;border-color:#35456a!important;box-shadow:0 0 0 2px rgba(53,69,106,.08);}
+  .stage::-webkit-scrollbar{width:0;}
+  ::selection{background:rgba(53,69,106,.15);}
+</style>
+</helmet>
+<div style="position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:26px 18px;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E&quot;);background-color:#e9e3d6;">
 
-<aside class="record-book" id="recordBook" aria-hidden="true"><div class="record-sheet"><div class="record-head"><h2>成果卡紀錄簿</h2><button class="record-close" id="closeBook" type="button" aria-label="關閉">✕</button></div><p class="record-note">最多保存 50 張，只存在這個瀏覽器。</p><div id="recordList"></div><button class="record-clear" id="clearBook" type="button">清空全部紀錄</button></div></aside>
-<div class="toast" id="toast"></div>
-<script>
-  const screens=[...document.querySelectorAll('.screen')],fieldIds=['outcome','evidence','deadline','must','later','stopRule','toolRequest','email'];
-  const draftKey='toolbook_result_lock_v1',historyKey='toolbook_result_lock_history_v1',isDemo=new URLSearchParams(location.search).get('demo')==='1';
-  let i=0,draftId='',cards=loadCards(),clearing=false;
-  const $=id=>document.getElementById(id),val=id=>($(id)?.value||'').trim();
-  function track(name,data={}){if(typeof gtag==='function')gtag('event',name,{tool_name:'result_lock_card',...data})}
-  function valid(n){if(n===1)return !!val('outcome');if(n===2)return !!val('evidence')&&!!val('deadline');if(n===3)return !!val('must');if(n===5)return !!val('stopRule');return true}
-  function render(){screens.forEach((s,n)=>s.classList.toggle('active',n===i));$('back').classList.toggle('hide',i===0);$('dots').innerHTML=i===0?'':Array.from({length:6},(_,n)=>`<span class="dot ${n===Math.min(i-1,5)?'on':''}"></span>`).join('');$('next').textContent=i===0?'開始':i===5?'生成成果卡':i===6?'再做一張':'下一步';$('resultRecordCount').textContent=cards.length;updateGate();$('stage').scrollTop=0;if(i>0)trackStepView()}
-  function updateGate(){const ok=valid(i);$('next').disabled=!ok;$('gatehint').textContent=ok?'':i===2?'請填寫完成證據及日期':i===4?'':'完成這一題，才能繼續'}
-  const STEP_NAMES=['','outcome','evidence','must_do','later','stop_rule','result'];
-  let lastTracked=0,stepStartedAt=Date.now();
-  function trackStepView(){if(lastTracked===i)return;lastTracked=i;stepStartedAt=Date.now();track('tool_step_view',{step_number:i,step_name:STEP_NAMES[i]||'step_'+i})}
-  function trackStepExit(reason){if(!lastTracked)return;track('tool_step_exit',{step_number:lastTracked,step_name:STEP_NAMES[lastTracked]||'step_'+lastTracked,step_time_seconds:Math.max(1,Math.round((Date.now()-stepStartedAt)/1000)),exit_reason:reason});lastTracked=0}
-  window.addEventListener('pagehide',()=>trackStepExit('page_exit'));
-  function next(){if(!valid(i))return;trackStepExit('next');if(i===0){track('tool_start');i=1}else if(i===5){archiveCard();buildCard();i=6;track('tool_complete')}else if(i===6){startNew();return}else i++;saveDraft();render()}
-  function prev(){if(i>0){trackStepExit('back');i--;saveDraft();render()}}
-  function formatDate(raw){if(!raw)return '—';const [y,m,d]=raw.split('-');return `${y}.${String(m).padStart(2,'0')}.${String(d).padStart(2,'0')}`}
-  function buildCard(){ $('cardOutcome').textContent=val('outcome')||'—';$('cardEvidence').textContent=val('evidence')||'—';$('cardMust').textContent=val('must')||'—';$('cardLater').textContent=val('later')||'本輪沒有';$('cardStop').textContent=val('stopRule')||'—';$('cardDeadline').textContent=formatDate(val('deadline'))}
-  function cardText(){return `成果鎖定卡\n\n本輪結果：${val('outcome')}\n完成證據：${val('evidence')}\n交付日期：${formatDate(val('deadline'))}\n\n現在只做：\n${val('must')}\n\n暫時不做：\n${val('later')||'本輪沒有'}\n\n止損規則：${val('stopRule')}\n\n先完成，再完美。`}
-  function canvasLines(ctx,text,maxWidth){const out=[];String(text||'—').split('\n').forEach(part=>{let line='';for(const ch of Array.from(part||' ')){const next=line+ch;if(line&&ctx.measureText(next).width>maxWidth){out.push(line);line=ch}else line=next}out.push(line||' ')});return out}
-  function saveCardImage(){const width=1080,pad=110,maxWidth=width-pad*2,blocks=[['本輪唯一成果',val('outcome'),'600 43px serif',62],['完成證據',val('evidence'),'36px sans-serif',54],['現在只做',val('must'),'36px sans-serif',54],['暫時不做',val('later')||'本輪沒有','36px sans-serif',54],['止損規則',val('stopRule'),'36px sans-serif',54]];const probe=document.createElement('canvas').getContext('2d');const prepared=blocks.map(b=>{probe.font=b[2];return [...b,canvasLines(probe,b[1],maxWidth)]});const height=Math.max(1350,430+prepared.reduce((sum,b)=>sum+68+b[4].length*b[3]+42,0)+250);const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');ctx.fillStyle='#f5f0e6';ctx.fillRect(0,0,width,height);ctx.strokeStyle='#c9bea4';ctx.lineWidth=3;ctx.strokeRect(42,42,width-84,height-84);ctx.lineWidth=1;ctx.strokeRect(58,58,width-116,height-116);ctx.textAlign='center';ctx.fillStyle='#8a6f44';ctx.font='42px serif';ctx.fillText('❦',width/2,145);ctx.fillStyle='#2c2820';ctx.font='600 42px serif';ctx.fillText('成 果 卡',width/2,215);ctx.fillStyle='#938b78';ctx.font='18px sans-serif';ctx.fillText('R E S U L T   L O C K  ·  N O.  0 2',width/2,260);ctx.strokeStyle='#8a6f44';ctx.beginPath();ctx.moveTo(width/2-34,300);ctx.lineTo(width/2+34,300);ctx.stroke();let y=380;ctx.textAlign='left';prepared.forEach((b,index)=>{if(index===4){ctx.strokeStyle='#d6cdba';ctx.beginPath();ctx.moveTo(pad,y-20);ctx.lineTo(width-pad,y-20);ctx.stroke()}ctx.fillStyle='#938b78';ctx.font='20px sans-serif';ctx.fillText(b[0],pad,y);y+=52;ctx.fillStyle='#2c2820';ctx.font=b[2];b[4].forEach(line=>{ctx.fillText(line,pad,y);y+=b[3]});y+=42});ctx.textAlign='center';ctx.fillStyle='#938b78';ctx.font='22px sans-serif';ctx.fillText(`交付日期  ${formatDate(val('deadline'))}`,width/2,y+15);ctx.fillStyle='#8a6f44';ctx.font='30px serif';ctx.fillText('先完成，再完美。',width/2,y+85);ctx.fillStyle='#938b78';ctx.font='16px sans-serif';ctx.fillText('Edition No. 02 · MMXXVI',width/2,height-90);canvas.toBlob(blob=>{if(!blob){toast('圖片生成失敗，請稍後再試');return}const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`成果鎖定卡-${val('deadline')||'Toolbook'}.png`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast('成果卡圖片已儲存');track('save_image')},'image/png')}
-  function syncCreatorForm(){if(!draftId)draftId=isDemo?'demo_preview':'result_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,6);const saved=cards.find(c=>c.id===draftId);$('formCardId').value=draftId;$('formCompletedAt').value=saved?.createdAt||new Date().toISOString();$('formSubmittedAt').value=new Date().toISOString();$('formOutcome').value=val('outcome');$('formEvidence').value=val('evidence');$('formDeadline').value=val('deadline');$('formMust').value=val('must');$('formLater').value=val('later')||'本輪沒有';$('formStop').value=val('stopRule')}
-  function saveDraft(){if(isDemo||clearing)return;try{const fields={};fieldIds.forEach(id=>fields[id]=$(id).value);localStorage.setItem(draftKey,JSON.stringify({step:i,draftId,fields,...fields,updatedAt:new Date().toISOString()}))}catch(_){}}
-  function loadDraft(){if(isDemo)return false;try{const data=JSON.parse(localStorage.getItem(draftKey)||'null');if(!data)return false;const source=data.fields||data;fieldIds.forEach(id=>{if(source[id]!=null)$(id).value=source[id]});draftId=data.draftId||'';i=Number.isInteger(data.step)?Math.max(0,Math.min(6,data.step)):0;if(i===6)buildCard();return fieldIds.some(id=>val(id))}catch(_){return false}}
-  function loadCards(){try{const data=JSON.parse(localStorage.getItem(historyKey)||'[]');return Array.isArray(data)?data.slice(0,50):[]}catch(_){return []}}
-  function saveCards(){try{localStorage.setItem(historyKey,JSON.stringify(cards.slice(0,50)))}catch(_){}}
-  function archiveCard(){const now=new Date().toISOString();if(!draftId)draftId='result_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,6);const old=cards.find(c=>c.id===draftId);const card={id:draftId,createdAt:old?.createdAt||now,updatedAt:now,outcome:val('outcome'),evidence:val('evidence'),deadline:val('deadline'),must:val('must'),later:val('later'),stopRule:val('stopRule')};cards=[card,...cards.filter(c=>c.id!==draftId)].slice(0,50);saveCards();renderBook()}
-  function escapeHtml(v){return String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-  function formatCreated(value){const d=new Date(value);return Number.isNaN(d.getTime())?'日期不明':d.toLocaleDateString('zh-HK',{year:'numeric',month:'2-digit',day:'2-digit'})}
-  function renderBook(){const list=$('recordList');$('clearBook').style.display=cards.length?'block':'none';list.innerHTML=cards.length?cards.map((c,n)=>`<article class="record-card"><div class="record-meta"><span>第 ${cards.length-n} 張 · ${formatCreated(c.createdAt)}</span><button class="record-delete" type="button" data-delete="${escapeHtml(c.id)}">刪除</button></div><div class="record-label">本輪唯一成果</div><div class="record-value">${escapeHtml(c.outcome)||'—'}</div><div class="record-label">完成證據</div><div class="record-value">${escapeHtml(c.evidence)||'—'}</div><div class="record-label">現在只做</div><div class="record-value">${escapeHtml(c.must)||'—'}</div><div class="record-label">暫時不做</div><div class="record-value">${escapeHtml(c.later)||'本輪沒有'}</div><div class="record-label">止損規則</div><div class="record-value">${escapeHtml(c.stopRule)||'—'}</div><div class="record-label">交付日期</div><div class="record-value">${formatDate(c.deadline)}</div><div class="record-actions"><button class="record-open" type="button" data-open="${escapeHtml(c.id)}">開啟／匯出這張卡</button></div></article>`).join(''):'<div class="record-empty">還沒有成果卡。<br>完成第一張後，會保存在這裡。</div>';list.querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',()=>deleteCard(b.dataset.delete)));list.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>loadCard(b.dataset.open)))}
-  function openBook(){$('recordBook').classList.add('open');$('recordBook').setAttribute('aria-hidden','false');renderBook()}
-  function closeBook(){$('recordBook').classList.remove('open');$('recordBook').setAttribute('aria-hidden','true')}
-  function loadCard(id){const card=cards.find(c=>c.id===id);if(!card)return;['outcome','evidence','deadline','must','later','stopRule'].forEach(key=>$(key).value=card[key]||'');draftId=card.id;i=6;buildCard();saveDraft();closeBook();render();toast('已開啟，可再次儲存或分享')}
-  function startNew(){if(!confirm('開始一張新的成果卡？舊成果卡會保留在紀錄簿。'))return;clearing=true;try{localStorage.removeItem(draftKey)}catch(_){}fieldIds.forEach(id=>$(id).value='');$('notifyNewTools').checked=false;draftId='';i=1;clearing=false;saveDraft();render()}
-  function deleteCard(id){if(!confirm('確定刪除這張成果卡？'))return;cards=cards.filter(c=>c.id!==id);saveCards();renderBook();render()}
-  function toast(text){$('toast').textContent=text;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1700)}
-  $('next').addEventListener('click',next);$('back').addEventListener('click',prev);fieldIds.forEach(id=>$(id).addEventListener('input',()=>{updateGate();saveDraft()}));$('openBook').addEventListener('click',openBook);$('openBookResult').addEventListener('click',openBook);$('closeBook').addEventListener('click',closeBook);$('clearBook').addEventListener('click',()=>{if(!confirm('確定清空全部成果卡？'))return;cards=[];saveCards();renderBook();render()});
-  $('saveImage').addEventListener('click',saveCardImage);$('copyCard').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(cardText());toast('已複製成果卡文字')}catch(_){toast('瀏覽器未允許複製')}});$('shareCard').addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:'我的成果鎖定卡',text:cardText()});else{await navigator.clipboard.writeText(cardText());toast('已複製，可貼到其他地方')}track('share',{method:navigator.share?'web_share':'copy'})}catch(_){}});$('creatorForm').addEventListener('submit',async function(e){e.preventDefault();syncCreatorForm();const button=this.querySelector('button[type=submit]'),status=$('submitStatus');button.disabled=true;status.textContent='傳送中…';try{const response=await fetch(this.action,{method:'POST',headers:{Accept:'application/json'},body:new FormData(this)});status.textContent=response.ok?($('notifyNewTools').checked?'已傳給 Shirley，並記下新工具通知 ✓':'已傳給 Shirley ✓'):'暫時未能送出，請稍後再試';if(response.ok){track('creator_submission',{new_tool_notification:$('notifyNewTools').checked});button.textContent='已送出'}else button.disabled=false}catch(_){status.textContent='暫時未能送出，請稍後再試';button.disabled=false}});
-  if(isDemo){const d=new Date(Date.now()+7*86400000);const demo={outcome:'完成一支可以發布的影片',evidence:'輸出最終影片檔，並完成發布前檢查',deadline:`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`,must:'剪輯\n字幕\n聲畫檢查',later:'重改品牌定位\n研究新工具\n優化非必要流程',stopRule:'研究超過 45 分鐘仍未改變必要行動，就停止'};Object.entries(demo).forEach(([id,v])=>$(id).value=v);i=6;buildCard()}else loadDraft();
-  renderBook();render();
-</script>
-<script src="toolbook.js" defer></script>
-<script>
-  /* 共用層：目錄選單會自動掛上；完成畫面補一段意見小調查。
-     inline script 的 defer 無效，所以要等 DOMContentLoaded——
-     那時候 toolbook.js 這種 defer 的外部檔已經跑完了。 */
-  window.addEventListener('DOMContentLoaded',function(){
-    if(typeof Toolbook==='undefined')return;
-    Toolbook.mountFeedback({toolId:'result_lock_card',toolName:'成果鎖定卡',into:'.screen',compact:true});
-  });
+  <div style="width:min(440px,100%);height:min(860px,94vh);display:flex;flex-direction:column;background:#fbf9f4;border:1px solid #cec6b4;border-radius:8px;box-shadow:0 20px 60px rgba(36,31,24,.16);overflow:hidden;position:relative;">
+
+    <div style="flex:none;height:52px;display:flex;align-items:center;padding:0 20px;position:relative;border-bottom:1px solid #efe9dd;">
+      <span onClick="{{ onBack }}" style="font-size:24px;line-height:1;width:24px;cursor:pointer;color:{{ backColor }};">‹</span>
+      <div style="position:absolute;left:0;right:0;display:flex;gap:6px;justify-content:center;pointer-events:none;">
+        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="6">
+          <span style="height:5px;border-radius:3px;transition:.3s;width:{{ d.w }};background:{{ d.bg }};"></span>
+        </sc-for>
+      </div>
+      <a href="index.html" style="margin-left:auto;color:#938a78;font-size:16px;line-height:1;" title="回首頁">✕</a>
+    </div>
+
+    <div class="stage" style="flex:1;overflow-y:auto;padding:22px 26px 8px;">
+
+      <sc-if value="{{ s0 }}">
+        <div style="display:flex;flex-direction:column;justify-content:center;min-height:100%;text-align:center;padding:20px 0;">
+          <div style="font-family:'Noto Serif TC',serif;font-size:30px;color:#35456a;margin-bottom:20px;">❦</div>
+          <div style="font-family:'Noto Serif TC',serif;color:#35456a;font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;">工具 Nº 02 · 推進</div>
+          <h1 style="font-family:'Noto Serif TC',serif;font-size:27px;font-weight:600;line-height:1.7;letter-spacing:.5px;">先鎖定成果，<br />再決定做什麼</h1>
+          <p style="color:#938a78;font-size:13.5px;line-height:1.9;margin-top:18px;">六個簡短步驟，分清必要工作與錦上添花，<br />最後生成一張成果卡。答案只存在這部裝置。</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ s1 }}">
+        <div style="font-family:'Noto Serif TC',serif;color:#35456a;font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;">Step 01 · 成果</div>
+        <h2 style="font-family:'Noto Serif TC',serif;font-size:23px;font-weight:600;line-height:1.6;margin-bottom:8px;">這一輪，<br />必須交付什麼？</h2>
+        <p style="color:#938a78;font-size:13px;margin-bottom:8px;">寫一個看得見、能交付的結果，不寫「繼續研究」或「改善一下」。</p>
+        <label style="display:block;font-family:'Noto Serif TC',serif;font-size:14px;color:#554d40;margin:16px 0 7px;">本輪唯一成果</label>
+        <textarea value="{{ outcome }}" onInput="{{ onOutcome }}" maxlength="120" placeholder="例如：完成一支可以發布的影片" style="width:100%;min-height:110px;border:1px solid #e3ddd0;background:#fff;border-radius:3px;padding:14px 15px;font-size:14.5px;color:#241f18;line-height:1.8;resize:vertical;"></textarea>
+        <div style="border-left:2px solid #cec6b4;padding:12px 0 12px 16px;margin-top:20px;color:#554d40;font-family:'EB Garamond','Noto Serif TC',serif;font-size:14px;line-height:1.9;"><b style="color:#35456a;">試著用動詞開頭：</b><br />完成、輸出、發布、交付、決定……</div>
+      </sc-if>
+
+      <sc-if value="{{ s2 }}">
+        <div style="font-family:'Noto Serif TC',serif;color:#35456a;font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;">Step 02 · 完成</div>
+        <h2 style="font-family:'Noto Serif TC',serif;font-size:23px;font-weight:600;line-height:1.6;margin-bottom:8px;">看見什麼，<br />才算真的完成？</h2>
+        <p style="color:#938a78;font-size:13px;margin-bottom:8px;">給成果一個可以核對的終點，避免「差不多」無限延長。</p>
+        <label style="display:block;font-family:'Noto Serif TC',serif;font-size:14px;color:#554d40;margin:16px 0 7px;">完成證據</label>
+        <textarea value="{{ evidence }}" onInput="{{ onEvidence }}" maxlength="140" placeholder="例如：輸出最終影片檔，並完成發布前檢查" style="width:100%;min-height:90px;border:1px solid #e3ddd0;background:#fff;border-radius:3px;padding:14px 15px;font-size:14.5px;color:#241f18;line-height:1.8;resize:vertical;"></textarea>
+        <label style="display:block;font-family:'Noto Serif TC',serif;font-size:14px;color:#554d40;margin:16px 0 7px;">交付日期</label>
+        <input value="{{ deadline }}" onInput="{{ onDeadline }}" type="date" style="width:100%;border:1px solid #e3ddd0;background:#fff;border-radius:3px;padding:13px 15px;font-size:14.5px;color:#241f18;color-scheme:light;" />
+        <div style="border-left:2px solid #cec6b4;padding:12px 0 12px 16px;margin-top:20px;color:#554d40;font-family:'EB Garamond','Noto Serif TC',serif;font-size:14px;line-height:1.9;">沒有外部期限，也替這一輪設一個。期限不是催促，是幫你看見取捨。</div>
+      </sc-if>
+
+      <sc-if value="{{ s3 }}">
+        <div style="font-family:'Noto Serif TC',serif;color:#35456a;font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;">Step 03 · 必要</div>
+        <h2 style="font-family:'Noto Serif TC',serif;font-size:23px;font-weight:600;line-height:1.6;margin-bottom:8px;">哪些事情不完成，<br />結果就無法交付？</h2>
+        <p style="color:#938a78;font-size:13px;margin-bottom:8px;">每行一項，只留下直接影響結果的工作。</p>
+        <textarea value="{{ must }}" onInput="{{ onMust }}" maxlength="500" placeholder="例如：&#10;剪輯&#10;字幕&#10;聲畫檢查" style="width:100%;min-height:130px;border:1px solid #e3ddd0;background:#fff;border-radius:3px;padding:14px 15px;font-size:14.5px;color:#241f18;line-height:1.9;resize:vertical;"></textarea>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;">
+          <div style="border:1px solid #e3ddd0;background:rgba(53,69,106,.04);border-radius:3px;padding:15px;"><b style="display:block;font-family:'Noto Serif TC',serif;font-size:14.5px;margin-bottom:4px;">結果必需</b><span style="color:#938a78;font-size:11px;line-height:1.6;">缺少它，這一輪便無法交付。</span></div>
+          <div style="border:1px solid #e3ddd0;background:rgba(53,69,106,.04);border-radius:3px;padding:15px;"><b style="display:block;font-family:'Noto Serif TC',serif;font-size:14.5px;margin-bottom:4px;">不是「也許有用」</b><span style="color:#938a78;font-size:11px;line-height:1.6;">有用但不影響交付，先移到下一步。</span></div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ s4 }}">
+        <div style="font-family:'Noto Serif TC',serif;color:#35456a;font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;">Step 04 · 延後</div>
+        <h2 style="font-family:'Noto Serif TC',serif;font-size:23px;font-weight:600;line-height:1.6;margin-bottom:8px;">哪些事情只是<br />錦上添花？</h2>
+        <p style="color:#938a78;font-size:13px;margin-bottom:8px;">先放下，不代表永遠不做。這一步可以留空。</p>
+        <textarea value="{{ later }}" onInput="{{ onLater }}" maxlength="500" placeholder="例如：&#10;重改品牌定位&#10;研究新工具&#10;優化非必要流程" style="width:100%;min-height:130px;border:1px solid #e3ddd0;background:#fff;border-radius:3px;padding:14px 15px;font-size:14.5px;color:#241f18;line-height:1.9;resize:vertical;"></textarea>
+        <div style="border-left:2px solid #cec6b4;padding:12px 0 12px 16px;margin-top:20px;color:#554d40;font-family:'EB Garamond','Noto Serif TC',serif;font-size:14px;line-height:1.9;">問自己：<b style="color:#35456a;">今天不做它，核心成果仍能交付嗎？</b>如果可以，先放在這裡。</div>
+      </sc-if>
+
+      <sc-if value="{{ s5 }}">
+        <div style="font-family:'Noto Serif TC',serif;color:#35456a;font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;">Step 05 · 止損</div>
+        <h2 style="font-family:'Noto Serif TC',serif;font-size:23px;font-weight:600;line-height:1.6;margin-bottom:8px;">什麼情況出現，<br />你就停止研究或修改？</h2>
+        <p style="color:#938a78;font-size:13px;margin-bottom:8px;">替容易無限延長的行為，預先設定停止條件。</p>
+        <textarea value="{{ stopRule }}" onInput="{{ onStopRule }}" maxlength="160" placeholder="例如：研究超過 45 分鐘仍未改變必要行動，就停止" style="width:100%;min-height:100px;border:1px solid #e3ddd0;background:#fff;border-radius:3px;padding:14px 15px;font-size:14.5px;color:#241f18;line-height:1.9;resize:vertical;"></textarea>
+        <div style="border-left:2px solid #cec6b4;padding:12px 0 12px 16px;margin-top:20px;color:#554d40;font-family:'EB Garamond','Noto Serif TC',serif;font-size:14px;line-height:1.9;">止損不是草率，而是把時間重新交給真正影響結果的事情。</div>
+      </sc-if>
+
+      <sc-if value="{{ s6 }}">
+        <div style="text-align:center;font-family:'Noto Serif TC',serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:#938a78;margin:4px 0 14px;">你的本輪成果</div>
+        <div style="position:relative;border:1px solid #cec6b4;border-radius:3px;padding:28px 24px 22px;background:#f3efe7;box-shadow:inset 0 0 0 5px #fbf9f4,inset 0 0 0 6px #cec6b4;">
+          <div style="text-align:center;font-family:'Noto Serif TC',serif;font-size:22px;color:#35456a;">❦</div>
+          <div style="text-align:center;font-family:'Noto Serif TC',serif;font-size:15px;letter-spacing:8px;padding-left:8px;margin-top:4px;">成 果 卡</div>
+          <div style="text-align:center;font-size:8.5px;letter-spacing:3px;color:#938a78;text-transform:uppercase;margin-top:5px;">Result Lock · Nº 02</div>
+          <div style="width:30px;height:1px;background:#35456a;opacity:.6;margin:16px auto 20px;"></div>
+          <div style="font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:#938a78;margin-bottom:6px;">本輪唯一成果</div>
+          <div style="font-family:'Noto Serif TC',serif;font-size:19px;font-weight:600;line-height:1.55;margin-bottom:15px;white-space:pre-wrap;">{{ cardOutcome }}</div>
+          <div style="font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:#938a78;margin-bottom:5px;">完成證據</div>
+          <div style="font-size:14px;line-height:1.7;margin-bottom:13px;white-space:pre-wrap;">{{ cardEvidence }}</div>
+          <div style="font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:#938a78;margin-bottom:5px;">現在只做</div>
+          <div style="font-size:14px;line-height:1.7;margin-bottom:13px;white-space:pre-wrap;">{{ cardMust }}</div>
+          <div style="font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:#938a78;margin-bottom:5px;">暫時不做</div>
+          <div style="font-size:14px;line-height:1.7;margin-bottom:14px;white-space:pre-wrap;">{{ cardLater }}</div>
+          <div style="height:1px;background:#e3ddd0;margin-bottom:14px;"></div>
+          <div style="font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:#938a78;margin-bottom:5px;">止損規則</div>
+          <div style="font-size:14px;line-height:1.7;margin-bottom:16px;white-space:pre-wrap;">{{ cardStop }}</div>
+          <div style="text-align:center;font-size:11px;color:#938a78;letter-spacing:1px;">交付日期 <span style="font-family:'Noto Serif TC',serif;color:#35456a;font-size:15px;margin:0 4px;">{{ cardDeadline }}</span></div>
+          <div style="text-align:center;font-family:'Noto Serif TC',serif;color:#35456a;font-size:14px;letter-spacing:2px;margin-top:14px;">先完成，再完美。</div>
+          <div style="text-align:center;font-size:8px;letter-spacing:2px;color:#938a78;text-transform:uppercase;margin-top:10px;">Edition Nº 02 · MMXXVI</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:16px;">
+          <button onClick="{{ onSaveImage }}" style="border:1px solid #cec6b4;background:transparent;color:#35456a;border-radius:2px;padding:12px;font-size:13px;cursor:pointer;">儲存為圖片</button>
+          <button onClick="{{ onCopy }}" style="border:1px solid #cec6b4;background:transparent;color:#35456a;border-radius:2px;padding:12px;font-size:13px;cursor:pointer;">複製文字</button>
+          <button onClick="{{ onShare }}" style="border:1px solid #cec6b4;background:transparent;color:#35456a;border-radius:2px;padding:12px;font-size:13px;cursor:pointer;">分享成果卡</button>
+        </div>
+        <div style="border:1px solid #cec6b4;border-radius:4px;background:#fff;padding:20px;margin-top:24px;">
+          <div style="font-family:'Noto Serif TC',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#938a78;margin-bottom:8px;">卷 II · 推進 · 這條線的下一步</div>
+          <p style="color:#554d40;font-size:13.5px;line-height:1.8;font-family:'EB Garamond','Noto Serif TC',serif;">這一輪結束後，用 <a href="tool-review.html">復盤卡</a> 對一次；每天落地可用 <a href="tool-two.html">今天兩格</a>，一天只排兩件，一件留給這個成果。</p>
+        </div>
+        <div style="border-top:1px solid #e3ddd0;margin-top:24px;padding-top:22px;">
+          <div style="font-family:'Noto Serif TC',serif;font-size:16px;font-weight:600;margin-bottom:4px;">把這次成果留給 Toolbook</div>
+          <p style="font-size:12.5px;color:#938a78;margin-bottom:12px;line-height:1.75;">也告訴我，你希望下一個工具幫你解決什麼——我在收集建議。留 Email，新工具上線也會通知你。</p>
+          <form onSubmit="{{ onSubmitFeedback }}">
+            <textarea value="{{ feedbackText }}" onInput="{{ onFeedbackText }}" maxlength="500" placeholder="你希望下一個工具處理什麼？（可留空）" style="width:100%;min-height:76px;border:1px solid #cec6b4;background:#fff;border-radius:2px;padding:12px 14px;font-size:14px;color:#241f18;line-height:1.7;resize:vertical;outline:none;margin-bottom:8px;"></textarea>
+            <div style="display:flex;gap:8px;">
+              <input value="{{ email }}" onInput="{{ onEmail }}" type="email" placeholder="你的 Email" required style="flex:1;border:1px solid #cec6b4;background:#fff;border-radius:2px;padding:12px 14px;font-size:14px;color:#241f18;outline:none;" />
+              <button type="submit" style="border:none;background:#35456a;color:#fbf9f4;border-radius:2px;padding:0 20px;font-size:13px;letter-spacing:1px;cursor:pointer;white-space:nowrap;">{{ subLabel }}</button>
+            </div>
+            <div style="min-height:16px;text-align:center;color:#35456a;font-size:11px;margin-top:8px;">{{ subStatus }}</div>
+          </form>
+        </div>
+      </sc-if>
+
+    </div>
+
+    <div style="flex:none;padding:12px 26px 22px;background:linear-gradient(transparent,#fbf9f4 30%);">
+      <sc-if value="{{ showGate }}">
+        <div style="text-align:center;font-size:11px;color:#938a78;margin-bottom:8px;height:15px;letter-spacing:.5px;">{{ gateMsg }}</div>
+      </sc-if>
+      <button onClick="{{ onNext }}" disabled="{{ nextDisabled }}" style="display:block;width:100%;border:none;background:{{ nextBg }};color:#fbf9f4;border-radius:2px;padding:15px;font-size:15px;font-weight:600;letter-spacing:1px;cursor:pointer;opacity:{{ nextOp }};">{{ nextLabel }}</button>
+      <sc-if value="{{ s6 }}">
+        <button onClick="{{ onHome }}" style="display:block;width:100%;border:1px solid #cec6b4;background:transparent;color:#35456a;border-radius:2px;padding:12px;font-size:13px;letter-spacing:1px;cursor:pointer;margin-top:8px;">返回主頁</button>
+      </sc-if>
+      <sc-if value="{{ showRecordsBtn }}">
+        <button onClick="{{ onOpenRecords }}" style="display:block;width:100%;border:1px solid #cec6b4;background:transparent;color:#35456a;border-radius:2px;padding:12px;font-size:13px;letter-spacing:1px;cursor:pointer;margin-top:8px;">查看成果卡紀錄簿（{{ recordsCount }}）</button>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ toastOn }}">
+      <div style="position:absolute;bottom:96px;left:50%;transform:translateX(-50%);background:#241f18;color:#fbf9f4;padding:10px 18px;border-radius:3px;font-size:12px;letter-spacing:.5px;white-space:nowrap;">{{ toastMsg }}</div>
+    </sc-if>
+
+  </div>
+
+  <sc-if value="{{ recordsOpen }}">
+    <div onClick="{{ onCloseRecords }}" style="position:fixed;inset:0;z-index:30;background:rgba(36,31,24,.4);display:flex;justify-content:center;">
+      <div onClick="{{ stop }}" style="width:min(440px,100%);height:100%;background:#f3efe7;padding:22px 24px 34px;overflow-y:auto;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+          <div style="font-family:'Noto Serif TC',serif;font-size:22px;font-weight:600;white-space:nowrap;">成果卡紀錄簿</div>
+          <span onClick="{{ onCloseRecords }}" style="color:#938a78;font-size:22px;cursor:pointer;">✕</span>
+        </div>
+        <p style="font-size:12px;color:#938a78;margin-bottom:18px;">紀錄只保存在這部裝置的目前瀏覽器。</p>
+        <sc-if value="{{ hasCards }}">
+          <sc-for list="{{ cards }}" as="c" hint-placeholder-count="0">
+            <div onClick="{{ c.onOpen }}" style="background:#fbf9f4;border:1px solid #e3ddd0;border-radius:4px;padding:18px;margin-bottom:12px;cursor:pointer;" style-hover="border-color:#35456a;">
+              <div style="display:flex;justify-content:space-between;align-items:center;color:#938a78;font-size:11px;margin-bottom:12px;"><span style="white-space:nowrap;">第 {{ c.idx }} 張 · {{ c.date }}</span><span onClick="{{ c.onDel }}" style="cursor:pointer;">刪除</span></div>
+              <div style="font-size:9px;letter-spacing:2px;color:#938a78;">本輪唯一成果</div><div style="font-family:'Noto Serif TC',serif;font-size:15px;margin-top:3px;white-space:pre-wrap;">{{ c.outcome }}</div>
+              <div style="font-size:9px;letter-spacing:2px;color:#938a78;margin-top:10px;">交付日期</div><div style="font-family:'Noto Serif TC',serif;font-size:15px;color:#35456a;font-weight:600;margin-top:3px;">{{ c.deadline }}</div>
+              <div style="text-align:right;font-size:11px;color:#35456a;margin-top:10px;letter-spacing:1px;">開啟回顧 →</div>
+            </div>
+          </sc-for>
+        </sc-if>
+        <sc-if value="{{ noCards }}">
+          <div style="text-align:center;color:#938a78;font-size:13px;padding:60px 10px;">還沒有成果卡。<br />完成第一張後，會保存在這裡。</div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ hasOpened }}">
+    <div onClick="{{ onCloseCard }}" style="position:fixed;inset:0;z-index:40;background:rgba(36,31,24,.5);display:flex;align-items:center;justify-content:center;padding:26px 20px;">
+      <div onClick="{{ stop }}" style="width:min(400px,100%);background:#fbf9f4;border-radius:8px;padding:24px;box-shadow:0 20px 60px rgba(36,31,24,.28);max-height:92vh;overflow-y:auto;">
+        <div style="position:relative;border:1px solid #cec6b4;border-radius:3px;padding:26px 22px 20px;background:#f3efe7;box-shadow:inset 0 0 0 5px #fbf9f4,inset 0 0 0 6px #cec6b4;">
+          <div style="text-align:center;font-family:'Noto Serif TC',serif;font-size:22px;color:#35456a;">❦</div>
+          <div style="text-align:center;font-family:'Noto Serif TC',serif;font-size:15px;letter-spacing:8px;padding-left:8px;margin-top:4px;">成 果 卡</div>
+          <div style="text-align:center;font-size:8.5px;letter-spacing:3px;color:#938a78;text-transform:uppercase;margin-top:5px;">Result Lock · Nº 02</div>
+          <div style="width:30px;height:1px;background:#35456a;opacity:.6;margin:16px auto 20px;"></div>
+          <div style="font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:#938a78;margin-bottom:6px;">本輪唯一成果</div>
+          <div style="font-family:'Noto Serif TC',serif;font-size:19px;font-weight:600;line-height:1.55;margin-bottom:14px;white-space:pre-wrap;">{{ ocOutcome }}</div>
+          <div style="font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:#938a78;margin-bottom:5px;">完成證據</div>
+          <div style="font-size:14px;line-height:1.7;margin-bottom:12px;white-space:pre-wrap;">{{ ocEvidence }}</div>
+          <div style="font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:#938a78;margin-bottom:5px;">現在只做</div>
+          <div style="font-size:14px;line-height:1.7;margin-bottom:12px;white-space:pre-wrap;">{{ ocMust }}</div>
+          <div style="font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:#938a78;margin-bottom:5px;">暗時不做</div>
+          <div style="font-size:14px;line-height:1.7;margin-bottom:14px;white-space:pre-wrap;">{{ ocLater }}</div>
+          <div style="height:1px;background:#e3ddd0;margin-bottom:14px;"></div>
+          <div style="font-size:9px;letter-spacing:2.3px;text-transform:uppercase;color:#938a78;margin-bottom:5px;">止損規則</div>
+          <div style="font-size:14px;line-height:1.7;margin-bottom:14px;white-space:pre-wrap;">{{ ocStop }}</div>
+          <div style="text-align:center;font-size:11px;color:#938a78;letter-spacing:1px;">交付日期 <span style="font-family:'Noto Serif TC',serif;color:#35456a;font-size:15px;margin:0 4px;">{{ ocDeadline }}</span></div>
+          <div style="text-align:center;font-size:8px;letter-spacing:2px;color:#938a78;text-transform:uppercase;margin-top:10px;">Edition Nº 02 · MMXXVI</div>
+        </div>
+        <button onClick="{{ onShareOpened }}" style="display:block;width:100%;border:1px solid #cec6b4;background:transparent;color:#35456a;border-radius:2px;padding:12px;font-size:13px;letter-spacing:1px;cursor:pointer;margin-top:16px;">分享這張</button>
+        <a href="tool-review.html" style="display:block;text-align:center;border:1px solid #cec6b4;border-radius:2px;padding:12px;font-size:13px;letter-spacing:1px;margin-top:8px;">下一步：復盤卡 →</a>
+        <button onClick="{{ onCloseCard }}" style="display:block;width:100%;border:none;background:transparent;color:#938a78;border-radius:2px;padding:10px;font-size:12px;letter-spacing:1px;cursor:pointer;margin-top:4px;">關閉</button>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:480,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = {
+    step: 0, outcome: "", evidence: "", deadline: "", must: "", later: "", stopRule: "",
+    toastOn: false, toastMsg: "", feedbackText: "", email: "", subLabel: "傳給創作者", subStatus: "",
+    cards: [], recordsOpen: false, openedCard: null,
+  };
+  HKEY = "toolbook_result_lock_history_v1";
+  componentDidMount() { try { const raw = localStorage.getItem(this.HKEY); if (raw) { const a = JSON.parse(raw); if (Array.isArray(a)) this.setState({ cards: a.slice(0, 50) }); } } catch (_) {} }
+  saveCards(cards) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); } catch (_) {} }
+  archive() {
+    const s = this.state; if (!s.outcome.trim()) return;
+    const card = { id: "r_" + Date.now().toString(36), createdAt: new Date().toISOString(), outcome: s.outcome.trim(), evidence: s.evidence.trim(), deadline: s.deadline, must: s.must.trim(), later: s.later.trim(), stopRule: s.stopRule.trim() };
+    const cards = [card, ...this.state.cards].slice(0, 50);
+    this.setState({ cards }); this.saveCards(cards);
+  }
+  deleteCard(id) { const cards = this.state.cards.filter(c => c.id !== id); this.setState({ cards }); this.saveCards(cards); }
+  cardTextFor(c) { return "成果鎖定卡\n\n本輪結果：" + (c.outcome || "") + "\n完成證據：" + (c.evidence || "") + "\n交付日期：" + this.fmtDate(c.deadline) + "\n\n現在只做：\n" + (c.must || "") + "\n\n暗時不做：\n" + (c.later || "本輪沒有") + "\n\n止損規則：" + (c.stopRule || "") + "\n\n先完成，再完美。"; }
+  async shareCard(c) { try { if (navigator.share) await navigator.share({ title: "我的成果鎖定卡", text: this.cardTextFor(c) }); else { await navigator.clipboard.writeText(this.cardTextFor(c)); this.toast("已複製"); } } catch (_) {} }
+
+  set(k, v) { this.setState({ [k]: v }); }
+  gateOk(step) {
+    const s = this.state;
+    if (step === 1) return !!s.outcome.trim();
+    if (step === 2) return !!(s.evidence.trim() && s.deadline.trim());
+    if (step === 3) return !!s.must.trim();
+    if (step === 5) return !!s.stopRule.trim();
+    return true;
+  }
+  next() {
+    if (!this.gateOk(this.state.step)) return;
+    const n = Math.min(6, this.state.step + 1);
+    if (n === 6) this.archive();
+    this.setState({ step: n });
+    const st = document.querySelector(".stage"); if (st) st.scrollTop = 0;
+  }
+  prev() { this.setState({ step: Math.max(0, this.state.step - 1) }); const st = document.querySelector(".stage"); if (st) st.scrollTop = 0; }
+  newCard() {
+    if (!window.confirm("開始一張新的成果卡？目前內容會清掉。")) return;
+    this.setState({ step: 1, outcome: "", evidence: "", deadline: "", must: "", later: "", stopRule: "" });
+  }
+  fmtDate(raw) { if (!raw) return "—"; const p = raw.split("-"); return p.length === 3 ? p[0] + "." + p[1] + "." + p[2] : raw; }
+  cardText() {
+    const s = this.state;
+    return "成果鎖定卡\n\n本輪結果：" + s.outcome + "\n完成證據：" + s.evidence + "\n交付日期：" + this.fmtDate(s.deadline) +
+      "\n\n現在只做：\n" + s.must + "\n\n暫時不做：\n" + (s.later || "本輪沒有") + "\n\n止損規則：" + s.stopRule + "\n\n先完成，再完美。";
+  }
+  toast(msg) { this.setState({ toastOn: true, toastMsg: msg }); clearTimeout(this._t); this._t = setTimeout(() => this.setState({ toastOn: false }), 1700); }
+  async copy() { try { await navigator.clipboard.writeText(this.cardText()); this.toast("已複製成果卡文字"); } catch (_) { this.toast("瀏覽器未允許複製"); } }
+  async share() { try { if (navigator.share) await navigator.share({ title: "我的成果鎖定卡", text: this.cardText() }); else { await navigator.clipboard.writeText(this.cardText()); this.toast("已複製，可貼到其他地方"); } } catch (_) {} }
+  onSubmitFeedback(e) { e.preventDefault(); var self = this; var fd = new FormData(); fd.append("email", this.state.email || ""); fd.append("message", this.state.feedbackText || ""); fd.append("tool", "成果鎖定卡"); fd.append("_subject", "Toolbook 工具回饋 · 成果鎖定卡"); fd.append("submission_type", "工具完成後回饋"); this.setState({ subLabel: "傳送中…", subStatus: "" }); fetch("https://formspree.io/f/mlgkgveq", { method: "POST", body: fd, headers: { Accept: "application/json" } }).then(function (r) { if (!r.ok) throw r; return r.json(); }).then(function () { self.setState({ subLabel: "已送出", subStatus: "已傳給創作者 ✓" }); }).catch(function () { self.setState({ subLabel: "傳給創作者", subStatus: "送出失敗，請稍後再試" }); }); }
+
+  async _png(spec){try{const m=await import("./toolbook-card.js");const ok=await m.downloadCardPNG(spec);this.toast(ok?"卡片圖片已儲存":"圖片產生失敗");}catch(_){this.toast("圖片產生失敗");}}
+  async saveImage(){const s=this.state;await this._png({title:"成果鎖定卡",sub:"RESULT LOCK · Nº 02",filename:"成果鎖定卡-Toolbook",mantra:"先完成，再完美。",edition:"Edition Nº 02 · MMXXVI",blocks:[{k:"本輪結果",v:s.outcome.trim()||"—",big:true},{k:"完成證據",v:s.evidence.trim()||"—",serif:true},{k:"交付日期",v:this.fmtDate(s.deadline),big:true},{k:"現在只做",v:s.must.trim()||"—"},{k:"暫時不做",v:s.later.trim()||"本輪沒有"},{k:"止損規則",v:s.stopRule.trim()||"—"}]});}
+
+  renderVals() {
+    const s = this.state, step = s.step;
+    const dots = [1, 2, 3, 4, 5, 6].map(n => ({ w: n === step ? "16px" : "5px", bg: n === step ? "#35456a" : "#e3ddd0" }));
+    const showGate = step >= 1 && step <= 5;
+    const gateBad = showGate && !this.gateOk(step);
+    const nextLabel = step === 0 ? "開始" : step === 5 ? "生成成果卡" : step === 6 ? "再做一張" : "下一步";
+    const cards = s.cards.map((c, n) => ({ idx: s.cards.length - n, date: new Date(c.createdAt).toLocaleDateString("zh-HK", { year: "numeric", month: "2-digit", day: "2-digit" }), outcome: c.outcome || "—", deadline: this.fmtDate(c.deadline), onDel: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.deleteCard(c.id); }, onOpen: () => this.set("openedCard", c) }));
+    const oc = s.openedCard;
+    return {
+      dots, backColor: step === 0 ? "transparent" : "#938a78", onBack: () => this.prev(),
+      s0: step === 0, s1: step === 1, s2: step === 2, s3: step === 3, s4: step === 4, s5: step === 5, s6: step === 6,
+      outcome: s.outcome, evidence: s.evidence, deadline: s.deadline, must: s.must, later: s.later, stopRule: s.stopRule,
+      onOutcome: e => this.set("outcome", e.target.value),
+      onEvidence: e => this.set("evidence", e.target.value),
+      onDeadline: e => this.set("deadline", e.target.value),
+      onMust: e => this.set("must", e.target.value),
+      onLater: e => this.set("later", e.target.value),
+      onStopRule: e => this.set("stopRule", e.target.value),
+      cardOutcome: s.outcome.trim() || "—", cardEvidence: s.evidence.trim() || "—",
+      cardMust: s.must.trim() || "—", cardLater: s.later.trim() || "本輪沒有",
+      cardStop: s.stopRule.trim() || "—", cardDeadline: this.fmtDate(s.deadline),
+      onCopy: () => this.copy(), onShare: () => this.share(), onSaveImage: () => this.saveImage(), onNewCard: () => this.newCard(),
+      onHome: () => { window.location.href = "index.html"; },
+      feedbackText: s.feedbackText, email: s.email, subLabel: s.subLabel, subStatus: s.subStatus,
+      onFeedbackText: e => this.set("feedbackText", e.target.value), onEmail: e => this.set("email", e.target.value),
+      onSubmitFeedback: e => this.onSubmitFeedback(e),
+      showGate, gateMsg: gateBad ? (step === 2 ? "請填寫完成證據及日期" : "完成這一題，才能繼續") : "",
+      onNext: step === 6 ? () => this.newCard() : () => this.next(),
+      nextLabel: step === 6 ? "再做一張新的成果卡" : nextLabel,
+      nextDisabled: gateBad ? "disabled" : "", nextOp: gateBad ? ".5" : "1", nextBg: gateBad ? "#b7bdcb" : "#35456a",
+      toastOn: s.toastOn, toastMsg: s.toastMsg,
+      cards, recordsCount: s.cards.length, hasCards: s.cards.length > 0, noCards: s.cards.length === 0,
+      showRecordsBtn: (step === 0 || step === 6) && s.cards.length > 0,
+      onOpenRecords: () => this.set("recordsOpen", true),
+      recordsOpen: s.recordsOpen, onCloseRecords: () => this.set("recordsOpen", false), stop: e => e.stopPropagation(),
+      hasOpened: !!oc, ocOutcome: oc ? (oc.outcome || "—") : "—", ocEvidence: oc ? (oc.evidence || "—") : "—", ocMust: oc ? (oc.must || "—") : "—", ocLater: oc ? (oc.later || "本輪沒有") : "本輪沒有", ocStop: oc ? (oc.stopRule || "—") : "—", ocDeadline: oc ? this.fmtDate(oc.deadline) : "—",
+      onCloseCard: () => this.set("openedCard", null), onShareOpened: () => { if (oc) this.shareCard(oc); },
+    };
+  }
+}
 </script>
 </body>
 </html>

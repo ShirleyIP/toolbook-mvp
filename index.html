@@ -1,337 +1,385 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google tag (gtag.js) -->
-<style>
-@font-face{font-family:"Noto Serif TC";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/NotoSerifTC-Regular.subset.woff2") format("woff2")}
-@font-face{font-family:"Noto Serif TC";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/NotoSerifTC-SemiBold.subset.woff2") format("woff2")}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CKM6MRRVBM"></script>
-<script>
-  window.dataLayer=window.dataLayer||[];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js',new Date());
-  gtag('config','G-CKM6MRRVBM');
-</script>
-<title>Toolbook · 把好書變成工具</title>
-<meta name="description" content="一個還在路上的讀者，把每本好書的方法做成工具——先用在自己身上，也分享給你。">
-<style>
-  *{box-sizing:border-box;margin:0;padding:0;}
-  :root{--serif:"Noto Serif TC","Songti SC","Source Han Serif TC",serif;
-    --bg:#ece5d8;--card:#f5f0e6;--ink:#2c2820;--muted:#938b78;--line:#d6cdba;
-    --frame:#c9bea4;--accent:#8a6f44;--warm:#9c7c47;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang TC",sans-serif;line-height:1.8;position:relative;}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-  .wrap{max-width:760px;margin:0 auto;padding:0 26px;position:relative;z-index:1;}
-  nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0;}
-  .brand{font-family:var(--serif);font-size:18px;letter-spacing:3px;font-weight:600;}
-  .brand .dot{color:var(--accent);}
-  .brand .sub{font-family:var(--serif);font-size:10px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;font-weight:400;margin-left:6px;}
-  nav .links a{color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:1px;margin-left:22px;}
-  nav .links a:hover{color:var(--accent);}
-  .hero{padding:60px 0 50px;}
-  .kick{color:var(--accent);font-size:12px;letter-spacing:4px;text-transform:uppercase;margin-bottom:20px;}
-  h1{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.35;letter-spacing:1px;margin-bottom:22px;}
-  .lead{color:#5d564a;font-size:15px;max-width:560px;margin-bottom:32px;}
-  .btn{display:inline-block;background:var(--accent);color:var(--bg);text-decoration:none;
-    padding:15px 30px;border-radius:3px;font-size:15px;letter-spacing:2px;transition:.2s;}
-  .btn:hover{filter:brightness(1.08);}
-  .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent);margin-left:10px;}
-  .rule{height:1px;background:var(--line);margin:54px 0;}
-  .sec-k{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:22px;}
-  .toolgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch;}
-  .tool{border:1px solid var(--frame);border-radius:4px;background:var(--card);padding:30px;display:flex;flex-direction:column;
-    box-shadow:inset 0 0 0 4px var(--bg),inset 0 0 0 5px var(--frame);}
-  .tool .no{font-family:var(--serif);color:var(--accent);font-size:12px;letter-spacing:2px;}
-  .tool h3{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.35;margin:8px 0 10px;}
-  .tool p{color:#5d564a;font-size:15px;margin-bottom:20px;}
-  .tool .src{font-size:12px;color:var(--muted);margin-bottom:22px;}
-  .tool .used{display:none;border-top:1px dashed var(--frame);padding-top:12px;margin:-8px 0 20px;font-size:11px;letter-spacing:.5px;color:var(--muted);}
-  .tool .used.on{display:block;}
-  .tool .used .u-when{color:var(--accent);}
-  .tool .used .u-k{font-size:9px;letter-spacing:2.2px;text-transform:uppercase;margin-top:7px;}
-  .tool .used .u-v{font-family:var(--serif);font-size:15px;color:var(--ink);line-height:1.6;margin-top:1px;}
-  .tool .btn{margin-top:auto;align-self:flex-start;}
-  .grp{grid-column:1/-1;margin:26px 0 -4px;}
-  .grp:first-child{margin-top:0;}
-  .grp b{display:block;font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:.5px;}
-  .grp span{display:block;font-size:13px;color:var(--muted);margin-top:3px;}
-  .coming{display:flex;flex-direction:column;gap:0;margin-top:10px;}
-  .citem{display:flex;align-items:center;gap:14px;padding:15px 2px;border-bottom:1px solid var(--line);}
-  .citem .cn{font-family:var(--serif);color:var(--accent);font-size:12px;letter-spacing:1px;width:48px;}
-  .citem .cnm{flex:1;font-size:15px;}
-  .citem .cst{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
-  .citem.soon{opacity:.55;}
-  .grp2{margin:24px 0 12px;}
-  .grp2 b{display:block;font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:.5px;}
-  .grp2 span{display:block;font-size:13px;color:var(--muted);margin-top:3px;line-height:1.75;}
-  .grp2+.art{border-top:1px solid var(--line);}
-  .art{display:block;text-decoration:none;color:inherit;padding:22px 0;border-bottom:1px solid var(--line);}
-  .art:first-of-type{border-top:1px solid var(--line);}
-  .art .at{font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:5px;}
-  .art .ad{color:var(--muted);font-size:13px;}
-  .art:hover .at{color:var(--accent);}
-  .signup{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:30px;text-align:center;margin-top:10px;}
-  .signup h3{font-family:var(--serif);font-size:20px;margin-bottom:6px;}
-  .signup p{color:var(--muted);font-size:13px;margin-bottom:18px;}
-  .signup form{display:flex;gap:10px;max-width:420px;margin:0 auto;}
-  .signup input{flex:1;border:1px solid var(--line);background:var(--bg);border-radius:3px;padding:13px 15px;font-size:15px;font-family:inherit;color:var(--ink);}
-  .signup input:focus{outline:none;border-color:var(--accent);}
-  .signup button{border:none;background:var(--accent);color:var(--bg);border-radius:3px;padding:0 22px;font-family:inherit;font-size:13px;letter-spacing:1px;cursor:pointer;}
-  footer{color:var(--muted);font-size:12px;text-align:center;padding:50px 0 40px;letter-spacing:.5px;}
-  footer .serif{font-family:var(--serif);}
-  @media(max-width:620px){h1{font-size:27px;}.hero .btn{display:block;width:100%;text-align:center;margin-left:0;}.hero .btn.ghost{margin-top:10px;}.signup form{flex-direction:column;}.toolgrid{grid-template-columns:1fr;}}
-</style>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CKM6MRRVBM');</script>
+<script src="./support.js"></script>
 </head>
 <body>
-<div class="wrap">
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:#f3efe7;color:#241f18;font-family:-apple-system,"PingFang TC","PingFang SC",sans-serif;line-height:1.85;-webkit-font-smoothing:antialiased;}
+  a{color:#35456a;text-decoration:none;transition:color .18s,opacity .18s,transform .18s,border-color .18s;}
+  a:hover{color:#26324f;}
+  ::selection{background:rgba(53,69,106,.15);}
+  @keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+</style>
+</helmet>
+<div style="position:relative;min-height:100vh;--rhythm:{{ rhythm }}">
+  <sc-if value="{{ paper }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
+  </sc-if>
 
-  <nav>
-    <div class="brand">TOOLBOOK<span class="dot">.</span><span class="sub">Editions</span></div>
-    <div class="links"><a href="#articles">文章</a><a href="#tools">工具</a></div>
-  </nav>
+  <div style="max-width:860px;margin:0 auto;padding:0 30px;position:relative;z-index:1;">
 
-  <header class="hero">
-    <div class="kick">把好書 · 變成工具</div>
-    <h1>讀過的好書，<br>不該只留在書架上。</h1>
-    <p class="lead">我是一個還在路上的讀者。我把每本書裡真正有用的方法，做成可以「拿來用」的工具——先用在自己身上，再分享給你。我們一起，把書中的智慧，長成自己的系統。</p>
-    <a class="btn" href="tool.html">開始第一個工具 →</a>
-    <a class="btn ghost" href="article.html">先讀篇文章</a>
-  </header>
-
-
-  <div class="rule"></div>
-
-  <section id="tools">
-    <div class="sec-k">現在能用的</div>
-    <div class="toolgrid">
-      <div class="grp"><b>不知道自己要什麼</b><span>先聽見，再決定。</span></div>
-      <div class="tool">
-        <div class="no">工具 No. 01</div>
-        <h3>目標釐清器</h3>
-        <p>不幫你「定目標」，幫你聽見——你到底要什麼。8 個安靜的問題，最後給你一張方向卡。</p>
-        <div class="src">啟發自《認知覺醒》× Dreamlining《一週工作 4 小時》。</div>
-        <a class="btn" href="tool.html">開始 →</a>
+    <nav style="display:flex;justify-content:space-between;align-items:center;padding:18px 0;position:sticky;top:0;z-index:5;background:#f3efe7;border-bottom:1px solid #e3ddd0;">
+      <a href="#top" style="font-family:'Noto Serif TC',serif;font-size:17px;letter-spacing:4px;font-weight:600;color:#241f18;">TOOLBOOK<span style="color:#35456a;">.</span><span style="font-size:10px;letter-spacing:3px;color:#35456a;text-transform:uppercase;font-weight:400;margin-left:7px;">Editions</span></a>
+      <div style="display:flex;gap:26px;">
+        <a href="#contents" style="color:#938a78;font-size:13px;letter-spacing:1px;">目錄</a>
+        <a href="#tools" style="color:#938a78;font-size:13px;letter-spacing:1px;">工具</a>
+        <a href="#appendix" style="color:#938a78;font-size:13px;letter-spacing:1px;">附錄</a>
       </div>
-      <div class="grp"><b>知道要什麼，但推不動</b><span>定成果 → 每天落地 → 回頭對一次。這三張是一條線。</span></div>
-      <div class="tool">
-        <div class="no">工具 No. 02</div>
-        <h3>成果鎖定卡</h3>
-        <p>鎖定這一輪的唯一成果，分清必要工作與錦上添花，替研究和修改設定止損點。</p>
-        <div class="src">啟發自《人生效率手冊》目標建立篇，經實際問題重新整理。</div>
-        <a class="btn" href="tool-result-lock.html">開始 →</a>
+    </nav>
+
+    <!-- 扉頁 / TITLE PAGE -->
+    <header id="top" style="padding:calc(84px * var(--rhythm,1.35)) 0 calc(70px * var(--rhythm,1.35));text-align:center;">
+      <div style="color:#35456a;font-size:11px;letter-spacing:6px;text-transform:uppercase;margin-bottom:34px;">把好書 · 變成工具</div>
+      <h1 style="font-family:'Noto Serif TC',serif;font-size:clamp(30px,5vw,44px);font-weight:600;line-height:1.5;letter-spacing:2px;margin-bottom:30px;text-wrap:balance;">讀過的好書，<br>不該只留在書架上。</h1>
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;color:#35456a;margin-bottom:30px;">
+        <span style="height:1px;width:44px;background:#cec6b4;"></span>
+        <span style="font-family:'Noto Serif TC',serif;font-size:16px;">❦</span>
+        <span style="height:1px;width:44px;background:#cec6b4;"></span>
       </div>
-      <div class="tool">
-        <div class="no">工具 No. 08</div>
-        <h3>今天兩格</h3>
-        <p>一天只有兩個格子，寫滿就鎖。用位置不夠來逼出取捨，不必靠意志力。</p>
-        <div class="src">啟發自《一週工作 4 小時》第 5 章；書中掛在帕金森定律上的說法，查證後沒有沿用。</div>
-        <a class="btn" href="tool-two.html">開始 →</a>
+      <p style="color:#554d40;font-size:16px;line-height:1.95;max-width:520px;margin:0 auto 38px;text-wrap:pretty;font-family:'EB Garamond','Noto Serif TC',serif;">我是一個還在路上的讀者。把每本書裡真正有用的方法，做成可以「拿來用」的工具——先用在自己身上，再分享給你。我們一起，把書中的智慧，長成自己的系統。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+        <a href="tool.html" style="background:#35456a;color:#fbf9f4;padding:15px 32px;border-radius:2px;font-size:15px;letter-spacing:2px;">開始第一個工具 →</a>
+        <a href="#contents" style="border:1px solid #cec6b4;color:#35456a;padding:15px 32px;border-radius:2px;font-size:15px;letter-spacing:2px;" style-hover="border-color:#35456a;">先看目錄</a>
       </div>
-      <div class="tool">
-        <div class="no">工具 No. 03</div>
-        <h3>復盤卡</h3>
-        <p>一輪做完之後，拿當初寫下的目標對一次實際結果，然後只挑一件事改。</p>
-        <div class="src">啟發自《人生效率手冊》工具篇；這是全書查證後證據最紮實的一項。</div>
-        <a class="btn" href="tool-review.html">開始 →</a>
+      <div style="font-family:'Noto Serif TC',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#938a78;margin-top:46px;">Toolbook Editions · Volume I · MMXXVI</div>
+    </header>
+
+    <!-- 目錄 / CONTENTS -->
+    <sc-if value="{{ contents }}" hint-placeholder-val="{{ true }}">
+    <section id="contents" style="margin-top:calc(24px * var(--rhythm,1.35));scroll-margin-top:20px;border-top:1px solid #241f18;border-bottom:1px solid #241f18;padding:44px 0;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+        <div style="font-family:'Noto Serif TC',serif;font-size:24px;font-weight:600;letter-spacing:4px;">目　錄</div>
+        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#938a78;">Contents · 你卡在哪裡？</div>
       </div>
-      <div class="grp"><b>卡在一個決定</b><span>不敢動，多半是因為最壞的情況沒被寫下來。</span></div>
-      <div class="tool">
-        <div class="no">工具 No. 04</div>
-        <h3>恐懼拆解卡</h3>
-        <p>擋住你的不是風險，是沒被寫下來的那件事。八個問題，把「不敢動」拆成可以逐條處理的清單。</p>
-        <div class="src">啟發自《一週工作 4 小時》第 3 章；第八問「你的退路是什麼」是書上沒有、我自己加的。</div>
-        <a class="btn" href="tool-fear.html">開始 →</a>
+      <p style="color:#938a78;font-size:13px;margin-bottom:8px;line-height:1.75;max-width:560px;">十個工具，按你的處境編成六卷。挑一個最接近的往下翻——不確定就從卷一開始。用過之後，我會從你的方向卡替你推薦下一步。</p>
+      <p style="color:#938a78;font-size:11.5px;margin-bottom:22px;line-height:1.7;max-width:560px;">右側 Nº 是「輯號」，照上線先後編、發出即固定，所以同一卷裡不一定連號。</p>
+      <sc-for list="{{ groups }}" as="grp" hint-placeholder-count="6">
+        <div style="padding:16px 0 6px;border-top:1px solid #e3ddd0;">
+          <a href="{{ grp.anchor }}" style="display:grid;grid-template-columns:52px 1fr;column-gap:16px;align-items:baseline;color:inherit;margin-bottom:6px;" style-hover="opacity:.65;">
+            <span style="font-family:'Noto Serif TC',serif;font-size:15px;color:#35456a;letter-spacing:1px;">{{ grp.roman }}</span>
+            <span style="display:flex;align-items:baseline;gap:12px;min-width:0;">
+              <span style="font-family:'Noto Serif TC',serif;font-size:17px;font-weight:600;white-space:nowrap;">{{ grp.need }}</span>
+              <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#938a78;white-space:nowrap;">· {{ grp.siglumEn }}</span>
+            </span>
+          </a>
+          <sc-for list="{{ grp.tools }}" as="tool" hint-placeholder-count="2">
+            <a href="{{ tool.href }}" style="display:grid;grid-template-columns:52px 1fr;column-gap:16px;align-items:baseline;color:inherit;padding:5px 0;" style-hover="opacity:.6;">
+              <span></span>
+              <span style="display:flex;align-items:baseline;gap:10px;min-width:0;">
+                <span style="font-size:14.5px;white-space:nowrap;">{{ tool.name }}</span>
+                <span style="flex:1;border-bottom:1px dotted #cec6b4;transform:translateY(-4px);min-width:20px;"></span>
+                <span style="font-family:'Noto Serif TC',serif;font-size:12.5px;color:#35456a;letter-spacing:.5px;white-space:nowrap;">Nº {{ tool.no }}</span>
+              </span>
+            </a>
+          </sc-for>
+        </div>
+      </sc-for>
+    </section>
+    </sc-if>
+
+    <!-- 正文 / TOOLS -->
+    <section id="tools" style="scroll-margin-top:20px;">
+      <sc-for list="{{ groups }}" as="grp" hint-placeholder-count="6">
+        <div id="{{ grp.gid }}" style="margin-top:calc(72px * var(--rhythm,1.35));scroll-margin-top:24px;">
+
+          <div style="display:grid;grid-template-columns:92px 1fr;column-gap:26px;align-items:start;margin-bottom:30px;">
+            <div style="text-align:left;">
+              <div style="font-family:'Noto Serif TC',serif;font-size:34px;font-weight:500;color:#cbb9a0;line-height:1;">{{ grp.roman }}</div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:13px;color:#35456a;margin-top:8px;letter-spacing:1px;">{{ grp.siglumZh }}</div>
+              <div style="font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#938a78;margin-top:2px;">{{ grp.siglumEn }}</div>
+            </div>
+            <div style="padding-top:4px;">
+              <div style="font-family:'Noto Serif TC',serif;font-size:23px;font-weight:600;line-height:1.4;letter-spacing:.5px;">{{ grp.need }}</div>
+              <div style="color:#938a78;font-size:14px;margin-top:6px;line-height:1.7;font-family:'EB Garamond','Noto Serif TC',serif;">{{ grp.when }}</div>
+            </div>
+          </div>
+
+          <sc-for list="{{ grp.tools }}" as="tool" hint-placeholder-count="2">
+
+            <!-- 扉頁條目 / FRONTISPIECE -->
+            <sc-if value="{{ tool.featured }}">
+              <a href="{{ tool.href }}" style="display:block;color:inherit;position:relative;border:1px solid #cec6b4;border-radius:3px;background:#fbf9f4;padding:40px;box-shadow:inset 0 0 0 5px #f3efe7,inset 0 0 0 6px #cec6b4;" style-hover="transform:translateY(-2px);">
+                <div style="display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start;justify-content:space-between;">
+                  <div style="flex:1 1 340px;">
+                    <div style="font-family:'Noto Serif TC',serif;color:#35456a;font-size:12px;letter-spacing:2px;margin-bottom:10px;">工具 Nº {{ tool.no }} · 從這裡起步</div>
+                    <h3 style="font-family:'Noto Serif TC',serif;font-size:31px;font-weight:600;line-height:1.35;margin-bottom:16px;">{{ tool.name }}</h3>
+                    <p style="color:#554d40;font-size:15.5px;line-height:1.9;margin-bottom:18px;max-width:460px;font-family:'EB Garamond','Noto Serif TC',serif;">{{ tool.desc }}</p>
+                    <div style="font-size:12px;color:#938a78;line-height:1.7;margin-bottom:26px;">{{ tool.src }}</div>
+                    <sc-if value="{{ tool.hasUsed }}">
+                      <div style="border-left:2px solid #35456a;padding-left:12px;margin:-14px 0 24px;font-size:12px;color:#35456a;line-height:1.7;">{{ tool.usedLine }}</div>
+                    </sc-if>
+                    <span style="display:inline-block;background:#35456a;color:#fbf9f4;padding:13px 30px;border-radius:2px;font-size:14.5px;letter-spacing:2px;">開始 →</span>
+                  </div>
+                  <div style="flex:0 0 172px;border:1px solid #cec6b4;border-radius:2px;padding:24px 18px 20px;background:#f3efe7;box-shadow:inset 0 0 0 4px #fbf9f4,inset 0 0 0 5px #cec6b4;text-align:center;">
+                    <div style="font-family:'Noto Serif TC',serif;font-size:20px;color:#35456a;margin-bottom:6px;">❦</div>
+                    <div style="font-family:'Noto Serif TC',serif;font-size:13px;letter-spacing:8px;padding-left:8px;">方 向 卡</div>
+                    <div style="font-size:8px;letter-spacing:2px;color:#938a78;text-transform:uppercase;margin-top:6px;">Direction · Nº 01</div>
+                    <div style="width:26px;height:1px;background:#35456a;opacity:.6;margin:15px auto;"></div>
+                    <div style="font-size:9px;letter-spacing:2px;color:#938a78;text-transform:uppercase;line-height:1.9;">走完流程<br>親手寫下</div>
+                  </div>
+                </div>
+              </a>
+            </sc-if>
+
+            <!-- 篇目條目 / CATALOGUE ENTRY -->
+            <sc-if value="{{ tool.regular }}">
+              <a href="{{ tool.href }}" style="display:grid;grid-template-columns:92px 1fr;column-gap:26px;color:inherit;border-top:1px solid #e3ddd0;padding:24px 0;" style-hover="opacity:.82;">
+                <div style="font-family:'Noto Serif TC',serif;font-size:20px;color:#35456a;letter-spacing:1px;line-height:1.5;">Nº {{ tool.no }}</div>
+                <div style="min-width:0;">
+                  <h3 style="font-family:'Noto Serif TC',serif;font-size:21px;font-weight:600;line-height:1.45;margin-bottom:9px;">{{ tool.name }}</h3>
+                  <p style="color:#554d40;font-size:14.5px;line-height:1.85;margin-bottom:12px;font-family:'EB Garamond','Noto Serif TC',serif;">{{ tool.desc }}</p>
+                  <div style="display:flex;align-items:baseline;gap:14px;">
+                    <span style="flex:1;font-size:11.5px;color:#938a78;line-height:1.65;min-width:0;">{{ tool.src }}</span>
+                    <span style="font-size:13px;letter-spacing:2px;color:#35456a;white-space:nowrap;">開始 →</span>
+                  </div>
+                  <sc-if value="{{ tool.hasUsed }}">
+                    <div style="font-size:11.5px;color:#35456a;margin-top:10px;line-height:1.6;">{{ tool.usedLine }}</div>
+                  </sc-if>
+                </div>
+              </a>
+            </sc-if>
+
+          </sc-for>
+        </div>
+      </sc-for>
+    </section>
+
+    <div style="text-align:center;color:#35456a;font-size:15px;margin-top:calc(70px * var(--rhythm,1.35));">❦</div>
+
+    <!-- 附錄 / APPENDIX -->
+    <section id="appendix" style="margin-top:calc(40px * var(--rhythm,1.35));scroll-margin-top:20px;border-top:1px solid #241f18;padding-top:26px;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+        <div style="font-family:'Noto Serif TC',serif;font-size:22px;font-weight:600;letter-spacing:2px;">附錄 · 為什麼</div>
+        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#938a78;">Appendix</div>
       </div>
-      <div class="tool">
-        <div class="no">工具 No. 05</div>
-        <h3>小規模試驗卡</h3>
-        <p>做大決定之前，先設計一次成本很低的試驗：試多久、看到什麼算數、什麼時候關門定案。</p>
-        <div class="src">啟發自《一週工作 4 小時》——全書反覆用到、但作者從沒取名字的那個做法。</div>
-        <a class="btn" href="tool-pilot.html">開始 →</a>
+      <sc-for list="{{ articleSecs }}" as="sec" hint-placeholder-count="2">
+        <div style="margin-top:calc(34px * var(--rhythm,1.35));">
+          <div style="display:grid;grid-template-columns:92px 1fr;column-gap:26px;margin-bottom:6px;">
+            <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#938a78;padding-top:6px;">{{ sec.tag }}</div>
+            <div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:18px;font-weight:600;letter-spacing:.5px;">{{ sec.title }}</div>
+              <div style="color:#938a78;font-size:13px;margin-top:4px;line-height:1.75;">{{ sec.sub }}</div>
+            </div>
+          </div>
+          <sc-for list="{{ sec.items }}" as="a" hint-placeholder-count="3">
+            <a href="{{ a.href }}" style="display:grid;grid-template-columns:92px 1fr;column-gap:26px;color:inherit;padding:18px 0;border-top:1px solid #e3ddd0;" style-hover="opacity:.82;">
+              <div></div>
+              <div>
+                <div style="font-family:'Noto Serif TC',serif;font-size:17px;font-weight:600;margin-bottom:5px;line-height:1.5;">{{ a.title }}</div>
+                <div style="color:#938a78;font-size:13px;line-height:1.7;font-family:'EB Garamond','Noto Serif TC',serif;">{{ a.desc }}</div>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </sc-for>
+
+      <div style="margin-top:calc(46px * var(--rhythm,1.35));">
+        <div style="display:grid;grid-template-columns:92px 1fr;column-gap:26px;margin-bottom:6px;">
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#938a78;padding-top:6px;">書目</div>
+          <div>
+            <div style="font-family:'Noto Serif TC',serif;font-size:18px;font-weight:600;letter-spacing:.5px;">工具地圖 · 整本書逐條查證</div>
+            <div style="color:#938a78;font-size:13px;margin-top:4px;line-height:1.75;">哪些可以直接用、哪些要改過才能用、哪些我決定不做，以及為什麼。</div>
+          </div>
+        </div>
+        <sc-for list="{{ bookmaps }}" as="b" hint-placeholder-count="4">
+          <a href="{{ b.href }}" style="display:grid;grid-template-columns:92px 1fr;column-gap:26px;color:inherit;padding:18px 0;border-top:1px solid #e3ddd0;" style-hover="opacity:.82;">
+            <div></div>
+            <div>
+              <div style="font-family:'Noto Serif TC',serif;font-size:17px;font-weight:600;margin-bottom:5px;line-height:1.5;">{{ b.title }}</div>
+              <div style="color:#938a78;font-size:13px;line-height:1.7;font-family:'EB Garamond','Noto Serif TC',serif;">{{ b.desc }}</div>
+            </div>
+          </a>
+        </sc-for>
       </div>
-      <div class="grp"><b>事情太多</b><span>先看清楚你有多少決定權，再決定減什麼。</span></div>
-      <div class="tool">
-        <div class="no">工具 No. 07</div>
-        <h3>減法掃描卡</h3>
-        <p>手上的事太多，該減什麼？先看清楚你有多少決定權，再挑一項動它——動之前先確認它沒有撐著別的。</p>
-        <div class="src">啟發自《一週工作 4 小時》的 80／20 掃描；書中示範的砍客戶砍會議是老闆權限，這張卡先問你的權限。</div>
-        <a class="btn" href="tool-subtract.html">開始 →</a>
+    </section>
+
+    <!-- 待刊 / FORTHCOMING -->
+    <sc-if value="{{ showRoadmap }}" hint-placeholder-val="{{ true }}">
+    <section style="margin-top:calc(70px * var(--rhythm,1.35));border-top:1px solid #241f18;padding-top:26px;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:6px;">
+        <div style="font-family:'Noto Serif TC',serif;font-size:22px;font-weight:600;letter-spacing:2px;">待刊</div>
+        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#938a78;">Forthcoming</div>
       </div>
-      <div class="tool">
-        <div class="no">工具 No. 06</div>
-        <h3>空下來之後</h3>
-        <p>時間空出來了，然後呢？這張卡不叫你把它填滿，只幫你安排一件在乎的事，並留住該留的空白。</p>
-        <div class="src">啟發自《一週工作 4 小時》最後一章——那一章推翻了整本書的書名，也是全書唯一有大量研究支持的一段。</div>
-        <a class="btn" href="tool-leisure.html">開始 →</a>
+      <div style="color:#938a78;font-size:13px;margin-bottom:20px;line-height:1.75;max-width:560px;">序號按上線先後發，不預留。做好了會從這份清單搬到正文去。</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 40px;">
+        <sc-for list="{{ roadmap }}" as="r" hint-placeholder-count="14">
+          <div style="display:flex;align-items:baseline;gap:12px;padding:12px 0;border-top:1px solid #e3ddd0;opacity:{{ r.op }};">
+            <span style="font-family:'Noto Serif TC',serif;color:#35456a;font-size:12px;letter-spacing:1px;width:44px;">{{ r.no }}</span>
+            <span style="font-size:14.5px;">{{ r.name }}</span>
+            <span style="flex:1;border-bottom:1px dotted #e3ddd0;transform:translateY(-4px);min-width:12px;"></span>
+            <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#938a78;white-space:nowrap;">{{ r.status }}</span>
+          </div>
+        </sc-for>
       </div>
-      <div class="grp"><b>要跑一段長的</b><span>一輪十二週，只帶一個關鍵行動。</span></div>
-      <div class="tool">
-        <div class="no">工具 No. 09</div>
-        <h3>週期執行器</h3>
-        <p>開一輪十二週（長度自己改），只帶一個關鍵行動。每週回來記兩個數字——不轉百分比、不設門檻、不打分。</p>
-        <div class="src">《12週做完一年工作》的週期結構 ×《人生效率手冊》的日層復盤；書中那條 85% 及格線查不到來源，沒有沿用。</div>
-        <a class="btn" href="tool-cycle.html">開始 →</a>
+    </section>
+    </sc-if>
+
+    <!-- 版權頁 / COLOPHON -->
+    <section style="margin-top:calc(70px * var(--rhythm,1.35));">
+      <div style="border:1px solid #cec6b4;border-radius:3px;padding:46px 34px;text-align:center;background:rgba(251,249,244,.65);">
+        <div style="color:#35456a;font-size:15px;margin-bottom:14px;">❦</div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:22px;font-weight:600;margin-bottom:8px;">有新工具，第一個讓你知道</div>
+        <p style="color:#938a78;font-size:13.5px;margin-bottom:26px;">偶爾一封信，只談把書變成工具這件事。</p>
+        <form onSubmit="{{ onSubscribe }}" style="display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap;">
+          <input type="email" placeholder="你的 Email" required style="flex:1;min-width:200px;border:1px solid #cec6b4;background:#f3efe7;border-radius:2px;padding:14px 16px;font-size:15px;font-family:inherit;color:#241f18;" />
+          <button type="submit" style="border:none;background:#35456a;color:#fbf9f4;border-radius:2px;padding:0 26px;font-family:inherit;font-size:14px;letter-spacing:1px;cursor:pointer;">{{ subLabel }}</button>
+        </form>
       </div>
-      <div class="grp"><b>跟人講完話，覺得不對勁</b><span>不查對方，只查你剛才做了什麼。</span></div>
-      <div class="tool">
-        <div class="no">工具 No. 10</div>
-        <h3>講完話之後</h3>
-        <p>挑一句最接近你狀況的，給你對應的那一題——一次只有一題。不算完成率，也不判你對錯。</p>
-        <div class="src">啟發自《非暴力溝通》；書中那條「二十分鐘解決衝突」與抑鬱歸因，查證後都沒有沿用。</div>
-        <a class="btn" href="tool-after-talk.html">開始 →</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
+    <footer style="color:#938a78;font-size:12px;text-align:center;padding:56px 0 48px;letter-spacing:.5px;">
+      <div style="font-family:'Noto Serif TC',serif;margin-bottom:6px;letter-spacing:2px;">TOOLBOOK<span style="color:#35456a;">.</span> EDITIONS</div>
+      把好書變成工具 · 一個還在路上的讀者 · MMXXVI
+    </footer>
 
-  <div class="rule"></div>
-  <section id="articles">
-    <div class="sec-k">文章</div>
-    <div class="grp2"><b>先從這裡讀</b><span>你大概是為了其中一種狀況找到這裡的。</span></div>
-    <a class="art" href="article.html">
-      <div class="at">為什麼你定了一堆目標，卻還是迷茫？</div>
-      <div class="ad">問題可能不在你的目標，而在你還沒聽見自己真正要什麼。</div>
-    </a>
-    <a class="art" href="article-busy.html">
-      <div class="at">為什麼每天很忙，仍然沒有進展？</div>
-      <div class="ad">問題可能不是做得不夠多，而是做的事沒有直接服務結果。</div>
-    </a>
-    <div class="grp2"><b>那些很有名的說法，我去查了</b><span>這幾篇是拆穿，不是介紹。查得到出處的我標出來，查不到的我說查不到。</span></div>
-    <a class="art" href="article-three-numbers.html">
-      <div class="at">這本效率書最有名的三個數字，沒有一個站得住</div>
-      <div class="ad">而全書最不起眼的那一段，才是唯一撐得住的。</div>
-    </a>
-    <a class="art" href="article-two-standards.html">
-      <div class="at">那個 85%，其實有兩個版本</div>
-      <div class="ad">同一本書裡，講道理的那幾頁相當寬容，催你的那幾頁相當嚴厲。</div>
-    </a>
-    <a class="art" href="article-measure.html">
-      <div class="at">你量什麼，就只會改變什麼</div>
-      <div class="ad">兩本書都叫你每天記一個數字，一本記時數，一本記行動。而記錄只會改變你記的那一欄。</div>
-    </a>
-    <a class="art" href="article-no-promise.html">
-      <div class="at">這套溝通方法，不承諾你學得會</div>
-      <div class="ad">書裡最誠實的三個段落，講的都是同一件事：照著做了，對方沒有照做。</div>
-    </a>
-  </section>
+  </div>
 
-  <div class="rule"></div>
-
-  <section>
-    <div class="sec-k">工具地圖</div>
-    <div class="grp2"><b>整本書逐條查證後的地圖</b><span>哪些可以直接用、哪些要改過才能用、哪些我決定不做，以及為什麼。</span></div>
-    <a class="art" href="book-efficiency-handbook.html">
-      <div class="at">《人生效率手冊》· 讀完之後，接下來做什麼</div>
-      <div class="ad">全書方法逐條查證後的地圖：可以直接用的、要改過才能用的，以及我決定不做的。</div>
-    </a>
-    <a class="art" href="book-four-hour-workweek.html">
-      <div class="at">《一週工作 4 小時》· 哪些還能用，看你在哪</div>
-      <div class="ad">這本書出版於 2007 年。有些部分的前提變了——但變了不等於跟你無關，判準是你的處境，不是書的年份。</div>
-    </a>
-    <a class="art" href="book-twelve-week-year.html">
-      <div class="at">《12週做完一年工作》· 骨架留下，數字換掉</div>
-      <div class="ad">最有名的三個數字都站不住，但它的兩根主柱撐得住。所以要換的是理由，不是做法。</div>
-    </a>
-    <a class="art" href="book-nonviolent-communication.html">
-      <div class="at">《非暴力溝通》· 哪幾句可以帶走</div>
-      <div class="ad">七個問句可以帶走，已經做成一張卡。另外六個決定和八項我不做的事，連來歷一起寫出來。</div>
-    </a>
-  </section>
-
-
-  <div class="rule"></div>
-
-  <section>
-    <div class="sec-k">在路上</div>
-    <div class="grp2"><b>還沒做完的，先擺在這裡</b><span>序號按上線先後發，不預留。做好了會從這份清單搬到上面去。</span></div>
-    <div class="coming">
-      <div class="citem"><span class="cn">No. 01</span><span class="cnm">目標釐清器</span><span class="cst">已上線</span></div>
-      <div class="citem"><span class="cn">No. 02</span><span class="cnm">成果鎖定卡</span><span class="cst">已完成</span></div>
-      <div class="citem"><span class="cn">No. 03</span><span class="cnm">復盤卡</span><span class="cst">已上線</span></div>
-      <div class="citem"><span class="cn">No. 04</span><span class="cnm">恐懼拆解卡</span><span class="cst">已上線</span></div>
-      <div class="citem"><span class="cn">No. 05</span><span class="cnm">小規模試驗卡</span><span class="cst">已上線</span></div>
-      <div class="citem"><span class="cn">No. 06</span><span class="cnm">空下來之後</span><span class="cst">已上線</span></div>
-      <div class="citem"><span class="cn">No. 07</span><span class="cnm">減法掃描卡</span><span class="cst">已上線</span></div>
-      <div class="citem"><span class="cn">No. 08</span><span class="cnm">今天兩格</span><span class="cst">已上線</span></div>
-      <div class="citem"><span class="cn">No. 09</span><span class="cnm">週期執行器</span><span class="cst">已上線</span></div>
-      <div class="citem"><span class="cn">No. 10</span><span class="cnm">講完話之後</span><span class="cst">已上線</span></div>
-      <div class="citem soon"><span class="cn">—</span><span class="cnm">學習筆記卡</span><span class="cst">準備中</span></div>
-      <div class="citem soon"><span class="cn">—</span><span class="cnm">內在對話改寫器</span><span class="cst">紙上原型</span></div>
-      <div class="citem soon"><span class="cn">—</span><span class="cnm">興趣變現孵化器</span><span class="cst">釀製中</span></div>
-      <div class="citem soon"><span class="cn">—</span><span class="cnm">微行動啟動器</span><span class="cst">規劃中</span></div>
-    </div>
-  </section>
-
-
-
-  <section>
-    <div class="signup">
-      <h3>有新工具，第一個讓你知道</h3>
-      <p>偶爾一封信，只談把書變成工具這件事。</p>
-      <!-- Formspree 端點 mlgkgveq 屬於 toolbook editions 帳號，2026-08-18 已核對。三個表單共用同一端點，用 submission_type 區分來源。 -->
-      <form id="signupForm" action="https://formspree.io/f/mlgkgveq" method="POST">
-        <input type="hidden" name="subscription_type" value="首頁－新工具通知">
-        <input type="email" name="email" placeholder="你的 Email" required>
-        <button type="submit">通知我</button>
-      </form>
-      <script>
-        document.getElementById('signupForm').addEventListener('submit',async function(e){
-          e.preventDefault();var b=this.querySelector('button');
-          try{var r=await fetch(this.action,{method:'POST',headers:{Accept:'application/json'},body:new FormData(this)});
-            b.textContent=r.ok?'已記下 ✓':'稍後再試';
-            if(r.ok&&typeof gtag==='function')gtag('event','sign_up',{method:'homepage_email'});
-          }catch(_){b.textContent='稍後再試';}
-        });
-      </script>
-    </div>
-  </section>
-
-
-
-  <footer>
-    <div class="serif">TOOLBOOK<span style="color:var(--accent)">.</span> EDITIONS</div>
-    把好書變成工具 · 一個還在路上的讀者 · MMXXVI
-  </footer>
-
+  <a href="#top" style="position:fixed;bottom:24px;right:24px;z-index:20;display:flex;align-items:center;gap:8px;padding:11px 16px;background:#fbf9f4;border:1px solid #cec6b4;border-radius:2px;font-size:12px;letter-spacing:2px;color:#35456a;white-space:nowrap;box-shadow:0 3px 14px rgba(36,31,24,.1);opacity:{{ topOpacity }};pointer-events:{{ topPe }};transform:translateY({{ topShift }});transition:opacity .35s ease,transform .35s ease;" style-hover="border-color:#35456a;">
+    <span style="font-family:'Noto Serif TC',serif;font-size:14px;line-height:1;">↑</span>回到頁首
+  </a>
 </div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:920,&quot;height&quot;:900},&quot;breathing&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;鬆弛&quot;,&quot;標準&quot;],&quot;default&quot;:&quot;鬆弛&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;版面&quot;},&quot;contents&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;版面&quot;},&quot;paper&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;版面&quot;},&quot;showRoadmap&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;版面&quot;}}">
+class Component extends DCLogic {
+  state = { subLabel: "通知我", showTop: false, usage: {} };
 
-<script src="toolbook.js" defer></script>
-<script defer>
-  /* 每張工具卡補一行「你用過、上次寫下什麼」。
-     不用在九張卡上逐一加標記——用「開始 →」按鈕的 href 對出是哪個工具就夠了。
-     忘記的其實不是「用過」，是上次的結論，所以顯示的是結論那一行。 */
-  window.addEventListener('DOMContentLoaded',function(){
-    if(typeof Toolbook==='undefined')return;
-    const esc=Toolbook.esc;
-    let anyUsed=false;
+  componentDidMount() {
+    this._onScroll = () => {
+      const v = window.scrollY > 520;
+      if (v !== this.state.showTop) this.setState({ showTop: v });
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    this._onScroll();
+    this.readUsage();
+  }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._onScroll);
+  }
+  oneLine(t, max) { t = String(t || "").replace(/\s+/g, " ").trim(); max = max || 32; return t.length > max ? t.slice(0, max) + "…" : t; }
+  firstFilled(o, fields) { if (!o) return ""; for (const f of fields) { const v = o[f]; if (typeof v === "string" && v.trim()) return v.trim(); } return ""; }
+  readUsage() {
+    const CFG = {
+      "01": { key: "toolbook_direction_cards_v1", sum: ["want"] },
+      "02": { key: "toolbook_result_lock_history_v1", sum: ["outcome"] },
+      "03": { key: "toolbook_review_history_v1", sum: ["onething", "lesson"] },
+      "04": { key: "toolbook_fear_history_v1", sum: ["ministep", "backText", "worstText"] },
+      "05": { key: "toolbook_pilot_history_v1", sum: ["pilot", "decision"] },
+      "06": { key: "toolbook_leisure_history_v1", sum: ["thing", "firstStep"] },
+      "07": { key: "toolbook_subtract_history_v1", sum: ["action"] },
+      "08": { key: "toolbook_two_v1", byDate: true, sum: ["one", "two"] },
+      "09": { key: "toolbook_cycle_history_v1", sum: ["deliver", "want"] },
+      "10": { key: "toolbook_after_talk_history_v1", sum: ["answer"] },
+    };
+    const usage = {};
+    Object.keys(CFG).forEach(no => {
+      const c = CFG[no];
+      try {
+        const raw = localStorage.getItem(c.key); if (!raw) return;
+        const v = JSON.parse(raw);
+        if (c.byDate) {
+          if (v && typeof v === "object" && !Array.isArray(v)) {
+            const days = Object.keys(v).filter(k => v[k] && ((v[k].one || "").trim() || (v[k].two || "").trim())).sort().reverse();
+            if (days.length) usage[no] = { count: days.length, unit: "天", summary: this.oneLine(v[days[0]].one || v[days[0]].two) };
+          }
+        } else if (Array.isArray(v) && v.length) {
+          usage[no] = { count: v.length, unit: "筆", summary: this.oneLine(this.firstFilled(v[0], c.sum)) };
+        }
+      } catch (_) {}
+    });
+    if (Object.keys(usage).length) this.setState({ usage });
+  }
 
-    Toolbook.allUsage().forEach(function(r){
-      if(!r.count)return;
-      anyUsed=true;
-      const btn=document.querySelector('.tool .btn[href="'+r.tool.file+'"]');
-      if(!btn)return;
-      const box=document.createElement('div');
-      box.className='used on';
-      const when=r.lastAt?Toolbook.fmtDate(r.lastAt):'之前';
-      const times=r.count>1?('，共 '+r.count+' '+r.unit):'';
-      box.innerHTML='<span class="u-when">你 '+esc(when)+' 用過</span>'+esc(times)+
-        (r.extra?' · '+esc(r.extra):'')+
-        (r.summary?'<div class="u-k">'+esc(r.summaryLabel)+'</div><div class="u-v">'+esc(r.summary)+'</div>':'');
-      btn.parentNode.insertBefore(box,btn);
-      btn.textContent='再做一次 →';
+  renderVals() {
+    const groups = [
+      { gid:"g-listen", roman:"I", siglumZh:"聆聽", siglumEn:"Listen", need:"不知道自己要什麼", when:"先聽見，再決定。", tools:[
+        { no:"01", name:"目標釐清器", desc:"不幫你「定目標」，幫你聽見——你到底要什麼。8 個安靜的問題，最後給你一張方向卡。", src:"啟發自《認知覺醒》× Dreamlining《一週工作 4 小時》。", href:"tool.html", featured:true },
+      ]},
+      { gid:"g-move", roman:"II", siglumZh:"推進", siglumEn:"Move", need:"知道要什麼，但推不動", when:"定成果 → 每天落地 → 回頭對一次。這三張是一條線。", tools:[
+        { no:"02", name:"成果鎖定卡", desc:"鎖定這一輪的唯一成果，分清必要工作與錦上添花，替研究和修改設定止損點。", src:"啟發自《人生效率手冊》目標建立篇，經實際問題重新整理。", href:"tool-result-lock.html" },
+        { no:"08", name:"今天兩格", desc:"一天只有兩個格子，寫滿就鎖。用位置不夠來逼出取捨，不必靠意志力。", src:"啟發自《一週工作 4 小時》第 5 章；書中掛在帕金森定律上的說法，查證後沒有沿用。", href:"tool-two.html" },
+        { no:"03", name:"復盤卡", desc:"一輪做完之後，拿當初寫下的目標對一次實際結果，然後只挑一件事改。", src:"啟發自《人生效率手冊》工具篇；這是全書查證後證據最紮實的一項。", href:"tool-review.html" },
+      ]},
+      { gid:"g-decide", roman:"III", siglumZh:"抉擇", siglumEn:"Decide", need:"卡在一個決定", when:"不敢動，多半是因為最壞的情況沒被寫下來。", tools:[
+        { no:"04", name:"恐懼拆解卡", desc:"擋住你的不是風險，是沒被寫下來的那件事。八個問題，把「不敢動」拆成可以逐條處理的清單。", src:"啟發自《一週工作 4 小時》第 3 章；第八問「你的退路是什麼」是書上沒有、我自己加的。", href:"tool-fear.html" },
+        { no:"05", name:"小規模試驗卡", desc:"做大決定之前，先設計一次成本很低的試驗：試多久、看到什麼算數、什麼時候關門定案。", src:"啟發自《一週工作 4 小時》——全書反覆用到、但作者從沒取名字的那個做法。", href:"tool-pilot.html" },
+      ]},
+      { gid:"g-toomuch", roman:"IV", siglumZh:"減負", siglumEn:"Reduce", need:"事情太多", when:"先看清楚你有多少決定權，再決定減什麼。", tools:[
+        { no:"07", name:"減法掃描卡", desc:"手上的事太多，該減什麼？先看清楚你有多少決定權，再挑一項動它——動之前先確認它沒有撐著別的。", src:"啟發自《一週工作 4 小時》的 80／20 掃描；書中示範的砍客戶砍會議是老闆權限，這張卡先問你的權限。", href:"tool-subtract.html" },
+        { no:"06", name:"空下來之後", desc:"時間空出來了，然後呢？這張卡不叫你把它填滿，只幫你安排一件在乎的事，並留住該留的空白。", src:"啟發自《一週工作 4 小時》最後一章——那一章推翻了整本書的書名，也是全書唯一有大量研究支持的一段。", href:"tool-leisure.html" },
+      ]},
+      { gid:"g-long", roman:"V", siglumZh:"長程", siglumEn:"Run", need:"要跑一段長的", when:"一輪十二週，只帶一個關鍵行動。", tools:[
+        { no:"09", name:"週期執行器", desc:"開一輪十二週（長度自己改），只帶一個關鍵行動。每週回來記兩個數字——不轉百分比、不設門檻、不打分。", src:"《12週做完一年工作》的週期結構 ×《人生效率手冊》的日層復盤；書中那條 85% 及格線查不到來源，沒有沿用。", href:"tool-cycle.html" },
+      ]},
+      { gid:"g-talk", roman:"VI", siglumZh:"對話", siglumEn:"Talk", need:"跟人講完話，覺得不對勁", when:"不查對方，只查你剛才做了什麼。", tools:[
+        { no:"10", name:"講完話之後", desc:"挑一句最接近你狀況的，給你對應的那一題——一次只有一題。不算完成率，也不判你對錯。", src:"啟發自《非暴力溝通》；書中那條「二十分鐘解決衝突」與抑鬱歸因，查證後都沒有沿用。", href:"tool-after-talk.html" },
+      ]},
+    ];
+    groups.forEach(g => {
+      g.tools.forEach(t => {
+        t.featured = !!t.featured; t.regular = !t.featured;
+        const u = (this.state.usage || {})[t.no];
+        t.hasUsed = !!u;
+        t.usedLine = u ? ("你用過 · " + u.count + " " + u.unit + (u.summary ? " · 上次：" + u.summary : "")) : "";
+      });
+      g.anchor = "#" + g.gid;
+      g.nos = g.tools.map(t => "Nº " + t.no).join(" · ");
     });
 
-    if(anyUsed){
-      const sec=document.getElementById('tools');
-      const k=sec&&sec.querySelector('.sec-k');
-      if(k)k.innerHTML='現在能用的 · <a href="records.html" style="color:var(--accent);text-decoration:none;letter-spacing:2px">看我的全部紀錄 →</a>';
-    }
-  });
+    const articleSecs = [
+      { tag:"導讀", title:"先從這裡讀", sub:"你大概是為了其中一種狀況找到這裡的。", items:[
+        { href:"article.html", title:"為什麼你定了一堆目標，卻還是迷茫？", desc:"問題可能不在你的目標，而在你還沒聽見自己真正要什麼。" },
+        { href:"article-busy.html", title:"為什麼每天很忙，仍然沒有進展？", desc:"問題可能不是做得不夠多，而是做的事沒有直接服務結果。" },
+      ]},
+      { tag:"考據", title:"那些很有名的說法，我去查了", sub:"這幾篇是拆穿，不是介紹。查得到出處的我標出來，查不到的我說查不到。", items:[
+        { href:"article-three-numbers.html", title:"這本效率書最有名的三個數字，沒有一個站得住", desc:"而全書最不起眼的那一段，才是唯一撐得住的。" },
+        { href:"article-two-standards.html", title:"那個 85%，其實有兩個版本", desc:"同一本書裡，講道理的那幾頁相當寬容，催你的那幾頁相當嚴厲。" },
+        { href:"article-measure.html", title:"你量什麼，就只會改變什麼", desc:"兩本書都叫你每天記一個數字，一本記時數，一本記行動。而記錄只會改變你記的那一欄。" },
+        { href:"article-no-promise.html", title:"這套溝通方法，不承諾你學得會", desc:"書裡最誠實的三個段落，講的都是同一件事：照著做了，對方沒有照做。" },
+      ]},
+    ];
+
+    const bookmaps = [
+      { href:"book-efficiency-handbook.html", title:"《人生效率手冊》· 讀完之後，接下來做什麼", desc:"全書方法逐條查證後的地圖：可以直接用的、要改過才能用的，以及我決定不做的。" },
+      { href:"book-four-hour-workweek.html", title:"《一週工作 4 小時》· 哪些還能用，看你在哪", desc:"這本書出版於 2007 年。有些部分的前提變了——但變了不等於跟你無關，判準是你的處境，不是書的年份。" },
+      { href:"book-twelve-week-year.html", title:"《12週做完一年工作》· 骨架留下，數字換掉", desc:"最有名的三個數字都站不住，但它的兩根主柱撐得住。所以要換的是理由，不是做法。" },
+      { href:"book-nonviolent-communication.html", title:"《非暴力溝通》· 哪幾句可以帶走", desc:"七個問句可以帶走，已經做成一張卡。另外六個決定和八項我不做的事，連來歷一起寫出來。" },
+    ];
+
+    const roadmap = [
+      ["Nº 01","目標釐清器","已上線"],["Nº 02","成果鎖定卡","已完成"],["Nº 03","復盤卡","已上線"],
+      ["Nº 04","恐懼拆解卡","已上線"],["Nº 05","小規模試驗卡","已上線"],["Nº 06","空下來之後","已上線"],
+      ["Nº 07","減法掃描卡","已上線"],["Nº 08","今天兩格","已上線"],["Nº 09","週期執行器","已上線"],
+      ["Nº 10","講完話之後","已上線"],["—","學習筆記卡","準備中"],["—","內在對話改寫器","紙上原型"],
+      ["—","興趣變現孵化器","釀製中"],["—","微行動啟動器","規劃中"],
+    ].map(r => ({ no:r[0], name:r[1], status:r[2], op: r[0]==="—" ? .5 : 1 }));
+
+    const breathing = this.props.breathing ?? "鬆弛";
+    return {
+      rhythm: breathing === "標準" ? 1 : 1.35,
+      contents: this.props.contents ?? true,
+      paper: this.props.paper ?? true,
+      showRoadmap: this.props.showRoadmap ?? true,
+      groups, articleSecs, bookmaps, roadmap,
+      topOpacity: this.state.showTop ? "1" : "0",
+      topPe: this.state.showTop ? "auto" : "none",
+      topShift: this.state.showTop ? "0" : "8px",
+      subLabel: this.state.subLabel,
+      onSubscribe: (e) => { e.preventDefault(); var form = e.target; var em = form && form.querySelector ? ((form.querySelector("input[type=email]") || {}).value || "") : ""; var fd = new FormData(); fd.append("email", em); fd.append("_subject", "Toolbook 新工具訂閱"); fd.append("submission_type", "首頁訂閱"); this.setState({ subLabel: "傳送中…" }); fetch("https://formspree.io/f/mlgkgveq", { method: "POST", body: fd, headers: { Accept: "application/json" } }).then((r) => { if (!r.ok) throw r; return r.json(); }).then(() => this.setState({ subLabel: "已記下 ✓" })).catch(() => this.setState({ subLabel: "再試一次" })); },
+    };
+  }
+}
 </script>
 </body>
 </html>
