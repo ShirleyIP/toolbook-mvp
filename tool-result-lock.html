@@ -10,9 +10,7 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:#e9e3d6;color:#241f18;font-family:-apple-system,"PingFang TC","PingFang SC",sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;}
@@ -228,12 +226,12 @@ class Component extends DCLogic {
   };
   HKEY = "toolbook_result_lock_history_v1";
   componentDidMount() { try { const raw = localStorage.getItem(this.HKEY); if (raw) { const a = JSON.parse(raw); if (Array.isArray(a)) this.setState({ cards: a.slice(0, 50) }); } } catch (_) {} }
-  saveCards(cards) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); } catch (_) {} }
+  saveCards(cards, done) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); if(done&&typeof gtag==='function')gtag('event','tool_complete',{tool:'成果鎖定卡'}); } catch (_) {} }
   archive() {
     const s = this.state; if (!s.outcome.trim()) return;
     const card = { id: "r_" + Date.now().toString(36), createdAt: new Date().toISOString(), outcome: s.outcome.trim(), evidence: s.evidence.trim(), deadline: s.deadline, must: s.must.trim(), later: s.later.trim(), stopRule: s.stopRule.trim() };
     const cards = [card, ...this.state.cards].slice(0, 50);
-    this.setState({ cards }); this.saveCards(cards);
+    this.setState({ cards }); this.saveCards(cards, true);
   }
   deleteCard(id) { const cards = this.state.cards.filter(c => c.id !== id); this.setState({ cards }); this.saveCards(cards); }
   cardTextFor(c) { return "成果鎖定卡\n\n本輪結果：" + (c.outcome || "") + "\n完成證據：" + (c.evidence || "") + "\n交付日期：" + this.fmtDate(c.deadline) + "\n\n現在只做：\n" + (c.must || "") + "\n\n暗時不做：\n" + (c.later || "本輪沒有") + "\n\n止損規則：" + (c.stopRule || "") + "\n\n先完成，再完美。"; }

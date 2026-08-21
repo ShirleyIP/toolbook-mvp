@@ -10,9 +10,7 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:#e9e3d6;color:#241f18;font-family:-apple-system,"PingFang TC","PingFang SC",sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;}
@@ -253,7 +251,7 @@ class Component extends DCLogic {
       weeks: d.weeks || 12, teller: d.teller || "", startedAt: d.startedAt || "", logs: Array.isArray(d.logs) ? d.logs : [], planCount: Number.isInteger(d.planCount) ? d.planCount : 3, draftId: d.draftId || "",
     }); } } catch (_) {}
   }
-  saveCards(cards) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); } catch (_) {} }
+  saveCards(cards, done) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); if(done&&typeof gtag==='function')gtag('event','tool_complete',{tool:'週期執行器'}); } catch (_) {} }
   saveDraft(over) {
     const s = { ...this.state, ...over };
     try { localStorage.setItem(this.DKEY, JSON.stringify({ step: s.step, draftId: s.draftId, startedAt: s.startedAt, logs: s.logs, planCount: s.planCount, want: s.want, blocker: s.blocker, deliver: s.deliver, donedef: s.donedef, iff: s.iff, thenn: s.thenn, weeks: s.weeks, teller: s.teller })); } catch (_) {}
@@ -298,7 +296,7 @@ class Component extends DCLogic {
     const old = s.cards.find(c => c.id === id);
     const card = { id, createdAt: old ? old.createdAt : new Date().toISOString(), startedAt: s.startedAt, want: s.want.trim(), blocker: s.blocker.trim(), deliver: s.deliver.trim(), donedef: s.donedef.trim(), iff: s.iff.trim(), thenn: s.thenn.trim(), weeks: s.weeks, teller: s.teller.trim(), logs: s.logs };
     const cards = [card, ...s.cards.filter(c => c.id !== id)].slice(0, 50);
-    this.setState({ cards, draftId: id }); this.saveCards(cards);
+    this.setState({ cards, draftId: id }); this.saveCards(cards, true);
   }
   deleteCard(id) { const cards = this.state.cards.filter(c => c.id !== id); this.setState({ cards }); this.saveCards(cards); }
   loadRound(id) {

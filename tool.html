@@ -10,9 +10,7 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:#e9e3d6;color:#241f18;font-family:-apple-system,"PingFang TC","PingFang SC",sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;}
@@ -274,7 +272,7 @@ class Component extends DCLogic {
   componentDidMount() {
     try { const raw = localStorage.getItem(this.HKEY); if (raw) { const a = JSON.parse(raw); if (Array.isArray(a)) this.setState({ cards: a.slice(0, 50) }); } } catch (_) {}
   }
-  saveCards(cards) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); } catch (_) {} }
+  saveCards(cards, done) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); if(done&&typeof gtag==='function')gtag('event','tool_complete',{tool:'目標釐清器'}); } catch (_) {} }
 
   set(k, v) { this.setState({ [k]: v }); }
   total() { return this.state.costs.reduce((s, v) => s + (Number(v) || 0), 0) * 100; }
@@ -311,7 +309,7 @@ class Component extends DCLogic {
     const s = this.state; if (!s.s1want.trim() || !s.who.trim() || this.total() <= 0) return;
     const card = { id: "c_" + Date.now().toString(36), createdAt: new Date().toISOString(), want: s.s1want.trim(), who: s.who.trim(), num: this.total() };
     const cards = [card, ...this.state.cards].slice(0, 50);
-    this.setState({ cards }); this.saveCards(cards);
+    this.setState({ cards }); this.saveCards(cards, true);
   }
   deleteCard(id) { const cards = this.state.cards.filter(c => c.id !== id); this.setState({ cards }); this.saveCards(cards); }
   cardText() { const s = this.state; return "我的方向卡\n\n我真正渴望的：" + (s.s1want.trim() || "—") + "\n我想成為的人：" + (s.who.trim() || "—") + "\n行動座標：$" + this.total().toLocaleString() + "／月\n\n把好書變成工具 · Toolbook"; }

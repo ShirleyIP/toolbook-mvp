@@ -10,9 +10,7 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:#e9e3d6;color:#241f18;font-family:-apple-system,"PingFang TC","PingFang SC",sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased;}
@@ -380,7 +378,7 @@ class Component extends DCLogic {
   componentDidMount() {
     try { const raw = localStorage.getItem(this.HKEY); if (raw) { const a = JSON.parse(raw); if (Array.isArray(a)) this.setState({ cards: a.slice(0, 50) }); } } catch (_) {}
   }
-  saveCards(cards) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); } catch (_) {} }
+  saveCards(cards, done) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); if(done&&typeof gtag==='function')gtag('event','tool_complete',{tool:'恐懼拆解卡'}); } catch (_) {} }
   set(k, v) { this.setState({ [k]: v }); }
   appendChip(k, text) { const cur = (this.state[k] || "").trim().replace(/[，、]+$/, ""); this.set(k, (cur ? cur + "、" : "") + text); }
 
@@ -444,7 +442,7 @@ class Component extends DCLogic {
       costMoney: s.costMoney.trim(), costMood: s.costMood.trim(), costBody: s.costBody.trim(),
       waitFor: s.waitFor.trim(), waitSignal: s.waitSignal.trim(), backRev: s.backRev, backText: s.backText.trim(), backMonths: String(s.backMonths).trim() };
     const cards = [card, ...this.state.cards].slice(0, 50);
-    this.setState({ cards }); this.saveCards(cards);
+    this.setState({ cards }); this.saveCards(cards, true);
   }
   deleteCard(id) { const cards = this.state.cards.filter(c => c.id !== id); this.setState({ cards }); this.saveCards(cards); }
 
