@@ -378,7 +378,7 @@ class Component extends DCLogic {
   componentDidMount() {
     try { const raw = localStorage.getItem(this.HKEY); if (raw) { const a = JSON.parse(raw); if (Array.isArray(a)) this.setState({ cards: a.slice(0, 50) }); } } catch (_) {}
   }
-  saveCards(cards, done) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); if(done&&typeof gtag==='function')gtag('event','tool_complete',{tool:'恐懼拆解卡'}); } catch (_) {} }
+  saveCards(cards, done) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); if(done&&typeof gtag==='function')gtag('event','tool_complete',{tool_name:'恐懼拆解卡'}); } catch (_) {} }
   set(k, v) { this.setState({ [k]: v }); }
   appendChip(k, text) { const cur = (this.state[k] || "").trim().replace(/[，、]+$/, ""); this.set(k, (cur ? cur + "、" : "") + text); }
 

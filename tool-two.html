@@ -120,7 +120,7 @@ class Component extends DCLogic {
 
   writeDay(one, two, locked) {
     const store = this.prune({ ...this.state.store, [this.state.today]: { one, two, locked } });
-    this.setState({ store, one, two, locked }); this.save(store); if(locked&&typeof gtag==='function')gtag('event','tool_complete',{tool:'今天兩格'});
+    this.setState({ store, one, two, locked }); this.save(store); if(locked&&typeof gtag==='function')gtag('event','tool_complete',{tool_name:'今天兩格'});
   }
   onOne(v) { if (this.state.locked) return; this.writeDay(v, this.state.two, false); }
   onTwo(v) { if (this.state.locked) return; this.writeDay(this.state.one, v, false); }

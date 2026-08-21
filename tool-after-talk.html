@@ -156,7 +156,7 @@ class Component extends DCLogic {
     const rec = { id: "c" + Date.now(), createdAt: now, q: i + 1, qTitle: q.title, answer: s.answer.trim(), ask: q.needAsk ? s.ask.trim() : "" };
     const history = [rec, ...s.history].slice(0, 14);
     this.setState({ history, cur: null, answer: "", ask: "" });
-    this.saveHistory(history); if(typeof gtag==='function')gtag('event','tool_complete',{tool:'講完話之後'}); try { localStorage.removeItem(this.DKEY); } catch (_) {}
+    this.saveHistory(history); if(typeof gtag==='function')gtag('event','tool_complete',{tool_name:'講完話之後'}); try { localStorage.removeItem(this.DKEY); } catch (_) {}
     this.toast("留下了");
   }
   deleteRec(id) { const history = this.state.history.filter(c => c.id !== id); this.setState({ history }); this.saveHistory(history); }

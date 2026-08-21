@@ -226,7 +226,7 @@ class Component extends DCLogic {
   };
   HKEY = "toolbook_result_lock_history_v1";
   componentDidMount() { try { const raw = localStorage.getItem(this.HKEY); if (raw) { const a = JSON.parse(raw); if (Array.isArray(a)) this.setState({ cards: a.slice(0, 50) }); } } catch (_) {} }
-  saveCards(cards, done) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); if(done&&typeof gtag==='function')gtag('event','tool_complete',{tool:'成果鎖定卡'}); } catch (_) {} }
+  saveCards(cards, done) { try { localStorage.setItem(this.HKEY, JSON.stringify(cards.slice(0, 50))); if(done&&typeof gtag==='function')gtag('event','tool_complete',{tool_name:'成果鎖定卡'}); } catch (_) {} }
   archive() {
     const s = this.state; if (!s.outcome.trim()) return;
     const card = { id: "r_" + Date.now().toString(36), createdAt: new Date().toISOString(), outcome: s.outcome.trim(), evidence: s.evidence.trim(), deadline: s.deadline, must: s.must.trim(), later: s.later.trim(), stopRule: s.stopRule.trim() };
